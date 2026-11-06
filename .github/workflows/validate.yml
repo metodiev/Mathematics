@@ -19,9 +19,9 @@ jobs:
       - name: Regenerate indexes and fail if they are stale
         run: |
           python tools/build_indexes.py
-          if [ -n "$(git status --porcelain)" ]; then
+          git --no-pager diff --ignore-cr-at-eol --stat
+          if ! git diff --ignore-cr-at-eol --quiet; then
             echo "Index files are out of date. Run 'python tools/build_indexes.py' and commit the result."
-            git --no-pager diff
             exit 1
           fi
 
