@@ -278,8 +278,8 @@ identical with integrals. In general one approximates by simple functions and pa
 $\blacksquare$
 
 **Nothing in the proof used independence**, and the statement cannot require it. Applying the theorem
-repeatedly gives $\mathbb{E}\bigl[\sum_ia_iX_i\bigr]=\sum_ia_i\mathbb{E}[X_i]$ for integrable $X_i$.
-Taking $Y=1$ gives the affine rule $\mathbb{E}[aX+b]=a\mathbb{E}[X]+b$ (Corollary 7.3).
+repeatedly gives $\mathbb{E}\bigl[\sum_ia_iX_i\bigr]=\sum_ia_i\mathbb{E}[X_i]$ for integrable $X_i$; taking
+$Y\equiv1$ gives the affine rule $\mathbb{E}[aX+b]=a\mathbb{E}[X]+b$.
 
 **Example 7.4 (Extreme dependence).** Let $X$ be uniform on $\{0,1\}$ and $Y=1-X$, so the pair is as
 dependent as possible. Then $\mathbb{E}[X+Y]=\mathbb{E}[1]=1=\tfrac12+\tfrac12$; linearity holds anyway.
@@ -481,11 +481,13 @@ $\mathbb{E}\lvert X\rvert^{k}<\infty$ for all $k$, $M_X$ is smooth on $(-\delta,
 $M_X^{(k)}(0)=\mathbb{E}[X^{k}]$. In particular $\mathbb{E}[X]=M_X'(0)$ and
 $\operatorname{Var}(X)=M_X''(0)-\bigl(M_X'(0)\bigr)^{2}$.*
 
-*Proof (discrete case).* Fix $\lvert t\rvert<\delta$. For $\lvert s\rvert\le\lvert t\rvert$ and $x\ne0$,
-$\lvert x\rvert^{k}e^{sx}\le k!\bigl(e^{tx}+e^{-tx}\bigr)/\lvert t\rvert^{k}$, an integrable dominating
-function. Dominated convergence therefore permits differentiating $M_X(s)=\sum_xe^{sx}p_X(x)$ term by term
-any number of times, and setting $s=0$ gives the result. The continuous case replaces sums by integrals.
-$\blacksquare$
+*Proof (discrete case).* Fix $\lvert t\rvert<\delta$. For $\lvert s\rvert\le\lvert t\rvert$ and every $k$
+there is a constant $C_{t,k}$ with $\lvert x\rvert^{k}e^{sx}\le C_{t,k}\bigl(e^{tx}+e^{-tx}\bigr)$ for all
+$x$: indeed $e^{sx}\le e^{t\lvert x\rvert}$, and a polynomial is dominated by an exponential. The right-hand
+side has finite expectation, so dominated convergence permits differentiating
+$M_X(s)=\sum_xe^{sx}p_X(x)$ term by term any number of times, giving
+$M_X^{(k)}(s)=\sum_xx^{k}e^{sx}p_X(x)$; setting $s=0$ gives the result. The continuous case replaces sums
+by integrals. $\blacksquare$
 
 **Theorem 7.27 (Uniqueness).** *If $M_X(t)=M_Y(t)<\infty$ for all $t\in(-\delta,\delta)$ then $X$ and $Y$
 have the same distribution.* This is a classical theorem — the MGF is the Laplace transform of the law, and

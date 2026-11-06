@@ -15,7 +15,7 @@ The plan is a sequence of translations.
 
 Two structural facts organise everything below. First, limits and continuity can be tested with *sequences*: $\lim_{x\to a} f(x) = L$ exactly when every sequence $x_n \to a$ (with $x_n \ne a$) is mapped to a sequence $f(x_n) \to L$. This is not a convenience. It lets every theorem about sequences proved in [The Real Numbers and Completeness](../01-real-numbers-and-completeness/README.md) — Bolzano–Weierstrass above all — be applied to functions, and those applications are precisely the proofs of the intermediate value and extreme value theorems. Second, the theorems of this chapter are the first place where completeness of $\mathbb{R}$ becomes visible in calculus rather than in the construction of numbers. Over $\mathbb{Q}$ the function $f(x) = x^2 - 2$ changes sign between $1$ and $2$ and has no zero; over $\mathbb{R}$ it has one. The intermediate value theorem is a completeness theorem in disguise.
 
-Historically, the $\varepsilon$-$\delta$ definition is due to Bolzano (1817) and was made standard by Weierstrass in the 1860s; Cauchy had used infinitesimals and, in places, confused continuity with uniform continuity. The distinction is not pedantry: Cauchy's 1821 proof that a series of continuous functions has a continuous sum is false without uniform convergence, and the counterexamples of Abel and later Seidel forced the modern definitions. Section 7.11 shows exactly where the compactness hypothesis earns its keep.
+Historically, the $\varepsilon$-$\delta$ definition is due to Bolzano (1817) and was made standard by Weierstrass in the 1860s; Cauchy had used infinitesimals and, in places, confused continuity with uniform continuity. The distinction is not pedantry: Cauchy's 1821 proof that a series of continuous functions has a continuous sum is false without uniform convergence, and the counterexamples of Abel and later Seidel forced the modern definitions. Section 7.9 shows exactly where the compactness hypothesis earns its keep.
 
 By the end you should be able to look at a function such as $x \mapsto x \sin(1/x)$ or $x \mapsto 1/x$ and say immediately: where it is continuous, whether a limit exists at a given point, whether it is uniformly continuous on a given interval, and which theorem would be needed to prove it. Section 9 works seven examples in increasing order of difficulty, from a linear function to a function continuous at exactly one point.
 
@@ -23,7 +23,7 @@ By the end you should be able to look at a function such as $x \mapsto x \sin(1/
 
 **The real numbers and completeness.** The least upper bound property, the Archimedean property, density of $\mathbb{Q}$, the nested interval property and the Bolzano–Weierstrass theorem are all used below. The two proofs that matter most are the intermediate value theorem (which applies the least upper bound property to a set of points) and the extreme value theorem (which applies Bolzano–Weierstrass to a sequence of near-maximisers). See [The Real Numbers and Completeness](../01-real-numbers-and-completeness/README.md), in particular Theorems 7.28 and 7.32 there.
 
-**Sequences.** Convergence of a real sequence is used constantly. That topic is the second of this discipline; until it is written, the single definition needed is recalled in Section 5.7, and the two elementary facts about convergent sequences that we use (boundedness, and the behaviour of subsequences) are proved in Section 7.9 as Lemmas 7.14 and 7.15. Nothing else from the theory of sequences is assumed.
+**Sequences.** Convergence of a real sequence is used constantly; the systematic theory is in [Sequences and Series](../02-sequences-and-series/README.md). The single definition needed here is recalled in Section 5.7, and the two elementary facts about convergent sequences that we use (boundedness, and the behaviour of subsequences) are proved in Section 7.9 as Lemmas 7.14 and 7.15. Nothing else from the theory of sequences is assumed.
 
 **Logic and quantifiers.** You must be able to negate $\forall \varepsilon > 0\ \exists \delta > 0\ \forall x$ correctly, as $\exists \varepsilon > 0\ \forall \delta > 0\ \exists x$. Nearly every proof here begins by writing down the negation of the statement being disproved. See [Logic](../../00-foundations/02-logic/README.md).
 
@@ -73,7 +73,7 @@ Throughout, $A \subseteq \mathbb{R}$, $f : A \to \mathbb{R}$, and $a \in \mathbb
 $$
 \forall \delta > 0\ \exists x \in A \quad\text{with}\quad 0 < \lvert x - a\rvert < \delta .
 $$
-Equivalently (Exercise 1), $a$ is a cluster point of $A$ if and only if there is a sequence $(x_n)$ in $A$ with $x_n \ne a$ for all $n$ and $x_n \to a$.
+Equivalently, $a$ is a cluster point of $A$ if and only if there is a sequence $(x_n)$ in $A$ with $x_n \ne a$ for all $n$ and $x_n \to a$.
 
 Every point of an interval is a cluster point of that interval. An isolated point of $A$ — a point $a \in A$ with some $(a-\delta, a+\delta) \cap A = \{a\}$ — is not a cluster point. The point $0$ is a cluster point of $\{1/n : n \in \mathbb{N}\}$ but is not an element of that set.
 
@@ -113,7 +113,7 @@ The only difference from continuity is the position of the quantifier $\forall x
 $$
 \forall \varepsilon > 0\ \exists N \in \mathbb{N}\ \forall n \ge N \quad \lvert x_n - L\rvert < \varepsilon .
 $$
-This is the definition from the [previous topic](../01-real-numbers-and-completeness/README.md) and will be developed systematically in the planned *Sequences and Series* topic of this discipline. Only the definition and the two lemmas of Section 7.9 are used here.
+This is the definition from the [previous topic](../01-real-numbers-and-completeness/README.md) and is developed systematically in [Sequences and Series](../02-sequences-and-series/README.md). Only the definition and the two lemmas of Section 7.9 are used here.
 
 **Definition 5.8 (bounded function).** $f : A \to \mathbb{R}$ is **bounded** if there is $M \in \mathbb{R}$ with $\lvert f(x)\rvert \le M$ for all $x \in A$; it is **bounded above** if $f[A]$ is bounded above, and similarly below.
 
@@ -270,7 +270,7 @@ The floor function $\lfloor \cdot \rfloor$ illustrates the failure mode. At an i
 
 *Proof.* The proof is that of Theorem 7.3 with every occurrence of $0 < \lvert x - a\rvert$ replaced by $\lvert x - a\rvert$.
 
-*($\Rightarrow$)* Given $\varepsilon > 0$, choose $\delta > 0$ from Definition 5.4; for $n \ge N$ we have $\lvert x_n - a\rvert < \delta$, hence $\lvert f(x_n)-f(a)\rvert < \varepsilon$.
+*($\Rightarrow$)* Given $\varepsilon > 0$, choose $\delta > 0$ from Definition 5.4. Since $x_n \to a$ there is $N$ with $\lvert x_n - a\rvert < \delta$ for all $n \ge N$, and for such $n$ we get $\lvert f(x_n)-f(a)\rvert < \varepsilon$.
 
 *($\Leftarrow$)* Suppose $f$ is not continuous at $a$. Then there is $\varepsilon > 0$ such that for every $\delta > 0$ there is $x \in A$ with $\lvert x - a\rvert < \delta$ and $\lvert f(x)-f(a)\rvert \ge \varepsilon$. Taking $\delta = 1/n$ gives $x_n \in A$ with $\lvert x_n - a\rvert < 1/n$ but $\lvert f(x_n)-f(a)\rvert \ge \varepsilon$; then $x_n \to a$ while $f(x_n) \not\to f(a)$. $\blacksquare$
 
@@ -425,13 +425,13 @@ $$
 $$
 which contradicts $\lvert f(x_{n_k})-f(y_{n_k})\rvert \ge \varepsilon > 0$ for all $k$. Therefore $f$ is uniformly continuous. $\blacksquare$
 
-The theorem fails on intervals that are not closed and bounded, and the same proof pinpoints why: the limit point $c$ produced by Bolzano–Weierstrass must belong to the domain, and the two sequences must stay inside it. On $(0,1)$ the sequences $x_n = 1/n$ escape to $0 \notin (0,1)$; on $[0,\infty)$ the sequence $x_n = n$ escapes to infinity. Theorem 7.18 is the first theorem of the course in which compactness does real work; it reappears in [Metric Spaces](../README.md) as "continuous images of compact sets are compact" and, in the theory of differential equations, as the reason a continuous coefficient on a closed bounded interval yields existence and uniqueness of solutions.
+The theorem fails on intervals that are not closed and bounded, and the same proof pinpoints why: the limit point $c$ produced by Bolzano–Weierstrass must belong to the domain, and the two sequences must stay inside it. On $(0,1)$ the sequences $x_n = 1/n$ escape to $0 \notin (0,1)$; on $[0,\infty)$ the sequence $x_n = n$ escapes to infinity. Theorem 7.18 is the first theorem of the course in which compactness does real work; it reappears in [Metric Spaces](../06-metric-spaces/README.md) as "continuous images of compact sets are compact" and, in the theory of differential equations, as the reason a continuous coefficient on a closed bounded interval yields existence and uniqueness of solutions.
 
 ### 7.10 Discontinuities of monotone functions (stated)
 
-Monotone functions can be badly discontinuous — the floor function has a jump at every integer — but their discontinuities are highly structured. The following theorem is stated here; the proof is outlined and the details are Exercise 29.
+Monotone functions can be badly discontinuous — the floor function has a jump at every integer — but their discontinuities are highly structured. The following theorem is stated here; the proof is outlined and the details are Exercise 30.
 
-**Theorem 7.20 (structure of monotone discontinuities).** *Let $f : (a,b) \to \mathbb{R}$ be nondecreasing, and for $c \in (a,b)$ write*
+**Theorem 7.19 (structure of monotone discontinuities).** *Let $f : (a,b) \to \mathbb{R}$ be nondecreasing, and for $c \in (a,b)$ write*
 $$
 f(c^-) := \sup\{f(x) : a < x < c\}, \qquad f(c^+) := \inf\{f(x) : c < x < b\} .
 $$
@@ -447,7 +447,7 @@ D_n := \Bigl\{c \in (a,b) : f(c^+) - f(c^-) \ge \tfrac{1}{n}\Bigr\}
 $$
 *has at most $n\bigl(f(b^-)-f(a^+)\bigr) + 1$ points in any compact subinterval of $(a,b)$, and $D = \bigcup_{n \ge 1} D_n$.*
 
-*Sketch.* For (a), the set $\{f(x) : x < c\}$ is nonempty and bounded above by $f(c)$, so its supremum exists by completeness; similarly the infimum on the right. For (b), if the one-sided limits agree with $f(c)$, then given $\varepsilon$ the two one-sided estimates combine into $\lvert f(x)-f(c)\rvert < \varepsilon$ on a full neighbourhood; conversely continuity forces both one-sided limits to equal $f(c)$. For (c), the jump sizes of a monotone function are summable in the following weak sense: on a compact subinterval $[\alpha,\beta]$ and for a finite set $c_1 < \cdots < c_m$ of points of $D_n$, the intervals $(f(c_j^-), f(c_j^+))$ are pairwise disjoint subintervals of $(f(\alpha), f(\beta))$, each of length at least $1/n$, so $m/n \le f(\beta) - f(\alpha)$; hence $m \le n(f(\beta)-f(\alpha))$. A countable union of finite sets is at most countable, which gives the result. A full proof of the countability step belongs to the planned *Sequences and Series* topic.
+*Sketch.* For (a), the set $\{f(x) : x < c\}$ is nonempty and bounded above by $f(c)$, so its supremum exists by completeness; similarly the infimum on the right. For (b), if the one-sided limits agree with $f(c)$, then given $\varepsilon$ the two one-sided estimates combine into $\lvert f(x)-f(c)\rvert < \varepsilon$ on a full neighbourhood; conversely continuity forces both one-sided limits to equal $f(c)$. For (c), the jump sizes of a monotone function are summable in the following weak sense: on a compact subinterval $[\alpha,\beta]$ and for a finite set $c_1 < \cdots < c_m$ of points of $D_n$, the intervals $(f(c_j^-), f(c_j^+))$ are pairwise disjoint subintervals of $(f(\alpha), f(\beta))$, each of length at least $1/n$, so $m/n \le f(\beta) - f(\alpha)$; hence $m \le n(f(\beta)-f(\alpha))$. A countable union of finite sets is at most countable, which gives the result. A full proof of the countability step belongs to [Sequences and Series](../02-sequences-and-series/README.md).
 
 The practical content is that *monotone functions have only jump discontinuities, and only countably many of them*. Functions with oscillatory discontinuities, such as $\sin(1/x)$ at $0$, are necessarily non-monotone near the discontinuity.
 
@@ -477,7 +477,7 @@ With these conventions, $\lim_{x\to\infty} 1/x = 0$, $\lim_{x\to 0} 1/x^2 = +\in
 | Continuity on $A$ | continuous at every $a \in A$ | — | — |
 | Uniform continuity on $A$ | $\forall \varepsilon \exists \delta(\varepsilon) \forall x,y \in A$ | implies continuity on $A$ | $1/x$ on $(0,1)$ |
 | Lipschitz on $A$ | $\lvert f(x)-f(y)\rvert \le L\lvert x-y\rvert$ | implies uniform continuity | $\sqrt x$ on $[0,\infty)$ |
-| $C^1$ on $[a,b]$ | $f'$ exists and is continuous | implies Lipschitz (MVT) | $x^{1/3}$ on $[-1,1]$ |
+| $C^1$ on $[a,b]$ | $f'$ exists and is continuous | implies Lipschitz (MVT) | $\lvert x\rvert$ on $[-1,1]$ is Lipschitz but not differentiable at $0$ |
 
 The last two rows use the derivative; the implications are proved in [Differentiation](../04-differentiation/README.md) using the mean value theorem. For now, the table should be read as a map of how much regularity each hypothesis buys, and why "continuous" alone is not enough for numerical work: a continuous function on a compact interval has a modulus of continuity, but it need not be Lipschitz, so error estimates of the form "output error $\le L \times$ input error" require an extra hypothesis.
 
@@ -588,7 +588,7 @@ Prove that $f : (0,1] \to \mathbb{R}$, $f(x) = x\sin(1/x)$, is uniformly continu
 
 **Solution.** Extend $f$ to $[0,1]$ by $f(0) := 0$. The extension is continuous at every point of $(0,1]$ by Theorem 7.9 (product of the continuous identity and the composition $\sin\circ(1/x)$, with $1/x$ continuous and nonzero on $(0,1]$), and at $0$ by Example 9.4: $\lvert f(x) - f(0)\rvert = \lvert x\sin(1/x)\rvert \le \lvert x\rvert \to 0$. Hence the extension, call it $F$, is continuous on the closed bounded interval $[0,1]$. By Theorem 7.18, $F$ is uniformly continuous on $[0,1]$. Restricted to $(0,1]$, uniform continuity is inherited: the defining condition quantifies over pairs in the smaller set, so it holds there too. $\blacksquare$
 
-The strategy — *extend to a compact interval, then invoke Theorem 7.18* — is the standard way to prove uniform continuity of functions on bounded intervals. It is also a proof that $f$ has a continuous extension; the converse statement, that uniform continuity on $(a,b)$ forces the existence of one-sided limits at $a$ and $b$, is Exercise 27.
+The strategy — *extend to a compact interval, then invoke Theorem 7.18* — is the standard way to prove uniform continuity of functions on bounded intervals. It is also a proof that $f$ has a continuous extension; the converse statement, that uniform continuity on $(a,b)$ forces the existence of one-sided limits at $a$ and $b$, is Exercise 28.
 
 ### Example 9.6 (medium–hard): a root located by the intermediate value theorem
 
@@ -620,7 +620,7 @@ Prove that $f$ is continuous at $0$ and discontinuous at every other point.
 
 *At a rational $a \ne 0$.* Here $f(a) = a \ne 0$. Use the sequential criterion (Theorem 7.8). By the density of the irrationals in $\mathbb{R}$ (Proposition 7.27 of [The Real Numbers and Completeness](../01-real-numbers-and-completeness/README.md)), for each $n$ there is an irrational $t_n$ with $\lvert t_n - a\rvert < 1/n$. Then $t_n \to a$ and $f(t_n) = 0$ for all $n$, so $f(t_n) \to 0 \ne a = f(a)$. Hence $f$ is discontinuous at $a$.
 
-*At an irrational $a \ne 0$.* Here $f(a) = 0$. By the density of $\mathbb{Q}$ (Theorem 7.20 of the same topic), for each $n$ there is a rational $q_n$ with $\lvert q_n - a\rvert < 1/n$ and, refining if necessary, $q_n \ne 0$; then $q_n \to a$ while $f(q_n) = q_n \to a \ne 0 = f(a)$. Hence $f$ is discontinuous at $a$.
+*At an irrational $a \ne 0$.* Here $f(a) = 0$. By the density of $\mathbb{Q}$ (Theorem 7.20 of [The Real Numbers and Completeness](../01-real-numbers-and-completeness/README.md)), for each $n$ there is a rational $q_n$ with $\lvert q_n - a\rvert < 1/n$ and, refining if necessary, $q_n \ne 0$; then $q_n \to a$ while $f(q_n) = q_n \to a \ne 0 = f(a)$. Hence $f$ is discontinuous at $a$.
 
 Therefore the set of continuity points of $f$ is exactly $\{0\}$. $\blacksquare$
 
@@ -702,7 +702,7 @@ flowchart TD
 
 **Existence proofs in economics and engineering.** The IVT is the standard tool for showing that a market clears: if excess demand is negative at price $p_1$ and positive at $p_2$, continuity of demand and supply in price gives an equilibrium price in $(p_1,p_2)$. The same argument shows that two continuous curves in the plane must meet if their relative position changes sign — used to prove the existence of intersections of supply and demand curves, of isoquants, and of trajectories in control problems.
 
-**Fixed points and iterative solvers.** Corollary 7.13(b) is the simplest fixed point theorem. It guarantees that a continuous map of an interval into itself has a fixed point, which is the hypothesis behind many iterative schemes; the *contraction* strengthening (which gives uniqueness and geometric convergence) appears in [Metric Spaces](../README.md) as the contraction mapping principle and is the basis of Picard iteration for differential equations.
+**Fixed points and iterative solvers.** Corollary 7.13(b) is the simplest fixed point theorem. It guarantees that a continuous map of an interval into itself has a fixed point, which is the hypothesis behind many iterative schemes; the *contraction* strengthening (which gives uniqueness and geometric convergence) appears in [Metric Spaces](../06-metric-spaces/README.md) as the contraction mapping principle and is the basis of Picard iteration for differential equations.
 
 **Computer graphics and animation.** Designers specify curves by control points and demand that the resulting spline be continuous, and often that its derivative be continuous ($C^1$) or its second derivative too ($C^2$). The distinction between $C^0$, $C^1$ and $C^2$ is exactly the hierarchy of Section 7.12: continuity of the function, of its derivative, and of its second derivative. A $C^0$ but not $C^1$ join is visible as a corner; a $C^1$ but not $C^2$ join is invisible in shape but causes a jump in curvature, which is why vehicle trajectories and camera paths use $C^2$ splines.
 
@@ -716,7 +716,7 @@ flowchart TD
 
 ## 13. Exercises
 
-The problem set is in [exercises.md](exercises.md): 36 problems in four bands, beginning with direct $\varepsilon$-$\delta$ computations and ending with Thomae's function, a continuous image characterisation, and a construction of a function continuous at exactly one point. All but a handful are proofs; the computational problems ask for a proof that the computed limit is correct.
+The problem set is in [exercises.md](exercises.md): 36 problems in four bands, beginning with direct $\varepsilon$-$\delta$ computations and ending with Thomae's function, the characterisation of continuous images of $[0,1]$, and a continuous involution of $\mathbb{R}$. All but a handful are proofs; the computational problems ask for a proof that the computed limit is correct.
 
 ## 14. Solutions
 
@@ -731,16 +731,16 @@ Complete worked solutions, with every quantifier choice displayed, are in [solut
 * Continuity on a closed bounded interval implies boundedness (Theorem 7.16), attainment of extrema (Theorem 7.17) and uniform continuity (Theorem 7.18); all three proofs use Bolzano–Weierstrass.
 * The intermediate value theorem (Theorem 7.12) is proved from the least upper bound property applied to $S = \{x : f(x) < y\}$; it implies that continuous images of intervals are intervals and that continuous self-maps of $[0,1]$ have fixed points.
 * Uniform continuity is strictly stronger than continuity; the standard counterexamples are $1/x$, $x^2$ and $\sin(1/x)$ on intervals where the obstruction is a missing endpoint or an escape to infinity.
-* Monotone functions have only jump discontinuities, and at most countably many of them (Theorem 7.20, stated).
+* Monotone functions have only jump discontinuities, and at most countably many of them (Theorem 7.19, stated).
 * Continuity is a local promise, uniform continuity a global one, and compactness the bridge between them.
 
 ## 16. Further Learning
 
 **Next in this discipline.** [Differentiation](../04-differentiation/README.md) adds the derivative, proves that differentiability implies continuity, and uses the extreme value theorem of this chapter (via Fermat's lemma) to prove Rolle's theorem and the mean value theorem. The sequential characterisation proved here is used there to prove the chain rule and the inverse function formula.
 
-**The sequence theory behind the proofs.** The planned *Sequences and Series* topic of this discipline develops monotone convergence, Bolzano–Weierstrass, Cauchy sequences and limsup/liminf systematically. The two lemmas of Section 7.8 are the only fragments used here, but the Cauchy criterion for functions (Exercise 27) is much cleaner once Cauchy sequences have been treated properly.
+**The sequence theory behind the proofs.** [Sequences and Series](../02-sequences-and-series/README.md) develops monotone convergence, Bolzano–Weierstrass, Cauchy sequences and limsup/liminf systematically. The two lemmas of Section 7.8 are the only fragments used here, but the Cauchy criterion for functions (Exercise 28) is much cleaner once Cauchy sequences have been treated properly.
 
-**Topology.** [Topology](../../17-topology/README.md) recasts this chapter: continuity becomes "preimages of open sets are open", Theorem 7.16 becomes "the continuous image of a compact set is compact", and Theorem 7.18 becomes "a continuous function on a compact metric space is uniformly continuous". The theorem that a continuous bijection on a compact space has continuous inverse (Exercise 36 in spirit) is the topological form of the monotonicity result.
+**Topology.** [Topology](../../17-topology/README.md) recasts this chapter: continuity becomes "preimages of open sets are open", Theorem 7.16 becomes "the continuous image of a compact set is compact", and Theorem 7.18 becomes "a continuous function on a compact metric space is uniformly continuous". The theorem that a continuous bijection on a compact space has continuous inverse (Exercise 33 is the one-dimensional version) is the topological form of the monotonicity result.
 
 **Where the theorems are used.** [Differential Equations](../../16-differential-equations/README.md) uses the contraction mapping principle and the extreme value theorem to prove existence of solutions. [Numerical Analysis](../../19-numerical-analysis/README.md) quantifies the bisection method and the conditioning of function evaluation. [Optimisation](../../18-optimization/README.md) starts from the EVT and asks what replaces compactness in infinite dimensions.
 

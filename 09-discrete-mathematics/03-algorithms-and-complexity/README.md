@@ -651,16 +651,280 @@ $$T(n) = T(\lfloor n/2\rfloor) + 1 = \bigl(\lfloor\lg(n/2)\rfloor + 1\bigr) + 1 
 
 Attainment: searching for the last element of the array (or for a value larger than all elements) always follows the longer branch. $\blacksquare$
 
-| Result | Statement | Section |
-|---|---|---|
-| Decision-tree bound | comparison sorting needs $\lceil\lg(n!)\rceil = \Omega(n\log n)$ comparisons | 7.8 |
-| Insertion sort, worst | exactly $n(n-1)/2$ comparisons | 8.5 |
-| Merge sort | $\le n\lceil\lg n\rceil$; exactly $n\lg n - n + 1$ when $n = 2^k$ | 8.6 |
-| Quicksort, worst | exactly $n(n-1)/2$ on a sorted array with an end pivot | 8.7 |
-| Quicksort, expected | $2(n+1)H_n - 4n = \Theta(n\log n)$ | 8.8 |
-| Binary search | exactly $\lfloor\lg n\rfloor + 1$ comparisons | 8.9 |
-| $\mathrm{P} \subseteq \mathrm{NP} \subseteq \mathrm{EXP}$ | inclusions; both believed strict | 7.10 |
-| Cook–Levin | $\mathrm{SAT}$ is $\mathrm{NP}$-complete | 7.11 |
-| Halting problem | undecidable | 7.13 |
+## 9. Step-by-Step Examples
 
-<!-- CHUNK-END -->
+### 9.1 Easy: witnesses for a quadratic bound
+
+**Problem.** Show that $f(n) = 5n^2 + 3n + 2$ is $\Theta(n^2)$ from the definition, and find the smallest $n_0$ that works with $c = 6$.
+
+**Solution.** *Upper bound.* For $n \ge 1$ we have $3n \le 3n^2$ and $2 \le 2n^2$, hence
+
+$$f(n) \le 5n^2 + 3n^2 + 2n^2 = 10n^2,$$
+
+so $f = O(n^2)$ with $c = 10$, $n_0 = 1$.
+
+*Lower bound.* For all $n \ge 1$, $f(n) \ge 5n^2$, so $f = \Omega(n^2)$ with $c = 5$, $n_0 = 1$. Therefore $f = \Theta(n^2)$.
+
+*Sharpening the constant.* With $c = 6$ we need $5n^2 + 3n + 2 \le 6n^2$, i.e. $n^2 - 3n - 2 \ge 0$. The positive root is $\frac{3+\sqrt{17}}{2} \approx 3.56$, so the inequality holds for integers $n \ge 4$ and fails at $n = 3$ (indeed $56 > 54$). Hence $n_0 = 4$ is the smallest valid choice for $c = 6$.
+
+### 9.2 Easy: deciding asymptotic statements
+
+**Problem.** Decide whether each statement is true, with a one-line justification.
+
+(a) $2^{n+1} = O(2^n)$; (b) $2^{2n} = O(2^n)$; (c) $n\log n = O(n^2)$; (d) $n^2 = O(n\log n)$; (e) $\log(n!) = \Theta(n\log n)$; (f) $n^{0.1} = O(\log n)$; (g) $(n+1)^2 = \Theta(n^2)$; (h) $3^n = O(2^n)$.
+
+**Solution.**
+
+(a) True: $2^{n+1} = 2\cdot 2^n$, so $c = 2$, $n_0 = 1$.
+(b) False: $2^{2n}/2^n = 2^n \to \infty$, so $2^{2n} = \omega(2^n)$.
+(c) True: $n\log n/n^2 = \log n/n \to 0$, so $n\log n = o(n^2)$.
+(d) False: $n^2/(n\log n) = n/\log n \to \infty$.
+(e) True: $\log(n!) = \sum_{k=1}^n \log k \le n\log n$ and $\ge \frac n2\log\frac n2 = \Omega(n\log n)$.
+(f) False: $n^{0.1}/\log n \to \infty$ (Theorem 8.4 with $\varepsilon = 0.1$).
+(g) True: $(n+1)^2 = n^2 + 2n + 1 \le 4n^2$ for $n \ge 1$, and $(n+1)^2 \ge n^2$.
+(h) False: $3^n/2^n = (3/2)^n \to \infty$.
+
+### 9.3 Easy–medium: a full insertion-sort trace
+
+**Problem.** Sort $A = [5,2,4,6,1,3]$ by insertion sort. Record the array after each outer iteration and count comparisons. Compare with the worst-case bound $n(n-1)/2$.
+
+**Solution.** The array has $n = 6$ elements, so the worst case is $6\cdot5/2 = 15$ comparisons.
+
+| $i$ | key | comparisons in the inner loop | array after insertion |
+|---|---|---|---|
+| 2 | 2 | 1 (5 > 2, then $j = 0$) | $[2,5,4,6,1,3]$ |
+| 3 | 4 | 2 (5 > 4; 2 ≤ 4 stops) | $[2,4,5,6,1,3]$ |
+| 4 | 6 | 1 (5 ≤ 6 stops) | $[2,4,5,6,1,3]$ |
+| 5 | 1 | 4 (6, 5, 4, 2 all exceed 1; $j = 0$) | $[1,2,4,5,6,3]$ |
+| 6 | 3 | 4 (6, 5, 4 exceed 3; 2 ≤ 3 stops) | $[1,2,3,4,5,6]$ |
+
+Total: $1 + 2 + 1 + 4 + 4 = 12$ comparisons, below the maximum of $15$ because the input has $9$ inversions and only three inner loops ended on a failed comparison (iterations $i = 3, 4, 6$; the other two ran to $j = 0$). Consistent with Theorem 8.5: $12 = 9 + 3$.
+
+### 9.4 Medium: binary search and its comparison count
+
+**Problem.** On the sorted array $A = [2,3,5,7,11,13,17,19,23,29]$, trace binary search for $29$, for $2$, and for $4$. Count comparisons and compare with Theorem 8.9.
+
+**Solution.** With $n = 10$, the bound is $\lfloor\lg 10\rfloor + 1 = 3 + 1 = 4$.
+
+*Searching for $29$:*
+
+| step | lo | hi | mid | $A[\text{mid}]$ | comparison |
+|---|---|---|---|---|---|
+| 1 | 1 | 10 | 5 | 11 | $11 < 29$, go right |
+| 2 | 6 | 10 | 8 | 19 | $19 < 29$, go right |
+| 3 | 9 | 10 | 9 | 23 | $23 < 29$, go right |
+| 4 | 10 | 10 | 10 | 29 | equal, found |
+
+Four comparisons, exactly the bound.
+
+*Searching for $2$:* mid $=5$ ($11 > 2$), mid $=2$ ($3 > 2$), mid $=1$ ($2 = 2$): three comparisons.
+
+*Searching for $4$:* mid $=5$ ($11 > 4$), mid $=2$ ($3 < 4$), mid $=3$ ($5 > 4$), then $lo = 3 > hi = 2$ and the search reports absence after three comparisons that narrowed the range to the empty interval between positions $2$ and $3$.
+
+Every search here is within one comparison of the information-theoretic optimum of $\lceil\lg 11\rceil = 4$ for eleven possible outcomes.
+
+### 9.5 Medium: merge-sort comparison counts
+
+**Problem.** Sort $A = [4,1,3,2]$ by merge sort, counting comparisons exactly. Verify the formula $n\lg n - n + 1$ for $n = 4$ and for $n = 8$.
+
+**Solution.** The array splits into $[4,1]$ and $[3,2]$.
+
+* Recursively sort $[4,1]$: one comparison ($4 > 1$), result $[1,4]$.
+* Recursively sort $[3,2]$: one comparison ($3 > 2$), result $[2,3]$.
+* Merge $[1,4]$ and $[2,3]$: compare $1$ with $2$ (emit $1$); compare $4$ with $2$ (emit $2$); compare $4$ with $3$ (emit $3$); the remaining $4$ is copied without comparison. Three comparisons.
+
+Total: $1 + 1 + 3 = 5$, matching $4\lg 4 - 4 + 1 = 8 - 4 + 1 = 5$.
+
+For $n = 8$ the recursion tree has three merge levels. At the top one merge of length $8$ costs at most $7$; at the next level two merges of length $4$ cost at most $3$ each, total $6$; at the bottom four merges of length $2$ cost at most $1$ each, total $4$. Worst case $7 + 6 + 4 = 17 = 8\cdot3 - 8 + 1$, as predicted by $n\lg n - n + 1$ (here $17 \le n\lg n = 24$).
+
+### 9.6 Medium–hard: quicksort's expected comparisons for four keys
+
+**Problem.** Compute $\mathbb{E}[C_n]$ for $n = 0,1,2,3,4$ from the recurrence
+
+$$\mathbb{E}[C_n] = (n-1) + \frac{2}{n}\sum_{j=0}^{n-1}\mathbb{E}[C_j], \qquad \mathbb{E}[C_0] = \mathbb{E}[C_1] = 0,$$
+
+and verify the closed form $2(n+1)H_n - 4n$.
+
+**Solution.** For $n = 0,1$ the value is $0$ by definition.
+
+* $n = 2$: $\mathbb{E}[C_2] = 1 + \frac{2}{2}(0+0) = 1$. Indeed two keys always need exactly one comparison.
+* $n = 3$: $\mathbb{E}[C_3] = 2 + \frac{2}{3}(0 + 0 + 1) = 2 + \frac23 = \frac83$. (Direct check: pivots at ranks 1, 2, 3 cost 3, 3, 2 comparisons respectively; average $\frac{3+3+2}{3} = \frac83$.)
+* $n = 4$: $\mathbb{E}[C_4] = 3 + \frac{2}{4}\left(0 + 0 + 1 + \frac83\right) = 3 + \frac12\cdot\frac{11}{3} = 3 + \frac{11}{6} = \frac{29}{6}$.
+
+Now $H_4 = 1 + \frac12 + \frac13 + \frac14 = \frac{25}{12}$, so
+
+$$2(n+1)H_n - 4n = 2\cdot 5\cdot\frac{25}{12} - 16 = \frac{250}{12} - \frac{192}{12} = \frac{58}{12} = \frac{29}{6},$$
+
+which agrees. The expectation grows like $1.39\,n\lg n$: at $n = 4$ that estimate gives $1.39\cdot 4\cdot 2 = 11.1$, far above the exact value, which is normal for small $n$ where the $O(n)$ terms still dominate.
+
+### 9.7 Hard: the decision-tree bound at small $n$
+
+**Problem.** (a) Show that sorting four distinct elements needs at least five comparisons and that five suffice. (b) Compute the bound for $n = 5$ and $n = 12$, and explain why the bound is not always attainable.
+
+**Solution.**
+
+(a) There are $4! = 24$ orderings, so any decision tree has at least $24$ leaves; a binary tree with $h$ levels has at most $2^h$ leaves, and $2^4 = 16 < 24 \le 32 = 2^5$, so $h \ge 5$. Five comparisons suffice: sort $\{a,b\}$ with one comparison and $\{c,d\}$ with one comparison, then merge the two sorted pairs, which costs at most $4 - 1 = 3$ comparisons. Total $1 + 1 + 3 = 5$.
+
+(b) $n = 5$: $5! = 120$ and $2^6 = 64 < 120 \le 128 = 2^7$, so at least $7$ comparisons; the Ford–Johnson merge–insertion algorithm sorts five elements in exactly $7$.
+
+$n = 12$: $12! = 479\,001\,600$ and $2^{28} = 268\,435\,456 < 12! < 536\,870\,912 = 2^{29}$, so the counting bound is $29$. Wells proved in 1971 that $30$ comparisons are necessary, so here the information bound is unattainable. The bound counts leaves, but a decision tree must also be *consistent*: its comparisons must correspond to a valid sorting procedure, which imposes stronger constraints than the leaf count alone.
+
+### 9.8 Hard: reducing 3-SAT to CLIQUE
+
+**Problem.** For $\varphi = (x_1 \vee \neg x_2 \vee x_3) \wedge (\neg x_1 \vee x_2 \vee \neg x_3) \wedge (x_1 \vee x_2 \vee x_3)$, build the CLIQUE instance of Theorem 7.5 and exhibit a clique of size $3$. Then do the same for the unsatisfiable $\psi = (x_1 \vee x_1 \vee x_1) \wedge (\neg x_1 \vee \neg x_1 \vee \neg x_1)$.
+
+**Solution.** *For $\varphi$.* There are three clauses, so $k = 3$ and the graph has nine vertices, written $c_1^1, c_1^2, c_1^3$ for the three literal occurrences in $C_1$, and similarly for $C_2$ and $C_3$. Edges join vertices in different clauses unless the literals are complementary. The complementary pairs are $(x_1, \neg x_1)$, $(\neg x_2, x_2)$ and $(x_3, \neg x_3)$, so the only missing cross-clause edges are between $c_1^1 = x_1$ and $c_2^1 = \neg x_1$; between $c_1^2 = \neg x_2$ and $c_2^2 = x_2$, and $c_1^2$ and $c_3^2 = x_2$; and between $c_1^3 = x_3$ and $c_2^3 = \neg x_3$.
+
+The assignment $x_1 = x_2 = x_3 = 1$ satisfies all three clauses, and the true literal in each is $x_1$ (clause 1), $x_2$ (clause 2), $x_3$ (clause 3). The corresponding vertices $c_1^1, c_2^2, c_3^3$ lie in different clauses and no two are complementary, so they form a triangle: a clique of size $3$.
+
+*For $\psi$.* The graph has six vertices, three copies of $x_1$ in the first clause and three copies of $\neg x_1$ in the second. There are no edges inside a clause, and every cross-clause pair is complementary, so there are no edges at all. The largest clique has size $1 < 2 = k$, so the CLIQUE instance answers "no", matching the unsatisfiability of $\psi$ (which asserts both $x_1$ and $\neg x_1$).
+
+### 9.9 Hard: the halting problem by diagonalisation
+
+**Problem.** Write out the diagonal argument of Theorem 7.6 explicitly and explain why it also shows that no program can decide whether an arbitrary program halts on *its own source code*.
+
+**Solution.** Suppose, for contradiction, that a program `Halts(P, x)` exists and always terminates with the correct answer. Define
+
+```
+D(P):
+    if Halts(P, P) = "halts":
+        loop forever
+    else:
+        return
+```
+
+Then `D` is a legal program (it uses only `Halts` and a loop), so it appears somewhere in any listing $P_1, P_2, P_3, \dots$ of all programs. Consider the table whose entry $(i,j)$ records whether $P_i$ halts on input $P_j$. The program `D` computes the *opposite* of the diagonal entry $(i,i)$: on input $P_i$ it halts exactly when `Halts(P_i, P_i)` says "loops". Hence `D` differs from every $P_i$ at the input $P_i$, so `D` is not in the list — contradicting the assumption that the list contains all programs.
+
+The contradiction is not a paradox about self-reference; it is a proof that the assumed decider `Halts` cannot exist. If `Halts` existed, `D` would exist, and `D` cannot exist. The same construction restricted to programs that take their own source as input proves the undecidability of the *self-halting* problem, since the map $P \mapsto \langle P, P\rangle$ is computable.
+
+Note also that a *semi*-decider does exist: run $P$ on $x$ and accept if it halts. On a "yes" instance this terminates with "yes"; on a "no" instance it runs forever. So the halting set is recognisable, but by Theorem 7.6 it is not decidable.
+
+## 10. Visual Explanations
+
+### 10.1 A decision tree for sorting three elements
+
+Every comparison sort of three distinct keys can be drawn as a binary tree. The one below is insertion sort: it performs two comparisons on the easy branches and three on the hard ones, and its height is three, matching the lower bound $\lceil\lg 6\rceil = 3$ from Section 7.8.
+
+```mermaid
+flowchart TD
+    Q1["Compare a with b"] -->|"a smaller"| Q2["Compare b with c"]
+    Q1 -->|"a larger"| Q3["Compare b with c"]
+    Q2 -->|"b smaller"| R1["order a b c"]
+    Q2 -->|"b larger"| Q4["Compare a with c"]
+    Q3 -->|"b larger"| R2["order c b a"]
+    Q3 -->|"b smaller"| Q5["Compare a with c"]
+    Q4 -->|"a smaller"| R3["order a c b"]
+    Q4 -->|"a larger"| R4["order c a b"]
+    Q5 -->|"a smaller"| R5["order b a c"]
+    Q5 -->|"a larger"| R6["order b c a"]
+```
+
+There are six leaves, one per permutation, and the deepest leaf is at depth three. A tree with height two could have at most four leaves, which is why no comparison sort of three elements can always stop after two comparisons.
+
+### 10.2 The landscape of complexity classes
+
+```mermaid
+flowchart TD
+    P["P: solvable in polynomial time"] -->|"contained in"| NP["NP: yes-instances have short certificates"]
+    NP -->|"contained in"| EXP["EXP: solvable in time 2 to the n to the k"]
+    NP -->|"hardest members"| NPC["NP-complete: SAT, 3SAT, CLIQUE, TSP"]
+    NP -.->|"candidates for NP-intermediate"| NPI["factoring, graph isomorphism"]
+    CO["coNP: no-instances have short certificates"] -.->|"complement class"| NP
+    EXP -->|"properly contained in"| HALT["undecidable: halting problem"]
+```
+
+The solid arrows show containment; the dotted relations are conjectural or definitional. The crucial inclusions $P \subseteq NP \subseteq EXP$ are theorems, while $P \subsetneq NP$ and $NP \subsetneq EXP$ are open (at least one is strict, by the time hierarchy theorem). Everything inside $EXP$ is decidable; the halting problem lies outside it.
+
+### 10.3 The standard reduction chain
+
+```mermaid
+flowchart LR
+    SAT["SAT"] -->|"split clauses"| T3["3SAT"]
+    T3 -->|"one vertex per literal"| CL["CLIQUE"]
+    CL -->|"complement graph"| IS["INDEPENDENT SET"]
+    IS -->|"complement of a vertex cover"| VC["VERTEX COVER"]
+    T3 -->|"gadgets"| HC["HAMILTONIAN CYCLE"]
+    HC -->|"weights and a budget"| TSP["TSP (decision)"]
+    T3 -->|"gadgets"| C3["3-COLORING"]
+    T3 -->|"arithmetic gadgets"| SS["SUBSET SUM"]
+```
+
+Every arrow is a polynomial-time reduction, so a polynomial-time algorithm for any node would yield one for all of them. This is why thousands of problems share a single hardness: they are all connected to $\mathrm{SAT}$ by chains like these.
+
+### 10.4 Growth at a glance
+
+| $n$ | $\log_2 n$ | $n\log_2 n$ | $n^2$ | $2^n$ | $n!$ |
+|---|---|---|---|---|---|
+| 10 | 3.3 | 33 | 100 | 1 024 | $3.6\times10^{6}$ |
+| 20 | 4.3 | 86 | 400 | $1.0\times10^{6}$ | $2.4\times10^{18}$ |
+| 50 | 5.6 | 282 | 2 500 | $1.1\times10^{15}$ | $3.0\times10^{64}$ |
+| 100 | 6.6 | 664 | 10 000 | $1.3\times10^{30}$ | $9.3\times10^{157}$ |
+| 1 000 | 10 | 9 966 | $10^6$ | $1.1\times10^{301}$ | $4.0\times10^{2567}$ |
+
+The columns differ by constants at $n = 10$ and by hundreds of orders of magnitude at $n = 1\,000$. This table is the practical content of asymptotic analysis.
+
+## 11. Common Mistakes
+
+1. **Reading "$f = O(g)$" as an equality.** The symbol denotes set membership; $O(g)$ is a class of functions. Writing $O(n) = O(n^2)$ (which is true as a containment) does not license $O(n^2) = O(n)$.
+2. **Forgetting the quantifiers when disproving a bound.** To show $f \ne O(g)$ one must refute $\exists c\exists n_0\forall n$, that is, prove $\forall c\forall n_0\exists n \ge n_0$ with $f(n) > c\,g(n)$. A single large value of $n$ is not enough; the argument must work for *every* proposed $c$ and $n_0$.
+3. **Using the limit test when the limit does not exist.** $f(n) = 2 + \sin n$ and $g \equiv 1$ have no limit of the ratio, yet $f = \Theta(1)$. Oscillating functions must be handled by the definition.
+4. **Believing that big-O orders algorithms by speed at every size.** An $O(n^2)$ algorithm with a small constant can beat an $O(n\log n)$ one for small $n$; that is why library sorts switch to insertion sort on small subarrays.
+5. **Confusing worst case with average case.** Quicksort is $\Theta(n\log n)$ on average and $\Theta(n^2)$ in the worst case; both statements are true and neither implies the other.
+6. **Calling the $\Omega(n\log n)$ bound universal.** It holds for comparison-based sorting only. Counting sort runs in $\Theta(n+k)$ because it uses the structure of integer keys, not because it beats information theory.
+7. **"NP means not polynomial."** $\mathrm{NP}$ means *nondeterministically polynomial*: the class of problems with short, quickly checkable certificates. Every problem in $\mathrm{P}$ is in $\mathrm{NP}$.
+8. **Reversing the reduction.** To prove a new problem $L$ hard, reduce a *known hard* problem **to** $L$. Reducing $L$ to $\mathrm{SAT}$ only shows that $L$ is no harder than $\mathrm{SAT}$.
+9. **Skipping the membership half.** A proof that $L$ is $\mathrm{NP}$-complete needs both $L \in \mathrm{NP}$ and $\mathrm{NP}$-hardness. A problem can be $\mathrm{NP}$-hard and not in $\mathrm{NP}$ (for example, the halting problem is $\mathrm{NP}$-hard in the sense that every decidable-in-polynomial-time problem reduces to it, but it is not in $\mathrm{NP}$).
+10. **Ignoring the encoding.** An $O(N)$ algorithm for an input encoded in $\log N$ bits is exponential in the input length. This is the pseudo-polynomial trap of subset sum and knapsack.
+11. **Assuming an invariant that is too weak.** "$i \le n+1$" survives every loop and proves nothing. The invariant must mention the property you actually need.
+12. **Confusing termination with correctness.** A loop can terminate with the wrong answer, and an invariant can hold forever without the loop terminating. Partial correctness and termination are separate obligations.
+13. **Treating "no polynomial algorithm is known" as "the problem is impossible".** Hardness is a worst-case asymptotic statement, not a statement about every instance or about practical solvers.
+
+## 12. Applications
+
+* **Software engineering.** Complexity analysis decides which data structure to use: a hash map for average-case $\Theta(1)$ lookup, a balanced tree when ordering is needed, a heap for repeated minimum extraction. The difference between an $O(n^2)$ and an $O(n\log n)$ routine is the difference between a service that scales and one that does not.
+* **Compilers and verification.** Register allocation, instruction scheduling and Boolean satisfiability are all optimisation problems; the last is $\mathrm{NP}$-hard and is solved in practice by CDCL solvers, which are now fast enough to verify hardware and to check proofs.
+* **Operations research and logistics.** Routing, timetabling, packing and crew scheduling are $\mathrm{NP}$-hard; practitioners use integer programming (whose decision version is $\mathrm{NP}$-complete) with branch-and-bound, cutting planes and approximation guarantees.
+* **Cryptography.** Security rests on problems believed to be computationally hard: factoring and discrete logarithms (in $\mathrm{NP} \cap \mathrm{coNP}$, not known to be $\mathrm{NP}$-complete), and lattice problems. A proof that $\mathrm{P} = \mathrm{NP}$ would destroy most of modern cryptography; a fast algorithm for one $\mathrm{NP}$-complete problem would destroy all of it at once.
+* **Bioinformatics.** Sequence alignment is a dynamic program in $O(nm)$; phylogenetic tree construction and protein folding involve $\mathrm{NP}$-hard subproblems, approached with heuristics and fixed-parameter algorithms.
+* **Databases.** Query planning is $\mathrm{NP}$-hard in general; optimisers use cost models, dynamic programming over join orders, and heuristics. Sorting and hashing, analysed here, are the two workhorses of every query engine.
+* **Machine learning and everyday algorithms.** Training is an optimisation problem over a high-dimensional space, often $\mathrm{NP}$-hard in the worst case, so gradient methods and convex relaxations are used instead of exact search; route planning uses $A^*$ on top of Dijkstra, and spell checkers use edit distance.
+
+## 13. Exercises
+
+The problem set is in [exercises.md](exercises.md): 36 problems, graded from direct computations of asymptotic bounds to proofs of $\mathrm{NP}$-completeness and a diagonal argument. Work them in order; each names the section that supplies the method.
+
+## 14. Solutions
+
+Complete worked solutions, including every algebraic step and the reasoning behind each strategy, are in [solutions.md](solutions.md). Read a solution only after writing your own attempt.
+
+## 15. Summary
+
+* An algorithm is a mathematical object; its analysis has three independent parts — partial correctness, termination and complexity.
+* Loop invariants prove partial correctness by induction over iterations; a strictly decreasing non-negative variant proves termination.
+* $O$, $\Omega$, $\Theta$, $o$ and $\omega$ are quantified statements. To prove a bound, exhibit witnesses; to disprove one, refute the quantifiers.
+* The growth hierarchy is $1 \prec \log\log n \prec \log n \prec n^{\varepsilon} \prec n \prec n\log n \prec n^2 \prec 2^n \prec n! \prec n^n$; polynomial versus exponential is the fundamental divide.
+* Insertion sort is $\Theta(n^2)$ worst case and $\Theta(n)$ on sorted input; merge sort is $\Theta(n\log n)$ in all cases and stable; quicksort is $\Theta(n\log n)$ on average and $\Theta(n^2)$ worst case; heapsort is $\Theta(n\log n)$ worst case and in place.
+* Every comparison sort needs $\Omega(n\log n)$ comparisons, because a binary decision tree with $n!$ leaves has height at least $\lg(n!)$. The bound is tight for merge sort up to a constant.
+* Binary search uses exactly $\lfloor\lg n\rfloor + 1$ comparisons and is optimal up to one comparison.
+* Graph algorithms have complexity governed by the representation: BFS and DFS are $O(V+E)$, Dijkstra is $O((V+E)\log V)$ with a heap, Bellman–Ford is $O(VE)$, Floyd–Warshall is $O(V^3)$, and the MST algorithms are $O(E\log V)$.
+* $\mathrm{P}$ is polynomial-time decidability; $\mathrm{NP}$ is polynomial-time verifiability; $\mathrm{P} \subseteq \mathrm{NP} \subseteq \mathrm{EXP}$.
+* $\mathrm{NP}$-completeness is transferred by polynomial-time reductions; $\mathrm{SAT}$ is the root (Cook–Levin), and $\mathrm{3SAT} \le_{\mathrm{p}} \mathrm{CLIQUE}$ is the model construction.
+* $\mathrm{NP}$-hardness is worst-case; approximation, parameterisation, exponential algorithms and SAT solvers are the practical responses.
+* Some problems are undecidable: the halting problem has no algorithm at all, and Rice's theorem extends this to every non-trivial semantic property of programs.
+
+## 16. Further Learning
+
+**Next in this repository.** The companion topic [Boolean Algebra](../04-boolean-algebra/README.md) develops the algebra of the two-element set $\{0,1\}$, from truth tables and normal forms to circuits and the satisfiability problem; its Section 7.10 connects the $\mathrm{SAT}$ problem defined here to gate-level computation. For the recurrence techniques used throughout, see [Recurrence Relations](../02-recurrence-relations/README.md), and for the induction style behind every correctness proof, [Mathematical Induction](../01-mathematical-induction/README.md). Graph-theoretic background is in [Graph Basics](../../21-graph-theory/01-graph-basics/README.md), and counting arguments are in [Counting Principles](../../20-combinatorics/01-counting-principles/README.md).
+
+**Standard texts.**
+
+* T. H. Cormen, C. E. Leiserson, R. L. Rivest and C. Stein, *Introduction to Algorithms*, 4th edition — the standard reference for the algorithms and their analyses; Chapters 2–4 (growth and recurrences), 7–8 (quicksort and sorting bounds), 22–25 (graphs), 34 (NP-completeness).
+* M. Sipser, *Introduction to the Theory of Computation*, 3rd edition — the clearest treatment of Turing machines, decidability, $\mathrm{P}$ and $\mathrm{NP}$, and the Cook–Levin theorem.
+* S. Arora and B. Barak, *Computational Complexity: A Modern Approach* — a graduate treatment, including the PCP theorem and circuit complexity.
+* C. H. Papadimitriou, *Computational Complexity* — a classic, strong on the structure of the classes and on reductions.
+* J. Kleinberg and É. Tardos, *Algorithm Design* — analysis and design together, with an emphasis on how hardness guides modelling.
+* M. R. Garey and D. S. Johnson, *Computers and Intractability: A Guide to the Theory of NP-Completeness* — the reference catalogue of reductions.
+* D. E. Knuth, *The Art of Computer Programming*, Volume 1 — the historical source for the analysis of algorithms and for $O$-notation in its modern form.
+
+**Historical papers.** Turing, "On Computable Numbers, with an Application to the Entscheidungsproblem" (1936); Cook, "The Complexity of Theorem-Proving Procedures" (1971); Karp, "Reducibility Among Combinatorial Problems" (1972).
+

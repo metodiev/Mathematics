@@ -12,7 +12,7 @@ How to build, validate and criticise a model: population dynamics, epidemics, op
 
 | | |
 |---|---|
-| Topics | 5 (0 complete, 0 draft, 5 planned) |
+| Topics | 5 (5 complete, 0 draft, 0 planned) |
 | Estimated study time | ~39 hours |
 | Prerequisites | [07-calculus](../07-calculus/README.md), [16-differential-equations](../16-differential-equations/README.md) |
 
@@ -38,11 +38,11 @@ flowchart LR
 
 | # | Topic | Level | Est. time | Status | Materials |
 |---|---|---|---|---|---|
-| 1 | Principles of Modeling | Intermediate | 7 h | Planned | — |
-| 2 | Population Dynamics | Intermediate | 8 h | Planned | — |
-| 3 | Epidemic Models | Intermediate | 8 h | Planned | — |
-| 4 | Optimization Models | Advanced | 8 h | Planned | — |
-| 5 | Stochastic Models | Advanced | 8 h | Planned | — |
+| 1 | [Principles of Modeling](01-principles-of-modeling/README.md) | Intermediate | 7 h | Complete | [Tutorial](01-principles-of-modeling/README.md) · [Exercises](01-principles-of-modeling/exercises.md) · [Solutions](01-principles-of-modeling/solutions.md) |
+| 2 | [Population Dynamics](02-population-dynamics/README.md) | Intermediate | 8 h | Complete | [Tutorial](02-population-dynamics/README.md) · [Exercises](02-population-dynamics/exercises.md) · [Solutions](02-population-dynamics/solutions.md) |
+| 3 | [Epidemic Models](03-epidemic-models/README.md) | Intermediate | 8 h | Complete | [Tutorial](03-epidemic-models/README.md) · [Exercises](03-epidemic-models/exercises.md) · [Solutions](03-epidemic-models/solutions.md) |
+| 4 | [Optimization Models](04-optimization-models/README.md) | Advanced | 8 h | Complete | [Tutorial](04-optimization-models/README.md) · [Exercises](04-optimization-models/exercises.md) · [Solutions](04-optimization-models/solutions.md) |
+| 5 | [Stochastic Models](05-stochastic-models/README.md) | Advanced | 8 h | Complete | [Tutorial](05-stochastic-models/README.md) · [Exercises](05-stochastic-models/exercises.md) · [Solutions](05-stochastic-models/solutions.md) |
 
 ### What each topic covers
 

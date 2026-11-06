@@ -12,7 +12,7 @@ Complex differentiability is far stronger than real differentiability, and the c
 
 | | |
 |---|---|
-| Topics | 5 (0 complete, 0 draft, 5 planned) |
+| Topics | 5 (5 complete, 0 draft, 0 planned) |
 | Estimated study time | ~53 hours |
 | Prerequisites | [07-calculus](../07-calculus/README.md), [03-algebra](../03-algebra/README.md) |
 
@@ -38,11 +38,11 @@ flowchart LR
 
 | # | Topic | Level | Est. time | Status | Materials |
 |---|---|---|---|---|---|
-| 1 | Complex Numbers and Geometry | Advanced | 9 h | Planned | — |
-| 2 | Analytic Functions | Advanced | 11 h | Planned | — |
-| 3 | Complex Integration | Advanced | 12 h | Planned | — |
-| 4 | Power Series and Residues | Advanced | 12 h | Planned | — |
-| 5 | Conformal Mappings | Advanced | 9 h | Planned | — |
+| 1 | [Complex Numbers and Geometry](01-complex-numbers-and-geometry/README.md) | Advanced | 9 h | Complete | [Tutorial](01-complex-numbers-and-geometry/README.md) · [Exercises](01-complex-numbers-and-geometry/exercises.md) · [Solutions](01-complex-numbers-and-geometry/solutions.md) |
+| 2 | [Analytic Functions](02-analytic-functions/README.md) | Advanced | 11 h | Complete | [Tutorial](02-analytic-functions/README.md) · [Exercises](02-analytic-functions/exercises.md) · [Solutions](02-analytic-functions/solutions.md) |
+| 3 | [Complex Integration](03-complex-integration/README.md) | Advanced | 12 h | Complete | [Tutorial](03-complex-integration/README.md) · [Exercises](03-complex-integration/exercises.md) · [Solutions](03-complex-integration/solutions.md) |
+| 4 | [Power Series and Residues](04-power-series-and-residues/README.md) | Advanced | 12 h | Complete | [Tutorial](04-power-series-and-residues/README.md) · [Exercises](04-power-series-and-residues/exercises.md) · [Solutions](04-power-series-and-residues/solutions.md) |
+| 5 | [Conformal Mappings](05-conformal-mappings/README.md) | Advanced | 9 h | Complete | [Tutorial](05-conformal-mappings/README.md) · [Exercises](05-conformal-mappings/exercises.md) · [Solutions](05-conformal-mappings/solutions.md) |
 
 ### What each topic covers
 

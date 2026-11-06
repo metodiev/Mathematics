@@ -20,7 +20,7 @@ The prerequisite is [Graph Basics](../01-graph-basics/README.md): vertices, edge
 * **Mathematical induction.** Used for the edge count of a tree, for the leaf-count identity and for the correctness of the greedy algorithms. Taught in [Mathematical Induction](../../09-discrete-mathematics/01-mathematical-induction/README.md).
 * **Proof techniques: contradiction, contrapositive, the exchange argument.** The exchange argument of Section 7.6 is the most important proof technique in combinatorial optimisation. Taught in [Proof Techniques](../../00-foundations/04-proof-techniques/README.md).
 * **Bijections and counting.** "$G \cong H$", "there is a bijection between $A$ and $B$", the product rule and the multinomial coefficient. Taught in [Combinatorics](../../20-combinatorics/README.md).
-* **Binomial coefficients and the binomial theorem.** Used for the Catalan numbers and for the multinomial count of Prüfer sequences. Taught in [Advanced Algebra](../../03-algebra/14-advanced-algebra/README.md), Section 8.1 of that tutorial.
+* **Binomial coefficients and the binomial theorem.** Used for the Catalan numbers and for the multinomial count of Prüfer sequences. Taught in [Polynomials](../../03-algebra/06-polynomials/README.md); the general counting framework is in [Combinatorics](../../20-combinatorics/README.md).
 * **Elementary logarithms.** $\log_2$ appears in the height bounds for binary trees. Taught in [Exponential and Logarithmic Functions](../../03-algebra/12-exponential-and-logarithmic-functions/README.md).
 * **Basic algorithm analysis.** What $O(f(n))$ means, and why sorting $m$ items costs $O(m\log m)$. A first encounter with complexity is enough; the analysis in Sections 7.7 and 7.8 is self-contained.
 
@@ -169,7 +169,7 @@ The following theorem is the reason trees are easy to work with: six very differ
 (T5) $T$ is connected and every edge of $T$ is a bridge;
 (T6) $T$ is acyclic, and adding any edge between two non-adjacent vertices creates exactly one cycle.
 
-The proof needs two lemmas and the edge bound from [Graph Basics](../01-graph-basics/README.md).
+The proof needs three lemmas and the edge bound from [Graph Basics](../01-graph-basics/README.md).
 
 **Lemma 7.2.2 (a tree has two leaves).** Every tree with $n \ge 2$ vertices has at least two leaves.
 
@@ -265,6 +265,14 @@ Finally $n \le 2^{h+1}-1$ gives $2^{h+1} \ge n+1$, so $h+1 \ge \log_2(n+1)$ and,
 
 **Proof.** $n = n_0+n_1+n_2$ vertices, so $n-1$ edges; counting edges from above gives $n_1 + 2n_2$ edges. Hence
 $$n_0 + n_1 + n_2 - 1 = n_1 + 2n_2 \quad\Longrightarrow\quad n_0 = n_2 + 1. \qquad\blacksquare$$
+
+**Proposition 7.4.6 ($m$-ary trees).** An $m$-ary tree of height $h \ge 0$ has at most $m^h$ leaves and at most
+$$\frac{m^{h+1}-1}{m-1}$$
+vertices. In particular a ternary tree of height $4$ has at most $81$ leaves and at most $(3^5-1)/2 = 121$ vertices.
+
+**Proof.** Level $i$ has at most $m^i$ vertices, since each vertex has at most $m$ children; summing the geometric series gives the vertex bound. For the leaf bound, induct on $h$: a tree of height $0$ has one leaf; for $h \ge 1$, removing the root leaves at most $m$ subtrees of height at most $h-1$, each with at most $m^{h-1}$ leaves by induction, so the total is at most $m\cdot m^{h-1} = m^h$. $\blacksquare$
+
+The case $m = 2$ recovers Proposition 7.4.3; the case $m = 1$ degenerates to a path, where height $h$ means $h+1$ vertices and one leaf.
 
 ### 7.5 Spanning trees
 
@@ -416,7 +424,7 @@ and the leaves of $T_i$ are precisely the vertices of $U_i$ that do not occur in
 The encoder defines a map $\mathrm{Enc} : \mathcal{T}_n \to \mathcal{W}_n$ and the decoder a map $\mathrm{Dec} : \mathcal{W}_n \to \mathcal{T}_n$. Lemma 7.9.5 says that $\mathrm{Enc}(\mathrm{Dec}(P)) = P$ for every word $P$. Therefore $\mathrm{Enc}$ is surjective (every word is hit by the tree $\mathrm{Dec}(P)$), which gives $\lvert\mathcal{T}_n\rvert \ge \lvert\mathcal{W}_n\rvert$, and $\mathrm{Dec}$ is injective, which gives $\lvert\mathcal{W}_n\rvert \le \lvert\mathcal{T}_n\rvert$. Hence both sets have the same size, and both maps are bijections:
 $$\lvert\mathcal{T}_n\rvert = n^{n-2}. \qquad\blacksquare$$
 
-*Check.* For $n = 2$ the only word is the empty word, and the tree is the single edge $\{1,2\}$: $2^0 = 1$. For $n = 3$ the words are $(1), (2), (3)$, giving the three trees that are paths with a different centre. For $n = 4$ there are $4^2 = 16$ trees, matching the enumeration in Example 9.5.
+*Check.* For $n = 2$ the only word is the empty word, and the tree is the single edge $\{1,2\}$: $2^0 = 1$. For $n = 3$ the words are $(1), (2), (3)$, giving the three trees that are paths with a different centre. For $n = 4$ there are $4^2 = 16$ trees; by the classification of Exercise 4 these are $4$ stars and $12$ paths, and $4 + 12 = 16$ ✓.
 
 **Corollary 7.9.6 (trees with a prescribed degree sequence).** Let $d_1,\dots,d_n$ be positive integers with $\sum_i d_i = 2n-2$. The number of labelled trees on $\{1,\dots,n\}$ with $\deg(i) = d_i$ for all $i$ is
 $$\frac{(n-2)!}{\prod_{i=1}^{n}(d_i-1)!}.$$
@@ -482,4 +490,388 @@ The first values are
 
 The ratio $C_{n+1}/C_n = \frac{2(2n+1)}{n+2}$ tends to $4$, so the number of binary trees grows like $4^n$, faster than any polynomial but slower than $n!$. That is one reason balanced trees matter: among the $C_n$ shapes on $n$ vertices, most are tall, and only a small fraction have height $O(\log n)$.
 
-<!--TREEPART4-->
+### 7.11 The union–find structure behind Kruskal
+
+Kruskal's algorithm needs one operation constantly: *given two vertices, are they in the same component of the current forest?* A **disjoint-set** or **union–find** structure answers it in almost constant time.
+
+**Definition 7.11.1 (disjoint-set structure).** A disjoint-set structure maintains a partition of a fixed set $V$ under three operations:
+
+* $\mathrm{MakeSet}(v)$: create the singleton part $\{v\}$;
+* $\mathrm{Find}(v)$: return a canonical representative of the part containing $v$;
+* $\mathrm{Union}(u,v)$: replace the two parts containing $u$ and $v$ by their union.
+
+Two vertices are in the same part exactly when $\mathrm{Find}(u) = \mathrm{Find}(v)$, so Kruskal's cycle test is a comparison of two Find values, and an accepted edge triggers one Union.
+
+**Implementation 7.11.2 (forest of parents).** Represent each part by a rooted tree of parent pointers, with the representative at the root. $\mathrm{Find}$ walks up the parent pointers. $\mathrm{Union}$ makes the root of the shallower tree point to the root of the deeper one (**union by rank**), which keeps all trees shallow. **Path compression** makes every vertex visited by a Find point directly at the root.
+
+**Proposition 7.11.3 (complexity).** With union by rank and path compression, a sequence of $m'$ operations on $n$ elements costs $O(m'\,\alpha(n))$, where $\alpha$ is the inverse Ackermann function: $\alpha(n) \le 4$ for every $n$ that could be stored in the physical universe. In particular the union–find work in Kruskal's algorithm is negligible compared with sorting, so the running time is $O(m\log m)$.
+
+**Proof sketch.** Union by rank alone guarantees depth $O(\log n)$, since a tree of rank $r$ has at least $2^r$ vertices. Path compression then makes each Find cheap on average: the accounting argument charges each pointer traversal either to a Union or to a rank increase, and a vertex's rank can increase only $O(\log n)$ times. The full amortised analysis, due to Tarjan, gives the bound $O(m'\,\alpha(n))$. $\blacksquare$
+
+The structure is worth knowing on its own: it is the standard way to maintain connected components in an incremental graph (edges only added), and it is the reason Kruskal is often the fastest MST algorithm in practice on sparse graphs.
+
+## 8. Formulas and Properties
+
+| Result | Statement | Hypothesis | Why it is true |
+|---|---|---|---|
+| Edge count | $m = n-1$ | $T$ is a tree | induction on $n$ after deleting a leaf (Lemma 7.2.3) |
+| Forest count | $m = n-c$ | forest with $c$ components | sum $n_i-1$ over components |
+| Two leaves | $n_1 \ge 2$ | tree with $n \ge 2$ | both ends of a longest path are leaves |
+| Leaf identity | $n_1 = 2 + \sum_{k\ge3}(k-2)n_k$ | tree with $n \ge 2$ | handshake lemma plus $\sum n_k = n$ |
+| Branching bound | $\sum_{k\ge3}n_k \le n_1-2$ | tree with $n \ge 2$ | each branching vertex consumes at least one leaf |
+| Leaves vs maximum degree | $n_1 \ge \Delta$ | tree, $\Delta \ge 3$ | the vertex of maximum degree contributes $\Delta-2$ |
+| Unique paths | exactly one simple $u$–$v$ path | tree | two paths would form a cycle |
+| Every edge a bridge | $T-e$ has $2$ components | tree, $e \in E(T)$ | (T5) of Theorem 7.2.1 |
+| Fundamental cycle | $T+e$ has exactly one cycle | $T$ spanning tree, $e \notin E(T)$ | (T6) of Theorem 7.2.1 |
+| Fundamental cut | $T-e$ has exactly $2$ components | $T$ spanning tree, $e \in E(T)$ | (T5) of Theorem 7.2.1 |
+| Spanning tree exists | $G$ connected $\Leftrightarrow$ $G$ has a spanning tree | finite graph | delete cycle edges until none remain |
+| Connected edge bound | $m \ge n-1$ | connected | a spanning tree has $n-1$ edges |
+| Height bound | $n \le 2^{h+1}-1$, and $h \ge \lceil\log_2(n+1)\rceil-1$ | binary tree | level $i$ has at most $2^i$ vertices |
+| Leaf bound | $L \le 2^h$ | binary tree of height $h$ | induction on $h$ |
+| Full binary tree | $L = i+1$, $n = 2i+1$ | full binary tree with $i$ internal vertices | count edges from above and below |
+| Binary tree leaves | $n_0 = n_2+1$ | any binary tree | count edges from above and below |
+| Cut property | a lightest edge across $\delta(S)$ lies in some MST | connected weighted graph | exchange argument (Theorem 7.6.1) |
+| Cycle property | a strictly heaviest edge of a cycle lies in no MST | connected weighted graph | exchange argument (Theorem 7.6.3) |
+| Uniqueness | the MST is unique | all weights distinct | exchange plus minimality (Corollary 7.6.4) |
+| Kruskal | returns an MST | connected weighted graph | each chosen edge is safe (Theorem 7.7.2) |
+| Kruskal cost | $O(m\log m)$ | comparison sort, union–find | sorting dominates |
+| Prim | returns an MST | connected weighted graph | repeated cut property (Theorem 7.8.2) |
+| Prim cost | $O(m\log n)$ heap, $O(n^2)$ array | adjacency lists or matrix | one decrease-key per edge |
+| Cayley | $\lvert\mathcal{T}_n\rvert = n^{n-2}$ | $n \ge 2$ labelled vertices | Prüfer bijection (Theorem 7.9.1) |
+| Degree sequence | $\dfrac{(n-2)!}{\prod_i(d_i-1)!}$ trees | $\sum d_i = 2n-2$, all $d_i \ge 1$ | multinomial count of codes |
+| Expected leaves | $n\left(\frac{n-1}{n}\right)^{n-2}$ | uniform random labelled tree | $v$ is a leaf iff absent from the code |
+| Labelled paths | $n!/2$ | $n \ge 2$, $\Delta \le 2$ | codes with distinct entries |
+| Catalan | $B_n = \frac{1}{n+1}\binom{2n}{n}$ | ordered binary trees, $n$ vertices | Dyck paths and reflection |
+| Full binary count | $C_{L-1}$ | $L$ leaves | bijection with binary trees on $L-1$ vertices |
+| Rooted binary phylogenies | $(2n-3)!!$ | $n \ge 2$ labelled leaves | insert leaves one at a time |
+
+Each row is a statement about *all* graphs satisfying the hypothesis, and the hypothesis is part of the statement. In particular, "$m = n-1$" is not by itself a test for a tree: a triangle together with an isolated vertex has $4$ vertices and $3 = n-1$ edges but is disconnected, while a square has $4$ vertices and $4 \ne n-1$ edges and is not a tree either.
+
+## 9. Step-by-Step Examples
+
+### Example 9.1 (Easy): which edge lists are trees?
+
+Decide whether each of the following graphs on $V = \{1,2,3,4,5\}$ is a tree.
+
+(a) $E = \{12, 13, 14, 15\}$;
+(b) $E = \{12, 23, 34, 45\}$;
+(c) $E = \{12, 23, 34, 45, 51\}$;
+(d) $E = \{12, 13, 24, 35\}$;
+(e) $E = \{12, 13, 14, 15, 23\}$;
+(f) $E = \{12, 13, 24\}$.
+
+Use the characterisation (T2): a tree on $5$ vertices has exactly $4$ edges and is connected, equivalently (T3): exactly $4$ edges and acyclic.
+
+(a) $4$ edges. It is the star $K_{1,4}$ with centre $1$: connected, and no cycle (every edge uses vertex $1$, so a cycle would have to revisit $1$). **Tree.**
+
+(b) $4$ edges. It is the path $1$–$2$–$3$–$4$–$5$: connected and acyclic. **Tree.**
+
+(c) $5$ edges, but a tree on $5$ vertices must have $4$. It is a $5$-cycle, so it is not acyclic either. **Not a tree.**
+
+(d) $4$ edges. Connectivity: $1$–$2$–$4$ and $1$–$3$–$5$ reaches all five vertices. A connected graph with $n-1$ edges is a tree by (T2)$\Rightarrow$(T1). **Tree.**
+
+(e) $5$ edges $\ne 4$, so it cannot be a tree; indeed $1$–$2$–$3$–$1$ is a cycle. **Not a tree.**
+
+(f) $3$ edges $< 4$, so it cannot be connected; indeed vertex $5$ is isolated. **Not a tree.**
+
+The example shows the practical test: count the edges first, then check exactly one of "connected" or "acyclic". Checking both is redundant once the edge count is right, by Theorem 7.2.1.
+
+### Example 9.2 (Easy): encoding and decoding a Prüfer code
+
+(a) Compute the Prüfer code of the tree $T$ with $V = \{1,\dots,7\}$ and $E = \{12, 13, 24, 25, 56, 57\}$.
+(b) Decode the word $P = (2,2,3,4)$ for $n = 6$.
+
+**(a)** The degrees are $\deg(1) = 2$, $\deg(2) = 3$, $\deg(3) = 1$, $\deg(4) = 1$, $\deg(5) = 3$, $\deg(6) = 1$, $\deg(7) = 1$, so the leaves are $3,4,6,7$.
+
+| Step | Current leaves | Smallest leaf | Its neighbour (recorded) | Remaining edges |
+|---|---|---|---|---|
+| 1 | $3,4,6,7$ | $3$ | $1$ | $12, 24, 25, 56, 57$ |
+| 2 | $1,4,6,7$ | $1$ | $2$ | $24, 25, 56, 57$ |
+| 3 | $4,6,7$ | $4$ | $2$ | $25, 56, 57$ |
+| 4 | $2,6,7$ | $2$ | $5$ | $56, 57$ |
+| 5 | $6,7$ | $6$ | $5$ | $57$ (two vertices left, stop) |
+
+After step 1 the vertex $1$ becomes a leaf, and it is smaller than $4,6,7$, so it is deleted next — this is the step most easily got wrong. After step 4 the tree is the path $5$–$6$ together with the edge $57$, so $6$ is the smallest leaf. The final two vertices are $5$ and $7$. Hence
+$$P(T) = (1,\ 2,\ 2,\ 5,\ 5).$$
+Check with Lemma 7.9.2: $1$ occurs once and $\deg(1) = 2$; $2$ occurs twice and $\deg(2) = 3$; $5$ occurs twice and $\deg(5) = 3$; the labels $3,4,6,7$ occur zero times and have degree $1$. All consistent.
+
+**(b)** Decode $(2,2,3,4)$ on $\{1,\dots,6\}$.
+
+| Step | Remaining word | Smallest absent from it | Edge added |
+|---|---|---|---|
+| 1 | $(2,2,3,4)$ | $1$ | $12$ |
+| 2 | $(2,3,4)$ | $5$ | $52$ |
+| 3 | $(3,4)$ | $2$ | $23$ |
+| 4 | $(4)$ | $3$ | $34$ |
+| final | — | $\{4,6\}$ remain | $46$ |
+
+The tree has edges $\{12, 25, 23, 34, 46\}$, hence degrees $1, 3, 2, 2, 1, 1$ for vertices $1,\dots,6$. Re-encoding: the leaves are $1,5,6$; the smallest is $1$, joined to $2$ (record $2$); then $5$ joined to $2$ (record $2$); then $2$ joined to $3$ (record $3$); then $3$ joined to $4$ (record $4$); two vertices $4,6$ remain. The code is $(2,2,3,4)$, as required.
+
+### Example 9.3 (Easy–medium): a full Kruskal trace
+
+Run Kruskal's algorithm on the weighted graph with $V = \{1,2,3,4,5\}$ and edges
+$$13:1,\quad 23:2,\quad 24:3,\quad 34:4,\quad 45:5,\quad 15:6,\quad 25:7,\quad 12:8 .$$
+
+The edges are already sorted. Process them in order, keeping the forest $F$ and its components:
+
+| Step | Edge | Weight | Components of $F$ before | Cycle? | Action |
+|---|---|---|---|---|---|
+| 1 | $13$ | $1$ | $\{1\},\{2\},\{3\},\{4\},\{5\}$ | no | add |
+| 2 | $23$ | $2$ | $\{1,3\},\{2\},\{4\},\{5\}$ | no | add |
+| 3 | $24$ | $3$ | $\{1,2,3\},\{4\},\{5\}$ | no | add |
+| 4 | $34$ | $4$ | $\{1,2,3,4\},\{5\}$ | yes ($3$–$2$–$4$) | skip |
+| 5 | $45$ | $5$ | $\{1,2,3,4\},\{5\}$ | no | add |
+
+After step 5 there are $4 = n-1$ edges and all five vertices are connected, so the algorithm stops. The output is
+$$F = \{13, 23, 24, 45\}, \qquad w(F) = 1+2+3+5 = 11 .$$
+
+*Optimality check.* Verify the cut property at each of the four chosen edges. At step 1 the forest is empty and $13$ joins the singleton $\{1\}$ to $\{3\}$; the cut $\delta(\{1\}) = \{13, 12, 15\}$ has weights $1, 8, 6$, so $13$ is lightest ✓. At step 2, $F = \{13\}$ and $23$ joins the component $\{1,3\}$ to vertex $2$; the cut $\delta(\{2\}) = \{23, 24, 25, 12\}$ has weights $2, 3, 7, 8$, so $23$ is lightest ✓. At step 3, $24$ joins $\{1,2,3\}$ to $\{4\}$, and $\delta(\{4\}) = \{24, 34, 45\}$ has weights $3, 4, 5$, so $24$ is lightest ✓. At step 5, $45$ joins $\{1,2,3,4\}$ to $\{5\}$, and $\delta(\{5\}) = \{45, 15, 25\}$ has weights $5, 6, 7$, so $45$ is lightest ✓. By Lemma 7.6.2 each chosen edge is safe, so the output is an MST.
+
+The rejected edge $34$ closes the cycle $3$–$2$–$4$–$3$ and is the heaviest edge of that cycle ($4 > 3 > 2$), so by the cycle property (Theorem 7.6.3) no MST contains it.
+
+### Example 9.4 (Easy–medium): Prim on the same graph
+
+Run Prim's algorithm from vertex $1$ on the graph of Example 9.3 and compare.
+
+| Step | $S$ after adding | Lightest edge leaving $S$ | Weight |
+|---|---|---|---|
+| 1 | $\{1\}$ | $13$ | $1$ |
+| 2 | $\{1,3\}$ | $23$ | $2$ |
+| 3 | $\{1,2,3\}$ | $24$ | $3$ |
+| 4 | $\{1,2,3,4\}$ | $45$ | $5$ |
+
+The output is $\{13, 23, 24, 45\}$, the same tree, of weight $11$. The two algorithms agree here, as they must when the weights are distinct (Corollary 7.6.4).
+
+*Check that no cheaper edge was missed.* At step 3, the edges leaving $\{1,2,3\}$ are $24$ (weight $3$), $34$ (weight $4$, joining $3$ to $4$), $15$ (weight $6$) and $25$ (weight $7$); the lightest is $24$ ✓. At step 4, the edges leaving $\{1,2,3,4\}$ are $45$ (weight $5$), $15$ (weight $6$) and $25$ (weight $7$); the lightest is $45$ ✓.
+
+### Example 9.5 (Medium): Cayley's formula for $n = 5$, by degree sequence
+
+There are $5^{3} = 125$ labelled trees on $\{1,2,3,4,5\}$. Partition them by their degree multiset. Since $\sum_i d_i = 2\cdot 4 = 8$ and every $d_i \ge 1$, the possible multisets are $(4,1,1,1,1)$, $(3,2,1,1,1)$ and $(2,2,2,1,1)$.
+
+* $(4,1,1,1,1)$: a star. Choose its centre in $5$ ways, and the tree is then determined. By Corollary 7.9.6 the count for a fixed labelled sequence is $3!/3! = 1$. Total $5 \cdot 1 = 5$.
+* $(3,2,1,1,1)$: choose the vertex of degree $3$ ( $5$ ways) and the vertex of degree $2$ ( $4$ ways). For a fixed assignment the formula gives $3!/(2!\,1!) = 3$. Total $20 \cdot 3 = 60$.
+* $(2,2,2,1,1)$: choose the two leaves, $\binom{5}{2} = 10$ ways. For a fixed assignment the formula gives $3!/(1!\,1!\,1!) = 6$. Total $10 \cdot 6 = 60$.
+
+Sum: $5 + 60 + 60 = 125 = 5^3$ ✓. This is a non-trivial check of both Cayley's formula and Corollary 7.9.6, since the three totals are computed in completely different ways.
+
+Now count leaves. The stars contribute $5 \cdot 4 = 20$ leaves; the $(3,2,1,1,1)$ trees have $3$ leaves each, contributing $180$; the $(2,2,2,1,1)$ trees have $2$ leaves each, contributing $120$. Total $320$, so the average number of leaves is $320/125 = 2.56$. Corollary 7.9.8 predicts
+$$5\left(\frac{4}{5}\right)^{3} = 5\cdot\frac{64}{125} = \frac{320}{125} = 2.56,$$
+in agreement.
+
+### Example 9.6 (Medium–hard): counting spanning trees of small graphs
+
+(a) How many spanning trees does $C_n$ have? (b) How many does $K_4$ have? (c) How many does $K_4$ with one edge deleted have?
+
+**(a)** A spanning tree of $C_n$ has $n-1$ edges, so it is obtained from the $n$ edges of the cycle by deleting exactly one. Deleting different edges gives different trees (different edge sets), and every spanning tree arises this way, because a spanning tree cannot contain all $n$ edges (that would be the cycle) and cannot omit two (that would leave only $n-2$ edges, disconnected). Hence $C_n$ has exactly $n$ spanning trees.
+
+**(b)** By Cayley's formula, $K_4$ has $4^{2} = 16$ spanning trees.
+
+**(c)** Every spanning tree of $K_4$ has $3$ edges, so the number of pairs $(\text{tree}, \text{edge of the tree})$ is $16 \cdot 3 = 48$. The six possible edges of $K_4$ are equivalent under relabelling, so each lies in the same number of spanning trees, namely
+$$\frac{48}{6} = 8 .$$
+The spanning trees of $K_4 - e$ are exactly the spanning trees of $K_4$ that avoid $e$, so there are $16 - 8 = 8$ of them.
+
+As a check, list them. Let $K_4 - 12$ have vertices $1,2,3,4$ and edges $13, 14, 23, 24, 34$. A spanning tree needs $3$ edges out of these $5$, so it omits exactly $2$. There are $\binom{5}{3} = 10$ three-edge subsets. A three-edge subset is disconnected exactly when some vertex is incident with none of its edges. Vertex $1$ has only the two incident edges $13, 14$, so omitting both leaves the triangle $\{23,24,34\}$ on $\{2,3,4\}$ with $1$ isolated; similarly omitting $23, 24$ leaves the triangle $\{13,14,34\}$ with $2$ isolated. Vertices $3$ and $4$ have three incident edges each, so isolating one of them would leave only two edges — impossible. Hence exactly $2$ of the $10$ subsets are disconnected and $10 - 2 = 8$ are spanning trees ✓.
+
+### Example 9.7 (Hard): the leaf identity on a concrete tree
+
+Let $T$ have $V = \{a,b,c,d,e,f,g,h,j\}$ and
+$$E = \{ab,\ ac,\ ad,\ ae,\ bf,\ bg,\ fh,\ cj\}.$$
+Verify that $T$ is a tree, compute its degrees, and check Corollary 7.3.2.
+
+There are $9$ vertices and $8$ edges, and the graph is connected: $a$ reaches $b,c,d,e$; $b$ reaches $f$ and $g$; $f$ reaches $h$; $c$ reaches $j$. A connected graph with $n-1$ edges is a tree (Theorem 7.2.1). Degrees:
+$$\deg(a) = 4,\quad \deg(b) = 3,\quad \deg(c) = 2,\quad \deg(f) = 2,\quad \deg(d)=\deg(e)=\deg(g)=\deg(h)=\deg(j)=1 .$$
+So $n_4 = 1$, $n_3 = 1$, $n_2 = 2$, $n_1 = 5$, and
+$$n_1 = 2 + (4-2)n_4 + (3-2)n_3 = 2 + 2\cdot 1 + 1\cdot 1 = 5,$$
+as stated. The handshake check: $5\cdot1 + 2\cdot2 + 3 + 4 = 5+4+3+4 = 16 = 2\cdot 8$ ✓.
+
+Note that the identity determines $n_1$ without knowing the shape of the tree: any tree with one vertex of degree $4$, one of degree $3$ and two of degree $2$ has exactly five leaves, regardless of how they are arranged.
+
+### Example 9.8 (Hard): a local optimality criterion for minimum spanning trees
+
+Prove the following.
+
+**Claim.** Let $T$ be a spanning tree of a connected weighted graph $G$. Suppose that for every edge $f \in E(T)$, $f$ is a lightest edge across the cut $\delta(S_f)$, where $S_f$ is one of the two components of $T - f$. Then $T$ is a minimum spanning tree.
+
+**Proof.** Suppose $T$ is not minimum, and let $T^{*}$ be an MST chosen among all MSTs to have as many edges in common with $T$ as possible. Since $T \ne T^{*}$ and both have $n-1$ edges, there is an edge $f \in E(T) \setminus E(T^{*})$.
+
+Add $f$ to $T^{*}$. By Proposition 7.5.4, $T^{*} + f$ has a unique cycle $C$. Since $f$ crosses the cut $\delta(S_f)$ (its endpoints lie in different components of $T - f$) and $C$ leaves $S_f$, the cycle contains another edge $g \in \delta(S_f)$; note $g \ne f$.
+
+Because $f$ is a lightest edge across $\delta(S_f)$ and $g$ crosses the same cut, $w(f) \le w(g)$. Define
+$$T' = T^{*} - g + f .$$
+This is a spanning tree: deleting an edge of the unique cycle and adding $f$ restores $n-1$ edges and connectivity. Its weight is
+$$w(T') = w(T^{*}) - w(g) + w(f) \le w(T^{*}),$$
+and since $T^{*}$ is an MST, equality holds and $T'$ is an MST. But $T'$ agrees with $T$ on one more edge than $T^{*}$ does (it gains $f$ and loses only $g \notin E(T)$), contradicting the choice of $T^{*}$.
+
+Hence no such $f$ exists, and $T = T^{*}$ is an MST. $\square$
+
+This criterion explains both algorithms: Kruskal builds a tree whose every edge was the lightest across the cut defined by the component it joined, and Prim builds one whose every edge was the lightest across the cut between the growing set and the rest. Exercise 21 asks you to apply the criterion to a specific tree.
+
+## 10. Visual Explanations
+
+### 10.1 The shape of the equivalence proof
+
+```mermaid
+flowchart LR
+    T1["(T1) connected + acyclic"]
+    T2["(T2) connected, m = n-1"]
+    T3["(T3) acyclic, m = n-1"]
+    T4["(T4) unique u-v path"]
+    T5["(T5) connected, every edge a bridge"]
+    T6["(T6) acyclic, maximal"]
+    T1 --> T2 --> T3 --> T1
+    T1 --> T4 --> T1
+    T1 --> T5 --> T1
+    T1 --> T6 --> T1
+```
+
+Every arrow is an implication proved in Theorem 7.2.1. The diagram is a "hub and spoke" proof: (T1) is proved equivalent to each of the other five, and transitivity through (T1) gives all thirty ordered pairs of implications.
+
+### 10.2 A rooted tree with depths
+
+```mermaid
+flowchart TD
+    r(("1 · d0")) --- a(("2 · d1"))
+    r --- b(("3 · d1"))
+    a --- c(("4 · d2"))
+    a --- d(("5 · d2"))
+    b --- e(("6 · d2"))
+    c --- f(("7 · d3"))
+    c --- g(("8 · d3"))
+```
+
+The root $1$ has depth $0$; $2$ and $3$ have depth $1$; $4,5,6$ have depth $2$; $7,8$ have depth $3$. The height is $3$, the leaves are $5,6,7,8$, and the internal vertices are $1,2,3,4$. The subtree rooted at $4$ consists of $4,7,8$. Every vertex except the root has exactly one parent: $\operatorname{parent}(2) = 1$, $\operatorname{parent}(4) = 2 = \operatorname{parent}(5)$, and so on.
+
+### 10.3 Encode and decode
+
+```mermaid
+flowchart TD
+    T["Labelled tree T"] --> E1["Delete smallest leaf, record its neighbour"]
+    E1 --> E2["n-2 records"]
+    E2 --> P["Prüfer code P"]
+    P --> D1["Smallest label absent from the remaining word"]
+    D1 --> D2["Join it to the first remaining symbol"]
+    D2 --> D3["Repeat, then join the last two vertices"]
+    D3 --> T2["Tree Dec(P)"]
+    T2 -->|"Enc(Dec(P)) = P"| P
+```
+
+The two loops are inverse to each other. The crucial point, proved in Lemma 7.9.5, is that the "smallest label absent from the remaining word" is exactly the smallest leaf of the partially decoded tree, so the decoder retraces the encoder's steps.
+
+### 10.4 Greedy at work
+
+| Step | Kruskal (Example 9.3) | Prim (Example 9.4) |
+|---|---|---|
+| 1 | $13$ (weight $1$) | $13$ (weight $1$) |
+| 2 | $23$ (weight $2$) | $23$ (weight $2$) |
+| 3 | $24$ (weight $3$) | $24$ (weight $3$) |
+| 4 | skip $34$ (cycle) | $45$ (weight $5$) |
+| 5 | $45$ (weight $5$) | — |
+| total | $11$ | $11$ |
+
+Kruskal scans the sorted edge list and rejects cycle-forming edges; Prim never sees a cycle because it always adds an edge leaving its current tree. Both end at the same tree here; with tied weights they may end at different trees of the same total weight.
+
+## 11. Common Mistakes
+
+**1. "A tree is a graph with no cycle."** That defines a forest. A tree must also be connected. Two disjoint edges form a forest that is not a tree.
+
+**2. "A tree on $n$ vertices has $n$ edges."** It has $n-1$. The off-by-one is the most common error in the subject: $P_n$ has $n$ vertices and $n-1$ edges, while $C_n$ has $n$ of each.
+
+**3. "Connected and $n-1$ edges is automatic."** It is a theorem (T2), not a definition, and it fails without connectivity: a triangle plus an isolated vertex has $4$ vertices and $3 = n-1$ edges but is not a tree.
+
+**4. Forgetting that every subgraph of a tree is a forest but need not be a tree.** Deleting one edge from a tree gives two trees, not one. The only connected subgraphs of a tree are its subtrees.
+
+**5. Confusing depth with height.** Depth is a property of a vertex (distance to the root); height is a property of the tree (the maximum depth). In Example 10.2 the depth of $7$ is $3$ and the height is also $3$, but in a tree with one deep branch and many shallow ones the two numbers differ for most vertices.
+
+**6. Assuming every binary tree is full.** A binary tree allows vertices with one child. A full binary tree does not. The identity $L = i+1$ needs fullness; the general identity is $n_0 = n_2 + 1$, which counts only vertices with two children.
+
+**7. Using the height bound $2^{h+1}-1$ as an equality.** It is the maximum, attained by the perfect tree. A path is a binary tree of height $n-1$ with $n$ vertices.
+
+**8. Claiming the MST is unique.** It is unique if all weights are distinct (Corollary 7.6.4); with ties there may be many MSTs, and both algorithms may return different ones. The *weight* is always unique.
+
+**9. Confusing an MST with a shortest-path tree.** An MST minimises the *total* edge weight, not the distance from a source. Take the $4$-cycle $s$–$a$–$b$–$c$–$s$ with all four edges of weight $1$. Every spanning tree is obtained by deleting one edge, and every one has weight $3$, so all four are MSTs. In the MST $\{sa, ab, bc\}$ the distance from $s$ to $c$ is $3$, while the direct edge $cs$ of weight $1$ is not in that tree: the shortest path is $1$, the MST path is $3$. A shortest-path tree from $s$ would contain $sc$.
+
+**10. Applying Kruskal without connectivity.** On a disconnected graph it produces a minimum spanning *forest*, one tree per component, not a spanning tree. If a spanning tree is required, the graph must be connected.
+
+**11. Forgetting to check the cut in the exchange argument.** The proof of the cut property uses that the cycle crosses the cut and that the replacement edge $g$ is not already in $F$ (Lemma 7.6.2). Without that, the "exchange" can destroy the set of chosen edges.
+
+**12. Thinking Prüfer codes are sequences of leaves.** The code records the *neighbours* of the deleted leaves. Recording the leaves themselves loses information: the smallest leaf is determined by the tree, so the sequence of leaves would contain no information at all.
+
+**13. Using the wrong end point in the decoder.** The decoder always joins the smallest label *absent from the remaining word*, not the smallest label overall. Using the smallest unused label would produce the wrong tree and would not invert the encoder.
+
+**14. Believing Cayley's formula counts unlabelled trees.** It counts labelled trees. The number of unlabelled trees on $n$ vertices is much smaller and has no simple closed form: $1, 1, 1, 2, 3, 6, 11, 23, \dots$ for $n = 1,2,3,\dots$.
+
+**15. Assuming all binary trees are counted by Catalan numbers.** Only *ordered* binary trees are. If left and right children are not distinguished, several ordered trees collapse to the same shape, and the counts fall to the Wedderburn–Etherington numbers $1, 1, 1, 2, 3, 6, 11, 23, \dots$ for $n = 1,\dots,8$, far fewer than $C_n$.
+
+**16. Mixing up "spanning tree" and "subtree".** A spanning tree contains every vertex; a subtree may contain a few. A spanning tree of a tree is the tree itself, which is why "spanning tree" is interesting only for graphs with cycles.
+
+## 12. Applications
+
+**Network design.** Connecting sites by cable, pipeline or rail at minimum cost is the MST problem when the cost is a sum of edge costs and there are no capacity or redundancy requirements. Kruskal's algorithm is often preferred because the edge list may be huge and sorting is straightforward; Prim's is preferred when the graph is dense. Real networks usually add redundancy (a minimum spanning tree is fragile: every edge is a bridge), which leads to $k$-edge-connected spanning subgraphs, a harder problem.
+
+**Clustering.** Single-linkage hierarchical clustering is Kruskal's algorithm in disguise: treat the data points as vertices with pairwise distances as weights, run Kruskal, and stop when the next edge would exceed a threshold. The connected components at that moment are the clusters, and the sequence of merges is the dendrogram. A minimum spanning tree stores all the information needed for every threshold at once.
+
+**Decision trees.** A decision tree is a rooted tree whose internal vertices are tests and whose leaves are outcomes or classifications. The depth is the number of tests needed in the worst case, so Proposition 7.4.3 gives an immediate lower bound: a tree with $L$ leaves has depth at least $\lceil\log_2 L\rceil$. Applied to comparison sorting, the $n!$ possible orders require at least $\log_2(n!) = \Theta(n\log n)$ comparisons, which is the classical lower bound for sorting by comparisons. Every sorting algorithm is a decision tree, and no such tree can be shallow.
+
+**Phylogenetic trees.** The evolutionary history of a set of species is modelled by a rooted tree whose leaves are the present-day species and whose internal vertices are common ancestors. The number of possible rooted binary histories on $n$ labelled species is $(2n-3)!! = 1\cdot3\cdot5\cdots(2n-3)$. To see the recurrence, start with the tree on two leaves and insert the $k$-th leaf by subdividing an edge: a rooted binary tree on $k-1$ leaves has $2k-4$ edges, and there is one further attachment point above the root, so there are $2k-3$ possibilities, and every tree on $k$ leaves arises exactly once. For $n = 10$ the count is already $34\,459\,425$, which is why phylogenetic inference needs data and algorithms rather than enumeration.
+
+**Parsing and compilation.** The syntax of an expression or a program is a rooted tree: leaves are tokens, internal vertices are grammatical constructions. Arithmetic expressions are binary trees whose leaves are numbers or variables and whose internal vertices are operators; the tree records precedence and associativity, so $(1+2)\times 3$ and $1+(2\times 3)$ are different trees with the same leaves. Ambiguous grammars are exactly those for which a string has more than one parse tree.
+
+**File systems and the web.** Directory structures are rooted trees (ignoring symbolic links, which would create cycles). XML and HTML documents are trees, and so is the JSON format; every query language for them ("find all descendants of this node") is a tree traversal. Version control stores commits in a directed acyclic graph, a close relative of a tree.
+
+**Compression.** A Huffman code is a full binary tree whose leaves are symbols and whose depth is the length of the codeword. Corollary 7.10.3 counts the possible shapes, and Proposition 7.4.4 says that a full tree with $i$ internal vertices has $i+1$ leaves; the algorithm builds the tree bottom-up by repeatedly merging the two least frequent symbols, which is again a greedy argument of the cut type.
+
+**Electrical and hydraulic networks.** Kirchhoff's laws on a network are usually solved on a spanning tree plus the remaining "chord" edges, because the tree part can be solved by elimination. The fundamental cycle and fundamental cut of Propositions 7.5.4 and 7.5.5 are exactly the quantities that make this work.
+
+**Games and search.** The possible continuations of a game form a tree (or a DAG, if positions can repeat). Minimax search, alpha–beta pruning and Monte Carlo tree search are all algorithms on game trees, and their cost is governed by the height and branching factor, exactly as in Proposition 7.4.3.
+
+**Databases and indexes.** A B-tree is a balanced $m$-ary tree kept shallow on purpose: with a branching factor of a few hundred, a tree of height $4$ indexes billions of records, so a lookup touches only a handful of disk pages. The design is driven by Proposition 7.4.3 read backwards — to keep the height small, maximise the number of children per vertex rather than using a binary tree.
+
+**Project scheduling.** In the critical path method, tasks are vertices of a directed acyclic graph and an arc means "must finish before". A topological order is a linear extension of the partial order, and the longest path gives the project duration. Although the graph is directed, the undirected skeleton is a forest when tasks form independent chains, and the tree vocabulary (predecessor, successor, root) carries over directly.
+
+**Spanning trees in networks.** Ethernet's Spanning Tree Protocol elects a root bridge and builds a spanning tree of the physical network, deliberately disabling the edges that would close a cycle; loops in a layer-2 network would make broadcast frames circulate forever. The protocol is a distributed computation of a spanning tree, and the price of acyclicity is that the disabled links carry no traffic — the same trade-off as anywhere else.
+
+## 13. Exercises
+
+The problem set is in [exercises.md](exercises.md). It contains 36 problems in four groups:
+
+* **Beginner (1–12)** — edge counts, recognising trees, Prüfer encoding and decoding, rooted-tree data, binary-tree counts, Kruskal and Prim traces.
+* **Intermediate (13–22)** — proofs of the characterisations and the leaf identity, spanning trees, the exchange properties, and counting spanning trees of small graphs.
+* **Advanced (23–30)** — correctness of Prim, the cycle property, the Prüfer degree formula, bipartiteness and bridges in trees, minimum bottleneck trees, and edge exchanges between spanning trees.
+* **Challenge (31–36)** — counting paths, the expected number of leaves, degree sequences of trees, the maximum-degree/leaf bound, the decoder's correctness, and the number of trees containing a fixed edge.
+
+Attempt every problem in writing before reading the solutions. Each problem names the section of the tutorial that supplies the technique.
+
+## 14. Solutions
+
+Full worked solutions are in [solutions.md](solutions.md). Each solution states the strategy, then carries out the argument with every significant step displayed. Numerical claims are checked against the small cases computed in Section 9.
+
+## 15. Summary
+
+* A **tree** is a connected acyclic graph; a **forest** is an acyclic graph. A tree on $n$ vertices has exactly $n-1$ edges, and a forest with $c$ components has $n-c$.
+* Six properties are equivalent (Theorem 7.2.1): connected and acyclic; connected with $n-1$ edges; acyclic with $n-1$ edges; a unique path between every pair; connected with every edge a bridge; acyclic and maximal under adding edges.
+* Every tree with $n \ge 2$ has at least two leaves, and $n_1 = 2 + \sum_{k\ge3}(k-2)n_k$; in particular $n_1 \ge \Delta$ when $\Delta \ge 3$.
+* A **rooted tree** orients the edges toward a root; **depth** is the distance to the root, **height** the maximum depth. A binary tree of height $h$ has at most $2^{h+1}-1$ vertices and $2^h$ leaves.
+* In a **full binary tree** with $i$ internal vertices there are $i+1$ leaves; in any binary tree $n_0 = n_2+1$.
+* Every connected graph has a **spanning tree** (delete cycle edges until none remain), and every spanning tree crosses every cut.
+* **Cut property:** a lightest edge across a cut belongs to some MST. **Cycle property:** a strictly heaviest edge of a cycle belongs to no MST. Distinct weights imply a unique MST.
+* **Kruskal** sorts the edges and adds each one that does not create a cycle; **Prim** grows a tree by repeatedly adding the lightest edge leaving it. Both are correct by the cut property and both run in $O(m\log n)$ with the standard data structures.
+* **Cayley:** there are $n^{n-2}$ labelled trees on $n$ vertices, proved by the **Prüfer bijection** between trees and words of length $n-2$.
+* In that bijection $\deg(v) = 1 + \operatorname{occ}_P(v)$, which gives the number of trees with a prescribed degree sequence, the expected number of leaves $n\left(\frac{n-1}{n}\right)^{n-2}$, and the count $n!/2$ of labelled paths.
+* The number of ordered binary trees with $n$ vertices is the **Catalan number** $C_n = \frac{1}{n+1}\binom{2n}{n}$, and the number of full binary trees with $L$ leaves is $C_{L-1}$.
+* Trees model hierarchies, decision procedures, phylogenetic histories, parse structures and — through spanning trees — minimal connection networks.
+
+## 16. Further Learning
+
+**Within this repository.**
+
+* [Graph Basics](../01-graph-basics/README.md) — the prerequisite: degree, paths, cycles, connectivity and the edge bound $m \ge n-c$ that becomes exact for forests here.
+* [Mathematical Induction](../../09-discrete-mathematics/01-mathematical-induction/README.md) — the technique behind Lemma 7.2.3, the height bounds and the correctness induction.
+* [Recurrence Relations](../../09-discrete-mathematics/02-recurrence-relations/README.md) — the Catalan recurrence of Lemma 7.10.1 is a standard example of a non-linear recurrence solved by generating functions.
+* [Combinatorics](../../20-combinatorics/README.md) — bijections, the multinomial theorem and the reflection principle used in Section 7.10.
+* [Polynomials](../../03-algebra/06-polynomials/README.md) — binomial coefficients and the binomial theorem, used for the Catalan and Prüfer counts.
+* The [discipline index](../README.md) lists the remaining graph theory topics; *Paths and Connectivity* continues with Euler tours, shortest paths and Menger's theorem, all of which use spanning trees.
+
+**Standard texts.** R. Diestel, *Graph Theory*, and J. A. Bondy and U. S. R. Murty, *Graph Theory* treat all of this material, with the Prüfer bijection in the chapter on trees. For algorithms, T. H. Cormen, C. E. Leiserson, R. L. Rivest and C. Stein, *Introduction to Algorithms*, Chapters 21–23 cover union–find, Kruskal and Prim in detail; R. K. Ahuja, T. L. Magnanti and J. B. Orlin, *Network Flows*, develops the optimisation viewpoint. For the counting side, R. P. Stanley, *Enumerative Combinatorics*, Volume 2, is the standard reference for Catalan numbers and their hundreds of interpretations.
+
+**What to study next.** Within Graph Theory, the next topics are paths and connectivity (Euler and Hamilton tours, shortest paths, Menger's theorem), then planarity and colouring. Beyond that, the MST problem is the first example of a *matroid* greedy algorithm, and the exchange argument of Section 7.6 generalises verbatim to matroids; that is the natural bridge to [Abstract Algebra](../../13-abstract-algebra/README.md) and to combinatorial optimisation.
+

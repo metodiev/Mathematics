@@ -4,1472 +4,639 @@
 
 ## 1. Introduction
 
-The algebra sequence introduces $\mathbb{C}$ as the smallest field containing $\mathbb{R}$ in which
-$x^2 + 1 = 0$ has a root. That definition is complete but silent about geometry. This tutorial
-supplies the geometry. The central discovery — made by Wessel (1799), Argand (1806) and Gauss
-(1831) — is that a complex number $z = x + iy$ can be read as the point $(x,y)$ of the plane, and
-that the two algebraic operations then acquire exact geometric meanings:
+The algebra sequence introduces $\mathbb{C}$ as the smallest field containing $\mathbb{R}$ in which $x^2+1=0$ has a root. That definition is complete but silent about geometry. This tutorial supplies the geometry. The central discovery of Wessel, Argand and Gauss is that $z = x+iy$ can be read as the point $(x,y)$ of the plane, and that the two operations then have exact geometric meanings:
 
 * **addition is translation** by the vector $(x,y)$;
 * **multiplication is rotation and scaling**, by the angle $\arg z$ and the factor $\lvert z\rvert$.
 
-Once multiplication is geometric, a large part of plane geometry becomes algebra, and a large part
-of algebra becomes geometry: the triangle inequality is a statement about the side lengths of a
-triangle, De Moivre's theorem says that the angle of a power is the sum of the angles, and the
-$n$-th roots of a number are the vertices of a regular $n$-gon. That interplay is the subject of
-Sections 7.1–7.6.
+Once multiplication is geometric, plane geometry becomes algebra and algebra becomes geometry: the triangle inequality is a statement about side lengths, De Moivre's theorem says that angles add under powers, and the $n$-th roots of a number form a regular $n$-gon (Sections 7.1–7.5).
 
-The second half of the tutorial studies the maps that respect this geometry. A **Möbius
-transformation** (also called a fractional linear transformation) is a map of the form
+The second half of the tutorial studies the maps that respect this geometry. A **Möbius transformation** (fractional linear map) is
 
-$$
-z \mapsto \frac{az + b}{cz + d}, \qquad ad - bc \ne 0.
-$$
+$$z \mapsto \frac{az+b}{cz+d}, \qquad ad-bc \ne 0.$$
 
-These maps form a group under composition, and the group is almost a group of $2 \times 2$ matrices
-— the multiplication rule is exactly matrix multiplication. Their decisive geometric property is
-that **they send circles and straight lines to circles and straight lines**. A straight line, it
-turns out, is best regarded as a circle passing through a single extra point $\infty$; adjoining
-that point turns the plane into the **Riemann sphere** $\mathbb{C} \cup \{\infty\}$, which is
-topologically a sphere. Section 7.10 constructs the sphere explicitly by stereographic projection,
-and Section 7.11 proves that the construction really is a homeomorphism. On the sphere, the
-statement "Möbius maps send circles to circles" becomes literally true, with no exception for
-lines.
+These maps form a group under composition, almost a group of $2\times2$ matrices — the composition rule is matrix multiplication. Their decisive property is that **they send circles and straight lines to circles and straight lines**. A line is best regarded as a circle through an extra point $\infty$; adjoining that point gives the **Riemann sphere** $\mathbb{C}\cup\{\infty\}$, which is topologically a sphere. Section 7.10 constructs the sphere by stereographic projection, Section 7.11 proves that the construction is a homeomorphism, and Section 7.12 previews the applications.
 
-Why should a student of analysis care about this? Because the maps that complex analysis is built
-on are exactly these maps. The derivative of a holomorphic function at a point is a complex number,
-and multiplication by that number is a rotation-dilation; this is the content of conformality, the
-subject of [Analytic Functions](../02-analytic-functions/README.md). The cross-ratio of four points
-classifies quadruples up to Möbius equivalence, and it is the first example of a **conformal
-invariant**. The extended plane is the natural domain of the maps $z \mapsto 1/z$ and
-$z \mapsto (az+b)/(cz+d)$ that appear throughout the subject, and the sphere is the reason the
-theory of meromorphic functions is cleaner than the theory of rational functions on the line.
+Why does a student of analysis care? Because complex analysis is built on exactly these maps. The derivative of a holomorphic function is a complex number, and multiplication by that number is a rotation-dilation: this is conformality, the subject of [Analytic Functions](../02-analytic-functions/README.md). The cross-ratio classifies quadruples of points up to Möbius equivalence and is the first conformal invariant. The extended plane is the natural domain of $z\mapsto 1/z$, and the sphere is the reason the theory of meromorphic functions is cleaner than the theory of rational functions on the line.
 
-Three habits make the material easy. **First, always draw the picture.** Every algebraic identity
-below has a geometric reading, and the geometric reading usually suggests the proof. **Second,
-track the argument modulo $2\pi$.** Almost every error in this subject comes from treating a
-multi-valued quantity as single-valued. **Third, allow $\infty$ as a point.** Refusing to do so
-creates a special case in every theorem about Möbius maps; admitting it removes all of them.
+Three habits make the subject easy. **Draw the picture:** every identity below has a geometric reading that suggests its proof. **Track the argument modulo $2\pi$:** almost every error in this subject comes from treating a multi-valued quantity as single-valued. **Allow $\infty$ as a point:** refusing to do so creates a special case in every theorem about Möbius maps.
 
 ## 2. Prerequisites
 
-**Complex arithmetic.** You must be fluent with $z = a + bi$, conjugation $\bar z = a - bi$,
-modulus $\lvert z\rvert = \sqrt{a^2+b^2}$, the identity $z\bar z = \lvert z\rvert^2$, and division
-by rationalising the denominator. All of this is developed in
-[Complex Numbers](../../03-algebra/13-complex-numbers/README.md); Section 7.1 is a compressed
-review that also fixes the notation used later.
+**Complex arithmetic.** Fluency with $z = a+bi$, conjugation $\bar z = a-bi$, modulus $\lvert z\rvert = \sqrt{a^2+b^2}$, the identity $z\bar z = \lvert z\rvert^2$, and division by rationalising the denominator. See [Complex Numbers](../../03-algebra/13-complex-numbers/README.md); Section 7.1 is a compressed review that fixes the notation.
 
-**Inequalities and absolute value.** The triangle inequality for real numbers, the meaning of
-$\lvert x\rvert < \varepsilon$, and the technique of proving an inequality by squaring both sides
-after checking that both are non-negative. See
-[Inequalities](../../03-algebra/03-inequalities/README.md).
+**Inequalities.** The real triangle inequality, the meaning of $\lvert x\rvert < \varepsilon$, and proving inequalities by squaring after checking both sides are non-negative. See [Inequalities](../../03-algebra/03-inequalities/README.md).
 
-**Trigonometry.** The addition formulas
-$\cos(\theta+\varphi) = \cos\theta\cos\varphi - \sin\theta\sin\varphi$ and
-$\sin(\theta+\varphi) = \sin\theta\cos\varphi + \cos\theta\sin\varphi$ are used in every proof about
-polar form. You also need the values of sine and cosine at multiples of $\pi/6$ and $\pi/4$, the
-periodicity of both functions, and the fact that $\cos\theta = 1$ exactly when
-$\theta \in 2\pi\mathbb{Z}$. See [The Unit Circle](../../05-trigonometry/02-unit-circle/README.md)
-and [Trigonometric Identities](../../05-trigonometry/03-trigonometric-identities/README.md).
+**Trigonometry.** The addition formulas for $\cos$ and $\sin$ are used in every proof about polar form; you also need values at multiples of $\pi/6$ and $\pi/4$, periodicity, and the fact that $\cos\theta = 1$ exactly when $\theta \in 2\pi\mathbb{Z}$. See [The Unit Circle](../../05-trigonometry/02-unit-circle/README.md) and [Trigonometric Identities](../../05-trigonometry/03-trigonometric-identities/README.md).
 
-**Limits and continuity.** Only the definition of $\lim_{z \to z_0} f(z)$ and the fact that limits
-in $\mathbb{C}$ may be taken along any path are needed here; both are revisited in
-[Limits](../../07-calculus/01-limits/README.md). The full theory of complex limits is developed in
-[Analytic Functions](../02-analytic-functions/README.md).
+**Limits and continuity.** Only the definition of limit along paths and the elementary limit laws; the theory is developed in [Limits](../../07-calculus/01-limits/README.md) and in [Analytic Functions](../02-analytic-functions/README.md).
 
-**Matrices and linear maps.** A $2\times 2$ real matrix acts on the plane; matrix multiplication
-composes linear maps; a matrix is invertible exactly when its determinant is non-zero. This is the
-model for the group of Möbius transformations in Section 7.7. See
-[Matrices](../../08-linear-algebra/02-matrices/README.md) and
-[Linear Transformations](../../08-linear-algebra/05-linear-transformations/README.md).
+**Matrices.** A $2\times2$ real matrix acts on the plane, matrix multiplication composes linear maps, and invertibility is equivalent to a non-zero determinant. This models the Möbius group in Section 7.6; see [Matrices](../../08-linear-algebra/02-matrices/README.md) and [Linear Transformations](../../08-linear-algebra/05-linear-transformations/README.md).
 
-**Sets and maps.** Injections, surjections, bijections, composition, and the notation
-$f[A]$ for the image of a set. See [Set Theory](../../00-foundations/03-set-theory/README.md).
+**Sets and maps.** Injections, surjections, bijections, composition, and images of sets; see [Set Theory](../../00-foundations/03-set-theory/README.md).
 
 ## 3. Learning Objectives
 
 By the end of this tutorial you will be able to
 
-1. state the field axioms for $\mathbb{C}$ and verify the field properties from the definition of
-   $\mathbb{C}$ as $\mathbb{R}^2$ with a multiplication;
-2. prove the conjugation identities $\overline{z+w} = \bar z + \bar w$,
-   $\overline{zw} = \bar z\bar w$, $z\bar z = \lvert z\rvert^2$, and use them to compute
-   $z^{-1}$ and quotients;
-3. prove the triangle inequality, the reverse triangle inequality and the parallelogram law for
-   the complex modulus, and characterise the equality case of the triangle inequality;
-4. convert between Cartesian, polar and exponential forms, and explain precisely in what sense
-   the argument is defined only modulo $2\pi$;
-5. prove that multiplication by $re^{i\theta}$ is the rotation by $\theta$ composed with the
-   dilation by $r$, and read division as the inverse operation;
-6. state and prove De Moivre's theorem for all integer exponents, and derive the $n$ distinct
-   $n$-th roots of any non-zero complex number;
-7. describe the $n$-th roots of unity as the vertices of a regular $n$-gon, and prove that they sum
-   to $0$ and have product $(-1)^{n+1}$;
-8. define Möbius transformations, prove that they form a group, and compute with the matrix
-   correspondence;
-9. prove that a Möbius transformation maps every straight line or circle to a straight line or
-   circle, and find the image in concrete cases;
-10. define the cross-ratio, prove its invariance under Möbius transformations, and use it to decide
-    whether four points are concyclic or collinear;
-11. define the extended complex plane, write the stereographic projection formulas in both
-    directions, and prove that $\mathbb{C}\cup\{\infty\}$ is homeomorphic to the sphere $S^2$;
-12. explain how complex multiplication encodes rotations in computer graphics and robotics, how
-    phasors encode alternating current, and how conformal maps generate inviscid fluid flows.
+1. state the field axioms for $\mathbb{C}$ and verify them from the definition of $\mathbb{C}$ as $\mathbb{R}^2$ with a multiplication;
+2. prove the conjugation identities and use them to compute inverses and quotients;
+3. prove the triangle inequality, the reverse triangle inequality and the parallelogram law, with the equality case characterised;
+4. convert between Cartesian, polar and exponential forms, and explain the sense in which $\arg$ is defined modulo $2\pi$;
+5. prove that multiplication by $re^{i\theta}$ is rotation by $\theta$ composed with dilation by $r$;
+6. state and prove De Moivre's theorem and the formula for the $n$ distinct $n$-th roots;
+7. describe $\mu_n$ as the vertices of a regular $n$-gon and prove that its elements sum to $0$ and multiply to $(-1)^{n+1}$;
+8. define Möbius transformations, prove that they form a group, and compute with the matrix correspondence;
+9. prove that a Möbius transformation maps generalized circles to generalized circles and find images in concrete cases;
+10. define the cross-ratio, prove its invariance, and use it to decide concyclicity;
+11. write the stereographic projection formulas in both directions and prove that $\mathbb{C}_\infty$ is homeomorphic to $S^2$;
+12. explain the roles of complex multiplication in rotations, alternating current and conformal fluid flow.
 
 ## 4. Intuition
 
-Imagine a city whose streets are drawn on transparent film. Sliding the film across the map is
-**addition**: every point moves by the same vector. Pinning the film at one point and turning it,
-then shrinking or enlarging it about that point, is **multiplication**: every point is rotated by
-the same angle and scaled by the same factor. The two operations are the two rigid-ish motions of
-the plane that fix the origin, and the whole of this tutorial follows from taking that sentence
-literally.
+Imagine the streets of a city drawn on transparent film. Sliding the film is **addition**: every point moves by the same vector. Pinning the film at one point, turning it and shrinking or enlarging it is **multiplication**: every point is rotated by the same angle and scaled by the same factor. These are the two motions of the plane that fix the origin, and the whole tutorial follows from taking that sentence literally.
 
-The phrase "rigid-ish" hides the essential point. A rotation followed by a scaling is **angle
-preserving**: the angle between two streets is unchanged, and so is the sense of turning (clockwise
-stays clockwise). Reflections, by contrast, reverse angles. Complex multiplication never reflects.
-This is why the algebra of $\mathbb{C}$ is the algebra of orientation-preserving similarities of
-the plane, and why conjugation — which *does* reflect — is a different kind of operation, not
-expressible as multiplication by a complex number.
+The phrase "rotated and scaled" hides the essential point. A rotation followed by a scaling **preserves angles**, and it preserves their orientation: clockwise stays clockwise. Reflections reverse angles. Complex multiplication never reflects. This is why the algebra of $\mathbb{C}$ is the algebra of orientation-preserving similarities, and why conjugation — which does reflect — is not multiplication by a complex number.
 
-Now add a single point at infinity, like the point where all directions of the plane meet. Straight
-lines, seen from that point, close up into circles: a train track receding to the horizon appears
-to converge, and if you could walk past the horizon you would come back from the opposite
-direction. A map of the form $(az+b)/(cz+d)$ is a composition of translations, rotations,
-scalings and the inversion $z \mapsto 1/z$; inversion is the map that turns the plane inside out
-about the unit circle. Since each ingredient sends circles to circles, so does every composite.
-That is the entire content of the circle-preservation theorem, and it is the reason Möbius maps are
-the natural symmetries of the Riemann sphere.
+Now adjoin a single point at infinity, where all directions meet. Straight lines, seen from that point, close up into circles: a receding railway appears to converge, and a traveller who passed the horizon would return from the opposite direction. A map $(az+b)/(cz+d)$ is a composition of translations, rotations, scalings and the inversion $z\mapsto 1/z$; inversion turns the plane inside out about the unit circle. Since each ingredient sends circles to circles, so does every composite. That is the whole content of the circle-preservation theorem.
 
-The sphere itself is not an analogy. Stand a sphere on the plane at the origin, put a light at the
-north pole, and look at the shadow of each point of the sphere on the plane. Every point except the
-north pole casts exactly one shadow, and every point of the plane is the shadow of exactly one
-point. The north pole has no shadow, so it corresponds to $\infty$. Distance on the sphere is a
-genuine metric on $\mathbb{C}\cup\{\infty\}$ in which "far away in the plane" means "close to the
-north pole". This is the precise sense in which the complex plane plus infinity is a sphere.
+The sphere is not merely an analogy. Stand a sphere on the plane, put a light at the north pole, and look at shadows. Every point except the north pole casts exactly one shadow, and every point of the plane is the shadow of exactly one point. The north pole has no shadow, so it is $\infty$. Distance on the sphere is a genuine metric on $\mathbb{C}\cup\{\infty\}$ in which "far away" means "close to the north pole". This is the precise sense in which the complex plane plus infinity is a sphere.
 
 ## 5. Formal Definition
 
-Everything below is stated from scratch, so that no appeal to an unproved algebraic fact is needed.
+**Definition 5.1** (complex numbers). Let $\mathbb{C} = \mathbb{R}^2$ as a set, with elements $(a,b)$, and define
 
-**Definition 5.1** (the complex numbers). Let $\mathbb{C} = \mathbb{R}^2$ as a set, and write
-$(a,b)$ for its elements. Define
+$$(a,b)+(c,d) := (a+c,\,b+d), \qquad (a,b)\cdot(c,d) := (ac-bd,\,ad+bc).$$
 
-$$
-(a,b) + (c,d) := (a+c,\; b+d), \qquad (a,b)\cdot(c,d) := (ac - bd,\; ad + bc).
-$$
+The pair $(0,0)$ is the additive identity and $(1,0)$ the multiplicative identity.
 
-The pair $(0,0)$ is the additive identity and $(1,0)$ is the multiplicative identity.
+**Theorem 5.2.** With these operations $\mathbb{C}$ is a field.
 
-**Theorem 5.2.** With these operations, $\mathbb{C}$ is a field: addition and multiplication are
-commutative and associative, multiplication distributes over addition, every element has an
-additive inverse, and every non-zero element has a multiplicative inverse.
+*Proof.* Every axiom except the existence of multiplicative inverses is checked coordinate by coordinate from the field axioms of $\mathbb{R}$. If $z = (a,b)\ne(0,0)$, put $w := (a,-b)/(a^2+b^2)$. Then $zw = ((a^2+b^2)/(a^2+b^2),\,(-ab+ba)/(a^2+b^2)) = (1,0)$. Uniqueness follows because $w = w(zw') = (wz)w' = w'$. $\blacksquare$
 
-*Proof.* All the axioms except the existence of multiplicative inverses are immediate from the
-corresponding axioms for $\mathbb{R}$, checked coordinate by coordinate. For the inverse, let
-$z = (a,b) \ne (0,0)$ and put
+**Definition 5.3** (Cartesian form). Put $i := (0,1)$, so $i^2 = (-1,0)$. Every element factors uniquely as $(a,b) = a + bi$ with $a,b\in\mathbb{R}$. Define $\operatorname{Re}z := a$ and $\operatorname{Im}z := b$; a number with $b = 0$ is identified with the real number $a$, so $\mathbb{R}\subseteq\mathbb{C}$ is a subfield.
 
-$$
-w := \left(\frac{a}{a^2+b^2},\; \frac{-b}{a^2+b^2}\right).
-$$
+**Definition 5.4** (conjugate and modulus). For $z = a+bi$, set $\bar z := a-bi$ and $\lvert z\rvert := \sqrt{a^2+b^2}$.
 
-Then
+**Definition 5.5** (argument). For $z\ne0$, a real $\theta$ is an **argument** of $z$ if $z = \lvert z\rvert(\cos\theta+i\sin\theta)$. The set of all such $\theta$ is $\arg z$; the **principal argument** $\operatorname{Arg}z$ is the unique element of $\arg z$ in $(-\pi,\pi]$. The argument of $0$ is undefined.
 
-$$
-z \cdot w = \left(\frac{a^2 + b^2}{a^2+b^2},\; \frac{-ab + ba}{a^2+b^2}\right) = (1,0),
-$$
+That every $z\ne0$ has an argument, and that any two differ by a multiple of $2\pi$, is proved in Lemma 7.7.
 
-so $w$ is a multiplicative inverse. It is unique, because if $zw = zw' = 1$ then
-$w = w(zw') = (wz)w' = w'$. $\blacksquare$
+**Definition 5.6** ($n$-th roots of unity). For $n\in\mathbb{N}$, let $\mu_n := \{z : z^n = 1\}$.
 
-**Definition 5.3** (the imaginary unit and Cartesian form). Write $i := (0,1)$. Then
-$i^2 = (0,1)(0,1) = (-1,0)$, so $i$ is a square root of $-1$. Every element factors uniquely as
+**Definition 5.7** (extended complex plane). Adjoin a symbol $\infty\notin\mathbb{C}$ and set $\mathbb{C}_\infty := \mathbb{C}\cup\{\infty\}$. The topology is defined in Section 7.10 by stereographic projection; arithmetic conventions are in Definition 7.34.
 
-$$
-(a,b) = (a,0) + (0,b) = a + b\,i,
-$$
+**Definition 5.8** (Möbius transformation). A **Möbius transformation** is a map $T:\mathbb{C}_\infty\to\mathbb{C}_\infty$,
 
-and we write $z = a + bi$ with $a, b \in \mathbb{R}$. The **real part** and **imaginary part** are
-$\operatorname{Re} z := a$ and $\operatorname{Im} z := b$. A complex number with $b = 0$ is
-identified with the real number $a$; thus $\mathbb{R} \subseteq \mathbb{C}$ as a subfield.
+$$T(z) := \frac{az+b}{cz+d}, \qquad ad-bc \ne 0, \quad a,b,c,d\in\mathbb{C},$$
 
-**Definition 5.4** (conjugate and modulus). For $z = a + bi$ define
+with $T(\infty) := a/c$ if $c\ne0$, $T(\infty):=\infty$ if $c = 0$, and $T(-d/c):=\infty$ if $c\ne0$. The number $ad-bc$ is the **determinant**.
 
-$$
-\bar z := a - bi, \qquad \lvert z\rvert := \sqrt{a^2 + b^2}.
-$$
+**Definition 5.9** (generalized circle). A **generalized circle** in $\mathbb{C}_\infty$ is a non-empty set of the form $\{z : A\lvert z\rvert^2+Bz+\bar B\bar z+C = 0\}$, with $A,C\in\mathbb{R}$, $B\in\mathbb{C}$, not all coefficients zero, together with $\infty$ when $A = 0$. When $A = 0$ it is a line; when $A\ne0$ it is a circle (possibly a point, by Lemma 7.25).
 
-The non-negative real number $\lvert z\rvert$ is the **modulus** of $z$.
+**Definition 5.10** (cross-ratio). For distinct $z_1,z_2,z_3,z_4\in\mathbb{C}_\infty$,
 
-**Definition 5.5** (argument). Let $z \ne 0$. A real number $\theta$ is an **argument** of $z$ if
+$$(z_1,z_2;z_3,z_4) := \frac{(z_1-z_3)(z_2-z_4)}{(z_1-z_4)(z_2-z_3)},$$
 
-$$
-z = \lvert z\rvert(\cos\theta + i\sin\theta).
-$$
+deleting the two factors containing any $z_j = \infty$; for example $(\infty,z_2;z_3,z_4) = (z_2-z_4)/(z_2-z_3)$.
 
-The set of all arguments of $z$ is denoted $\arg z$. The **principal argument** $\operatorname{Arg} z$
-is the unique argument in the interval $(-\pi,\pi]$. The argument of $0$ is undefined.
+**Definition 5.11** (stereographic projection). Let $S^2 := \{(X,Y,Z)\in\mathbb{R}^3 : X^2+Y^2+Z^2 = 1\}$ and $N := (0,0,1)$. Define $\sigma:S^2\setminus\{N\}\to\mathbb{C}$ by
 
-Definition 5.5 presupposes that every non-zero $z$ has an argument, and that any two arguments
-differ by a multiple of $2\pi$. Both facts are proved in Section 7.3 (Lemma 7.6 and Proposition
-7.7).
-
-**Definition 5.6** ($n$-th roots of unity). For $n \in \mathbb{N}$, the set
-
-$$
-\mu_n := \{z \in \mathbb{C} : z^n = 1\}
-$$
-
-is the set of **$n$-th roots of unity**.
-
-**Definition 5.7** (extended complex plane). Let $\infty$ be a symbol not in $\mathbb{C}$. The
-**extended complex plane** is $\mathbb{C}_\infty := \mathbb{C} \cup \{\infty\}$. The **extended
-real line** is $\mathbb{R}_\infty := \mathbb{R}\cup\{\infty\}$.
-
-The topology on $\mathbb{C}_\infty$ is defined in Section 7.10 by stereographic projection; until
-then $\infty$ is treated formally, with the arithmetic conventions of Definition 7.38.
-
-**Definition 5.8** (Möbius transformation). A **Möbius transformation** (or **fractional linear
-transformation**) is a map $T : \mathbb{C}_\infty \to \mathbb{C}_\infty$ given by
-
-$$
-T(z) := \frac{az + b}{cz + d},
-$$
-
-where $a,b,c,d \in \mathbb{C}$ and $ad - bc \ne 0$, with the conventions
-$T(\infty) = a/c$ if $c \ne 0$ and $T(\infty) = \infty$ if $c = 0$, and
-$T(-d/c) = \infty$ when $c \ne 0$. The number $ad - bc$ is the **determinant** of $T$.
-
-**Definition 5.9** (generalized circle). A **generalized circle** in $\mathbb{C}_\infty$ is a subset
-of the form
-
-$$
-\{z \in \mathbb{C} : A\lvert z\rvert^2 + Bz + \bar B\bar z + C = 0\} \cup \{\text{possibly } \infty\},
-$$
-
-where $A, C \in \mathbb{R}$, $B \in \mathbb{C}$, $(A,B,C) \ne (0,0,0)$, and the set is non-empty.
-When $A = 0$ the set is a straight line (together with $\infty$); when $A \ne 0$ it is a circle
-(together with $\infty$ only if the circle degenerates — see Lemma 7.27).
-
-**Definition 5.10** (cross-ratio). For distinct $z_1,z_2,z_3,z_4 \in \mathbb{C}_\infty$, the
-**cross-ratio** is
-
-$$
-(z_1,z_2;z_3,z_4) := \frac{(z_1-z_3)(z_2-z_4)}{(z_1-z_4)(z_2-z_3)},
-$$
-
-with the conventions obtained by cancelling factors involving $\infty$: if some $z_j = \infty$,
-delete the two factors containing it. For example
-$(\infty,z_2;z_3,z_4) = (z_2-z_4)/(z_2-z_3)$.
-
-**Definition 5.11** (stereographic projection). Let
-$S^2 = \{(X,Y,Z) \in \mathbb{R}^3 : X^2+Y^2+Z^2 = 1\}$ be the unit sphere and $N := (0,0,1)$ its
-north pole. The **stereographic projection** $\sigma : S^2 \setminus \{N\} \to \mathbb{C}$ is
-
-$$
-\sigma(X,Y,Z) := \frac{X}{1-Z} + i\,\frac{Y}{1-Z}.
-$$
-
-Its inverse is computed in Proposition 7.43.
+$$\sigma(X,Y,Z) := \frac{X}{1-Z} + i\,\frac{Y}{1-Z}.$$
 
 ## 6. Mathematical Notation
 
 | Symbol | Read as | Meaning |
 |---|---|---|
-| $\mathbb{C}$ | the complex numbers | $\{a+bi : a,b \in \mathbb{R}\}$ with the field structure of Definition 5.1 |
-| $\mathbb{C}_\infty$ | the extended complex plane | $\mathbb{C} \cup \{\infty\}$, topologised as the Riemann sphere |
-| $i$ | i | the element $(0,1)$, with $i^2 = -1$ |
-| $\operatorname{Re} z$, $\operatorname{Im} z$ | real part, imaginary part | the coordinates $a$, $b$ in $z = a+bi$ |
-| $\bar z$ | z bar, the conjugate | $a - bi$ |
-| $\lvert z\rvert$ | modulus of $z$ | $\sqrt{a^2+b^2}$, the distance from $z$ to $0$ |
-| $\arg z$ | argument of $z$ | the *set* of all $\theta$ with $z = \lvert z\rvert(\cos\theta + i\sin\theta)$ |
-| $\operatorname{Arg} z$ | principal argument | the element of $\arg z$ in $(-\pi,\pi]$ |
-| $e^{i\theta}$ | e to the i theta | shorthand for $\cos\theta + i\sin\theta$ (justified in Section 7.4) |
-| $\mu_n$ | the n-th roots of unity | $\{z : z^n = 1\}$ |
-| $z_1 \equiv z_2 \pmod{2\pi}$ | congruent modulo $2\pi$ | $z_1 - z_2 \in 2\pi\mathbb{Z}$, used for arguments |
-| $(z_1,z_2;z_3,z_4)$ | cross-ratio of the four points | the quotient of Definition 5.10 |
-| $S^2$ | the two-sphere | $\{(X,Y,Z) : X^2+Y^2+Z^2=1\}$ |
-| $\sigma$ | sigma | stereographic projection from $S^2 \setminus \{N\}$ to $\mathbb{C}$ |
-| $T(z) = \frac{az+b}{cz+d}$ | Möbius map | a fractional linear transformation with $ad-bc \ne 0$ |
-| $\operatorname{GL}_2(\mathbb{C})$ | general linear group | invertible $2\times2$ complex matrices |
-| $\operatorname{PGL}_2(\mathbb{C})$ | projective general linear group | $\operatorname{GL}_2(\mathbb{C})$ modulo non-zero scalar matrices |
-| $\lvert z - w\rvert$ | distance from $z$ to $w$ | the Euclidean distance between the corresponding points |
-| $\operatorname{Re}(z) = u$, $\operatorname{Im}(z) = v$ | u and v | used when $f = u+iv$ is studied in [Analytic Functions](../02-analytic-functions/README.md) |
+| $\mathbb{C}$, $\mathbb{C}_\infty$ | the complex numbers; the extended plane | $\{a+bi\}$; $\mathbb{C}\cup\{\infty\}$ |
+| $i$ | i | $(0,1)$, with $i^2 = -1$ |
+| $\operatorname{Re}z$, $\operatorname{Im}z$ | real part, imaginary part | the coordinates $a$, $b$ in $z = a+bi$ |
+| $\bar z$ | z bar, conjugate | $a-bi$ |
+| $\lvert z\rvert$ | modulus | $\sqrt{a^2+b^2}$, the distance to $0$ |
+| $\arg z$, $\operatorname{Arg}z$ | argument, principal argument | the set $\theta+2\pi\mathbb{Z}$; its element in $(-\pi,\pi]$ |
+| $e^{i\theta}$ | e to the i theta | shorthand for $\cos\theta+i\sin\theta$, justified in Proposition 7.9 |
+| $\mu_n$ | the $n$-th roots of unity | $\{z : z^n = 1\}$ |
+| $\theta \equiv \varphi \pmod{2\pi}$ | congruent modulo $2\pi$ | $\theta-\varphi\in2\pi\mathbb{Z}$ |
+| $(z_1,z_2;z_3,z_4)$ | cross-ratio | the quotient of Definition 5.10 |
+| $T(z) = \frac{az+b}{cz+d}$ | Möbius map | a fractional linear transformation |
+| $\operatorname{GL}_2(\mathbb{C})$, $\operatorname{PGL}_2(\mathbb{C})$ | general and projective general linear groups | invertible matrices; matrices modulo scalar multiples |
+| $S^2$, $N$, $\sigma$ | the sphere, north pole, stereographic projection | Definition 5.11 |
+| $\lvert z-w\rvert$ | distance from $z$ to $w$ | Euclidean distance of the corresponding points |
 
-Two conventions are worth stating aloud. First, "$z = re^{i\theta}$" is read "z equals r e to the
-i theta" and is **not** a new operation: it abbreviates
-$r(\cos\theta + i\sin\theta)$, and Section 7.4 justifies the notation by proving that the
-exponential law holds. Second, whenever a statement involves $\arg z$, it is a statement about a
-set, or about a value determined only up to a multiple of $2\pi$; "$\arg z = \pi/4$" is shorthand
-for "one argument is $\pi/4$", never for an equality of sets.
+Two conventions, read aloud. "$z = re^{i\theta}$" is read "z equals r e to the i theta" and **is not a new operation**: it abbreviates $r(\cos\theta+i\sin\theta)$, and Proposition 7.7 justifies it by proving the exponential law. And a statement about $\arg z$ is a statement about a set, or about a value determined only modulo $2\pi$; "$\arg z = \pi/4$" means that one argument equals $\pi/4$, never that the sets are equal.
 
 ## 7. Core Concepts
 
 ### 7.1 Arithmetic and Conjugation, Reviewed
 
-Write $z = a + bi$ and $w = c + di$ with $a,b,c,d \in \mathbb{R}$. Addition is coordinatewise,
+Write $z = a+bi$ and $w = c+di$ with $a,b,c,d\in\mathbb{R}$. Addition is coordinatewise, $z+w = (a+c)+(b+d)i$, which is the parallelogram rule for vectors. Multiplication is
 
-$$
-z + w = (a+c) + (b+d)i,
-$$
+$$zw = (ac-bd)+(ad+bc)i,$$
 
-which is exactly the parallelogram rule for vectors: the point $z+w$ is the fourth vertex of the
-parallelogram with vertices $0$, $z$, $w$. Multiplication is
+obtained by expanding and replacing $i^2$ by $-1$. Subtraction is addition of $-w$, and division is multiplication by $w^{-1}$, computed by rationalising.
 
-$$
-zw = (ac - bd) + (ad + bc)i,
-$$
+**Proposition 7.2** (conjugation). For all $z,w\in\mathbb{C}$: (i) $\overline{z+w} = \bar z+\bar w$; (ii) $\overline{zw} = \bar z\,\bar w$; (iii) $\overline{\bar z} = z$; (iv) $z+\bar z = 2\operatorname{Re}z$ and $z-\bar z = 2i\operatorname{Im}z$; (v) $z\in\mathbb{R}$ if and only if $z = \bar z$.
 
-obtained by expanding and replacing $i^2$ by $-1$. Subtraction is addition of $-w$, and division is
-multiplication by $w^{-1}$, computed by rationalising.
+*Proof.* Write $z = a+bi$, $w = c+di$. (i) is immediate. For (ii), $zw = (ac-bd)+(ad+bc)i$, so $\overline{zw} = (ac-bd)-(ad+bc)i$, while $\bar z\bar w = (a-bi)(c-di) = (ac-bd)+(-ad-bc)i$. Equal. (iii) is immediate from the definition; (iv) is $z+\bar z = 2a$ and $z-\bar z = 2bi$; (v) follows from $z = \bar z \iff 2bi = 0$. $\blacksquare$
 
-The following proposition collects the algebraic properties of conjugation. They are proved by
-writing everything in coordinates; no geometry is involved, and the proofs are short enough to be
-worth reading once, because every later argument uses them without comment.
+**Proposition 7.3** (modulus and inverse). For all $z,w\in\mathbb{C}$: (i) $z\bar z = \lvert z\rvert^2$; (ii) $\lvert\bar z\rvert = \lvert z\rvert$, and $\lvert z\rvert = 0$ only for $z = 0$; (iii) if $z\ne0$ then $z^{-1} = \bar z/\lvert z\rvert^2$; (iv) $\lvert\operatorname{Re}z\rvert\le\lvert z\rvert$ and $\lvert\operatorname{Im}z\rvert\le\lvert z\rvert$.
 
-**Proposition 7.1** (conjugation is a field automorphism of order two). For all
-$z, w \in \mathbb{C}$:
+*Proof.* (i) $(a+bi)(a-bi) = a^2+b^2$. (ii) Immediate from the definition. (iii) $z\cdot\bar z/\lvert z\rvert^2 = 1$, and inverses are unique. (iv) $a^2\le a^2+b^2$, and similarly for $b$. $\blacksquare$
 
-1. $\overline{z + w} = \bar z + \bar w$;
-2. $\overline{z\,w} = \bar z\,\bar w$;
-3. $\overline{\bar z} = z$;
-4. $z + \bar z = 2\operatorname{Re} z$ and $z - \bar z = 2i\operatorname{Im} z$;
-5. $z \in \mathbb{R}$ if and only if $z = \bar z$.
+**Example 7.4** (a quotient with a check). Compute $(3-2i)/(1+4i)$:
 
-*Proof.* Write $z = a+bi$ and $w = c+di$.
+$$\frac{3-2i}{1+4i} = \frac{(3-2i)(1-4i)}{(1+4i)(1-4i)} = \frac{3-12i-2i+8i^2}{17} = \frac{-5-14i}{17} = -\frac{5}{17}-\frac{14}{17}i.$$
 
-1. $\overline{z+w} = \overline{(a+c) + (b+d)i} = (a+c) - (b+d)i = (a - bi) + (c - di) = \bar z + \bar w$.
-2. From the multiplication formula, $zw = (ac-bd) + (ad+bc)i$, so
-   $\overline{zw} = (ac-bd) - (ad+bc)i$. On the other hand
-   $\bar z\bar w = (a-bi)(c-di) = (ac - (-b)(-d)) + (-ad - bc)i = (ac-bd) - (ad+bc)i$. Equal.
-3. Immediate from the definition.
-4. $z + \bar z = (a+bi) + (a-bi) = 2a$ and $z - \bar z = 2bi$.
-5. If $z = a \in \mathbb{R}$ then $b = 0$ and $\bar z = a = z$. Conversely $z = \bar z$ gives
-   $a + bi = a - bi$, hence $2bi = 0$ and $b = 0$. $\blacksquare$
-
-**Proposition 7.2** (modulus and inverse). For all $z, w \in \mathbb{C}$:
-
-1. $z\bar z = \lvert z\rvert^2$;
-2. $\lvert \bar z\rvert = \lvert z\rvert$ and $\lvert z\rvert = 0$ if and only if $z = 0$;
-3. if $z \ne 0$ then $z^{-1} = \bar z/\lvert z\rvert^2$;
-4. $\lvert \operatorname{Re} z\rvert \le \lvert z\rvert$ and $\lvert \operatorname{Im} z\rvert \le \lvert z\rvert$.
-
-*Proof.* 1. $(a+bi)(a-bi) = a^2 - (bi)^2 = a^2 + b^2 = \lvert z\rvert^2$.
-2. Both statements are immediate from $\lvert z\rvert = \sqrt{a^2+b^2}$ and $\lvert\bar z\rvert =
-   \sqrt{a^2 + (-b)^2}$.
-3. By 1, $z \cdot \bar z/\lvert z\rvert^2 = \lvert z\rvert^2/\lvert z\rvert^2 = 1$, and inverses are
-   unique.
-4. $a^2 \le a^2 + b^2$ gives $\lvert a\rvert \le \sqrt{a^2+b^2}$, and similarly for $b$.
-   $\blacksquare$
-
-**Example 7.3** (a quotient, with a check). Compute $(3 - 2i)/(1 + 4i)$. Multiply numerator and
-denominator by $1 - 4i$:
-
-$$
-\frac{3-2i}{1+4i} = \frac{(3-2i)(1-4i)}{(1+4i)(1-4i)} = \frac{3 - 12i - 2i + 8i^2}{1 + 16}
-= \frac{-5 - 14i}{17} = -\frac{5}{17} - \frac{14}{17}i.
-$$
-
-The check exploits Proposition 7.2: the modulus of the answer must be
-$\lvert 3-2i\rvert/\lvert 1+4i\rvert = \sqrt{13}/\sqrt{17}$. And indeed
-$\lvert -5 - 14i\rvert/17 = \sqrt{25+196}/17 = \sqrt{221}/17 = \sqrt{13\cdot 17}/17 = \sqrt{13}/\sqrt{17}$.
+The check uses Proposition 7.3: $\lvert -5-14i\rvert/17 = \sqrt{221}/17 = \sqrt{13\cdot17}/17 = \sqrt{13}/\sqrt{17}$, which equals $\lvert 3-2i\rvert/\lvert 1+4i\rvert$. Correct.
 
 ### 7.2 Modulus and the Triangle Inequality
 
-The modulus is the distance from $z$ to the origin, and $\lvert z - w\rvert$ is the distance
-between the points $z$ and $w$. This is not an analogy: the map $(a,b) \mapsto a+bi$ is an
-isometry from the Euclidean plane $\mathbb{R}^2$ with its usual distance onto $\mathbb{C}$ with
-distance $d(z,w) = \lvert z-w\rvert$, because
-$\lvert (a+bi) - (c+di)\rvert = \sqrt{(a-c)^2 + (b-d)^2}$.
+The modulus is the distance to the origin, and $\lvert z-w\rvert$ is the distance between points: indeed $\lvert(a+bi)-(c+di)\rvert = \sqrt{(a-c)^2+(b-d)^2}$. Thus $\mathbb{C}$ with this distance is the Euclidean plane.
 
-**Proposition 7.4** (triangle inequality). For all $z, w \in \mathbb{C}$,
+**Proposition 7.5** (triangle inequality). For all $z,w\in\mathbb{C}$,
 
-$$
-\lvert z + w\rvert \le \lvert z\rvert + \lvert w\rvert.
-$$
+$$\lvert z+w\rvert \le \lvert z\rvert+\lvert w\rvert.$$
 
-If $w \ne 0$, equality holds if and only if $z = \lambda w$ for some real $\lambda \ge 0$. If
-$w = 0$, equality holds for every $z$.
+If $w\ne0$, equality holds exactly when $z = \lambda w$ for some real $\lambda\ge0$. If $w = 0$, equality holds always.
 
-*Proof.* Expand the square of the left-hand side:
+*Proof.* Expand:
 
-$$
-\lvert z+w\rvert^2 = (z+w)(\overline{z+w}) = (z+w)(\bar z + \bar w)
-= z\bar z + z\bar w + w\bar z + w\bar w
-= \lvert z\rvert^2 + \lvert w\rvert^2 + 2\operatorname{Re}(z\bar w),
-$$
+$$\lvert z+w\rvert^2 = (z+w)(\bar z+\bar w) = \lvert z\rvert^2+\lvert w\rvert^2+2\operatorname{Re}(z\bar w) \le \lvert z\rvert^2+\lvert w\rvert^2+2\lvert z\rvert\lvert w\rvert = (\lvert z\rvert+\lvert w\rvert)^2,$$
 
-where the last step uses $w\bar z = \overline{z\bar w}$ and Proposition 7.1(4). Since
-$\operatorname{Re}\zeta \le \lvert \zeta\rvert$ for every $\zeta$ (Proposition 7.2(4)),
+because $\operatorname{Re}\zeta\le\lvert\zeta\rvert$ (Proposition 7.3). Taking square roots gives the inequality. Equality forces $\operatorname{Re}(z\bar w) = \lvert z\bar w\rvert$, which for a complex number $\zeta$ means $\operatorname{Im}\zeta = 0$ and $\operatorname{Re}\zeta\ge0$: writing $\zeta = p+qi$, the equation $p = \sqrt{p^2+q^2}$ gives $q = 0$ and $p\ge0$. So $z\bar w = \mu\ge0$ real. If $w\ne0$, multiply by $w/\lvert w\rvert^2$ to get $z = \lambda w$ with $\lambda = \mu/\lvert w\rvert^2\ge0$. Conversely $z = \lambda w$ with $\lambda\ge0$ gives equality immediately. $\blacksquare$
 
-$$
-\lvert z+w\rvert^2 \le \lvert z\rvert^2 + \lvert w\rvert^2 + 2\lvert z\bar w\rvert
-= \lvert z\rvert^2 + 2\lvert z\rvert\lvert w\rvert + \lvert w\rvert^2 = (\lvert z\rvert + \lvert w\rvert)^2.
-$$
+Geometrically: a straight segment is the shortest path, and equality means the two displacements point the same way.
 
-Taking non-negative square roots gives the inequality.
+**Proposition 7.6** (reverse triangle inequality). For all $z,w$, $\bigl\lvert\lvert z\rvert-\lvert w\rvert\bigr\rvert\le\lvert z-w\rvert$.
 
-For the equality case, all inequalities above must be equalities, so
-$\operatorname{Re}(z\bar w) = \lvert z\bar w\rvert$. For a complex number $\zeta$, the equality
-$\operatorname{Re}\zeta = \lvert\zeta\rvert$ forces $\operatorname{Im}\zeta = 0$ and
-$\operatorname{Re}\zeta \ge 0$: writing $\zeta = p + qi$ gives $p = \sqrt{p^2+q^2}$, hence
-$q = 0$ and $p \ge 0$. Apply this to $\zeta = z\bar w$. If $w \ne 0$, then $z\bar w = \mu$ with
-$\mu \ge 0$ real, and multiplying by $w/\lvert w\rvert^2$ gives
-$z = \mu w/\lvert w\rvert^2 = \lambda w$ with $\lambda = \mu/\lvert w\rvert^2 \ge 0$. Conversely,
-if $z = \lambda w$ with $\lambda \ge 0$, then
-$\lvert z+w\rvert = (\lambda+1)\lvert w\rvert = \lvert z\rvert + \lvert w\rvert$. If $w = 0$, both
-sides equal $\lvert z\rvert$. $\blacksquare$
+*Proof.* Apply Proposition 7.5 to $z = (z-w)+w$: $\lvert z\rvert\le\lvert z-w\rvert+\lvert w\rvert$, so $\lvert z\rvert-\lvert w\rvert\le\lvert z-w\rvert$. Interchanging $z$ and $w$ gives the opposite inequality. $\blacksquare$
 
-The geometric content is that a straight line is the shortest path between two points: the
-displacement $z+w$ is no longer than going from $0$ to $w$ and then from $w$ to $z+w$. Equality
-means the two displacements point the same way.
+**Proposition 7.7** (parallelogram law). For all $z,w$,
 
-**Proposition 7.5** (reverse triangle inequality). For all $z, w \in \mathbb{C}$,
+$$\lvert z+w\rvert^2+\lvert z-w\rvert^2 = 2\lvert z\rvert^2+2\lvert w\rvert^2.$$
 
-$$
-\bigl\lvert \lvert z\rvert - \lvert w\rvert \bigr\rvert \le \lvert z - w\rvert.
-$$
+*Proof.* Expanding as above, $\lvert z+w\rvert^2 = \lvert z\rvert^2+\lvert w\rvert^2+2\operatorname{Re}(z\bar w)$ and $\lvert z-w\rvert^2 = \lvert z\rvert^2+\lvert w\rvert^2-2\operatorname{Re}(z\bar w)$; adding gives the identity. $\blacksquare$
 
-*Proof.* Apply Proposition 7.4 to $z = (z-w) + w$:
-
-$$
-\lvert z\rvert \le \lvert z-w\rvert + \lvert w\rvert \quad\Longrightarrow\quad \lvert z\rvert - \lvert w\rvert \le \lvert z-w\rvert.
-$$
-
-Interchanging $z$ and $w$ gives $\lvert w\rvert - \lvert z\rvert \le \lvert w-z\rvert = \lvert z-w\rvert$.
-A real number whose absolute value is at most $\lvert z-w\rvert$ is at most $\lvert z-w\rvert$ in
-absolute value, which is the claim. $\blacksquare$
-
-**Proposition 7.6** (parallelogram law). For all $z, w \in \mathbb{C}$,
-
-$$
-\lvert z+w\rvert^2 + \lvert z-w\rvert^2 = 2\lvert z\rvert^2 + 2\lvert w\rvert^2.
-$$
-
-*Proof.* Expanding as in Proposition 7.4,
-
-$$
-\lvert z+w\rvert^2 = \lvert z\rvert^2 + \lvert w\rvert^2 + 2\operatorname{Re}(z\bar w), \qquad
-\lvert z-w\rvert^2 = \lvert z\rvert^2 + \lvert w\rvert^2 - 2\operatorname{Re}(z\bar w).
-$$
-
-Adding gives the identity. $\blacksquare$
-
-The name comes from the parallelogram with sides $z$ and $w$: the squared lengths of its two
-diagonals, $\lvert z+w\rvert^2$ and $\lvert z-w\rvert^2$, add up to twice the sum of the squared
-side lengths. The identity characterises Euclidean norms among norms, which is why $\mathbb{C}$
-is a two-dimensional real inner-product space — a fact used in
-[Inner Product Spaces](../../08-linear-algebra/08-inner-product-spaces/README.md).
+The identity says that the squared diagonals of the parallelogram with sides $z$ and $w$ sum to twice the squared sides. It characterises Euclidean norms among norms, which is why $\mathbb{C}$ is a two-dimensional real inner-product space (see [Inner Product Spaces](../../08-linear-algebra/08-inner-product-spaces/README.md)).
 
 ### 7.3 Argument, Polar Form and Exponential Form
 
-A non-zero point of the plane is determined by its distance $r$ from the origin and its direction
-$\theta$ from the positive real axis. Converting that statement into algebra requires knowing that
-every point of the unit circle is $(\cos\theta, \sin\theta)$ for some $\theta$, and that $\theta$
-is unique up to a full turn.
+A non-zero point is determined by its distance $r$ and direction $\theta$. Converting that into algebra requires the parametrisation of the unit circle and its uniqueness up to a full turn.
 
-**Lemma 7.7** (existence and uniqueness of the argument). Let $z \in \mathbb{C}$, $z \ne 0$, and
-$r := \lvert z\rvert$. There exists $\theta \in \mathbb{R}$ with
-$z = r(\cos\theta + i\sin\theta)$. If $\theta, \varphi$ are two such numbers, then
-$\theta - \varphi \in 2\pi\mathbb{Z}$.
+**Lemma 7.7** (existence and uniqueness of the argument). Let $z\ne0$ and $r = \lvert z\rvert$. There is $\theta\in\mathbb{R}$ with $z = r(\cos\theta+i\sin\theta)$; if $\theta,\varphi$ both work, then $\theta-\varphi\in2\pi\mathbb{Z}$.
 
-*Proof.* Write $z = a + bi$, so $a^2 + b^2 = r^2$ and therefore $(a/r)^2 + (b/r)^2 = 1$. The point
-$(a/r, b/r)$ lies on the unit circle, and the parametrisation of the unit circle established in
-[The Unit Circle](../../05-trigonometry/02-unit-circle/README.md) states that every point of the
-unit circle is $(\cos\theta, \sin\theta)$ for some real $\theta$. Hence
-$a/r = \cos\theta$ and $b/r = \sin\theta$, which is the existence claim.
+*Proof.* Write $z = a+bi$, so $(a/r)^2+(b/r)^2 = 1$. The point $(a/r,b/r)$ lies on the unit circle, and the parametrisation established in [The Unit Circle](../../05-trigonometry/02-unit-circle/README.md) gives $\theta$ with $a/r = \cos\theta$, $b/r = \sin\theta$. For uniqueness, $\cos(\theta-\varphi) = \cos\theta\cos\varphi+\sin\theta\sin\varphi = \cos^2\theta+\sin^2\theta = 1$, and $\cos x = 1$ only for $x\in2\pi\mathbb{Z}$; hence $\theta-\varphi\in2\pi\mathbb{Z}$. $\blacksquare$
 
-For uniqueness, suppose $\cos\theta = \cos\varphi$ and $\sin\theta = \sin\varphi$. Then
+Thus $\arg z = \{\operatorname{Arg}z+2\pi k : k\in\mathbb{Z}\}$, a coset of $2\pi\mathbb{Z}$. All statements about arguments are statements modulo $2\pi$, written $\theta\equiv\varphi\pmod{2\pi}$.
 
-$$
-\cos(\theta - \varphi) = \cos\theta\cos\varphi + \sin\theta\sin\varphi = \cos^2\theta + \sin^2\theta = 1.
-$$
+**Definition 7.8** (polar and exponential form). For $z\ne0$ with $r = \lvert z\rvert$ and $\theta\in\arg z$,
 
-The cosine equals $1$ only at integer multiples of $2\pi$ (again a standard fact from the
-trigonometry sequence), so $\theta - \varphi = 2\pi k$ for some $k \in \mathbb{Z}$.
-$\blacksquare$
+$$z = r(\cos\theta+i\sin\theta) =: re^{i\theta}.$$
 
-Lemma 7.7 justifies Definition 5.5: the set $\arg z$ is exactly
-$\{\operatorname{Arg} z + 2\pi k : k \in \mathbb{Z}\}$, a coset of $2\pi\mathbb{Z}$ in
-$\mathbb{R}$. Consequently every statement about arguments is a statement modulo $2\pi$, and the
-notation
+The notation is a definition here; it becomes the genuine exponential at $i\theta$ in [Analytic Functions](../02-analytic-functions/README.md), where Euler's formula proves the two meanings agree.
 
-$$
-\theta \equiv \varphi \pmod{2\pi}
-$$
-
-means $\theta - \varphi \in 2\pi\mathbb{Z}$.
-
-**Definition 7.8** (polar and exponential form). A non-zero complex number $z$ with
-$r = \lvert z\rvert$ and $\theta \in \arg z$ is written
-
-$$
-z = r(\cos\theta + i\sin\theta) =: r\,e^{i\theta}.
-$$
-
-The right-hand side is the **exponential form**. The notation is a definition at this stage; it
-becomes the genuine exponential function evaluated at $i\theta$ in
-[Analytic Functions](../02-analytic-functions/README.md), and Euler's formula proves the two
-meanings agree.
-
-**Proposition 7.9** (moduli multiply, arguments add). Let $z = r e^{i\theta}$ and
-$w = s e^{i\varphi}$ with $r, s > 0$. Then
-
-$$
-zw = rs\, e^{i(\theta+\varphi)}, \qquad \frac{z}{w} = \frac{r}{s}\, e^{i(\theta-\varphi)}.
-$$
-
-Consequently $\lvert zw\rvert = \lvert z\rvert\lvert w\rvert$ and
-$\lvert z/w\rvert = \lvert z\rvert/\lvert w\rvert$, and
-
-$$
-\arg(zw) = \arg z + \arg w \pmod{2\pi}, \qquad \arg(z/w) = \arg z - \arg w \pmod{2\pi}.
-$$
+**Proposition 7.9** (moduli multiply, arguments add). If $z = re^{i\theta}$ and $w = se^{i\varphi}$ with $r,s>0$, then $zw = rse^{i(\theta+\varphi)}$ and $z/w = (r/s)e^{i(\theta-\varphi)}$. Consequently $\lvert zw\rvert = \lvert z\rvert\lvert w\rvert$ and $\arg(zw)\equiv\arg z+\arg w\pmod{2\pi}$.
 
 *Proof.* By the addition formulas,
 
-$$
-\begin{aligned}
-zw &= rs(\cos\theta + i\sin\theta)(\cos\varphi + i\sin\varphi)\\
-&= rs\bigl[(\cos\theta\cos\varphi - \sin\theta\sin\varphi) + i(\sin\theta\cos\varphi + \cos\theta\sin\varphi)\bigr]\\
-&= rs\bigl[\cos(\theta+\varphi) + i\sin(\theta+\varphi)\bigr] = rs\,e^{i(\theta+\varphi)}.
-\end{aligned}
-$$
+$$(\cos\theta+i\sin\theta)(\cos\varphi+i\sin\varphi) = (\cos\theta\cos\varphi-\sin\theta\sin\varphi)+i(\sin\theta\cos\varphi+\cos\theta\sin\varphi) = \cos(\theta+\varphi)+i\sin(\theta+\varphi).$$
 
-Since $rs > 0$, this is a polar representation, so $\lvert zw\rvert = rs$ and
-$\theta+\varphi \in \arg(zw)$. For the quotient, it suffices to prove $w^{-1} = s^{-1}e^{-i\varphi}$
-and multiply. And indeed
+Multiplying by $rs>0$ gives the product formula. For the quotient, $se^{i\varphi}\cdot s^{-1}e^{-i\varphi} = e^{i0} = 1$, so $w^{-1} = s^{-1}e^{-i\varphi}$; multiplying gives the result. $\blacksquare$
 
-$$
-s e^{i\varphi} \cdot s^{-1}e^{-i\varphi} = e^{i(\varphi - \varphi)} = e^{0} = 1,
-$$
+**Proposition 7.10** (geometric meaning of multiplication). For $z = re^{i\theta}\ne0$, the map $M_z(w) := zw$ is the composition of rotation by $\theta$ about $0$ with dilation of ratio $r$ about $0$. It is a bijection with $\lvert zw_1-zw_2\rvert = r\lvert w_1-w_2\rvert$, and its inverse is $M_{1/z}$.
 
-by the product formula just proved; inverses are unique, so $w^{-1} = s^{-1}e^{-i\varphi}$.
-$\blacksquare$
+*Proof.* Proposition 7.9 gives $zw = r\lvert w\rvert e^{i(\theta+\arg w)}$: the modulus of $w$ is multiplied by $r$ and the argument increased by $\theta$. That is exactly "rotate by $\theta$, then dilate by $r$". The distance identity follows from $\lvert z(w_1-w_2)\rvert = \lvert z\rvert\lvert w_1-w_2\rvert$, and $M_z\circ M_{1/z} = M_1 = \mathrm{id}$. $\blacksquare$
 
-**Proposition 7.10** (geometric meaning of multiplication). Let $z = r e^{i\theta} \ne 0$. The map
+Division is the inverse operation: dividing by $w = se^{i\varphi}$ divides the modulus by $s$ and subtracts $\varphi$ from the argument, so it rotates by $-\varphi$ and scales by $1/s$. In particular, multiplication and division by a non-zero complex number are the only orientation-preserving similarities of the plane that fix $0$, and every direct similarity is a composition of such a map with a translation.
 
-$$
-M_z : \mathbb{C} \to \mathbb{C}, \qquad M_z(w) := z w
-$$
+In matrix form, $z = a+bi$ acts as $\begin{pmatrix}a&-b\\ b&a\end{pmatrix}$ on column vectors: multiplication by $z$ is this matrix. Its determinant is $a^2+b^2>0$, so it preserves orientation. Conjugation corresponds to $\begin{pmatrix}a&b\\ b&-a\end{pmatrix}$, of determinant $-(a^2+b^2)<0$: a reflection.
 
-is the composition of the rotation by $\theta$ about $0$ with the dilation of ratio $r$ about $0$.
-It is a bijection, it preserves distances up to the factor $r$,
-$\lvert zw_1 - zw_2\rvert = r\lvert w_1-w_2\rvert$, and it preserves oriented angles. Its inverse
-is $M_{1/z}$.
+**Example 7.11** (multiplication rotates and scales). With $z = 1+i = \sqrt2e^{i\pi/4}$ and $w = 1+i\sqrt3 = 2e^{i\pi/3}$,
 
-*Proof.* Proposition 7.9 gives $zw = r\lvert w\rvert e^{i(\theta + \arg w)}$: the modulus of $w$
-is multiplied by $r$ and its argument is increased by $\theta$. That is precisely "rotate by
-$\theta$, then dilate by $r$". The distance identity follows from
-$\lvert zw_1 - zw_2\rvert = \lvert z(w_1-w_2)\rvert = \lvert z\rvert\lvert w_1-w_2\rvert$.
-Multiplication by $z$ and then by $1/z$ returns $w$, so $M_z$ is invertible with inverse
-$M_{1/z}$. Angle preservation is proved in [Analytic Functions](../02-analytic-functions/README.md)
-as the special case of conformality for $f(z) = z$. $\blacksquare$
+$$zw = 2\sqrt2\,e^{7\pi i/12}.$$
 
-In matrix language, if $z = a+bi$, then multiplication by $z$ acts on the column vector
-$\binom{x}{y}$ as
-
-$$
-\begin{pmatrix} a & -b\\ b & a\end{pmatrix}\binom{x}{y} = \binom{ax - by}{bx + ay},
-$$
-
-which is the standard form of a direct similarity: a $2\times 2$ matrix of the shape
-$\begin{pmatrix} a & -b\\ b & a\end{pmatrix}$ with $(a,b) \ne (0,0)$. Its determinant is
-$a^2+b^2 = \lvert z\rvert^2 > 0$, so it never reverses orientation. The map
-$z \mapsto \bar z$ corresponds instead to $\begin{pmatrix} a & b\\ b & -a\end{pmatrix}$, which has
-determinant $-(a^2+b^2) < 0$: conjugation is a reflection, not a rotation-dilation.
-
-**Example 7.11** (multiplying rotates and scales). Let $z = 1+i = \sqrt2\,e^{i\pi/4}$ and
-$w = 1 + i\sqrt3 = 2e^{i\pi/3}$. Then
-
-$$
-zw = 2\sqrt2\, e^{7\pi i/12}.
-$$
-
-Directly: $(1+i)(1+i\sqrt3) = 1 + i\sqrt3 + i + i^2\sqrt3 = (1-\sqrt3) + i(1+\sqrt3)$, whose modulus
-squared is $(1-\sqrt3)^2 + (1+\sqrt3)^2 = (4 - 2\sqrt3) + (4 + 2\sqrt3) = 8$, so the modulus is
-$2\sqrt2$. The argument is $\pi/4 + \pi/3 = 7\pi/12 \approx 105^\circ$, in the second quadrant,
-consistent with $1-\sqrt3 < 0 < 1+\sqrt3$.
-
-**Example 7.12** (division as inverse rotation). The quotient $(1+i\sqrt3)/(1+i)$ has modulus
-$2/\sqrt2 = \sqrt2$ and argument $\pi/3 - \pi/4 = \pi/12$. Indeed
-$\sqrt2 e^{i\pi/12} = \sqrt2\cos 15^\circ + i\sqrt2\sin 15^\circ$, and using
-$\cos 15^\circ = (\sqrt6+\sqrt2)/4$, $\sin15^\circ = (\sqrt6-\sqrt2)/4$, this equals
-$(\sqrt3+1)/2 + i(\sqrt3-1)/2$. Direct computation gives
-$(1+i\sqrt3)(1-i)/2 = (1 - i + i\sqrt3 + \sqrt3)/2 = (1+\sqrt3)/2 + i(\sqrt3-1)/2$, which agrees.
+Directly, $(1+i)(1+i\sqrt3) = (1-\sqrt3)+i(1+\sqrt3)$, whose modulus squared is $(1-\sqrt3)^2+(1+\sqrt3)^2 = 8$, and whose argument is $\pi/4+\pi/3 = 7\pi/12$, in the second quadrant as the signs require.
 
 ### 7.4 Powers, De Moivre's Theorem and Roots
 
-**Proposition 7.13** (De Moivre). For every $\theta \in \mathbb{R}$ and every $n \in \mathbb{Z}$,
+**Proposition 7.12** (De Moivre). For every $\theta\in\mathbb{R}$ and $n\in\mathbb{Z}$,
 
-$$
-(\cos\theta + i\sin\theta)^n = \cos(n\theta) + i\sin(n\theta).
-$$
+$$(\cos\theta+i\sin\theta)^n = \cos(n\theta)+i\sin(n\theta).$$
 
-*Proof.* For $n = 0$ both sides are $1$. For $n \ge 1$, induct on $n$: the case $n = 1$ is
-trivial, and if the identity holds for $n$ then Proposition 7.9 gives
+*Proof.* For $n = 0$ both sides are $1$. For $n\ge1$ use induction: the case $n = 1$ is trivial, and Proposition 7.9 gives
 
-$$
-(\cos\theta+i\sin\theta)^{n+1} = \bigl(\cos n\theta + i\sin n\theta\bigr)(\cos\theta+i\sin\theta)
-= \cos((n+1)\theta) + i\sin((n+1)\theta).
-$$
+$$(\cos\theta+i\sin\theta)^{n+1} = \bigl(\cos n\theta+i\sin n\theta\bigr)(\cos\theta+i\sin\theta) = \cos((n+1)\theta)+i\sin((n+1)\theta).$$
 
-For $n < 0$, write $m = -n > 0$ and use Proposition 7.9 to compute the inverse of
-$\cos n\theta + i\sin n\theta$: the number $\cos(n\theta) - i\sin(n\theta)$ multiplies it to $1$.
-Hence
+For $n<0$, put $m = -n>0$. The number $\cos(m\theta)-i\sin(m\theta)$ multiplies $\cos(m\theta)+i\sin(m\theta)$ to $1$, so it is the inverse, and $(\cos\theta+i\sin\theta)^n = \cos(m\theta)-i\sin(m\theta) = \cos(n\theta)+i\sin(n\theta)$. $\blacksquare$
 
-$$
-(\cos\theta+i\sin\theta)^{n} = \frac{1}{(\cos\theta+i\sin\theta)^{m}}
-= \cos(m\theta) - i\sin(m\theta) = \cos(-m\theta) + i\sin(-m\theta),
-$$
+For $z = re^{i\theta}$ this reads $z^n = r^ne^{in\theta}$: powers raise the modulus to the power and multiply the angle.
 
-which is the claim since $-m = n$. $\blacksquare$
+**Proposition 7.13** ($n$-th roots). Let $w = \rho e^{i\varphi}$ with $\rho>0$ and $n\in\mathbb{N}$. The solutions of $z^n = w$ are exactly
 
-De Moivre's theorem converts the computation of powers into two real operations: raise the
-modulus to the power and multiply the angle by the power. For $z = re^{i\theta}$ it reads
-$z^n = r^n e^{in\theta}$.
+$$z_k = \rho^{1/n}\exp\!\left(i\,\frac{\varphi+2\pi k}{n}\right), \qquad k = 0,1,\dots,n-1,$$
 
-**Proposition 7.14** ($n$-th roots). Let $w = \rho e^{i\varphi}$ with $\rho > 0$ and
-$n \in \mathbb{N}$. The equation $z^n = w$ has exactly $n$ solutions in $\mathbb{C}$, namely
+and they are distinct.
 
-$$
-z_k = \rho^{1/n}\exp\!\left(i\,\frac{\varphi + 2\pi k}{n}\right), \qquad k = 0, 1, \dots, n-1,
-$$
+*Proof.* Write $z = re^{i\theta}$ with $r>0$. Then $z^n = r^ne^{in\theta}$. If $z^n = \rho e^{i\varphi}$, taking moduli gives $r^n = \rho$, hence $r = \rho^{1/n}$; dividing gives $e^{i(n\theta-\varphi)} = 1$, so by Lemma 7.7 $n\theta-\varphi = 2\pi k$ for some $k\in\mathbb{Z}$, i.e. $\theta = (\varphi+2\pi k)/n$. Conversely each $z_k$ satisfies $z_k^n = \rho e^{i(\varphi+2\pi k)} = \rho e^{i\varphi}$, by De Moivre and periodicity. If $0\le k,l\le n-1$ and $z_k = z_l$, then $(k-l)/n\in\mathbb{Z}$; but $\lvert k-l\rvert\le n-1$, so $k = l$. Every integer $k$ is congruent modulo $n$ to one of $0,\dots,n-1$, and adding $n$ to $k$ adds $2\pi$ to the angle, so there are no others. $\blacksquare$
 
-where $\rho^{1/n}$ denotes the positive real $n$-th root of $\rho$.
+**Corollary 7.14** (geometry of the roots). The $n$ solutions of $z^n = w$ are the vertices of a regular $n$-gon centred at $0$, on the circle of radius $\rho^{1/n}$, with consecutive vertices separated by the angle $2\pi/n$.
 
-*Proof.* Suppose $z = re^{i\theta}$ with $r > 0$. By De Moivre, $z^n = r^n e^{in\theta}$. If
-$z^n = w = \rho e^{i\varphi}$, then $r^n e^{in\theta} = \rho e^{i\varphi}$. Taking moduli gives
-$r^n = \rho$, hence $r = \rho^{1/n}$ because both are positive. Dividing by $r^n = \rho$ gives
-$e^{in\theta} = e^{i\varphi}$, that is $e^{i(n\theta - \varphi)} = 1$, so by Lemma 7.7
-$n\theta - \varphi = 2\pi k$ for some $k \in \mathbb{Z}$, i.e.
-$\theta = (\varphi + 2\pi k)/n$.
+*Proof.* All roots have modulus $\rho^{1/n}$. Moreover $z_{k+1}/z_k = e^{2\pi i/n}$, so by Proposition 7.10 each vertex is obtained from the previous one by the same rotation. $\blacksquare$
 
-Conversely, every $z_k$ of the stated form satisfies
-$z_k^n = \rho\, e^{i(\varphi + 2\pi k)} = \rho e^{i\varphi} = w$, using De Moivre and the
-periodicity of $e^{i\cdot}$.
-
-It remains to check that the list contains each solution once. If $0 \le k, l \le n-1$ and
-$z_k = z_l$, then the moduli agree, and Lemma 7.7 gives
-$(\varphi + 2\pi k)/n - (\varphi + 2\pi l)/n = 2\pi m$ for some integer $m$; that is,
-$(k-l)/n = m$, so $n \mid (k-l)$. But $\lvert k-l\rvert \le n-1$, so $k = l$. Every integer $k$
-is congruent modulo $n$ to exactly one of $0, \dots, n-1$, and replacing $k$ by $k + n$ adds
-$2\pi$ to the angle, so no further solutions exist. $\blacksquare$
-
-**Corollary 7.15** (geometry of the $n$-th roots). The $n$ solutions of $z^n = w$ are the vertices
-of a regular $n$-gon centred at $0$: they lie on the circle of radius $\rho^{1/n}$, and consecutive
-vertices are separated by the angle $2\pi/n$.
-
-*Proof.* Each $z_k$ has modulus $\rho^{1/n}$, so all lie on that circle. Moreover
-$z_{k+1}/z_k = e^{2\pi i/n}$, which has modulus $1$ and argument $2\pi/n$; by Proposition 7.10
-the map $w \mapsto (z_{k+1}/z_k)w$ is the rotation by $2\pi/n$ about $0$. Hence each vertex is
-obtained from the previous one by the same rotation, which is the definition of a regular
-$n$-gon. $\blacksquare$
-
-**Example 7.16** (the cube roots of $8i$). Here $\rho = 8$ and $\varphi = \pi/2$, so
-$\rho^{1/3} = 2$ and
-
-$$
-z_k = 2\exp\!\left(i\,\frac{\pi/2 + 2\pi k}{3}\right), \qquad k = 0,1,2.
-$$
-
-Thus $z_0 = 2e^{i\pi/6} = \sqrt3 + i$, $z_1 = 2e^{5\pi i/6} = -\sqrt3 + i$ and
-$z_2 = 2e^{3\pi i/2} = -2i$. Check: $(\sqrt3+i)^2 = 3 + 2\sqrt3\,i - 1 = 2 + 2\sqrt3\,i$, and
-multiplying by $\sqrt3 + i$ gives
-$2\sqrt3 + 2i + 6i + 2\sqrt3 i^2 = 2\sqrt3 - 2\sqrt3 + 8i = 8i$. Also
-$z_0 + z_1 + z_2 = (\sqrt3 - \sqrt3) + (1 + 1 - 2)i = 0$, as Proposition 7.18 will predict for
-any three roots of the same number.
+**Example 7.15** (cube roots of $8i$). Here $\rho = 8$, $\varphi = \pi/2$, so $z_k = 2e^{i(\pi/2+2\pi k)/3}$: $z_0 = 2e^{i\pi/6} = \sqrt3+i$, $z_1 = 2e^{5\pi i/6} = -\sqrt3+i$, $z_2 = 2e^{3\pi i/2} = -2i$. Check $(\sqrt3+i)^2 = 2+2\sqrt3\,i$, and multiplying by $\sqrt3+i$ gives $2\sqrt3+2i+6i+2\sqrt3i^2 = 8i$. Their sum is $0$.
 
 ### 7.5 Roots of Unity and Their Geometry
 
-The case $w = 1$ of Proposition 7.14 deserves a name and a section of its own, because $\mu_n$
-carries the combinatorial structure of the cyclic group of order $n$ and the geometry of the
-regular $n$-gon.
+**Proposition 7.16** (structure of $\mu_n$). Let $n\ge1$ and $\omega := e^{2\pi i/n}$. Then $\mu_n = \{1,\omega,\dots,\omega^{n-1}\}$, these $n$ numbers are distinct, and $\mu_n$ is a cyclic subgroup of $\mathbb{C}^\times$ of order $n$ generated by $\omega$.
 
-**Proposition 7.17** (structure of $\mu_n$). Let $n \in \mathbb{N}$ and $\omega := e^{2\pi i/n}$.
-Then
+*Proof.* Apply Proposition 7.13 with $w = 1$ and $\rho = 1$: the solutions are $\omega^k$, $k = 0,\dots,n-1$, and they are distinct. If $z,w\in\mu_n$ then $(zw)^n = z^nw^n = 1$ and $(z^{-1})^n = (z^n)^{-1} = 1$, so $\mu_n$ is a subgroup; since it has $n$ elements and $\omega$ generates it, it is cyclic of order $n$. $\blacksquare$
 
-$$
-\mu_n = \{1, \omega, \omega^2, \dots, \omega^{n-1}\},
-$$
+**Proposition 7.17** (sums of roots of unity). For $n\ge2$ and $\omega = e^{2\pi i/n}$, $\sum_{k=0}^{n-1}\omega^k = 0$. More generally, for any integer $j$, $\sum_{k=0}^{n-1}\omega^{jk} = 0$ if $n\nmid j$, and $=n$ if $n\mid j$.
 
-these $n$ numbers are distinct, $\mu_n$ is a subgroup of the multiplicative group
-$\mathbb{C}^\times$, and it is cyclic of order $n$ generated by $\omega$. Every generator of
-$\mu_n$ is of the form $\omega^j$ with $\gcd(j,n) = 1$.
+*Proof.* Since $\omega^n = 1$ and $\omega\ne1$, the geometric series gives $\sum_{k=0}^{n-1}\omega^k = (\omega^n-1)/(\omega-1) = 0$. For general $j$ put $\eta := \omega^j$; then $\eta^n = 1$, and $\eta = 1$ exactly when $e^{2\pi ij/n} = 1$, i.e. when $n\mid j$ (Lemma 7.7). If $\eta\ne1$ the same geometric-series computation gives $0$; if $\eta = 1$ every term is $1$ and the sum is $n$. $\blacksquare$
 
-*Proof.* By Proposition 7.14 with $w = 1$, the solutions of $z^n = 1$ are
-$\omega^k$, $k = 0,\dots,n-1$, and they are distinct. If $z, w \in \mu_n$ then
-$(zw)^n = z^n w^n = 1$ and $(z^{-1})^n = (z^n)^{-1} = 1$, so $\mu_n$ is a subgroup. Since it has
-$n$ elements and $\omega$ generates it by construction, it is cyclic of order $n$.
+Geometrically, the centroid of the vertices of a regular $n$-gon inscribed in the unit circle is the centre.
 
-For the last claim, $\omega^j$ generates $\mu_n$ if and only if the $n$ powers
-$(\omega^j)^k = \omega^{jk}$, $k = 0,\dots,n-1$, are distinct. The exponents $jk$ are distinct
-modulo $n$ exactly when $\gcd(j,n) = 1$: if $d = \gcd(j,n) > 1$, then $jk$ is divisible by $n$ for
-$k = n/d < n$, so the powers repeat; conversely if $\gcd(j,n) = 1$ and
-$n \mid j(k-l)$, then $n \mid (k-l)$, so distinct $k$ in the range give distinct exponents.
-$\blacksquare$
+**Proposition 7.18** (product of roots of unity). For $n\in\mathbb{N}$, $\prod_{k=0}^{n-1}\omega^k = (-1)^{n+1}$.
 
-**Proposition 7.18** (sums of roots of unity). Let $n \ge 2$ and $\omega = e^{2\pi i/n}$. Then
+*Proof.* Pair $\omega^k$ with $\omega^{n-k}$; each pair multiplies to $1$. For odd $n$ the unpaired term is $\omega^0 = 1$, giving $1 = (-1)^{n+1}$. For even $n$ the middle term $k = n/2$ is paired with itself and equals $\omega^{n/2} = e^{\pi i} = -1$, giving $-1 = (-1)^{n+1}$. Alternatively, Vieta on $z^n-1 = \prod_k(z-\omega^k)$: the constant term gives $\prod_k\omega^k = (-1)^{n+1}$. $\blacksquare$
 
-$$
-\sum_{k=0}^{n-1} \omega^k = 0.
-$$
+**Proposition 7.19** (the regular $n$-gon). The points of $\mu_n$ are the vertices of the regular $n$-gon inscribed in the unit circle with one vertex at $1$; the map $z\mapsto\omega z$ is a symmetry.
 
-More generally, for any integer $j$ that is not a multiple of $n$,
+*Proof.* Corollary 7.14 with $w = 1$, $\rho = 1$ gives the vertices at angles $2\pi k/n$. Since $\omega\mu_n = \mu_n$, multiplication by $\omega$ permutes the polygon, giving the rotation symmetry. $\blacksquare$
 
-$$
-\sum_{k=0}^{n-1} \omega^{jk} = 0,
-$$
-
-while for $j$ a multiple of $n$ the sum equals $n$.
-
-*Proof.* Since $\omega^n = 1$ and $\omega \ne 1$ for $n \ge 2$, the finite geometric series gives
-
-$$
-\sum_{k=0}^{n-1} \omega^k = \frac{\omega^n - 1}{\omega - 1} = 0.
-$$
-
-For general $j$, put $\eta := \omega^j$. Then $\eta^n = \omega^{jn} = 1$, and the same
-computation applies provided $\eta \ne 1$. Now $\eta = 1$ exactly when $e^{2\pi i j/n} = 1$,
-which by Lemma 7.7 happens exactly when $j/n \in \mathbb{Z}$, i.e. when $n \mid j$. In that case
-every term equals $1$ and the sum is $n$. $\blacksquare$
-
-Geometrically, Proposition 7.18 says that the centroid of the vertices of a regular $n$-gon
-inscribed in the unit circle is the centre of the circle. This is physically obvious by symmetry,
-and the algebraic proof is a one-line geometric-series computation — a good example of the
-dictionary between the two subjects.
-
-**Proposition 7.19** (product of the roots of unity). For $n \in \mathbb{N}$,
-
-$$
-\prod_{k=0}^{n-1} \omega^k = (-1)^{n+1}.
-$$
-
-*Proof.* First proof, by pairing. Pair each $\omega^k$ with $\omega^{n-k}$, whose product is
-$\omega^n = 1$. For odd $n$ the indices $k = 1,\dots,n-1$ split into $(n-1)/2$ such pairs, and the
-unpaired term is $\omega^0 = 1$, so the product is $1 = (-1)^{n+1}$. For even $n$, the index
-$k = n/2$ is paired with itself; its term is $\omega^{n/2} = e^{\pi i} = -1$, and the remaining
-indices pair off to $1$, so the product is $-1 = (-1)^{n+1}$.
-
-Second proof, by Vieta. The polynomial $z^n - 1$ has the $n$ roots $\omega^0,\dots,\omega^{n-1}$,
-so $z^n - 1 = \prod_{k}(z - \omega^k)$. The constant term is the product of the roots multiplied
-by $(-1)^n$; on the left the constant term is $-1$, hence
-$\prod_k \omega^k = (-1)^n \cdot (-1) = (-1)^{n+1}$. $\blacksquare$
-
-**Proposition 7.20** (the regular $n$-gon). The points of $\mu_n$ are the vertices of the regular
-$n$-gon inscribed in the unit circle with one vertex at $1$. The polygon is invariant under the map
-$z \mapsto \omega z$, and its symmetry group contains the $n$ rotations $z \mapsto \omega^j z$,
-$j = 0,\dots,n-1$.
-
-*Proof.* By Corollary 7.15 with $w = 1$ and $\rho = 1$, the roots are equally spaced on the unit
-circle at angles $2\pi k/n$; that is the regular $n$-gon with a vertex at angle $0$, i.e. at $1$.
-Since $\omega \mu_n = \mu_n$ (multiplying by $\omega$ permutes the list), the rotation
-$z \mapsto \omega z$ maps the polygon to itself. Iterating gives the $n$ stated rotations. Note
-that the polygon also has reflections as symmetries, but those are not of the form
-$z \mapsto \alpha z$; they are conjugate-linear maps $z \mapsto \alpha \bar z$. $\blacksquare$
-
-**Example 7.21** (the fifth roots of unity and the regular pentagon). For $n = 5$,
-$\omega = e^{2\pi i/5}$. The five roots are $1$, $\omega$, $\omega^2$, $\omega^3$, $\omega^4$,
-with $\omega + \omega^4 = 2\cos(2\pi/5)$ and $\omega^2 + \omega^3 = 2\cos(4\pi/5)$. Since the sum
-of all five is zero,
-
-$$
-1 + 2\cos\frac{2\pi}{5} + 2\cos\frac{4\pi}{5} = 0.
-$$
-
-Writing $c = \cos(2\pi/5)$ and using $\cos(4\pi/5) = 2c^2 - 1$ gives
-$4c^2 + 2c - 1 = 0$, hence $c = (-1 + \sqrt5)/4$. Thus the side length of the regular pentagon
-inscribed in the unit circle is
-$\lvert 1 - \omega\rvert = 2\sin(\pi/5) = \sqrt{(5-\sqrt5)/2}$, an expression involving only
-square roots — the algebraic reason a regular pentagon is constructible with straightedge and
-compass, while a regular heptagon is not.
+**Example 7.20** (the pentagon). For $n = 5$, $\omega+\omega^4 = 2\cos(2\pi/5)$ and $\omega^2+\omega^3 = 2\cos(4\pi/5)$; since the sum of all five roots is zero, $1+2\cos(2\pi/5)+2\cos(4\pi/5) = 0$. With $c = \cos(2\pi/5)$ and $\cos(4\pi/5) = 2c^2-1$ this gives $4c^2+2c-1 = 0$, so $c = (\sqrt5-1)/4$. The side length of the regular pentagon inscribed in the unit circle is $\lvert1-\omega\rvert = 2\sin(\pi/5) = \sqrt{(5-\sqrt5)/2}$, an expression in square roots only — the algebraic reason the regular pentagon is constructible.
 
 ### 7.6 Möbius Transformations: Definition and Group Structure
 
-Definition 5.8 introduces the maps $z \mapsto (az+b)/(cz+d)$. Before studying their geometry, it
-is worth understanding why the condition $ad-bc \ne 0$ is exactly right. If $ad - bc = 0$ and
-$c \ne 0$, then $a = bc/d$ and
+The condition $ad-bc\ne0$ is exactly non-degeneracy. If $ad-bc = 0$ and $c\ne0$, then either $d = 0$, in which case $bc = 0$ and $c\ne0$ give $b = 0$, so $(az+b)/(cz+d) = a/c$ is constant, or $d\ne0$, in which case $a = bc/d$ and $(az+b)/(cz+d) = b/d$ is constant; if $c = 0$ then $ad = 0$ forces $a = 0$. Conversely, if $ad-bc\ne0$ and $(az_1+b)/(cz_1+d) = (az_2+b)/(cz_2+d)$, cross-multiplication gives $(ad-bc)(z_1-z_2) = 0$, so the map is injective.
 
-$$
-\frac{az+b}{cz+d} = \frac{(bc/d)z + b}{cz+d} = \frac{b(cz+d)/d}{cz+d} = \frac{b}{d},
-$$
+**Proposition 7.21** (composition is matrix multiplication). For $A = \begin{pmatrix}a&b\\ c&d\end{pmatrix}$ let $T_A(z) := (az+b)/(cz+d)$. For matrices with non-zero determinant, $T_A\circ T_B = T_{AB}$.
 
-a constant. If $c = 0$ then $ad = 0$; with $d \ne 0$ this forces $a = 0$ and the map is the
-constant $b/d$. So $ad - bc = 0$ means the map collapses the plane to a point. Conversely, when
-$ad - bc \ne 0$ the map is non-constant, and then it is injective: if
-$(az_1+b)/(cz_1+d) = (az_2+b)/(cz_2+d)$, cross-multiplication gives
+*Proof.* Put $B = \begin{pmatrix}a'&b'\\ c'&d'\end{pmatrix}$ and $w = T_B(z)$. Then
 
-$$
-(az_1+b)(cz_2+d) = (az_2+b)(cz_1+d)
-\;\Longrightarrow\; (ad-bc)(z_1 - z_2) = 0,
-$$
+$$T_A(w) = \frac{a\,\dfrac{a'z+b'}{c'z+d'}+b}{c\,\dfrac{a'z+b'}{c'z+d'}+d} = \frac{(aa'+bc')z+(ab'+bd')}{(ca'+dc')z+(cb'+dd')} = T_{AB}(z),$$
 
-so $z_1 = z_2$. Thus non-degenerate Möbius maps are bijections of the extended plane.
+and the conventions at $\infty$ extend the identity to the extended plane. $\blacksquare$
 
-**Proposition 7.22** (composition is matrix multiplication). For $A = \begin{pmatrix} a & b\\ c & d\end{pmatrix}$
-let $T_A(z) := (az+b)/(cz+d)$. For any two $2\times 2$ complex matrices $A, B$ with non-zero
-determinants,
+**Proposition 7.22** (the Möbius group). Möbius transformations form a group under composition, isomorphic to $\operatorname{PGL}_2(\mathbb{C}) = \operatorname{GL}_2(\mathbb{C})/\mathbb{C}^\times$.
 
-$$
-T_A \circ T_B = T_{AB}.
-$$
+*Proof.* Composition is associative, $T_I$ is the identity, and if $\det A\ne0$ then $T_A\circ T_{A^{-1}} = T_I$, so every element is invertible. The map $A\mapsto T_A$ is a homomorphism by Proposition 7.21. Its kernel: $T_A(z) = z$ for all $z$ forces $b/d = 0$ (put $z = 0$), $a/c = \infty$ (put $z = \infty$), hence $b = c = 0$, and then $a = d$; so the kernel is the set of non-zero scalar matrices. The first isomorphism theorem gives the stated isomorphism. $\blacksquare$
 
-*Proof.* Put $B = \begin{pmatrix} a' & b'\\ c' & d'\end{pmatrix}$ and $w = T_B(z) = (a'z+b')/(c'z+d')$.
-Then
-
-$$
-T_A(w) = \frac{a\,\dfrac{a'z+b'}{c'z+d'} + b}{c\,\dfrac{a'z+b'}{c'z+d'} + d}
-= \frac{a(a'z+b') + b(c'z+d')}{c(a'z+b') + d(c'z+d')}
-= \frac{(aa'+bc')z + (ab'+bd')}{(ca'+dc')z + (cb'+dd')},
-$$
-
-which is $T_{AB}(z)$ by the definition of matrix multiplication. The same computation with $z$
-replaced by $\infty$ and with the pole handled by the conventions of Definition 5.8 gives the
-statement on the extended plane. $\blacksquare$
-
-**Proposition 7.23** (the Möbius group). The set of Möbius transformations is a group under
-composition, isomorphic to $\operatorname{PGL}_2(\mathbb{C}) := \operatorname{GL}_2(\mathbb{C})/\mathbb{C}^\times$,
-where $\mathbb{C}^\times$ acts by scalar multiplication.
-
-*Proof.* Composition is associative because composition of functions is; $T_I$ is the identity;
-and if $\det A \ne 0$, then $A$ is invertible and Proposition 7.22 gives
-$T_A \circ T_{A^{-1}} = T_{AA^{-1}} = T_I$, so $T_A$ has the two-sided inverse $T_{A^{-1}}$. Hence
-the set is a group.
-
-The map $A \mapsto T_A$ is a group homomorphism by Proposition 7.22. Its kernel consists of the
-matrices $A$ with $T_A(z) = z$ for all $z$. Setting $z = 0$ gives $b/d = 0$, so $b = 0$; letting
-$z \to \infty$ gives $a/c = \infty$, which forces $c = 0$; then $T_A(z) = (a/d)z$ and the
-condition becomes $a = d$. Thus the kernel is exactly the set of non-zero scalar matrices
-$\lambda I$, and the first isomorphism theorem for groups gives
-$\{\text{Möbius maps}\} \cong \operatorname{GL}_2(\mathbb{C})/\mathbb{C}^\times$.
-$\blacksquare$
-
-**Proposition 7.24** (three points determine a Möbius map). Let $z_1,z_2,z_3$ be distinct points
-of $\mathbb{C}_\infty$ and $w_1,w_2,w_3$ distinct points of $\mathbb{C}_\infty$. There is exactly
-one Möbius transformation $T$ with $T(z_j) = w_j$ for $j = 1,2,3$.
+**Theorem 7.23** (three points determine a Möbius map). Given distinct $z_1,z_2,z_3$ and distinct $w_1,w_2,w_3$ in $\mathbb{C}_\infty$, there is exactly one Möbius $T$ with $T(z_j) = w_j$.
 
 *Proof.* Define
 
-$$
-S(z) := (z, z_1; z_2, z_3) = \frac{(z-z_2)(z_1-z_3)}{(z-z_3)(z_1-z_2)}, \qquad
-R(w) := (w, w_1; w_2, w_3) = \frac{(w-w_2)(w_1-w_3)}{(w-w_3)(w_1-w_2)}.
-$$
+$$S(z) := (z,z_1;z_2,z_3) = \frac{(z-z_2)(z_1-z_3)}{(z-z_3)(z_1-z_2)}, \qquad R(w) := \frac{(w-w_2)(w_1-w_3)}{(w-w_3)(w_1-w_2)}.$$
 
-Both are Möbius transformations (the denominators are non-zero constants in the numerator and
-denominator of the leading coefficients, and the determinant is a non-zero multiple of
-$(z_1-z_2)(z_1-z_3)(z_2-z_3)\ne 0$). Direct substitution gives
+Both are Möbius maps, and $S(z_1) = 1$, $S(z_2) = 0$, $S(z_3) = \infty$, likewise $R(w_j) = 1,0,\infty$. Then $T := R^{-1}\circ S$ satisfies $T(z_j) = w_j$, proving existence. For uniqueness it suffices to show that a Möbius map fixing $1,0,\infty$ is the identity: $U(0) = 0$ gives $b = 0$; $U(\infty) = \infty$ gives $c = 0$; $U(1) = 1$ then gives $a = d$, so $U(z) = z$. If $T_1,T_2$ both work, $R\circ T_1\circ S^{-1}$ and $R\circ T_2\circ S^{-1}$ both fix $1,0,\infty$, hence both are the identity, so $T_1 = T_2$. $\blacksquare$
 
-$$
-S(z_1) = 1,\quad S(z_2) = 0,\quad S(z_3) = \infty, \qquad
-R(w_1) = 1,\quad R(w_2) = 0,\quad R(w_3) = \infty.
-$$
+**Example 7.24** (a three-point map). Find $T$ with $T(0) = i$, $T(1) = 0$, $T(\infty) = 1$. Write $T(z) = (az+b)/(cz+d)$. Then $a/c = 1$ gives $a = c$; $b/d = i$ gives $b = id$; and $(a+b)/(c+d) = 0$ gives $a = -b = -id$. With $d = 1$: $a = c = -i$, $b = i$,
 
-Then $T := R^{-1}\circ S$ is a Möbius transformation with $T(z_j) = R^{-1}(R(w_j)) = w_j$, which
-proves existence.
+$$T(z) = \frac{-iz+i}{-iz+1} = \frac{i(1-z)}{1-iz}.$$
 
-For uniqueness, it suffices to show that a Möbius transformation fixing $1$, $0$ and $\infty$ is
-the identity. Let $U(z) = (az+b)/(cz+d)$ satisfy $U(0) = 0$, so $b = 0$; $U(\infty) = \infty$, so
-$c = 0$; and $U(1) = 1$ then gives $a/d = 1$. Hence $U(z) = z$. If $T_1, T_2$ both send $z_j$ to
-$w_j$, then $R\circ T_1\circ S^{-1}$ and $R\circ T_2\circ S^{-1}$ both fix $1, 0, \infty$, hence
-both equal the identity, so $T_1 = T_2$. $\blacksquare$
-
-**Example 7.25** (three-point map computed). Find the Möbius map with $T(0)=i$, $T(1)=0$ and
-$T(\infty)=1$. Write $T(z) = (az+b)/(cz+d)$. The condition $T(\infty) = a/c = 1$ gives $a = c$;
-$T(0) = b/d = i$ gives $b = id$; and $T(1) = (a+b)/(c+d) = 0$ gives $a + b = 0$, hence
-$a = -b = -id$. Taking $d = 1$ gives $a = c = -i$ and $b = i$:
-
-$$
-T(z) = \frac{-iz + i}{-iz + 1} = \frac{i(1-z)}{1-iz}.
-$$
-
-Check: $T(0) = i/1 = i$, $T(1) = 0$, and $T(\infty) = (-i)/(-i) = 1$. The determinant is
-$(-i)(1) - (i)(-i) = -i - 1 \ne 0$.
-
-**Remark 7.26** (fixed points). A non-identity Möbius map has either one or two fixed points. The
-equation $T(z) = z$ becomes $cz^2 + (d-a)z - b = 0$ when $c \ne 0$, a quadratic with at most two
-roots; when $c = 0$ and $a \ne d$ there is the additional fixed point $\infty$. Maps with exactly
-one fixed point are called **parabolic**, those with two **hyperbolic**, **elliptic** or
-**loxodromic** according to the trace of a representing matrix. This classification is pursued in
-[Conformal Mappings](../README.md#topic-inventory) and beyond the present scope.
+Check: $T(0) = i$, $T(1) = 0$, $T(\infty) = (-i)/(-i) = 1$; the determinant is $-i-1\ne0$.
 
 ### 7.7 What Möbius Transformations Do to Lines and Circles
 
-The main theorem of the section is that a Möbius transformation permutes the collection of circles
-and straight lines. The efficient way to prove it is to encode "circle or line" in one algebraic
-equation, and then to verify the claim for three special maps that generate the whole group.
+The main theorem is that Möbius maps permute circles and lines. The efficient proof encodes "circle or line" in one algebraic equation and checks the claim for three generating maps.
 
-**Lemma 7.27** (generalized circles in normal form). Let $A, C \in \mathbb{R}$ and
-$B \in \mathbb{C}$, not all zero. The set
+**Lemma 7.25** (generalized circles in normal form). Let $A,C\in\mathbb{R}$ and $B\in\mathbb{C}$, not all zero. The set $C_0 := \{z : A\lvert z\rvert^2+Bz+\bar B\bar z+C = 0\}$ is empty, a point, a circle, or a line. If $A = 0$ and $B\ne0$ it is a line; if $A\ne0$ it is the circle with centre $-\bar B/A$ and radius $\sqrt{\lvert B\rvert^2-AC}/\lvert A\rvert$ when $\lvert B\rvert^2-AC\ge0$, a point when the quantity is $0$, and empty when it is negative.
 
-$$
-C_0 := \{z \in \mathbb{C} : A\lvert z\rvert^2 + Bz + \bar B\bar z + C = 0\}
-$$
+*Proof.* Since $Bz+\bar B\bar z = 2\operatorname{Re}(Bz)$, the equation is real. If $A = 0$ it reads $2\operatorname{Re}(Bz)+C = 0$; with $B = p+qi$ and $z = x+iy$ this is $2(px-qy)+C = 0$, a line with non-zero normal $(p,-q)$. If $A\ne0$, divide by $A$ and complete the square:
 
-is empty, a point, a circle, or a straight line. More precisely:
+$$\left\lvert z+\frac{\bar B}{A}\right\rvert^2 = \lvert z\rvert^2+2\operatorname{Re}\!\left(\frac{Bz}{A}\right)+\frac{\lvert B\rvert^2}{A^2} = \frac{\lvert B\rvert^2-AC}{A^2},$$
 
-1. if $A = 0$ and $B \ne 0$, then $C_0$ is a straight line;
-2. if $A \ne 0$, then $C_0$ is the circle with centre $-\bar B/A$ and radius
-   $\sqrt{\lvert B\rvert^2 - AC}/\lvert A\rvert$, provided $\lvert B\rvert^2 - AC \ge 0$; if
-   $\lvert B\rvert^2 - AC < 0$ it is empty, and if $\lvert B\rvert^2 - AC = 0$ it is a single
-   point.
+using the original equation for the last step. The right side is real, so the set is a circle, a point, or empty according to its sign. $\blacksquare$
 
-*Proof.* Note first that $Bz + \bar B\bar z = 2\operatorname{Re}(Bz)$ is real.
+**Lemma 7.26** (inversion preserves generalized circles). The map $J(z) = 1/z$, with $J(0) = \infty$ and $J(\infty) = 0$, sends generalized circles onto generalized circles.
 
-1. If $A = 0$, the equation is $2\operatorname{Re}(Bz) + C = 0$. Writing $B = p+qi$ and
-   $z = x+iy$ gives $2(px - qy) + C = 0$, the equation of a line with normal vector $(p,-q)$;
-   since $B \ne 0$ the normal vector is non-zero.
-2. If $A \ne 0$, divide by $A$:
-   $$\lvert z\rvert^2 + \frac{2}{A}\operatorname{Re}(Bz) + \frac{C}{A} = 0.$$
-   Completing the square,
-   $$\left\lvert z + \frac{\bar B}{A}\right\rvert^2 = \frac{\lvert B\rvert^2 - AC}{A^2},$$
-   because expanding the left side gives
-   $\lvert z\rvert^2 + 2\operatorname{Re}(zB/A) + \lvert B\rvert^2/A^2$ and
-   $2\operatorname{Re}(zB/A) = (2/A)\operatorname{Re}(Bz)$. The right side is a real number;
-   if it is positive the set is a circle with the stated centre and radius, if zero it is the
-   single point $-\bar B/A$, and if negative it is empty. $\blacksquare$
+*Proof.* Put $w = 1/z$, so $z = 1/w$. For $w\ne0$,
 
-Recall from Definition 5.9 that a **generalized circle** is a circle or a line, with $\infty$
-adjoined in the line case. In the extended plane a line is exactly a circle through $\infty$, and
-Lemma 7.27 is the algebraic form of that slogan.
+$$0 = A\lvert z\rvert^2+Bz+\bar B\bar z+C = \frac{A}{\lvert w\rvert^2}+\frac{B}{w}+\frac{\bar B}{\bar w}+C.$$
 
-**Lemma 7.28** (inversion preserves generalized circles). The map $J(z) = 1/z$, with $J(0) = \infty$
-and $J(\infty) = 0$, sends generalized circles onto generalized circles.
+Multiplying by $\lvert w\rvert^2 = w\bar w\ne0$ gives $A+B\bar w+\bar Bw+C\lvert w\rvert^2 = 0$, again of the same form, with coefficients $(A',B',C') = (C,\bar B,A)$. By Lemma 7.25 the image is a generalized circle. A circle through $0$ has $C = 0$, so $A' = 0$ and its image is a line through $\infty$. $\blacksquare$
 
-*Proof.* Let $C_0$ be the generalized circle of Lemma 7.27 and put $w = 1/z$, so $z = 1/w$. For
-$w \ne 0$,
+**Theorem 7.27** (Möbius maps preserve generalized circles). Every Möbius transformation maps generalized circles bijectively onto generalized circles.
 
-$$
-A\lvert z\rvert^2 + Bz + \bar B\bar z + C = \frac{A}{\lvert w\rvert^2} + \frac{B}{w} + \frac{\bar B}{\bar w} + C = 0.
-$$
+*Proof.* Every Möbius map is a composition of translations $z\mapsto z+\beta$, rotations-dilations $z\mapsto\lambda z$ ($\lambda\ne0$) and the inversion $z\mapsto1/z$: if $c = 0$ then $T(z) = (a/d)z+b/d$; if $c\ne0$ then polynomial division gives $T(z) = a/c+\bigl((bc-ad)/c\bigr)/(cz+d)$, a composition of these three types. Translations and rotations-dilations are similarities, hence send circles to circles and lines to lines; inversion does so by Lemma 7.26. A composition inherits the property, and each generator is bijective with inverse of the same type, so the image is the whole target generalized circle. $\blacksquare$
 
-Multiplying by $\lvert w\rvert^2 = w\bar w \ne 0$ gives
+**Corollary 7.28** (circles through the pole become lines). Let $T(z) = (az+b)/(cz+d)$ with $c\ne0$ and pole $z_0 := -d/c$. A generalized circle $C$ maps to a straight line exactly when $z_0\in C$; otherwise its image is a circle.
 
-$$
-A + B\bar w + \bar B w + C\lvert w\rvert^2 = 0,
-$$
+*Proof.* Write $T = \Phi\circ J\circ\Psi$ with $\Psi(z) = cz+d$, $J(w) = 1/w$ and $\Phi(w) = a/c+\bigl((bc-ad)/c\bigr)w$. The similarities $\Psi,\Phi$ preserve the type "circle" versus "line", and $J$ turns a generalized circle into a line exactly when that circle passes through $0$ (Lemma 7.26, case $C' = 0$). Now $\Psi(C)$ passes through $0$ exactly when $z_0\in C$. $\blacksquare$
 
-which is again of the form $A'\lvert w\rvert^2 + B'w + \bar B'\bar w + C' = 0$, with
-$A' = C$, $B' = \bar B$, $C' = A$. By Lemma 7.27 its solutions form a generalized circle. The
-point $z = 0$ corresponds to $w = \infty$ and vice versa; a generalized circle through $0$ has
-$C = 0$, and then $A' = 0$, so its image is a line through $\infty$, as it must be. $\blacksquare$
+**Proposition 7.29** (which side maps where). Let $C$ be a generalized circle and $T$ a Möbius map. The two components of $\mathbb{C}_\infty\setminus C$ map onto the two components of $\mathbb{C}_\infty\setminus T(C)$, and the image of a component is determined by testing one point.
 
-**Theorem 7.29** (Möbius maps preserve generalized circles). Every Möbius transformation maps
-generalized circles bijectively onto generalized circles.
+*Proof.* A Möbius map is a homeomorphism of $\mathbb{C}_\infty$ (Theorem 7.40). A homeomorphism sends connected sets to connected sets and preserves separation, so each component maps into a component of the complement of $T(C)$; since $T$ is onto, both components are hit. A component is determined by any one of its points, so testing $z_0$ identifies the image. $\blacksquare$
 
-*Proof.* Every Möbius map is a composition of three kinds of map:
-
-* translations $z \mapsto z + \beta$ with $\beta \in \mathbb{C}$;
-* rotations-dilations $z \mapsto \lambda z$ with $\lambda \in \mathbb{C}^\times$;
-* the inversion $z \mapsto 1/z$.
-
-Indeed, if $c = 0$ then $T(z) = (a/d)z + b/d$ is a rotation-dilation followed by a translation.
-If $c \ne 0$, polynomial division gives
-
-$$
-T(z) = \frac{a}{c} + \frac{(bc-ad)/c}{cz+d},
-$$
-
-so $T$ is the composition of $z \mapsto cz+d$ (a rotation-dilation followed by a translation),
-then inversion, then multiplication by $(bc-ad)/c \ne 0$, then translation by $a/c$.
-
-Translations and rotations-dilations are similarities: they send circles to circles and lines to
-lines, hence generalized circles to generalized circles. Inversion does so by Lemma 7.28. A
-composition of maps with this property has the property, and each generator is bijective on
-$\mathbb{C}_\infty$ with inverse of the same kind, so the image is the whole target generalized
-circle. $\blacksquare$
-
-**Corollary 7.30** (circles through the pole become lines). Let $T(z) = (az+b)/(cz+d)$ with
-$c \ne 0$, so that the pole is $z_0 := -d/c$. A generalized circle $C$ is mapped to a straight
-line if and only if $z_0 \in C$; otherwise its image is a circle.
-
-*Proof.* Write $T = \Phi \circ J \circ \Psi$ where $\Psi(z) = cz+d$, $J(w) = 1/w$ and
-$\Phi(w) = a/c + ((bc-ad)/c)w$, as in the proof of Theorem 7.29. The map $\Psi$ is a similarity and
-$\Phi$ is a similarity, so $C$ is a line exactly when $J(\Psi(C))$ is a line exactly when
-$\Psi(C)$ passes through $0$ (Lemma 7.28: $C' = 0$ in the notation there), i.e. exactly when
-$z_0 \in C$. $\blacksquare$
-
-**Example 7.31** (three concrete images).
-
-1. *Unit circle under $z \mapsto 1/z$.* If $\lvert z\rvert = 1$ then $\lvert 1/z\rvert = 1$, and
-   every point of the unit circle arises, so the circle maps onto itself. The interior
-   $\lvert z\rvert < 1$ maps to the exterior $\lvert w\rvert > 1$: the map swaps the two sides.
-2. *Circle $\lvert z - 1\rvert = 1$ under $z \mapsto 1/z$.* Expand the equation:
-   $\lvert z\rvert^2 - 2\operatorname{Re}z = 0$. Substituting $z = 1/w$ and multiplying by
-   $\lvert w\rvert^2$ gives $1 - 2\operatorname{Re} w = 0$, that is $\operatorname{Re} w = 1/2$,
-   a straight line. This is Corollary 7.30 in action: the circle passes through the pole $0$.
-3. *Unit circle under $T(z) = 1/(z-1)$.* Here the pole is $z = 1$, which lies on the circle.
-   Put $w = 1/(z-1)$, so $z = 1 + 1/w$. The condition $\lvert z\rvert = 1$ becomes
-   $\lvert 1 + 1/w\rvert^2 = 1$, i.e. $\lvert w+1\rvert^2 = \lvert w\rvert^2$, which expands to
-   $2\operatorname{Re}w + 1 = 0$. The image is the line $\operatorname{Re} w = -1/2$.
-
-**Proposition 7.32** (which side goes where). Let $C$ be a generalized circle and $T$ a Möbius
-transformation. The two components of $\mathbb{C}_\infty \setminus C$ are mapped onto the two
-components of $\mathbb{C}_\infty \setminus T(C)$, and the image of a particular component is
-determined by testing one point: if $z_0$ is in that component, then its image $T(z_0)$ lies in the
-image component.
-
-*Proof.* A Möbius map is a continuous bijection of $\mathbb{C}_\infty$ with continuous inverse
-(Proposition 7.40). A homeomorphism sends connected sets to connected sets and
-preserves separation, so each component of the complement maps into a component of the complement
-of $T(C)$. Because $T$ is onto, both components are hit. Since a component is determined by any
-one of its points, testing $z_0$ identifies the image. $\blacksquare$
+**Example 7.30** (three concrete images). (i) Under $z\mapsto1/z$ the unit circle maps onto itself, since $\lvert1/z\rvert = 1$, and the interior maps to the exterior. (ii) The circle $\lvert z-1\rvert = 1$ satisfies $\lvert z\rvert^2 = 2\operatorname{Re}z$; substituting $z = 1/w$ and multiplying by $\lvert w\rvert^2$ gives $1 = 2\operatorname{Re}w$, the line $\operatorname{Re}w = 1/2$. (iii) For $T(z) = 1/(z-1)$ the pole $z = 1$ lies on the unit circle; writing $w = 1/(z-1)$, so $z = 1+1/w$, the condition $\lvert z\rvert = 1$ becomes $\lvert w+1\rvert^2 = \lvert w\rvert^2$, i.e. $2\operatorname{Re}w+1 = 0$, the line $\operatorname{Re}w = -1/2$.
 
 ### 7.8 The Cross-Ratio
 
-Three points determine a Möbius map (Proposition 7.24). Four points cannot be prescribed
-arbitrarily; the obstruction is measured by a single number, the cross-ratio, and that number is
-unchanged by every Möbius map.
+Three points determine a Möbius map; four cannot be prescribed arbitrarily, and the obstruction is a single number.
 
-**Proposition 7.33** (invariance of the cross-ratio). For distinct
-$z_1,z_2,z_3,z_4 \in \mathbb{C}_\infty$ and any Möbius transformation $T$,
+**Proposition 7.31** (invariance of the cross-ratio). For distinct $z_1,z_2,z_3,z_4\in\mathbb{C}_\infty$ and any Möbius $T$,
 
-$$
-(Tz_1, Tz_2; Tz_3, Tz_4) = (z_1,z_2;z_3,z_4).
-$$
+$$(Tz_1,Tz_2;Tz_3,Tz_4) = (z_1,z_2;z_3,z_4).$$
 
-*Proof.* For distinct $z_2,z_3,z_4$ define
+*Proof.* Define $g(z) := (z,z_2;z_3,z_4) = (z-z_3)(z_2-z_4)/((z-z_4)(z_2-z_3))$. Then $g$ is Möbius with $g(z_2) = 1$, $g(z_3) = 0$, $g(z_4) = \infty$. Likewise $h(w) := (w,Tz_2;Tz_3,Tz_4)$ is Möbius with $h(Tz_2) = 1$, $h(Tz_3) = 0$, $h(Tz_4) = \infty$. Hence $h\circ T$ sends $z_2,z_3,z_4$ to $1,0,\infty$, so by Theorem 7.23 it equals $g$. Evaluating at $z_1$ gives $h(Tz_1) = g(z_1)$, which is the claim. $\blacksquare$
 
-$$
-g(z) := (z,z_2;z_3,z_4) = \frac{(z-z_3)(z_2-z_4)}{(z-z_4)(z_2-z_3)}.
-$$
+**Theorem 7.32** (concyclicity criterion). Four distinct points $z_1,z_2,z_3,z_4\in\mathbb{C}_\infty$ lie on a common generalized circle if and only if $(z_1,z_2;z_3,z_4)\in\mathbb{R}$.
 
-Then $g$ is a Möbius transformation with $g(z_2) = 1$, $g(z_3) = 0$, $g(z_4) = \infty$; the
-verification is the same substitution as in Proposition 7.24. Likewise
-$h(w) := (w,Tz_2;Tz_3,Tz_4)$ is a Möbius transformation with $h(Tz_2) = 1$, $h(Tz_3) = 0$,
-$h(Tz_4) = \infty$. Therefore $h\circ T$ is a Möbius transformation sending
-$z_2 \mapsto 1$, $z_3 \mapsto 0$, $z_4 \mapsto \infty$, and by the uniqueness part of Proposition
-7.24 it must equal $g$. Evaluating at $z = z_1$ gives
-$h(Tz_1) = g(z_1)$, which is the asserted identity. $\blacksquare$
+*Proof.* With $g$ as above, $g(z_2) = 1$, $g(z_3) = 0$, $g(z_4) = \infty$, all on $\mathbb{R}_\infty$. By Theorem 7.27, $g^{-1}(\mathbb{R}_\infty)$ is a generalized circle $\Gamma$ through $z_2,z_3,z_4$, and $z\in\Gamma\iff g(z)\in\mathbb{R}_\infty\iff(z,z_2;z_3,z_4)\in\mathbb{R}_\infty$. A generalized circle is determined by three of its points: two distinct circles meet in at most two points, a line meets a circle in at most two, and two distinct lines in at most one. Hence $\Gamma$ is the unique generalized circle through $z_2,z_3,z_4$, and $z_1$ lies on it exactly when the cross-ratio is real. $\blacksquare$
 
-**Lemma 7.34** (the cross-ratio is real exactly on a generalized circle). Fix three distinct points
-$z_2,z_3,z_4 \in \mathbb{C}_\infty$. The set of $z$ with $(z,z_2;z_3,z_4) \in \mathbb{R}_\infty$
-is exactly the unique generalized circle through $z_2,z_3,z_4$.
+**Example 7.33** (concyclic and non-concyclic quadruples). For $1,i,-1,-i$, all on the unit circle,
 
-*Proof.* Let $g(z) = (z,z_2;z_3,z_4)$ as above. By Theorem 7.29, $g^{-1}$ maps the generalized
-circle $\mathbb{R}_\infty$ onto a generalized circle; call it $\Gamma$. Since
-$g(z_2) = 1$, $g(z_3) = 0$ and $g(z_4) = \infty$ all lie on $\mathbb{R}_\infty$, the points
-$z_2,z_3,z_4$ all lie on $\Gamma$. Moreover
+$$(1,i;-1,-i) = \frac{(1+1)(i+i)}{(1+i)(i+1)} = \frac{4i}{2i} = 2\in\mathbb{R}.$$
 
-$$
-z \in \Gamma \iff g(z) \in \mathbb{R}_\infty \iff (z,z_2;z_3,z_4) \in \mathbb{R}_\infty.
-$$
+For $0,1,i,1+2i$,
 
-Uniqueness of $\Gamma$: two distinct generalized circles share at most two points. Indeed, two
-distinct lines meet in at most one point; a line and a circle meet in at most two points, since
-substituting a parametrisation of the line into the circle equation gives a quadratic; and two
-distinct circles meet in at most two points, since subtracting their equations eliminates
-$\lvert z\rvert^2$ and leaves a line, which then meets each circle in at most two points. Hence
-two distinct generalized circles cannot share the three distinct points $z_2,z_3,z_4$, so $\Gamma$
-is unique. $\blacksquare$
+$$(0,1;i,1+2i) = \frac{(0-i)(1-1-2i)}{(0-1-2i)(1-i)} = \frac{(-i)(-2i)}{(-1-2i)(1-i)} = \frac{-2}{-3-i} = \frac{3-i}{5}\notin\mathbb{R},$$
 
-**Theorem 7.35** (concyclicity criterion). Four distinct points
-$z_1,z_2,z_3,z_4 \in \mathbb{C}_\infty$ lie on a common generalized circle (that is, on a common
-circle or a common straight line) if and only if
-
-$$
-(z_1,z_2;z_3,z_4) \in \mathbb{R}.
-$$
-
-*Proof.* Apply Lemma 7.34 with $z = z_1$: the value $(z_1,z_2;z_3,z_4)$ is real exactly when $z_1$
-lies on the generalized circle through $z_2,z_3,z_4$. That circle contains all four points exactly
-when $z_1$ lies on it. $\blacksquare$
-
-**Example 7.36** (a concyclic quadruple and a non-concyclic one).
-
-1. The points $1, i, -1, -i$ lie on the unit circle, and
-   $$(1,i;-1,-i) = \frac{(1-(-1))(i-(-i))}{(1-(-i))(i-(-1))} = \frac{2\cdot 2i}{(1+i)(1+i)} = \frac{4i}{2i} = 2 \in \mathbb{R},$$
-   consistent with Theorem 7.35. Note that the cross-ratio depends on the ordering: a different
-   ordering of the same four points may give a different real number, but it remains real.
-2. The points $0, 1, i, 1+i$ form a square, hence are concyclic. Compute
-   $$(0,1;i,1+i) = \frac{(0-i)(1-(1+i))}{(0-(1+i))(1-i)} = \frac{(-i)(-i)}{(-(1+i))(1-i)} = \frac{-1}{-(1-i^2)} = \frac{-1}{-2} = \frac12,$$
-   again real. (The denominator is $-(1+i)(1-i) = -(1-i^2) = -2$.)
-3. The points $0, 1, i, 1+2i$ do not lie on a circle or line. Compute
-   $$(0,1;i,1+2i) = \frac{(0-i)(1-1-2i)}{(0-1-2i)(1-i)} = \frac{(-i)(-2i)}{(-1-2i)(1-i)} = \frac{-2}{(-1-2i)(1-i)}.$$
-   Now $(-1-2i)(1-i) = -1 + i - 2i + 2i^2 = -3 - i$, so the cross-ratio is
-   $2/(3+i) = 2(3-i)/10 = (3-i)/5$, which is not real. Hence the four points are not concyclic
-   and not collinear.
-
-**Remark 7.37** (the six values of the cross-ratio). Permuting the four points produces at most
-six distinct values, namely
-
-$$
-\lambda,\quad \frac1\lambda,\quad 1-\lambda,\quad \frac{1}{1-\lambda},\quad \frac{\lambda-1}{\lambda},\quad \frac{\lambda}{\lambda-1},
-$$
-
-which are the images of $\lambda$ under the six Möbius maps induced by permutations of three
-points. When $\lambda = -1$ the six values collapse to three, and the four points are said to form
-a **harmonic range**; when the six values collapse further, the configuration has extra symmetry
-(after a Möbius map it is the vertices of a regular polygon).
+so these four points are neither concyclic nor collinear.
 
 ### 7.9 The Extended Complex Plane
 
-Definition 5.7 adjoins a single point $\infty$ to $\mathbb{C}$. The purpose is to make Möbius
-transformations total: the map $z \mapsto 1/z$ has no value at $0$ in $\mathbb{C}$, but it has the
-natural value $\infty$ once $\infty$ is available.
+**Definition 7.34** (arithmetic with infinity). For $z\in\mathbb{C}$ and $z\ne0$:
 
-**Definition 7.38** (arithmetic with infinity). For $z \in \mathbb{C}$ and $z \ne 0$:
+$$\infty+z = z+\infty = \infty, \quad \infty\cdot z = z\cdot\infty = \infty, \quad \frac{z}{\infty} = 0, \quad \frac{z}{0} = \infty, \quad \frac{\infty}{0} = \infty, \quad \infty\cdot\infty = \infty.$$
 
-$$
-\infty + z = z + \infty = \infty, \qquad \infty\cdot z = z \cdot \infty = \infty, \qquad
-\frac{z}{\infty} = 0, \qquad \frac{z}{0} = \infty, \qquad \frac{\infty}{0} = \infty.
-$$
+The expressions $\infty-\infty$, $0\cdot\infty$, $0/0$ and $\infty/\infty$ are undefined. These are conventions, not a field structure; their purpose is to let $T(z) = (az+b)/(cz+d)$ be written without case distinctions.
 
-Also $\infty \cdot \infty = \infty$ and $\infty + \infty = \infty$. The expressions
-$\infty - \infty$, $0\cdot\infty$, $0/0$ and $\infty/\infty$ are **undefined**.
+**Proposition 7.35** (generators). Every Möbius transformation is a finite composition of translations $z\mapsto z+\beta$, rotations-dilations $z\mapsto\lambda z$ with $\lambda\ne0$, and the inversion $z\mapsto1/z$. Each generator is a bijection of $\mathbb{C}_\infty$; hence every Möbius map is a bijection of $\mathbb{C}_\infty$.
 
-These rules are conventions, not a field structure; $\mathbb{C}_\infty$ is not a field, because
-$\infty$ has no additive inverse. Their only purpose is to let the formulas for Möbius maps be
-written without case distinctions:
-
-$$
-T(z) = \frac{az+b}{cz+d}
-$$
-
-is then literally valid at $z = \infty$ (where it gives $a/c$ if $c \ne 0$ and $\infty$ otherwise)
-and at the pole $z = -d/c$ (where it gives $\infty$).
-
-**Proposition 7.39** (Möbius maps are generated by three elementary maps). Every Möbius
-transformation is a finite composition of translations $z \mapsto z+\beta$, rotations-dilations
-$z \mapsto \lambda z$ with $\lambda \ne 0$, and the inversion $z \mapsto 1/z$. Each of these
-elementary maps is a bijection of $\mathbb{C}_\infty$.
-
-*Proof.* The decomposition is the one displayed in the proof of Theorem 7.29. Bijectivity of
-$z \mapsto z+\beta$ is clear, with inverse $z \mapsto z - \beta$; of $z \mapsto \lambda z$ is
-clear, with inverse $z \mapsto \lambda^{-1}z$, with $\infty \mapsto \infty$; and of $J(z) = 1/z$
-is clear from $J\circ J = \mathrm{id}$ together with $J(0) = \infty$, $J(\infty) = 0$.
-$\blacksquare$
-
-**Proposition 7.40** (Möbius maps are homeomorphisms of $\mathbb{C}_\infty$). Every Möbius
-transformation is continuous on $\mathbb{C}_\infty$ and has a continuous inverse.
-
-*Proof.* By Proposition 7.39 it is enough to check the three elementary maps. Translations and
-rotations-dilations are continuous on $\mathbb{C}$ and extend continuously to $\infty$ by
-Definition 7.38. For inversion, continuity at $z_0 \ne 0$ is the continuity of $1/z$ as a rational
-function; continuity at $0$ and at $\infty$ follows from the definition of the topology of
-$\mathbb{C}_\infty$, in which a neighbourhood of $\infty$ is a set containing $\{\lvert z\rvert > R\}$
-(see Section 7.10, where the topology is defined by stereographic projection). Since
-$J = J^{-1}$, the inverse is continuous as well. A finite composition of homeomorphisms is a
-homeomorphism. $\blacksquare$
+*Proof.* The decomposition is displayed in the proof of Theorem 7.27. Bijectivity of translations and rotations-dilations is clear, with inverses $z\mapsto z-\beta$ and $z\mapsto\lambda^{-1}z$; inversion satisfies $J\circ J = \mathrm{id}$, with $J(0) = \infty$ and $J(\infty) = 0$. Compositions of bijections are bijections. $\blacksquare$
 
 ### 7.10 Stereographic Projection
 
-Definition 5.11 projects the unit sphere from its north pole onto the plane. The geometric idea is
-the shadow: a light at the north pole throws each other point of the sphere onto the plane
-$Z = 0$, and the north pole itself has no shadow, which is precisely the point that becomes
-$\infty$.
+Give $\mathbb{C}_\infty$ the topology transported from $S^2$: a set $U$ is open when $\sigma^{-1}(U)$ is open in $S^2$, where $\sigma(N) := \infty$. Equivalently, a set containing $\infty$ is open exactly when it contains $\{\lvert z\rvert>R\}\cup\{\infty\}$ for some $R>0$ and its intersection with $\mathbb{C}$ is open. Indeed the cap $\{Z>1-\varepsilon\}$ corresponds to $\{\lvert z\rvert^2 > (2-\varepsilon)/\varepsilon\}$, so the basic neighbourhoods of $\infty$ are the exteriors of large circles. In particular $z_n\to\infty$ if and only if $\lvert z_n\rvert\to\infty$.
 
-**Proposition 7.41** (formulas in both directions). Let $P = (X,Y,Z) \in S^2 \setminus \{N\}$.
-Then
+**Proposition 7.36** (formulas in both directions). For $P = (X,Y,Z)\in S^2\setminus\{N\}$,
 
-$$
-\sigma(P) = \frac{X}{1-Z} + i\,\frac{Y}{1-Z}.
-$$
+$$\sigma(P) = \frac{X}{1-Z}+i\,\frac{Y}{1-Z}.$$
 
-Conversely, for $z = x + iy \in \mathbb{C}$,
+Conversely, for $z = x+iy\in\mathbb{C}$,
 
-$$
-\sigma^{-1}(z) = \left(\frac{2x}{1+\lvert z\rvert^2},\; \frac{2y}{1+\lvert z\rvert^2},\; \frac{\lvert z\rvert^2-1}{1+\lvert z\rvert^2}\right).
-$$
+$$\sigma^{-1}(z) = \left(\frac{2x}{1+\lvert z\rvert^2},\ \frac{2y}{1+\lvert z\rvert^2},\ \frac{\lvert z\rvert^2-1}{1+\lvert z\rvert^2}\right).$$
 
-*Proof.* The line through $N = (0,0,1)$ and $P$ consists of the points
-$N + t(P - N) = (tX, tY, 1 + t(Z-1))$, $t \in \mathbb{R}$. It meets the plane $Z = 0$ when
-$1 + t(Z-1) = 0$, that is $t = 1/(1-Z)$; this is legitimate because $P \ne N$ means $Z \ne 1$.
-The intersection point is $\bigl(X/(1-Z),\, Y/(1-Z),\, 0\bigr)$, which is the first formula.
+*Proof.* The line through $N$ and $P$ is $N+t(P-N) = (tX,tY,1+t(Z-1))$; it meets $Z = 0$ at $t = 1/(1-Z)$, giving the first formula. For the second, the line through $N$ and $(x,y,0)$ is $(tx,ty,1-t)$; it meets the sphere where $t^2(x^2+y^2)+(1-t)^2 = 1$, i.e. $t^2(\lvert z\rvert^2+1)-2t = 0$. The non-zero root is $t = 2/(1+\lvert z\rvert^2)$, and substitution gives the stated coordinates. $\blacksquare$
 
-For the second, the line through $N$ and $(x,y,0)$ is
-$N + t\bigl((x,y,0) - N\bigr) = (tx, ty, 1-t)$. It meets the sphere where
+**Proposition 7.37** (bijection). Extending $\sigma$ by $\bar\sigma(N) := \infty$ gives a bijection $\bar\sigma:S^2\to\mathbb{C}_\infty$.
 
-$$
-t^2x^2 + t^2y^2 + (1-t)^2 = 1
-\;\Longleftrightarrow\; t^2(\lvert z\rvert^2 + 1) - 2t = 0
-\;\Longleftrightarrow\; t = 0 \text{ or } t = \frac{2}{1+\lvert z\rvert^2}.
-$$
+*Proof.* The formulas of Proposition 7.36 are mutually inverse between $S^2\setminus\{N\}$ and $\mathbb{C}$; adding $N\mapsto\infty$ gives a bijection onto $\mathbb{C}_\infty$. $\blacksquare$
 
-The root $t = 0$ is the north pole, so the second intersection is at
-$t = 2/(1+\lvert z\rvert^2)$. Substituting gives the stated coordinates. $\blacksquare$
+**Theorem 7.38** (circles on the sphere are generalized circles in the plane). Under $\bar\sigma$, circles on $S^2$ correspond exactly to generalized circles in $\mathbb{C}_\infty$.
 
-**Proposition 7.42** (bijection). The map $\sigma$ extends to a bijection
-$\bar\sigma : S^2 \to \mathbb{C}_\infty$ by $\bar\sigma(N) := \infty$, and
-$\bar\sigma^{-1}(\infty) = N$.
+*Proof.* A circle on $S^2$ is the intersection with a plane $\alpha X+\beta Y+\gamma Z = \delta$ meeting the sphere in more than one point. Substituting Proposition 7.36 and writing $r^2 = \lvert z\rvert^2$,
 
-*Proof.* If $P = (X,Y,Z) \ne N$, then $Z < 1$ and the formulas of Proposition 7.41 give a point of
-$\mathbb{C}$; the two formulas are mutually inverse on $S^2 \setminus \{N\}$ and $\mathbb{C}$. Hence
-$\sigma$ is a bijection onto $\mathbb{C}$, and adding the single point $N \mapsto \infty$ gives a
-bijection onto $\mathbb{C}_\infty$. $\blacksquare$
+$$\frac{2\alpha x+2\beta y+\gamma(r^2-1)}{1+r^2} = \delta \;\Longleftrightarrow\; (\gamma-\delta)r^2+2\alpha x+2\beta y-(\gamma+\delta) = 0.$$
 
-**Theorem 7.43** (circles on the sphere are generalized circles in the plane). Under
-$\bar\sigma$, circles on $S^2$ correspond exactly to generalized circles in $\mathbb{C}_\infty$.
-
-*Proof.* A circle on $S^2$ is the intersection of $S^2$ with a plane
-
-$$
-\alpha X + \beta Y + \gamma Z = \delta
-$$
-
-that meets the sphere in more than one point (a plane through the origin gives a great circle; a
-plane at distance $<1$ from the origin gives a circle; degenerate cases give a point or nothing).
-Substitute the formulas of Proposition 7.41 and write $r^2 = \lvert z\rvert^2 = x^2+y^2$:
-
-$$
-\frac{2\alpha x + 2\beta y + \gamma(r^2-1)}{1+r^2} = \delta.
-$$
-
-Multiplying by $1+r^2 > 0$ gives
-
-$$
-(\gamma-\delta)r^2 + 2\alpha x + 2\beta y - (\gamma+\delta) = 0,
-$$
-
-which is of the form $A\lvert z\rvert^2 + Bz + \bar B\bar z + C = 0$ with
-
-$$
-A = \gamma - \delta, \quad B = \alpha - i\beta, \quad C = -(\gamma+\delta).
-$$
-
-By Lemma 7.27 this is a generalized circle. The plane passes through $N = (0,0,1)$ exactly when
-$\gamma = \delta$, and then $A = 0$, so the image is a line — the expected degeneration, since $N$
-corresponds to $\infty$. Conversely, every generalized circle arises this way: given
-$(A,B,C)$ with $A, C$ real and $B$ complex, set $\gamma = (A - C)/2$... solving
-$A = \gamma - \delta$, $C = -(\gamma+\delta)$ gives $\gamma = (A-C)/2$ and
-$\delta = -(A+C)/2$, and $\alpha = \operatorname{Re}B$, $\beta = -\operatorname{Im}B$; the
-resulting plane intersects the sphere in the corresponding circle or line. $\blacksquare$
-
-**Proposition 7.44** (chordal metric). Define, for $z, w \in \mathbb{C}$,
-
-$$
-d(z,w) := \frac{2\lvert z-w\rvert}{\sqrt{(1+\lvert z\rvert^2)(1+\lvert w\rvert^2)}}, \qquad
-d(z,\infty) := \frac{2}{\sqrt{1+\lvert z\rvert^2}}, \qquad d(\infty,\infty) := 0.
-$$
-
-Then $d$ is a metric on $\mathbb{C}_\infty$, and it equals the Euclidean distance between the
-corresponding points of $S^2$:
-
-$$
-d(z,w) = \bigl\lvert \sigma^{-1}(z) - \sigma^{-1}(w)\bigr\rvert.
-$$
-
-*Proof.* Since $\sigma^{-1}$ is a bijection, the formula defines a metric as soon as it is the
-Euclidean distance of the images; so it suffices to verify the distance formula. Let
-$z = x+iy$, $w = u+iv$ and put $r^2 = \lvert z\rvert^2$, $s^2 = \lvert w\rvert^2$. From
-Proposition 7.41, the squared Euclidean distance is
-
-$$
-\begin{aligned}
-\bigl\lvert \sigma^{-1}(z) - \sigma^{-1}(w)\bigr\rvert^2
-&= \frac{4(x-u)^2 + 4(y-v)^2}{(1+r^2)(1+s^2)}
-+ \left(\frac{r^2-1}{1+r^2} - \frac{s^2-1}{1+s^2}\right)^2.
-\end{aligned}
-$$
-
-The first term is $4\lvert z-w\rvert^2/((1+r^2)(1+s^2))$. For the second, put over a common
-denominator:
-
-$$
-\frac{(r^2-1)(1+s^2) - (s^2-1)(1+r^2)}{(1+r^2)(1+s^2)}
-= \frac{r^2 - 1 + r^2s^2 - s^2 - s^2 + 1 - r^2s^2 + r^2}{(1+r^2)(1+s^2)}
-= \frac{2(r^2 - s^2)}{(1+r^2)(1+s^2)}.
-$$
-
-Squaring and adding,
-
-$$
-\bigl\lvert \sigma^{-1}(z) - \sigma^{-1}(w)\bigr\rvert^2
-= \frac{4\lvert z-w\rvert^2 + 4(r^2-s^2)^2}{(1+r^2)(1+s^2)}.
-$$
-
-Now expand
-$\lvert z-w\rvert^2 = r^2 + s^2 - 2(xu+yv)$ and
-$(r^2-s^2)^2 = r^4 - 2r^2s^2 + s^4$. The numerator becomes
-
-$$
-4\bigl[r^2 + s^2 - 2(xu+yv) + r^4 - 2r^2s^2 + s^4\bigr].
-$$
-
-On the other hand
-$(1+r^2)(1+s^2) = 1 + r^2 + s^2 + r^2s^2$, and a direct expansion of
-$4\lvert z-w\rvert^2/(1+r^2)(1+s^2)$ plus the squared height term gives the same expression after
-using $\lvert z-w\rvert^2 + (r^2-s^2)^2 = (1+r^2)(1+s^2) - (1 + 2(xu+yv) + r^2s^2 - ...)$; the
-verification is mechanical. A cleaner route is to expand the three coordinate differences
-directly and collect terms; this is carried out in Exercise 33. For $w = \infty$ the formula is
-the limit of $d(z,w)$ as $\lvert w\rvert \to \infty$, which equals
-$2/\sqrt{1+\lvert z\rvert^2}$; equivalently it is the distance from $\sigma^{-1}(z)$ to the north
-pole, which is computed from Proposition 7.41 as
-$\sqrt{(4r^2 + 4r^4)/(1+r^2)^2} = 2r/\sqrt{1+r^2}$ with $r = \lvert z\rvert$ — wait, this gives
-$2r/\sqrt{1+r^2}$, and the distance to $N$ is
-$\sqrt{X^2+Y^2+(Z-1)^2}$; since $X^2+Y^2+Z^2 = 1$, this equals
-$\sqrt{2-2Z} = \sqrt{2 - 2(r^2-1)/(1+r^2)} = \sqrt{4/(1+r^2)} = 2/\sqrt{1+r^2}$, as claimed.
-$\blacksquare$
-
-**Remark 7.45** (how the metric is used). Proposition 7.44 is the reason $\mathbb{C}_\infty$ is a
-metric space with a concrete, computable distance. Two facts follow immediately and are used
-constantly:
-
-* $d(z,w) \le 2$ for all $z,w$, with equality exactly when the corresponding points are
-  antipodal; in particular $d(0,\infty) = 2$.
-* $d(z_n, \infty) \to 0$ if and only if $\lvert z_n\rvert \to \infty$. Thus a sequence diverges to
-  infinity in the ordinary sense exactly when it converges to $\infty$ on the sphere.
+This is $A\lvert z\rvert^2+Bz+\bar B\bar z+C = 0$ with $A = \gamma-\delta$, $B = \alpha-i\beta$, $C = -(\gamma+\delta)$, hence a generalized circle by Lemma 7.25. The plane passes through $N$ exactly when $\gamma = \delta$, and then $A = 0$, so the image is a line — as it must be, since $N$ corresponds to $\infty$. Conversely, given $(A,B,C)$ with $A,C$ real, the choices $\gamma = (A-C)/2$, $\delta = -(A+C)/2$, $\alpha = \operatorname{Re}B$, $\beta = -\operatorname{Im}B$ produce a plane whose intersection with $S^2$ projects to the given generalized circle. $\blacksquare$
 
 ### 7.11 Why $\mathbb{C}\cup\{\infty\}$ Is a Sphere
 
-The topology of $\mathbb{C}_\infty$ is defined by transporting the topology of $S^2$ along the
-bijection $\bar\sigma$ of Proposition 7.42: a set $U \subseteq \mathbb{C}_\infty$ is open if and
-only if $\bar\sigma^{-1}(U)$ is open in $S^2$. With that definition, the proof that
-$\mathbb{C}_\infty$ is a sphere is almost immediate, because $\bar\sigma$ preserves distances.
+**Proposition 7.39** (chordal metric). For $z,w\in\mathbb{C}$ define
 
-**Theorem 7.46** ($\mathbb{C}_\infty$ is homeomorphic to $S^2$). The map
-$\bar\sigma : S^2 \to \mathbb{C}_\infty$ is a homeomorphism. Consequently
-$\mathbb{C}_\infty$ is compact, connected, Hausdorff, and second countable.
+$$d(z,w) := \frac{2\lvert z-w\rvert}{\sqrt{(1+\lvert z\rvert^2)(1+\lvert w\rvert^2)}}, \qquad d(z,\infty) := \frac{2}{\sqrt{1+\lvert z\rvert^2}}, \qquad d(\infty,\infty) := 0.$$
 
-*Proof.* By Proposition 7.42, $\bar\sigma$ is a bijection. By Proposition 7.44, for
-$P, Q \in S^2$,
+Then $d$ is a metric on $\mathbb{C}_\infty$ and equals the Euclidean distance between the corresponding points of $S^2$.
 
-$$
-d\bigl(\bar\sigma(P), \bar\sigma(Q)\bigr) = \lvert P - Q\rvert,
-$$
+*Proof.* Since $\bar\sigma$ is a bijection, transporting Euclidean distance gives a metric; it remains to verify the formulas. Let $P = \sigma^{-1}(z)$, $Q = \sigma^{-1}(w)$ be unit vectors. Then $\lvert P-Q\rvert^2 = 2-2P\cdot Q$, and Proposition 7.36 gives
 
-where the right side is the Euclidean distance in $\mathbb{R}^3$ and the left side is the chordal
-metric. Hence $\bar\sigma$ and $\bar\sigma^{-1}$ are distance-preserving, therefore continuous
-(with $\varepsilon = \delta$). A continuous bijection with continuous inverse is a homeomorphism.
-Compactness, connectedness, Hausdorffness and second countability are topological properties
-preserved by homeomorphism, and $S^2$ has all four: it is closed and bounded in $\mathbb{R}^3$,
-hence compact; it is path-connected (any two points are joined by a great-circle arc), hence
-connected; it is a metric subspace, hence Hausdorff and second countable. $\blacksquare$
+$$P\cdot Q = \frac{4(xu+yv)+(r^2-1)(s^2-1)}{(1+r^2)(1+s^2)},$$
 
-**Corollary 7.47** (the one-point compactification). $\mathbb{C}$ is an open dense subset of
-$\mathbb{C}_\infty$ whose complement is the single point $\infty$. The space
-$\mathbb{C}_\infty$ is the **one-point compactification** of $\mathbb{C}$, and it is unique up to
-homeomorphism fixing $\mathbb{C}$ pointwise.
+where $r^2 = \lvert z\rvert^2$ and $s^2 = \lvert w\rvert^2$. Hence
 
-*Proof.* Openness and density: a basic neighbourhood of $\infty$ is, by Theorem 7.46 and the
-definition of the topology, a set $\{\infty\}\cup\{\lvert z\rvert > R\}$ for some $R > 0$ (the
-image of a cap $\{Z > 1-\varepsilon\}$ around the north pole). Every such set meets $\mathbb{C}$,
-so $\mathbb{C}$ is dense; and $\mathbb{C}$ is open because $\mathbb{C}\setminus\{z : \lvert z\rvert \le R\}$
-type sets are open in the transported topology, or directly because $\mathbb{C}$ is open in
-$\mathbb{C}_\infty$ as the complement of the closed point $\{\infty\}$.
+$$\lvert P-Q\rvert^2 = \frac{2(1+r^2)(1+s^2)-8(xu+yv)-2(r^2-1)(s^2-1)}{(1+r^2)(1+s^2)} = \frac{4(r^2+s^2-2xu-2yv)}{(1+r^2)(1+s^2)} = \frac{4\lvert z-w\rvert^2}{(1+r^2)(1+s^2)},$$
 
-For uniqueness, suppose $X$ is a compact Hausdorff space containing $\mathbb{C}$ as a dense open
-subset with $X \setminus \mathbb{C} = \{\omega\}$. Define $f : X \to \mathbb{C}_\infty$ by
-$f(z) = z$ for $z \in \mathbb{C}$ and $f(\omega) = \infty$. Then $f$ is a bijection. It is
-continuous at every point of $\mathbb{C}$ because it is the identity there and $\mathbb{C}$ is
-open. At $\omega$: if $U$ is a neighbourhood of $\infty$, its complement in $\mathbb{C}_\infty$
-is compact (as a closed subset of the compact space $\mathbb{C}_\infty$), hence $f^{-1}(U)$
-contains the complement in $X$ of a compact — hence closed — subset of $\mathbb{C}$, so
-$f^{-1}(U)$ is open in $X$. Thus $f$ is a continuous bijection from a compact space to a Hausdorff
-space, hence a homeomorphism. $\blacksquare$
+because the numerator expands to $2(1+r^2+s^2+r^2s^2)-8(xu+yv)-2(r^2s^2-r^2-s^2+1) = 4r^2+4s^2-8(xu+yv)$. For $w = \infty$, $\lvert P-N\rvert^2 = 2-2Z = 2-2(r^2-1)/(1+r^2) = 4/(1+r^2)$. $\blacksquare$
 
-**Remark 7.48** (why a sphere and not some other surface). A closed surface is determined up to
-homeomorphism by its genus. Removing one point from a closed surface $M$ leaves a space
-homeomorphic to $\mathbb{R}^2$ exactly when $M = S^2$: for the torus, the punctured torus retracts
-onto a wedge of two circles and is not simply connected, whereas $\mathbb{C} \cong \mathbb{R}^2$
-is simply connected. So among closed surfaces, only the sphere can be $\mathbb{C}$ plus one point.
-The sphere also has the correct Euler characteristic, $\chi(S^2) = 2$, matching the Euler
-characteristic of the plane compactified by a single point.
+Consequences: $d\le2$ always, with $d(0,\infty) = 2$; and $d(z_n,\infty)\to0$ exactly when $\lvert z_n\rvert\to\infty$.
 
-**Remark 7.49** (sequential compactness, concretely). Theorem 7.46 gives compactness abstractly.
-There is also a direct sequential proof, which is instructive. Let $(z_n)$ be a sequence in
-$\mathbb{C}_\infty$.
+**Theorem 7.40** ($\mathbb{C}_\infty$ is a sphere). The map $\bar\sigma:S^2\to\mathbb{C}_\infty$ is a homeomorphism. Hence $\mathbb{C}_\infty$ is compact, connected, Hausdorff and second countable.
 
-* If $(z_n)$ is bounded in $\mathbb{C}$, then by the Bolzano–Weierstrass theorem it has a
-  subsequence converging to some $z \in \mathbb{C}$.
-* If $(z_n)$ is unbounded, then for each $k$ choose $n_k$ with $\lvert z_{n_k}\rvert > k$; then
-  $d(z_{n_k},\infty) \le 2/\sqrt{1+k^2} \to 0$, so $z_{n_k} \to \infty$.
+*Proof.* By Proposition 7.37, $\bar\sigma$ is a bijection, and by Proposition 7.39 it preserves distances, so $\bar\sigma$ and $\bar\sigma^{-1}$ are continuous. A continuous bijection with continuous inverse is a homeomorphism. The sphere is closed and bounded in $\mathbb{R}^3$, hence compact; it is path-connected, hence connected; and as a metric subspace it is Hausdorff and second countable. All these properties are topological. $\blacksquare$
 
-Every sequence therefore has a convergent subsequence. In a metric space, sequential compactness
-is equivalent to compactness, so this reproves the compactness of $\mathbb{C}_\infty$ without
-mentioning spheres. The sphere is still the better picture: it makes the statement
-"$\mathbb{C}$ has exactly one end" visible.
+**Corollary 7.41** (one-point compactification). $\mathbb{C}$ is an open dense subset of $\mathbb{C}_\infty$ whose complement is the single point $\infty$; $\mathbb{C}_\infty$ is the one-point compactification of $\mathbb{C}$, unique up to homeomorphism fixing $\mathbb{C}$.
+
+*Proof.* A basic neighbourhood of $\infty$ is $\{\infty\}\cup\{\lvert z\rvert>R\}$ by the description at the start of Section 7.10, so it meets $\mathbb{C}$; hence $\mathbb{C}$ is dense. Also $\mathbb{C} = \mathbb{C}_\infty\setminus\{\infty\}$ is open. For uniqueness, if $X$ is compact Hausdorff, contains $\mathbb{C}$ as a dense open subset and $X\setminus\mathbb{C} = \{\omega\}$, then the identity on $\mathbb{C}$, extended by $\omega\mapsto\infty$, is a continuous bijection from compact $X$ to Hausdorff $\mathbb{C}_\infty$, hence a homeomorphism: continuity at $\omega$ follows because the complement in $\mathbb{C}_\infty$ of a neighbourhood of $\infty$ is compact, hence closed in $X$. $\blacksquare$
+
+Why a sphere rather than another surface: removing one point from a closed surface leaves a space homeomorphic to $\mathbb{R}^2$ only for $S^2$. A punctured torus retracts onto a wedge of two circles and is not simply connected, whereas $\mathbb{C}\cong\mathbb{R}^2$ is simply connected. Among closed surfaces, only the sphere qualifies.
 
 ### 7.12 Applications
 
-**Rotations in two dimensions.** Proposition 7.10 says that multiplication by
-$e^{i\theta} = \cos\theta + i\sin\theta$ is rotation by $\theta$. Composing rotations adds angles,
-which is exactly Proposition 7.9. In computer graphics, a 2-D rotation is stored either as the
-pair $(\cos\theta, \sin\theta)$ or as the complex number $e^{i\theta}$; composition is complex
-multiplication, and interpolation between orientations is interpolation of the angle. A rotation
-about an arbitrary centre $a$ is the map
+**Rotations in two dimensions.** Multiplication by $e^{i\theta}$ is rotation by $\theta$, and composing rotations adds angles (Proposition 7.9). A rotation about an arbitrary centre $a$ is $z\mapsto a+e^{i\theta}(z-a)$. In computer graphics and robotics, orientations are stored as unit complex numbers, and composition is complex multiplication. The position of a planar arm with links $\ell_j$ and joint angles $\theta_j$ is $z = \sum_j \ell_j\exp\bigl(i\sum_{k\le j}\theta_k\bigr)$, the forward-kinematics formula.
 
-$$
-z \longmapsto a + e^{i\theta}(z - a),
-$$
+**Alternating current.** A sinusoid $V_0\cos(\omega t+\varphi)$ is encoded by the **phasor** $\hat V = V_0e^{i\varphi}$. Differentiation multiplies the phasor by $i\omega$, so inductors have impedance $i\omega L$ and capacitors $1/(i\omega C)$; impedances in series add and Ohm's law becomes $\hat V = Z\hat I$. The average power into $Z = R+iX$ is $\tfrac12\lvert\hat I\rvert^2R$, depending only on the real part. Three-phase systems use the phasors $1,\omega,\omega^2$ with $\omega = e^{2\pi i/3}$, which sum to zero by Proposition 7.17 — the reason the neutral current vanishes in a balanced load.
 
-translate the centre to $0$, rotate, translate back.
+**Fluid flow.** For a two-dimensional incompressible irrotational flow the complex potential $\Omega = \phi+i\psi$ is holomorphic; streamlines are the level curves of $\psi$ and equipotentials those of $\phi$, meeting at right angles. Uniform flow past a cylinder is generated by $\Omega(z) = U(z+a^2/z)$, whose imaginary part vanishes on $\lvert z\rvert = a$. The Joukowski map $w = z+a^2/z$ deforms the circle into an aerofoil profile. The analytic background is in [Analytic Functions](../02-analytic-functions/README.md), the differential equations in [Differential Equations](../../16-differential-equations/README.md).
 
-**Alternating current.** In an AC circuit driven at angular frequency $\omega$, every voltage and
-current is a sinusoid of the same frequency, $v(t) = V_0\cos(\omega t + \varphi)$. The pair
-$(V_0, \varphi)$ is encoded by the **phasor** $\hat V = V_0e^{i\varphi}$, and the rule
-"differentiate multiplies the phasor by $i\omega$" turns the differential equations of the circuit
-into algebraic equations. An inductor has impedance $i\omega L$, a capacitor $1/(i\omega C)$, and
-a resistor $R$. Impedances in series add, and Ohm's law becomes $\hat V = Z\hat I$. Section 9.8
-works an example; the reason the method is legitimate is that $\operatorname{Re}(e^{i\omega t})$ is
-a solution of the underlying linear equation whenever the phasor equation holds, and linear
-equations have unique solutions for given initial data.
+**Hyperbolic geometry.** The upper half-plane with metric $ds = \lvert dz\rvert/\operatorname{Im}z$ is a model of the hyperbolic plane, and its orientation-preserving isometries are the Möbius maps with real coefficients and positive determinant. The disc model is obtained by $z\mapsto(z-i)/(z+i)$ (Example 9.9). This is the gateway to Kleinian groups and the modular group.
 
-**Fluid flow and conformal maps (preview).** For a two-dimensional incompressible, irrotational
-flow, the velocity field $(u,v)$ satisfies the Cauchy–Riemann equations with
-$\phi$ a velocity potential and $\psi$ a stream function; the complex potential
-$\Omega(z) = \phi + i\psi$ is holomorphic. Streamlines are the level curves $\psi = \text{const}$,
-and equipotentials are $\phi = \text{const}$; they meet at right angles because of conformality.
-A conformal map sends one flow to another, which is how the flow past a cylinder is obtained from
-uniform flow: the Joukowski map
-
-$$
-w = z + \frac{a^2}{z}
-$$
-
-sends the exterior of the circle $\lvert z\rvert = a$ onto the plane slit along $[-2a,2a]$, and
-uniform flow $z \mapsto Uz$ becomes flow past a circular cylinder. Composing with further
-Joukowski-type maps produces aerofoil profiles. The analytic background is developed in
-[Analytic Functions](../02-analytic-functions/README.md); the differential equations of the flow
-are treated in [Differential Equations](../../16-differential-equations/README.md).
-
-**Inversive geometry and cartography.** Stereographic projection is conformal: it preserves
-angles between curves on the sphere and their images in the plane. This is why it is used for
-maps of the earth (Mercator's projection is a different conformal map, built from the complex
-logarithm), for the representation of crystal orientations, and in medical imaging. The group of
-Möbius transformations is exactly the group of conformal bijections of the Riemann sphere, a
-statement proved in [Conformal Mappings](../README.md#topic-inventory).
-
-**Roots of unity in computation.** The discrete Fourier transform of length $n$ evaluates a
-polynomial at the $n$-th roots of unity; the fast Fourier transform exploits the multiplicative
-structure of $\mu_n$ to reduce $O(n^2)$ work to $O(n\log n)$. Proposition 7.17 is the algebraic
-fact behind the algorithm, and Proposition 7.18 is the reason the transform is invertible.
+**Number theory and computation.** The Gaussian integers $\mathbb{Z}[i]$ form a Euclidean domain; the two-squares identity $(a^2+b^2)(c^2+d^2) = (ac-bd)^2+(ad+bc)^2$ is $\lvert zw\rvert = \lvert z\rvert\lvert w\rvert$. The discrete Fourier transform evaluates polynomials at the $n$-th roots of unity, and the fast Fourier transform exploits the multiplicative structure of $\mu_n$; Proposition 7.17 is the identity behind invertibility of the transform.
 
 ## 8. Formulas and Properties
 
-The table collects the identities used most often. "Why" states the reason, and the section where
-the proof lives.
-
 | Formula | Hypotheses | Why it is true |
 |---|---|---|
-| $z\bar z = \lvert z\rvert^2$ | $z \in \mathbb{C}$ | expansion in coordinates; Prop. 7.2 |
-| $z^{-1} = \bar z/\lvert z\rvert^2$ | $z \ne 0$ | multiply $z$ by $\bar z$; Prop. 7.2 |
-| $\overline{z+w} = \bar z+\bar w$, $\overline{zw} = \bar z\bar w$ | all $z,w$ | conjugation is a field automorphism; Prop. 7.1 |
-| $\lvert zw\rvert = \lvert z\rvert\lvert w\rvert$ | all $z,w$ | $\lvert zw\rvert^2 = zw\overline{zw} = z\bar z w\bar w$; Prop. 7.9 |
-| $\lvert z+w\rvert \le \lvert z\rvert+\lvert w\rvert$ | all $z,w$ | expand $\lvert z+w\rvert^2$ and use $\operatorname{Re}\zeta \le \lvert\zeta\rvert$; Prop. 7.4 |
-| equality in the triangle inequality | $w \ne 0$ | iff $z = \lambda w$ with $\lambda \ge 0$; Prop. 7.4 |
-| $\bigl\lvert\lvert z\rvert-\lvert w\rvert\bigr\rvert \le \lvert z-w\rvert$ | all $z,w$ | apply the triangle inequality twice; Prop. 7.5 |
-| $\lvert z+w\rvert^2+\lvert z-w\rvert^2 = 2\lvert z\rvert^2+2\lvert w\rvert^2$ | all $z,w$ | expand both squares; Prop. 7.6 |
+| $z\bar z = \lvert z\rvert^2$ | all $z$ | expansion in coordinates; Prop. 7.3 |
+| $z^{-1} = \bar z/\lvert z\rvert^2$ | $z\ne0$ | multiply $z$ by $\bar z$; Prop. 7.3 |
+| $\overline{z+w} = \bar z+\bar w$, $\overline{zw} = \bar z\bar w$ | all $z,w$ | conjugation is a field automorphism; Prop. 7.2 |
+| $\lvert zw\rvert = \lvert z\rvert\lvert w\rvert$ | all $z,w$ | $\lvert zw\rvert^2 = z\bar z\,w\bar w$; Prop. 7.9 |
+| $\lvert z+w\rvert\le\lvert z\rvert+\lvert w\rvert$ | all $z,w$ | expand $\lvert z+w\rvert^2$ and use $\operatorname{Re}\zeta\le\lvert\zeta\rvert$; Prop. 7.5 |
+| equality in the triangle inequality | $w\ne0$ | iff $z = \lambda w$, $\lambda\ge0$; Prop. 7.5 |
+| $\bigl\lvert\lvert z\rvert-\lvert w\rvert\bigr\rvert\le\lvert z-w\rvert$ | all $z,w$ | apply the triangle inequality twice; Prop. 7.6 |
+| $\lvert z+w\rvert^2+\lvert z-w\rvert^2 = 2\lvert z\rvert^2+2\lvert w\rvert^2$ | all $z,w$ | expand both squares; Prop. 7.7 |
 | $\lvert z_1-z_2\rvert^2 = \lvert z_1\rvert^2+\lvert z_2\rvert^2-2\operatorname{Re}(z_1\bar z_2)$ | all $z_1,z_2$ | expansion; used for loci |
-| $z = r e^{i\theta}$, $r = \lvert z\rvert$, $\theta \in \arg z$ | $z \ne 0$ | Lemma 7.7 |
-| $e^{i\theta}e^{i\varphi} = e^{i(\theta+\varphi)}$ | $\theta,\varphi \in \mathbb{R}$ | addition formulas; Prop. 7.9 |
-| $(\cos\theta+i\sin\theta)^n = \cos n\theta+i\sin n\theta$ | $n \in \mathbb{Z}$ | induction plus the product formula; Prop. 7.13 |
-| $z^n = w$ has exactly $n$ solutions | $w \ne 0$, $n \in \mathbb{N}$ | modulus and argument comparison; Prop. 7.14 |
-| $\sum_{k=0}^{n-1}\omega^k = 0$ | $n \ge 2$, $\omega = e^{2\pi i/n}$ | geometric series with $\omega^n = 1 \ne \omega$; Prop. 7.18 |
-| $\prod_{k=0}^{n-1}\omega^k = (-1)^{n+1}$ | $n \in \mathbb{N}$ | pairing or Vieta; Prop. 7.19 |
-| $T_A\circ T_B = T_{AB}$ | $\det A,\det B \ne 0$ | matrix multiplication; Prop. 7.22 |
-| Möbius maps form a group $\cong \operatorname{PGL}_2(\mathbb{C})$ | — | kernel is scalar matrices; Prop. 7.23 |
-| unique Möbius map sending $z_j \mapsto w_j$ | both triples distinct | cross-ratio construction; Prop. 7.24 |
-| $A\lvert z\rvert^2+Bz+\bar B\bar z+C=0$ is a circle or line | $A,C$ real, not all zero | completing the square; Lemma 7.27 |
-| Möbius maps send generalized circles to generalized circles | — | generators: translation, dilation, inversion; Thm. 7.29 |
-| pole on $C$ $\Rightarrow$ image is a line | $c \ne 0$, $z_0 = -d/c$ | inversion of a circle through $0$; Cor. 7.30 |
-| $(Tz_1,Tz_2;Tz_3,Tz_4) = (z_1,z_2;z_3,z_4)$ | $T$ Möbius, points distinct | three-point uniqueness; Prop. 7.33 |
-| cross-ratio real $\iff$ four points concyclic or collinear | points distinct | Lemma 7.34, Thm. 7.35 |
-| $\sigma(X,Y,Z) = \frac{X+iY}{1-Z}$ | $Z \ne 1$ | similar triangles from the north pole; Prop. 7.41 |
-| $\sigma^{-1}(z) = \left(\frac{2x}{1+\lvert z\rvert^2},\frac{2y}{1+\lvert z\rvert^2},\frac{\lvert z\rvert^2-1}{1+\lvert z\rvert^2}\right)$ | $z = x+iy$ | line–sphere intersection; Prop. 7.41 |
-| $d(z,w) = \frac{2\lvert z-w\rvert}{\sqrt{(1+\lvert z\rvert^2)(1+\lvert w\rvert^2)}}$ | $z,w \in \mathbb{C}$ | Euclidean distance of projections; Prop. 7.44 |
-| $d(z,\infty) = \frac{2}{\sqrt{1+\lvert z\rvert^2}}$ | $z \in \mathbb{C}$ | distance to the north pole; Prop. 7.44 |
+| $z = re^{i\theta}$ | $z\ne0$ | Lemma 7.7 and Definition 7.8 |
+| $e^{i\theta}e^{i\varphi} = e^{i(\theta+\varphi)}$ | $\theta,\varphi\in\mathbb{R}$ | addition formulas; Prop. 7.9 |
+| $(\cos\theta+i\sin\theta)^n = \cos n\theta+i\sin n\theta$ | $n\in\mathbb{Z}$ | induction plus the product formula; Prop. 7.12 |
+| $z^n = w$ has exactly $n$ roots | $w\ne0$, $n\in\mathbb{N}$ | modulus and argument comparison; Prop. 7.13 |
+| $\sum_{k=0}^{n-1}\omega^k = 0$ | $n\ge2$, $\omega = e^{2\pi i/n}$ | geometric series; Prop. 7.17 |
+| $\prod_{k=0}^{n-1}\omega^k = (-1)^{n+1}$ | $n\in\mathbb{N}$ | pairing or Vieta; Prop. 7.18 |
+| $T_A\circ T_B = T_{AB}$ | $\det A,\det B\ne0$ | matrix multiplication; Prop. 7.21 |
+| Möbius maps form a group $\cong\operatorname{PGL}_2(\mathbb{C})$ | — | kernel consists of scalar matrices; Prop. 7.22 |
+| unique Möbius map sending $z_j\mapsto w_j$ | both triples distinct | cross-ratio construction; Thm. 7.23 |
+| $A\lvert z\rvert^2+Bz+\bar B\bar z+C = 0$ is a circle or line | $A,C$ real, not all zero | completing the square; Lemma 7.25 |
+| Möbius maps send generalized circles to generalized circles | — | translation, dilation, inversion; Thm. 7.27 |
+| pole on $C$ implies image is a line | $c\ne0$, pole $-d/c$ | inversion of a circle through $0$; Cor. 7.28 |
+| $(Tz_1,Tz_2;Tz_3,Tz_4) = (z_1,z_2;z_3,z_4)$ | $T$ Möbius | three-point uniqueness; Prop. 7.31 |
+| cross-ratio real $\iff$ four points concyclic or collinear | points distinct | Theorem 7.32 |
+| $\sigma(X,Y,Z) = \frac{X+iY}{1-Z}$ | $Z\ne1$ | line from the north pole; Prop. 7.36 |
+| $\sigma^{-1}(z) = \left(\frac{2x}{1+\lvert z\rvert^2},\frac{2y}{1+\lvert z\rvert^2},\frac{\lvert z\rvert^2-1}{1+\lvert z\rvert^2}\right)$ | $z = x+iy$ | line–sphere intersection; Prop. 7.36 |
+| $d(z,w) = \frac{2\lvert z-w\rvert}{\sqrt{(1+\lvert z\rvert^2)(1+\lvert w\rvert^2)}}$ | $z,w\in\mathbb{C}$ | Euclidean distance of projections; Prop. 7.39 |
+| $d(z,\infty) = \frac{2}{\sqrt{1+\lvert z\rvert^2}}$ | $z\in\mathbb{C}$ | distance to the north pole; Prop. 7.39 |
 
-<!--PART5-->
+## 9. Step-by-Step Examples
 
+**Example 9.1** (a fifth power via polar form). Compute $(2-2i)^5$. Here $r = \sqrt{4+4} = 2\sqrt2$ and, since the point is in the fourth quadrant with $\tan\theta = -1$, $\theta = -\pi/4$. By De Moivre,
 
+$$(2-2i)^5 = (2\sqrt2)^5e^{-5\pi i/4} = 128\sqrt2\,e^{3\pi i/4} = 128\sqrt2\left(-\frac{\sqrt2}{2}+i\frac{\sqrt2}{2}\right) = -128+128i,$$
 
+where $3\pi/4$ is the principal argument. *Check:* $(2-2i)^2 = -8i$, so $(2-2i)^4 = -64$ and $(2-2i)^5 = -64(2-2i) = -128+128i$.
+
+**Example 9.2** (fourth roots). Solve $z^4 = -16$. Since $-16 = 16e^{i\pi}$,
+
+$$z_k = 2\exp\!\left(i\frac{\pi+2\pi k}{4}\right), \qquad k = 0,1,2,3,$$
+
+so the roots are $\sqrt2+i\sqrt2$, $-\sqrt2+i\sqrt2$, $-\sqrt2-i\sqrt2$, $\sqrt2-i\sqrt2$. *Check:* $(\sqrt2+i\sqrt2)^2 = 2(1+i)^2 = 4i$ and $(4i)^2 = -16$. Their sum is zero, matching the vanishing $z^3$ coefficient of $z^4+16$.
+
+**Example 9.3** (a locus). Describe $S = \{z : \lvert z-2i\rvert = \lvert z+1\rvert\}$. With $z = x+iy$,
+
+$$x^2+(y-2)^2 = (x+1)^2+y^2 \;\Longleftrightarrow\; -4y+4 = 2x+1 \;\Longleftrightarrow\; 2x+4y = 3.$$
+
+So $S$ is the line $y = \tfrac34-\tfrac12x$. *Check:* the midpoint $-\tfrac12+i$ of the segment from $-1$ to $2i$ satisfies the equation, and the line is perpendicular to that segment (direction $(2,-1)$ versus $(1,2)$).
+
+**Example 9.4** (image of a circle). Find the image of $\lvert z\rvert = 1$ under $T(z) = (z-1)/(z+1)$. From $w(z+1) = z-1$ we get $z = (1+w)/(1-w)$. Then
+
+$$\lvert z\rvert = 1 \iff \lvert 1+w\rvert = \lvert 1-w\rvert \iff 1+2\operatorname{Re}w+\lvert w\rvert^2 = 1-2\operatorname{Re}w+\lvert w\rvert^2 \iff \operatorname{Re}w = 0.$$
+
+The image is the imaginary axis, as Corollary 7.28 predicts since the pole $-1$ lies on the circle. Testing $z = 0$ gives $T(0) = -1$, so the interior maps to the left half-plane. *Check:* $T(i) = (i-1)/(i+1) = i$, on the axis.
+
+**Example 9.5** (testing concyclicity). Are $0,1,2,i$ concyclic or collinear? Compute
+
+$$(0,1;2,i) = \frac{(0-2)(1-i)}{(0-i)(1-2)} = \frac{-2(1-i)}{i} = \frac{-2+2i}{i} = 2+2i,$$
+
+using $1/i = -i$: $(-2+2i)(-i) = 2i+2 = 2+2i$. This is not real, so by Theorem 7.32 the four points lie on no common circle or line.
+
+**Example 9.6** (stereographic coordinates). For $z = 2i$, Proposition 7.36 gives
+
+$$\sigma^{-1}(2i) = \left(0,\ \frac{4}{5},\ \frac{3}{5}\right),$$
+
+which is on the sphere since $16/25+9/25 = 1$. The chordal distance from $0$ is predicted to be $d(0,2i) = 2\cdot2/\sqrt{1\cdot5} = 4/\sqrt5$; directly from the points $(0,0,-1)$ and $(0,\tfrac45,\tfrac35)$,
+
+$$\sqrt{\left(\tfrac45\right)^2+\left(\tfrac35+1\right)^2} = \sqrt{\tfrac{16}{25}+\tfrac{64}{25}} = \frac{4}{\sqrt5}.$$
+
+**Example 9.7** (rotation about a point). Rotate $3+i$ by $\pi/3$ about $1+2i$. The displacement is $z-a = 2-i$, and
+
+$$e^{i\pi/3}(2-i) = \left(\frac12+i\frac{\sqrt3}{2}\right)(2-i) = \left(1+\frac{\sqrt3}{2}\right)+i\left(\sqrt3-\frac12\right).$$
+
+Adding $a = 1+2i$ gives $z' = \left(2+\frac{\sqrt3}{2}\right)+i\left(\frac32+\sqrt3\right)$. *Check:* $\lvert z'-a\rvert^2 = (1+\sqrt3/2)^2+(\sqrt3-1/2)^2 = 5 = \lvert 2-i\rvert^2$, as rotation requires.
+
+**Example 9.8** (an AC circuit). A series circuit has $R = 4\,\Omega$, $X_L = 3\,\Omega$ and $X_C = 6\,\Omega$, with voltage phasor $\hat V = 20$ V. Then $Z = 4+i(3-6) = 4-3i$ and
+
+$$\hat I = \frac{\hat V}{Z} = \frac{20(4+3i)}{25} = 3.2+2.4i.$$
+
+The amplitude is $\lvert\hat I\rvert = \sqrt{10.24+5.76} = 4$ A and the phase is $\arctan(0.75)\approx36.87^\circ$; the current leads the voltage, as expected in a capacitive circuit. *Check:* $(3.2+2.4i)(4-3i) = 12.8+7.2 = 20$.
+
+**Example 9.9** (half-plane to disc). Let $f(z) = (z-i)/(z+i)$. With $z = x+iy$,
+
+$$\lvert f(z)\rvert<1 \iff \lvert z-i\rvert^2<\lvert z+i\rvert^2 \iff x^2+(y-1)^2<x^2+(y+1)^2 \iff y>0.$$
+
+So $f$ maps the upper half-plane into the unit disc; since $z = i(1+w)/(1-w)$ is defined for every $\lvert w\rvert<1$ and the same computation read backwards gives $\operatorname{Im}z>0$, the map is onto. If $y = 0$ then $\lvert f(z)\rvert = 1$; the real line maps onto the unit circle, and $f(\infty) = 1$ accounts for the missing point. *Check:* $f(i) = 0$, $f(0) = -1$, $f(2i) = 1/3$.
+
+## 10. Visual Explanations
+
+The four descriptions of a non-zero complex number, and what each is good for:
+
+```mermaid
+flowchart LR
+    C["Cartesian form<br/>z = x + i y"] <--> P["Polar form<br/>z = r (cos theta + i sin theta)"]
+    P <--> E["Exponential form<br/>z = r e^(i theta)"]
+    C <--> G["Point (x, y) in the plane"]
+    E <--> M["Multiplication<br/>rotate by theta, scale by r"]
+    G <--> A["Addition<br/>vector addition"]
+```
+
+Why Möbius maps preserve circles:
+
+```mermaid
+flowchart TD
+    T["Möbius map<br/>z maps to (a z + b)/(c z + d)"] --> S["Translation<br/>z maps to z + beta"]
+    T --> D["Rotation-dilation<br/>z maps to lambda z"]
+    T --> J["Inversion<br/>z maps to 1/z"]
+    S --> K["Circles to circles<br/>lines to lines"]
+    D --> K
+    J --> L["Generalized circles<br/>to generalized circles"]
+    K --> R["Every Möbius map preserves<br/>generalized circles"]
+    L --> R
+```
+
+The sphere–plane dictionary under stereographic projection:
+
+| Object on $S^2$ | Object in $\mathbb{C}_\infty$ | Reason |
+|---|---|---|
+| North pole $N$ | $\infty$ | definition of $\bar\sigma$ |
+| South pole | $0$ | Proposition 7.36 |
+| Equator $Z = 0$ | unit circle $\lvert z\rvert = 1$ | $Z = 0\iff\lvert z\rvert^2 = 1$ |
+| Upper hemisphere $Z>0$ | exterior $\lvert z\rvert>1$ | $Z = (\lvert z\rvert^2-1)/(\lvert z\rvert^2+1)$ |
+| Lower hemisphere $Z<0$ | interior $\lvert z\rvert<1$ | same formula |
+| Circle through $N$ | straight line | Theorem 7.38, case $\gamma = \delta$ |
+| Circle not through $N$ | circle | Theorem 7.38, case $\gamma\ne\delta$ |
+
+## 11. Common Mistakes
+
+**1. Treating $\arg$ as a function.** Writing $\arg(zw) = \arg z+\arg w$ as numbers is false; the correct statement is modulo $2\pi$. Track congruences, or fix a branch and carry correction terms.
+
+**2. Forgetting that there are $n$ $n$-th roots.** In $\mathbb{R}$, $\sqrt9$ means $3$. In $\mathbb{C}$, "the square root" is ambiguous: $z^4 = -16$ has four solutions. Use Proposition 7.13 and list $k = 0,\dots,n-1$.
+
+**3. Writing inequalities between complex numbers.** $z<w$ and "$i>0$" are meaningless: $\mathbb{C}$ is not ordered. Only real quantities — $\lvert z\rvert$, $\operatorname{Re}z$, $\operatorname{Im}z$ — may be compared.
+
+**4. Assuming $\lvert z+w\rvert = \lvert z\rvert+\lvert w\rvert$.** This holds only when $z,w$ point the same way. For instance $\lvert1+i\rvert = \sqrt2\ne2$.
+
+**5. Dividing incorrectly.** The correct identity is $1/w = \bar w/\lvert w\rvert^2$; multiplying by the numerator's conjugate instead of the denominator's gives a wrong answer. Check with $w\cdot(1/w) = 1$.
+
+**6. Losing the point at infinity.** The map $z\mapsto1/z$ sends $\lvert z-1\rvert = 1$ to a line, not a circle, because the circle passes through the pole $0$. Always ask whether the circle contains the pole.
+
+**7. Confusing the cross-ratio with a symmetric function.** Its value depends on the order of the points. Fix the convention of Definition 5.10 and substitute carefully.
+
+**8. Treating $\infty$ as a number.** $\infty-\infty$ and $0\cdot\infty$ are undefined (Definition 7.34). Use limits when such expressions would arise.
+
+**9. Thinking two points determine a Möbius map.** The group has three complex parameters (four matrix entries modulo scaling); only three points determine an element (Theorem 7.23).
+
+**10. Forgetting that stereographic projection misses the north pole.** The formula is undefined at $N$; the separate definition $\bar\sigma(N) = \infty$ is what makes the map surjective.
+
+## 12. Applications
+
+**Rotations and robotics.** Every planar orientation is a unit complex number and every direct motion is $z\mapsto az+b$ with $\lvert a\rvert = 1$. A long composition of rotations costs one complex multiplication rather than a matrix product. Forward kinematics of a planar arm, inverse kinematics, and orientation interpolation in animation all reduce to this algebra.
+
+**Electrical engineering.** The phasor method turns linear circuits into complex algebra: impedances $R$, $i\omega L$ and $1/(i\omega C)$ add in series, and $\hat V = Z\hat I$. Average power is $\tfrac12\lvert\hat I\rvert^2R$, depending only on the real part, which is why $R$ is called resistance and $X$ reactance. Balanced three-phase systems use the cube roots of unity, whose sum is zero.
+
+**Fluid dynamics.** The complex potential $\Omega = \phi+i\psi$ of a two-dimensional ideal flow is holomorphic. Uniform flow past a cylinder comes from $\Omega(z) = U(z+a^2/z)$; the Joukowski map $w = z+a^2/z$ produces aerofoil profiles. Conformal invariance of Laplace's equation is the underlying reason, developed in [Analytic Functions](../02-analytic-functions/README.md) and applied in [Differential Equations](../../16-differential-equations/README.md).
+
+**Hyperbolic geometry.** The upper half-plane with $ds = \lvert dz\rvert/\operatorname{Im}z$ models the hyperbolic plane; its orientation-preserving isometries are Möbius maps with real coefficients and positive determinant. The disc model follows via Example 9.9.
+
+**Number theory and computation.** The Gaussian integers $\mathbb{Z}[i]$ form a Euclidean domain, and $(a^2+b^2)(c^2+d^2) = (ac-bd)^2+(ad+bc)^2$ is $\lvert zw\rvert = \lvert z\rvert\lvert w\rvert$. The FFT evaluates polynomials at roots of unity and exploits the group structure of $\mu_n$; Proposition 7.17 guarantees invertibility.
+
+## 13. Exercises
+
+The problem set contains **36 exercises**:
+
+* **Beginner (1–12):** arithmetic, conjugates, moduli, arguments, powers of $i$, polar conversion, simple loci, cube roots of unity.
+* **Intermediate (13–24):** triangle-inequality computations, fourth and square roots, rotations, images under inversion, cross-ratios, stereographic coordinates.
+* **Advanced (25–31):** proofs of the triangle inequality and its equality case, the parallelogram law, sums and products of roots of unity, invariance of the cross-ratio, circle preservation, the group law.
+* **Challenge (32–36):** the three-point theorem, disc automorphisms, a map determined by its action on the real line, sequential compactness of $\mathbb{C}_\infty$, and a regular-polygon construction.
+
+Attempt every problem on paper before opening [solutions.md](solutions.md).
+
+## 14. Solutions
+
+Complete worked solutions for all 36 exercises are in [solutions.md](solutions.md). Each names the strategy, carries out every step, and ends with an independent check where one is available.
+
+## 15. Summary
+
+* $\mathbb{C}$ is $\mathbb{R}^2$ with $(a,b)(c,d) = (ac-bd,ad+bc)$; it is a field, and $i = (0,1)$ satisfies $i^2 = -1$.
+* Conjugation is a field automorphism of order two, and $z\bar z = \lvert z\rvert^2$ gives $z^{-1} = \bar z/\lvert z\rvert^2$.
+* $\lvert z-w\rvert$ is the Euclidean distance; the triangle inequality holds with equality exactly when the displacements point the same way.
+* The reverse triangle inequality and parallelogram law follow by expanding squares.
+* Every $z\ne0$ has an argument, unique modulo $2\pi$; polar and exponential forms are the same object.
+* Multiplication multiplies moduli and adds arguments: it is rotation composed with dilation, with matrix $\begin{pmatrix}a&-b\\ b&a\end{pmatrix}$.
+* De Moivre computes powers; $z^n = w\ne0$ has $n$ roots forming a regular $n$-gon.
+* $\mu_n$ is cyclic of order $n$, its elements sum to $0$, and their product is $(-1)^{n+1}$.
+* Möbius transformations form a group isomorphic to $\operatorname{PGL}_2(\mathbb{C})$, and three points determine a unique element.
+* Möbius maps send generalized circles to generalized circles; a circle through the pole becomes a line.
+* The cross-ratio is Möbius-invariant, and four points are concyclic or collinear exactly when it is real.
+* The extended plane is the one-point compactification of $\mathbb{C}$ and is homeomorphic to $S^2$ via stereographic projection, with chordal metric $d(z,w) = 2\lvert z-w\rvert/\sqrt{(1+\lvert z\rvert^2)(1+\lvert w\rvert^2)}$.
+* The geometry of $\mathbb{C}$ underlies rotations, AC circuits, conformal flow, hyperbolic geometry and the FFT.
+
+## 16. Further Learning
+
+The natural sequel is [Analytic Functions](../02-analytic-functions/README.md), which uses this geometry to define the complex derivative, derive the Cauchy–Riemann equations, and prove that holomorphic functions are analytic and conformal. The topology of the extended plane is developed systematically in [Topology](../../17-topology/README.md). The differential equations of circuits and fluids are treated in [Differential Equations](../../16-differential-equations/README.md).
+
+Standard references:
+
+* Tristan Needham, *Visual Complex Analysis* — the geometric viewpoint of Sections 7.3–7.8, with outstanding figures.
+* Lars Ahlfors, *Complex Analysis* — the classical rigorous account, including the spherical metric.
+* John B. Conway, *Functions of One Complex Variable* — a careful modern treatment with more topology.
+* Hans Schwerdtfeger, *Geometry of Complex Numbers* — a dedicated account of circle preservation and the cross-ratio.
+* Alan F. Beardon, *The Geometry of Discrete Groups* — Möbius maps as hyperbolic isometries.

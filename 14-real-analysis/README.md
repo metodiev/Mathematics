@@ -12,7 +12,7 @@ Completeness, limits, continuity, differentiation, integration and metric spaces
 
 | | |
 |---|---|
-| Topics | 6 (0 complete, 1 draft, 5 planned) |
+| Topics | 6 (6 complete, 0 draft, 0 planned) |
 | Estimated study time | ~72 hours |
 | Prerequisites | [00-foundations](../00-foundations/README.md), [07-calculus](../07-calculus/README.md) |
 
@@ -40,12 +40,12 @@ flowchart LR
 
 | # | Topic | Level | Est. time | Status | Materials |
 |---|---|---|---|---|---|
-| 1 | [The Real Numbers and Completeness](01-real-numbers-and-completeness/README.md) | Advanced | 12 h | Draft | [Tutorial](01-real-numbers-and-completeness/README.md) · [Exercises](01-real-numbers-and-completeness/exercises.md) |
-| 2 | Sequences and Series | Advanced | 12 h | Planned | — |
-| 3 | Continuity and Limits | Advanced | 12 h | Planned | — |
-| 4 | Differentiation | Advanced | 12 h | Planned | — |
-| 5 | Riemann Integration | Advanced | 12 h | Planned | — |
-| 6 | Metric Spaces | Advanced | 12 h | Planned | — |
+| 1 | [The Real Numbers and Completeness](01-real-numbers-and-completeness/README.md) | Advanced | 12 h | Complete | [Tutorial](01-real-numbers-and-completeness/README.md) · [Exercises](01-real-numbers-and-completeness/exercises.md) · [Solutions](01-real-numbers-and-completeness/solutions.md) |
+| 2 | [Sequences and Series](02-sequences-and-series/README.md) | Advanced | 12 h | Complete | [Tutorial](02-sequences-and-series/README.md) · [Exercises](02-sequences-and-series/exercises.md) · [Solutions](02-sequences-and-series/solutions.md) |
+| 3 | [Continuity and Limits](03-continuity-and-limits/README.md) | Advanced | 12 h | Complete | [Tutorial](03-continuity-and-limits/README.md) · [Exercises](03-continuity-and-limits/exercises.md) · [Solutions](03-continuity-and-limits/solutions.md) |
+| 4 | [Differentiation](04-differentiation/README.md) | Advanced | 12 h | Complete | [Tutorial](04-differentiation/README.md) · [Exercises](04-differentiation/exercises.md) · [Solutions](04-differentiation/solutions.md) |
+| 5 | [Riemann Integration](05-riemann-integration/README.md) | Advanced | 12 h | Complete | [Tutorial](05-riemann-integration/README.md) · [Exercises](05-riemann-integration/exercises.md) · [Solutions](05-riemann-integration/solutions.md) |
+| 6 | [Metric Spaces](06-metric-spaces/README.md) | Advanced | 12 h | Complete | [Tutorial](06-metric-spaces/README.md) · [Exercises](06-metric-spaces/exercises.md) · [Solutions](06-metric-spaces/solutions.md) |
 
 ### What each topic covers
 

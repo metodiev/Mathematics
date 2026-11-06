@@ -220,9 +220,10 @@ For discrete $X$ everything is in the PMF: $p_X(x)=\Pr(X=x)\ge0$, $\sum_{x\in S}
 $\Pr(X\in B)=\sum_{x\in B\cap S}p_X(x)$. The CDF is a *staircase*, constant between support points and jumping by
 $p_X(x)$ at each one. A fair die, with $p(x)=1/6$ on $\{1,\dots,6\}$, has $F(x)=k/6$ for $k\le x<k+1$,
 $k=0,\dots,6$. The staircase is right-continuous but not left-continuous, and its jumps are exactly the masses;
-this is the visual signature of discreteness (§7.4). Mass functions are closed under countable mixtures (§7.7),
-and the sum of independent discrete variables is discrete with PMF the convolution
-$p_{X+Y}(z)=\sum_xp_X(x)p_Y(z-x)$, a computation belonging to the next topic.
+this is the visual signature of discreteness (§7.4). Mass functions are closed under countable *mixtures* (§7.7). The
+sum of two independent discrete variables is again discrete, with PMF the convolution
+$p_{X+Y}(z)=\sum_xp_X(x)p_Y(z-x)$; whether it remains inside a *named* family is a separate question, answered family
+by family in the next topic.
 
 ### 7.3 Continuous random variables and densities
 
@@ -562,8 +563,8 @@ continuous and strictly increasing where the mass sits, then $Q=F^{-1}$ and $F(Q
 $x_n\in S_p$ with $x_n\downarrow Q(p)$, right-continuity gives $F(Q(p))=\lim_nF(x_n)\ge p$, so $Q(p)\in S_p$ and
 the infimum is attained. (ii) If $Q(p)\le x$ then $p\le F(Q(p))\le F(x)$; if $p\le F(x)$ then $x\in S_p$ and
 $Q(p)\le x$. (iii) $x\in S_{F(x)}$; apply (ii). (iv) The first is (i). For the second, $t<Q(p)$ implies
-$t\notin S_p$, i.e. $F(t)<p$, so $\sup_{t<Q(p)}F(t)\le p$. (v) $p\le q\Rightarrow S_q\subseteq S_p\Rightarrow
-Q(p)\le Q(q)$. For left-continuity let $p_n\uparrow p$: monotonicity gives $\lim_nQ(p_n)\le Q(p)$, while for
+$t\notin S_p$, i.e. $F(t)<p$, so $\sup_{t<Q(p)}F(t)\le p$. (v) If $p\le q$ then $S_q\subseteq S_p$, hence
+$Q(p)\le Q(q)$. For left-continuity let $p_n\uparrow p$: monotonicity gives $\lim_nQ(p_n)\le Q(p)$, while for
 $t<Q(p)$ we have $F(t)<p$, so choosing $n$ with $F(t)<p_n<p$ gives $t<Q(p_n)$ and hence
 $\lim_nQ(p_n)\ge t$; let $t\uparrow Q(p)$. (vi) Then $S_p=[Q(p),\infty)$ and $F(Q(p))=p$. $\blacksquare$
 
@@ -574,8 +575,10 @@ $U\sim\text{Uniform}(0,1)$. Then $Q(U)$ has CDF $F$. Conversely, if $F$ is conti
 $F(X)\sim\text{Uniform}(0,1)$.*
 
 *Proof.* By Proposition 8.6(ii), $Q(U)\le x\iff U\le F(x)$, so
-$\Pr(Q(U)\le x)=\Pr(U\le F(x))=F(x)$. Conversely, for $0\le u\le1$,
-$\Pr(F(X)\le u)=\Pr(X\le Q(u))=F(Q(u))=u$. $\blacksquare$
+$\Pr(Q(U)\le x)=\Pr(U\le F(x))=F(x)$. Conversely suppose $F$ is continuous and let $b_u=\max\{x:F(x)=u\}$ for
+$0<u<1$, which exists because $F$ is continuous with limits $0$ and $1$. Since $F$ is nondecreasing,
+$\{x:F(x)\le u\}=(-\infty,b_u]$, so $\Pr(F(X)\le u)=F(b_u)=u$; the cases $u\le0$ and $u\ge1$ are immediate. Hence
+$F(X)\sim\text{Uniform}(0,1)$. $\blacksquare$
 
 ### 8.8 Independence: criteria and permanence
 

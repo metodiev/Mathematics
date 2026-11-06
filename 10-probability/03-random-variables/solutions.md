@@ -238,9 +238,9 @@ sampling with $Q(u)=-\ln(1-u)$. ✓
 (a) $f(x)=\tfrac12$ on $(0,1)$ and on $(2,3)$, and $f(x)=0$ between $1$ and $2$. The density has two separate
 blocks of equal height.
 
-(b) $\mathbb{E}[X]=\tfrac12(0.5)+\tfrac12(2.5)=1.5$. Then
-$\mathbb{E}[X^2]=\tfrac12\bigl(\tfrac1{12}+\tfrac14\bigr)+\tfrac12\bigl(\tfrac1{12}+\tfrac{25}4\bigr)
-=\tfrac12\cdot\tfrac13+\tfrac12\cdot\tfrac{19}3=\tfrac{10}3$, so
+(b) $\mathbb{E}[X]=\tfrac12(0.5)+\tfrac12(2.5)=1.5$. For the second moment, each uniform component on an interval
+of length $L$ has second moment $\mu_i^2+L^2/12$, so
+$\mathbb{E}[X^2]=\tfrac12(\tfrac14+\tfrac1{12})+\tfrac12(\tfrac{25}4+\tfrac1{12})=\tfrac{10}3$; hence
 $\operatorname{Var}(X)=\tfrac{10}3-\tfrac94=\tfrac{13}{12}\approx1.0833$.
 
 (c) Directly, $\mathbb{E}[X]=\int_0^1\tfrac{x}2dx+\int_2^3\tfrac{x}2dx=\tfrac14+\tfrac54=1.5$; and
@@ -301,8 +301,8 @@ $f_Y(y)=f_X(\sqrt y)/(2\sqrt y)=2\sqrt y/(2\sqrt y)=1$ on $(0,1)$: uniform, cons
 
 **21.** *(Strategy: the density of $e^X$ carries the factor $1/y$ from the inverse.)*
 
-(a) $h(y)=\ln y$, $\lvert h'(y)\rvert=1/y$, so $f_Y(y)=\dfrac{\varphi(\ln y)}{y}
-=\dfrac{1}{y\sqrt{2\pi}}\exp\!\bigl(-\tfrac{(\ln y)^2}{2}\bigr)$ for $y>0$.
+(a) $h(y)=\ln y$ and $\lvert h'(y)\rvert=1/y$, so $f_Y(y)=\varphi(\ln y)/y$ for $y>0$, that is,
+$f_Y(y)=\dfrac{1}{y\sqrt{2\pi}}\exp\!\bigl(-\tfrac{(\ln y)^2}{2}\bigr)$.
 
 (b) With $y=e^x$, $dy=e^xdx$ and $\int_0^\infty\dfrac{\varphi(\ln y)}{y}dy=\int_{-\infty}^{\infty}\varphi(x)dx=1$.
 
@@ -657,8 +657,8 @@ And $\int_2^3\tfrac{(3-z)^2}{2}dz=\tfrac16$. The total is $\tfrac16+\tfrac23+\tf
 (e) The density is symmetric about $z=\tfrac32$ and there are no atoms, so $\Pr(Z\le\tfrac32)=\tfrac12$; hence
 $\Pr(Z\le1.5)=\tfrac12$.
 
-*Check:* the value at $z=1.5$ is $-2.25+4.5-1.5=0.75$, the maximum, and $\Pr(1.5<Z<2)=0.5-\int_2^3\frac{(3-z)^2}{2}dz
-=0.5-\tfrac16=\tfrac13$. ✓
+*Check:* the value at $z=1.5$ is $-2.25+4.5-1.5=0.75$, the maximum, and
+$\Pr(1.5<Z<2)=0.5-\int_2^3\tfrac{(3-z)^2}{2}dz=0.5-\tfrac16=\tfrac13$. ✓
 
 **34.** *(Strategy: integrate the inequality over the interval.)*
 

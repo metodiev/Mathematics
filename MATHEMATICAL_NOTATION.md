@@ -251,5 +251,5 @@ mean the same thing.
   nothing about the relation between the outer terms.
 * Use $\Rightarrow$ between *statements*, not between *numbers*: $x + 1 = 3 \Rightarrow x = 2$ is fine;
   $x + 1 \Rightarrow x$ is not.
-* Do not use $=$ to mean "the next step is": in a derivation, write one equality per line, or use
-  $\begin{aligned}$ so that the relation is explicit.
+* Do not use $=$ to mean "the next step is": in a derivation, write one equality per line, or use an
+  `aligned` environment so that the relation is explicit.

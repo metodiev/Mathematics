@@ -19,6 +19,13 @@ LINK_RE = re.compile(r"(?<!!)\[([^\]]*)\]\(\s*<?([^)>\s]+)>?(?:\s+\"[^\"]*\")?\s
 FENCE_RE = re.compile(r"^(\s*)(`{3,}|~{3,})\s*([\w+-]*)")
 MERMAID_BAD_LABEL_RE = re.compile(r"\b[\w]+\s*\[([^\]\"]*[(),:;/=+→][^\]\"]*)\]")
 EXERCISE_RE = re.compile(r"^\*\*(\d+)\.\*\*")
+# Solutions files in this repository use several equivalent conventions; accept all of them.
+SOLUTION_NUM_RE = re.compile(
+    r"^(?:\*\*(?:Solution\s+)?(\d+)[.)]?\*\*"          # **1.** or **Solution 1**
+    r"|#{2,6}\s*\*\*(\d+)[.)]?\*\*"                      # ### **1.**
+    r"|#{2,6}\s*(?:Solution\s+|Problem\s+)?(\d+)\b"      # ### Solution 1
+    r"|(\d+)[.)]\s)"                                     # 1. at the start of a line
+)
 SKIP_SCHEMES = ("http://", "https://", "mailto:", "tel:", "ftp://")
 
 
@@ -54,6 +61,9 @@ def case_sensitive_exists(path: Path) -> tuple[bool, bool]:
     return path.name in names, True
 
 
+INLINE_MATH_RE = re.compile(r"\$[^$\n]*\$")
+
+
 def check_links(path: Path, text: str, report: Report) -> None:
     lines = text.splitlines()
     in_fence = False
@@ -63,6 +73,8 @@ def check_links(path: Path, text: str, report: Report) -> None:
             continue
         if in_fence:
             continue
+        # Inline math such as $|2+3i|$ can look like a Markdown link; remove it before scanning.
+        line = INLINE_MATH_RE.sub(" ", line)
         for match in LINK_RE.finditer(line):
             target = match.group(2).strip()
             if not target or target.startswith("#") or target.startswith(SKIP_SCHEMES):
@@ -106,6 +118,9 @@ def check_fences(path: Path, text: str, report: Report) -> None:
             continue
         if in_mermaid:
             for bad in MERMAID_BAD_LABEL_RE.finditer(line):
+                # Ignore anything already inside a quoted label.
+                if line[: bad.start()].count('"') % 2 == 1:
+                    continue
                 mermaid_labels.append((lineno, bad.group(1)))
     where = path.relative_to(ROOT).as_posix()
     if in_fence:
@@ -139,9 +154,9 @@ def check_exercise_parity(report: Report) -> None:
             report.error(where, "exercises.md without solutions.md")
             continue
         sol_numbers = {
-            int(m.group(1))
+            int(next(g for g in m.groups() if g))
             for line in solutions.read_text(encoding="utf-8", errors="replace").splitlines()
-            if (m := EXERCISE_RE.match(line.strip()))
+            if (m := SOLUTION_NUM_RE.match(line.strip()))
         }
         sol_where = solutions.relative_to(ROOT).as_posix()
         unsolved = sorted(ex_numbers - sol_numbers)

@@ -12,7 +12,7 @@ The mathematics of computer science and of counting: induction, recurrences, com
 
 | | |
 |---|---|
-| Topics | 5 (2 complete, 0 draft, 3 planned) |
+| Topics | 5 (5 complete, 0 draft, 0 planned) |
 | Estimated study time | ~41 hours |
 | Prerequisites | [00-foundations](../00-foundations/README.md) |
 
@@ -40,9 +40,9 @@ flowchart LR
 |---|---|---|---|---|---|
 | 1 | [Mathematical Induction](01-mathematical-induction/README.md) | Intermediate | 7 h | Complete | [Tutorial](01-mathematical-induction/README.md) · [Exercises](01-mathematical-induction/exercises.md) · [Solutions](01-mathematical-induction/solutions.md) |
 | 2 | [Recurrence Relations](02-recurrence-relations/README.md) | Advanced | 9 h | Complete | [Tutorial](02-recurrence-relations/README.md) · [Exercises](02-recurrence-relations/exercises.md) · [Solutions](02-recurrence-relations/solutions.md) |
-| 3 | Algorithms and Complexity | Advanced | 9 h | Planned | — |
-| 4 | Boolean Algebra | Intermediate | 8 h | Planned | — |
-| 5 | Discrete Probability | Intermediate | 8 h | Planned | — |
+| 3 | [Algorithms and Complexity](03-algorithms-and-complexity/README.md) | Advanced | 9 h | Complete | [Tutorial](03-algorithms-and-complexity/README.md) · [Exercises](03-algorithms-and-complexity/exercises.md) · [Solutions](03-algorithms-and-complexity/solutions.md) |
+| 4 | [Boolean Algebra](04-boolean-algebra/README.md) | Intermediate | 8 h | Complete | [Tutorial](04-boolean-algebra/README.md) · [Exercises](04-boolean-algebra/exercises.md) · [Solutions](04-boolean-algebra/solutions.md) |
+| 5 | [Discrete Probability](05-discrete-probability/README.md) | Intermediate | 8 h | Complete | [Tutorial](05-discrete-probability/README.md) · [Exercises](05-discrete-probability/exercises.md) · [Solutions](05-discrete-probability/solutions.md) |
 
 ### What each topic covers
 

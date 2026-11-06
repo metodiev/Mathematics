@@ -12,7 +12,7 @@ Groups, rings and fields: the axiomatic study of algebraic structure, culminatin
 
 | | |
 |---|---|
-| Topics | 5 (0 complete, 1 draft, 4 planned) |
+| Topics | 5 (5 complete, 0 draft, 0 planned) |
 | Estimated study time | ~62 hours |
 | Prerequisites | [00-foundations](../00-foundations/README.md), [08-linear-algebra](../08-linear-algebra/README.md), [12-number-theory](../12-number-theory/README.md) |
 
@@ -38,11 +38,11 @@ flowchart LR
 
 | # | Topic | Level | Est. time | Status | Materials |
 |---|---|---|---|---|---|
-| 1 | [Groups](01-groups/README.md) | Advanced | 14 h | Draft | [Tutorial](01-groups/README.md) |
-| 2 | Rings | Advanced | 12 h | Planned | — |
-| 3 | Fields | Advanced | 12 h | Planned | — |
-| 4 | Galois Theory | Advanced | 14 h | Planned | — |
-| 5 | Modules | Advanced | 10 h | Planned | — |
+| 1 | [Groups](01-groups/README.md) | Advanced | 14 h | Complete | [Tutorial](01-groups/README.md) · [Exercises](01-groups/exercises.md) · [Solutions](01-groups/solutions.md) |
+| 2 | [Rings](02-rings/README.md) | Advanced | 12 h | Complete | [Tutorial](02-rings/README.md) · [Exercises](02-rings/exercises.md) · [Solutions](02-rings/solutions.md) |
+| 3 | [Fields](03-fields/README.md) | Advanced | 12 h | Complete | [Tutorial](03-fields/README.md) · [Exercises](03-fields/exercises.md) · [Solutions](03-fields/solutions.md) |
+| 4 | [Galois Theory](04-galois-theory/README.md) | Advanced | 14 h | Complete | [Tutorial](04-galois-theory/README.md) · [Exercises](04-galois-theory/exercises.md) · [Solutions](04-galois-theory/solutions.md) |
+| 5 | [Modules](05-modules/README.md) | Advanced | 10 h | Complete | [Tutorial](05-modules/README.md) · [Exercises](05-modules/exercises.md) · [Solutions](05-modules/solutions.md) |
 
 ### What each topic covers
 

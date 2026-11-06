@@ -330,4 +330,4 @@ so some class contains three of the points, say $P_1,P_2,P_3$. Their coordinates
 $$x_1+x_2+x_3 \equiv 3x_1 \equiv 0 \pmod 3, \qquad y_1+y_2+y_3 \equiv 3y_1 \equiv 0 \pmod 3,$$
 so both coordinates of the centroid are integers. $\square$
 
-*Sharpness.* Place exactly two points in each of the nine residue classes modulo $3$ (for example $2\cdot 9 = 18$ points drawn from the $3\times 3$ block and its translates). Then no class contains three points, so no three are congruent modulo $3$ in both coordinates, so no three have an integral centroid. Hence $18$ points do not suffice.
+*Sharpness.* Take, for each class $(a,b) \in \{0,1,2\}^2$, the two points $(a,b)$ and $(a+3,b)$: this gives $18$ points with exactly two in each residue class modulo $3$. No class contains three points, so no three are congruent modulo $3$ in both coordinates, so no three have an integral centroid. Hence $18$ points do not suffice.

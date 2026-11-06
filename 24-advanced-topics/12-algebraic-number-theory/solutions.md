@@ -1,0 +1,415 @@
+# Algebraic Number Theory — Solutions
+
+> [Algebraic Number Theory](README.md) · Solutions to [exercises.md](exercises.md) · 36 problems
+
+Every solution states the strategy, then carries out all steps. Theorem numbers refer to
+[README.md](README.md); Exercise numbers to [exercises.md](exercises.md).
+
+## Beginner
+
+**1.** **Strategy.** Apply Theorem 7.1 to each radicand: only $d \bmod 4$ matters.
+
+| $d$ | $d \bmod 4$ | $\mathcal{O}_K$ | $\Delta_K$ |
+|---|---|---|---|
+| $-2$ | $2$ | $\mathbb{Z}[\sqrt{-2}]$ | $-8$ |
+| $-7$ | $1$ | $\mathbb{Z}\bigl[\tfrac{1+\sqrt{-7}}{2}\bigr]$ | $-7$ |
+| $3$ | $3$ | $\mathbb{Z}[\sqrt3]$ | $12$ |
+| $13$ | $1$ | $\mathbb{Z}\bigl[\tfrac{1+\sqrt{13}}{2}\bigr]$ | $13$ |
+| $-11$ | $1$ | $\mathbb{Z}\bigl[\tfrac{1+\sqrt{-11}}{2}\bigr]$ | $-11$ |
+
+**Sanity checks.** In each of the last three cases the half-integer element $\omega = (1+\sqrt d)/2$ satisfies $\omega^2 - \omega + (1-d)/4 = 0$ with $(1-d)/4 \in \mathbb{Z}$: for $d = -7,-11,13$ this is $2, 3, -3$ respectively. In the cases $d \equiv 2,3 \pmod 4$ the element $(1+\sqrt d)/2$ satisfies $x^2 - x + (1-d)/4$ with $(1-d)/4$ not an integer ($3/4$ and $-1/2$ respectively), so it is not integral.
+
+**2.** **Strategy.** Use $N(a+b\sqrt d) = a^2-db^2$, $T(a+b\sqrt d) = 2a$, and minimal polynomial $x^2-Tx+N$ when the element is irrational.
+
+(a) $\alpha = 1+2\sqrt{-2}$: $N = 1+8 = 9$, $T = 2$, minimal polynomial $x^2-2x+9$. *Check:* roots $\frac{2\pm\sqrt{4-36}}{2} = 1\pm2\sqrt{-2}$ ✓.
+
+(b) $\alpha = 3-\sqrt5$: $N = 9-5 = 4$, $T = 6$, minimal polynomial $x^2-6x+4$. *Check:* the conjugate is $3+\sqrt5$, sum $6$, product $4$ ✓.
+
+(c) $\alpha = 2+\sqrt{-7}$: $N = 4+7 = 11$, $T = 4$, minimal polynomial $x^2-4x+11$. In particular $N(\alpha) = 11$ is prime, so the ideal $(\alpha)$ has norm $11$ and is a prime ideal.
+
+**3.** **Strategy.** Exhibit a monic polynomial, then compare discriminants.
+
+Let $\omega = \frac{1+\sqrt{13}}{2}$. Then
+$$\omega^2 - \omega - 3 = \frac{1+2\sqrt{13}+13}{4} - \frac{1+\sqrt{13}}{2} - 3 = \frac{14+2\sqrt{13} - 2 - 2\sqrt{13} - 12}{4} = 0,$$
+so $\omega$ is a root of the monic polynomial $x^2-x-3 \in \mathbb{Z}[x]$ and is an algebraic integer.
+
+Since $\omega \notin \mathbb{Z}[\sqrt{13}]$ (its coefficient of $\sqrt{13}$ is $\tfrac12$), the inclusion $\mathbb{Z}[\sqrt{13}] \subsetneq \mathbb{Z}[\omega] \subseteq \mathcal{O}_K$ is strict; by Theorem 7.1, $\mathcal{O}_K = \mathbb{Z}[\omega]$. Hence $[\mathcal{O}_K:\mathbb{Z}[\sqrt{13}]] = 2$.
+
+*Independent check by discriminants.* $\operatorname{disc}(1,\sqrt{13}) = 4\cdot13 = 52$, and $\Delta_K = 13$; by Proposition 5.10, $52 = [\mathcal{O}_K:\mathbb{Z}[\sqrt{13}]]^2\cdot13$, so the index is $2$ ✓.
+
+**4.** **Strategy.** "Integrally closed" fails if some element of the fraction field is integral over the ring without lying in it.
+
+*$\mathbb{Z}[\sqrt5]$ is not integrally closed.* The element $\omega = (1+\sqrt5)/2$ lies in the fraction field $\mathbb{Q}(\sqrt5)$ and is integral over $\mathbb{Z}$ (Exercise 3 with $13$ replaced by $5$: $\omega^2-\omega-1 = 0$), hence integral over $\mathbb{Z}[\sqrt5]$. But $\omega \notin \mathbb{Z}[\sqrt5]$, since every element of $\mathbb{Z}[\sqrt5]$ is $a+b\sqrt5$ with $a,b \in \mathbb{Z}$ and $\omega$ has $a = b = \tfrac12$. So $\mathbb{Z}[\sqrt5]$ is not integrally closed.
+
+*$\mathbb{Z}[\sqrt{-5}]$ is integrally closed.* By Theorem 7.1, $\mathbb{Z}[\sqrt{-5}] = \mathcal{O}_K$ for $K = \mathbb{Q}(\sqrt{-5})$. If $\alpha \in K$ is integral over $\mathcal{O}_K$, it is integral over $\mathbb{Z}$ (integrality is transitive), hence $\alpha \in \mathcal{O}_K = \mathbb{Z}[\sqrt{-5}]$. So the ring is integrally closed.
+
+*Moral.* The distinction is exactly the one between $\Delta_{\mathbb{Q}(\sqrt5)} = 5$ and $\operatorname{disc}(1,\sqrt5) = 20$: the smaller ring misses an integral element, which shows up as a square factor in the discriminant.
+
+**5.** **Strategy.** Eliminate the square roots.
+
+Let $\alpha = \sqrt2+\sqrt3$. Squaring, $\alpha^2 = 5+2\sqrt6$; hence $(\alpha^2-5)^2 = 24$, that is
+$$\alpha^4 - 10\alpha^2 + 1 = 0 .$$
+This is a monic polynomial with integer coefficients, so $\alpha$ is an algebraic integer.
+
+*Degree.* $\alpha \notin \mathbb{Q}(\sqrt2)$, because $\alpha \in \mathbb{Q}(\sqrt2)$ would give $\sqrt3 = \alpha - \sqrt2 \in \mathbb{Q}(\sqrt2)$, which is impossible by degree considerations: $[\mathbb{Q}(\sqrt2):\mathbb{Q}] = 2 < [\mathbb{Q}(\sqrt3):\mathbb{Q}]$ would force $\mathbb{Q}(\sqrt3) = \mathbb{Q}(\sqrt2)$, and $\sqrt3 \notin \mathbb{Q}(\sqrt2)$. Hence $[\mathbb{Q}(\alpha):\mathbb{Q}] \ge 4$, and since $x^4-10x^2+1$ has degree $4$, the degree is exactly $4$ and the polynomial is minimal.
+
+**6.** **Strategy.** Apply the trinomial formula with the stated $p,q$.
+
+* $x^3-x+1$: $p = -1$, $q = 1$, so $\operatorname{disc} = -4(-1)^3 - 27(1)^2 = 4-27 = -23$.
+* $x^3+x+1$: $p = 1$, $q = 1$, so $\operatorname{disc} = -4-27 = -31$.
+
+Both discriminants are squarefree, so for the fields generated by a root, $\mathbb{Z}[\alpha] = \mathcal{O}_K$ and the field discriminants are $-23$ and $-31$ (Proposition 7.3). These are the two smallest discriminants in absolute value for cubic fields.
+
+**7.** **Strategy.** Solve the norm equation $N(u) = \pm1$.
+
+*$\mathbb{Z}[i]$.* $N(a+bi) = a^2+b^2 = 1$ forces $(a,b) \in \{(\pm1,0),(0,\pm1)\}$, so $\mathbb{Z}[i]^\times = \{1,-1,i,-i\} = \mu_4$, a cyclic group of order $4$. Note $h=1$ here, and Dirichlet's theorem predicts rank $r_1+r_2-1 = 0+1-1 = 0$, so a finite group $\mu_4$ ✓.
+
+*$\mathbb{Z}[\sqrt{-5}]$.* $N(a+b\sqrt{-5}) = a^2+5b^2 = 1$ forces $b = 0$ and $a = \pm1$, so the units are $\{\pm1\}$, of order $2$; Dirichlet predicts rank $0+1-1 = 0$ and $w = 2$ ✓. The class number is $2$, which shows that the unit group says nothing about unique factorisation.
+
+**8.** **Strategy.** For odd $p$, use Theorem 7.14 with $\Delta_K = -4$; then exhibit the ideals.
+
+*$p = 3$.* $\left(\frac{-4}{3}\right) = \left(\frac{-1}{3}\right) = -1$, so $3$ is **inert**: $(3)$ is a prime ideal with $N((3)) = 9$. *Check.* If $3 = (a+bi)(c+di)$ with non-units, then norms give $9 = N_1N_2$ with $N_1 = N_2 = 3$; but $a^2+b^2 = 3$ has no integer solution. So $3$ is irreducible, hence prime in the UFD $\mathbb{Z}[i]$.
+
+*$p = 17$.* $17 \equiv 1 \pmod 4$, so $\left(\frac{-4}{17}\right) = 1$ and $17$ **splits**. Indeed $17 = 1^2+4^2$, so
+$$(17) = (1+4i)(1-4i), \qquad N(1\pm4i) = 17 .$$
+The two factors are non-associate prime ideals (their ratio is not a unit).
+
+**9.** **Strategy.** Use Theorem 7.14 with $\Delta_K = -20$.
+
+*$p = 11$.* $\left(\frac{-20}{11}\right) = \left(\frac{2}{11}\right) = -1$ (since $11 \equiv 3 \pmod 8$), so $11$ is **inert**: $(11)$ is prime, $N((11)) = 121$.
+
+*$p = 29$.* $\left(\frac{-20}{29}\right) = \left(\frac{9}{29}\right) = 1$, so $29$ **splits**. To find the factors, solve $x^2 \equiv -5 \equiv 24 \pmod{29}$; indeed $13^2 = 169 = 5\cdot29+24$, so the roots are $\pm13 \equiv 13, 16$. Hence
+$$(29) = (29,\,13+\alpha)(29,\,13-\alpha), \qquad \alpha = \sqrt{-5},$$
+and $(13+\alpha)(13-\alpha) = 169+5 = 174 = 6\cdot 29$ ✓.
+
+**10.** **Strategy.** Apply the continued fraction algorithm and Theorem 7.26.
+
+$\sqrt7 \approx 2.6458$, so $a_0 = 2$. Running the standard recursion, with $m_{n+1} = d_na_n-m_n$, $d_{n+1} = (7-m_{n+1}^2)/d_n$ and $a_{n+1} = \lfloor(\sqrt7+m_{n+1})/d_{n+1}\rfloor$, starting from $m_0 = 0$, $d_0 = 1$:
+
+* $n=0$: $m_0 = 0$, $d_0 = 1$, $a_0 = 2$.
+* $m_1 = 1\cdot2-0 = 2$, $d_1 = (7-4)/1 = 3$, $a_1 = \lfloor(2.6458+2)/3\rfloor = \lfloor1.5486\rfloor = 1$.
+* $m_2 = 3\cdot1-2 = 1$, $d_2 = (7-1)/3 = 2$, $a_2 = \lfloor(3.6458)/2\rfloor = 1$.
+* $m_3 = 2\cdot1-1 = 1$, $d_3 = (7-1)/2 = 3$, $a_3 = \lfloor3.6458/3\rfloor = 1$.
+* $m_4 = 3\cdot1-1 = 2$, $d_4 = (7-4)/3 = 1$, $a_4 = \lfloor4.6458\rfloor = 4$.
+* $m_5 = 1\cdot4-2 = 2 = m_1$, $d_5 = 3 = d_1$: the period is $[1,1,1,4]$.
+
+So $\sqrt7 = [2;\overline{1,1,1,4}]$ with period $\ell = 4$, even, and the fundamental solution of $x^2-7y^2 = 1$ is $(p_3,q_3)$:
+$$p_0 = 2,\ p_1 = 1\cdot2+1 = 3,\ p_2 = 1\cdot3+2 = 5,\ p_3 = 1\cdot5+3 = 8;$$
+$$q_0 = 1,\ q_1 = 1,\ q_2 = 2,\ q_3 = 3,$$
+so $(x,y) = (8,3)$ and $64-63 = 1$ ✓.
+
+*Next solutions.* $(8+3\sqrt7)^2 = 64+48\sqrt7+63 = 127+48\sqrt7$, giving $(127,48)$: $16129-7\cdot2304 = 16129-16128 = 1$ ✓. $(8+3\sqrt7)^3 = (127+48\sqrt7)(8+3\sqrt7) = 1016+381\sqrt7+384\sqrt7+1008 = 2024+765\sqrt7$, giving $(2024,765)$: $2024^2-7\cdot765^2 = 4096576 - 4096575 = 1$ ✓.
+
+**11.** **Strategy.** Compute the quotient ring and the norm.
+
+$\mathbb{Z}[i]/(1+i) \cong \mathbb{F}_2$: in the quotient $i \equiv -1 \equiv 1$, so $a+bi \mapsto a+b \bmod 2$, a surjective map onto the field $\mathbb{F}_2$ with kernel $(1+i)$. Hence $(1+i)$ is a maximal ideal, therefore prime, and $N((1+i)) = \lvert\mathbb{F}_2\rvert = 2$.
+
+*The element $2$.* $(1+i)^2 = 1+2i+i^2 = 2i$, so $2 = -i\,(1+i)^2$. Since $-i$ is a unit, $2$ and $(1+i)^2$ differ by a unit, i.e.
+$$(2) = (1+i)^2 .$$
+This is the statement that $2$ ramifies in $\mathbb{Q}(i)$: the unique prime above $2$ is $(1+i)$ with ramification index $2$.
+
+**12.** **Strategy.** Factor the defining polynomial modulo $7$, or spot the factorisation directly.
+
+$7 = 3^2-2 = (3+\sqrt2)(3-\sqrt2)$, and $N(3\pm\sqrt2) = 9-2 = 7$, so both factors are prime elements (their norm is a rational prime). Hence
+$$(7) = (3+\sqrt2)\,(3-\sqrt2)$$
+is the prime factorisation, with residue degree $1$ on both sides. *Check with Theorem 7.14:* $\left(\frac87\right) = \left(\frac17\right) = 1$, so $7$ splits ✓.
+
+## Intermediate
+
+**13.** **Strategy.** Compute the matrix of multiplication by $\alpha$ in a $\mathbb{Z}$-basis and take its determinant.
+
+Let $\alpha = a+b\sqrt d$. In the basis $1,\sqrt d$,
+$$\alpha\cdot 1 = a + b\sqrt d, \qquad \alpha\cdot\sqrt d = bd + a\sqrt d,$$
+so the matrix of $m_\alpha$ is $A = \begin{pmatrix} a & bd\\ b & a\end{pmatrix}$ with $\det A = a^2-db^2 = N(\alpha)$. The image $m_\alpha(\mathcal{O}_K) = \alpha\mathcal{O}_K$ is a sublattice whose index in $\mathcal{O}_K$ equals $\lvert\det A\rvert$ (Smith normal form, or the change-of-basis formula). Hence
+$$[\mathcal{O}_K:\alpha\mathcal{O}_K] = \lvert a^2-db^2\rvert = \lvert N(\alpha)\rvert . \qquad\blacksquare$$
+
+**14.** **Strategy.** Factor each prime and multiply.
+
+*In $\mathbb{Z}[i]$:* $(2) = (1+i)^2$ (Exercise 11) and $(5) = (2+i)(2-i)$ (Example 9.5), so
+$$(10) = (1+i)^2(2+i)(2-i).$$
+*Check by norms:* $2\cdot2\cdot5\cdot5 = 100 = N((10))$ ✓.
+
+*In $\mathbb{Z}[\sqrt{-5}]$:* $(2) = \mathfrak{p}_2^2$ with $\mathfrak{p}_2 = (2,1+\alpha)$ (Example 9.4) and $(5) = (5,\alpha)^2$ (Example 9.5, Step 5), so
+$$(10) = \mathfrak{p}_2^2\,(5,\alpha)^2 .$$
+*Check:* $N = 2^2\cdot5^2 = 100$ ✓.
+
+**15.** **Strategy.** Compute the products of ideals directly, and use norms to exclude principality.
+
+Let $\alpha = \sqrt{-5}$, $\mathfrak{p}_2 = (2,1+\alpha)$, $\mathfrak{q} = (3,1+\alpha)$, $\bar{\mathfrak{q}} = (3,1-\alpha)$.
+
+*Step 1: $(1+\alpha) = \mathfrak{p}_2\mathfrak{q}$ and $(1-\alpha) = \mathfrak{p}_2\bar{\mathfrak{q}}$.* Both sides have norm $6$ and the containments $1\pm\alpha \in \mathfrak{p}_2\cap\mathfrak{q}$ (respectively $\cap\bar{\mathfrak{q}}$) are immediate, so equality follows from equal norms.
+
+*Step 2: $\mathfrak{q}\bar{\mathfrak{q}} = (3)$.* Multiply the two containments of Step 1:
+$$(1+\alpha)(1-\alpha) = (6) = \mathfrak{p}_2^2\,\mathfrak{q}\bar{\mathfrak{q}} .$$
+Since $\mathfrak{p}_2^2 = (2)$ and $(6) = (2)(3)$, cancellation gives $\mathfrak{q}\bar{\mathfrak{q}} = (3)$ ✓. (Alternatively, both $\mathfrak{q}\bar{\mathfrak{q}}$ and $(3)$ have norm $9$ and $\mathfrak{q}\bar{\mathfrak{q}} \subseteq (3)$.)
+
+*Step 3: $\mathfrak{q}$ is not principal.* If $\mathfrak{q} = (\beta)$, then $\lvert N(\beta)\rvert = N(\mathfrak{q}) = 3$, i.e. $a^2+5b^2 = 3$ for $\beta = a+b\alpha$. But $b = 0$ gives $a^2 = 3$ and $\lvert b\rvert\ge1$ gives $a^2+5b^2 \ge 5$; no solution exists.
+
+*Step 4: $\mathfrak{q}^2 = (2-\alpha)$.* First, $2-\alpha \in \mathfrak{q}$: indeed
+$$2-\alpha = 3\cdot 1 + (1+\alpha)\cdot(-1).$$
+Next, $2-\alpha \in \mathfrak{q}^2$: using the generators $9$, $3(1+\alpha)$ and $(1+\alpha)^2 = -4+2\alpha$ of $\mathfrak{q}^2$,
+$$(-1)\cdot 9 + (-\alpha)\cdot 3(1+\alpha) + 1\cdot(-4+2\alpha) = -9 - 3\alpha + 15 - 4 + 2\alpha = 2-\alpha,$$
+where $3(1+\alpha)(-\alpha) = -3\alpha-3\alpha^2 = -3\alpha+15$. So $2-\alpha \in \mathfrak{q}^2$. Both $\mathfrak{q}^2$ and $(2-\alpha)$ have norm $9$, and the containment $\mathfrak{q}^2 \subseteq (2-\alpha)$ with equal norms gives equality. $\blacksquare$
+
+*Remark.* The equality $\mathfrak{q}^2 = (2-\alpha)$ is a concrete instance of the class group: $\mathfrak{q}$ is non-principal but its square is principal, so $[\mathfrak{q}]$ has order $2$.
+
+**16.** **Strategy.** Apply (7.2) with $n = 2$.
+
+* $K = \mathbb{Q}(\sqrt{-11})$: $\Delta_K = -11$, imaginary, so
+$$B = \frac{2}{\pi}\sqrt{11} \approx \frac{2\cdot3.3166}{3.1416} \approx 2.112 .$$
+Every class has an ideal of norm $\le 2$. Modulo $2$, the minimal polynomial $x^2-x+3$ of $(1+\sqrt{-11})/2$ satisfies $x^2+x+1 \equiv (x^2+x+1)$, which is irreducible over $\mathbb{F}_2$; so $2$ is inert and there is no ideal of norm $2$. Hence only $\mathcal{O}_K$ itself occurs and $h_K = 1$.
+
+* $K = \mathbb{Q}(\sqrt{17})$: $\Delta_K = 17$, real, so $B = \sqrt{17}/2 \approx 2.062$. There is an ideal of norm $2$ (since $17 \equiv 1 \pmod 8$, $2$ splits) and it is principal: $2+\omega$ with $\omega = (1+\sqrt{17})/2$ has norm
+$$N(2+\omega) = \left(\tfrac52\right)^2 - \tfrac{17}{4} = \frac{25-17}{4} = 2 .$$
+So every class is trivial and $h_K = 1$. The bound alone does not prove this; the principality test is essential.
+
+* $K = \mathbb{Q}(\sqrt{-3})$: $B = 2\sqrt3/\pi \approx 1.103 < 2$, so every class contains an ideal of norm $1$, i.e. $\mathcal{O}_K$; hence $h_K = 1$.
+
+**17.** **Strategy.** Bound, then check that no non-principal ideal of small norm exists.
+
+*$K = \mathbb{Q}(\sqrt{-2})$.* $\Delta_K = -8$ and
+$$B = \frac{2}{\pi}\sqrt8 = \frac{4\sqrt2}{\pi} \approx 1.801 < 2.$$
+Every class contains an ideal of norm $\le 1$, hence $\mathcal{O}_K$. So $h_K = 1$ and $\mathbb{Z}[\sqrt{-2}]$ is a UFD.
+
+*$K = \mathbb{Q}(\sqrt{-3})$.* $B \approx 1.103 < 2$, so again $h_K = 1$ and the Eisenstein integers form a UFD.
+
+**18.** **Strategy.** Irreducibility by norms, non-primality by exhibiting a product.
+
+*Irreducible.* Suppose $3 = \alpha\beta$ with $\alpha,\beta$ non-units. Taking norms, $9 = N(\alpha)N(\beta)$ with $N(\alpha),N(\beta) \in \{3\}$. But $N(a+b\sqrt{-5}) = a^2+5b^2 = 3$ has no integer solution: $b=0$ gives $a^2 = 3$, and $\lvert b\rvert \ge 1$ gives $a^2+5b^2\ge5$. So $3$ is irreducible.
+
+*Not prime.* $3 \mid 6 = (1+\sqrt{-5})(1-\sqrt{-5})$, but $3 \nmid 1\pm\sqrt{-5}$: the quotients $\frac{1\pm\sqrt{-5}}{3}$ are not in $\mathbb{Z}[\sqrt{-5}]$. Hence $3$ is not prime. $\blacksquare$
+
+*Remark.* The failure of primeness is exactly the failure of Euclid's lemma, and it is what forces $6$ to have two factorisations.
+
+**19.** **Strategy.** Show irreducibility by a norm argument; use that $\mathbb{Z}[i]$ is a UFD.
+
+Let $p \equiv 3 \pmod 4$ and suppose $p = \alpha\beta$ in $\mathbb{Z}[i]$. Taking norms, $p^2 = N(\alpha)N(\beta)$. If both factors were non-units, then $N(\alpha) = N(\beta) = p$; but $N(a+bi) = a^2+b^2 = p$ has no integer solution when $p \equiv 3 \pmod 4$, because squares modulo $4$ are $0$ or $1$, so $a^2+b^2 \in \{0,1,2\}$ modulo $4$. Hence one factor is a unit and $p$ is irreducible.
+
+Since $\mathbb{Z}[i]$ is a Euclidean domain (Exercise 30), it is a UFD, and in a UFD every irreducible element is prime. Hence $p$ is prime in $\mathbb{Z}[i]$, i.e. $(p)$ is a prime ideal. $\blacksquare$
+
+*Equivalently:* $\left(\frac{-4}{p}\right) = \left(\frac{-1}{p}\right) = -1$ for $p \equiv 3 \pmod 4$, and Theorem 7.14 says that $p$ is inert.
+
+**20.** **Strategy.** Produce a nontrivial factor of $p$ in $\mathbb{Z}[i]$ from a square root of $-1$ modulo $p$.
+
+Let $p \equiv 1 \pmod 4$. By Euler's criterion,
+$$\left(\frac{-1}{p}\right) = (-1)^{(p-1)/2} = 1,$$
+so there is $n \in \mathbb{Z}$ with $n^2 \equiv -1 \pmod p$, i.e. $p \mid n^2+1 = (n+i)(n-i)$.
+
+*$p$ is not prime in $\mathbb{Z}[i]$.* If it were, then $p \mid n+i$ or $p \mid n-i$, since a prime dividing a product divides a factor. But $(n\pm i)/p \notin \mathbb{Z}[i]$ because the imaginary part $\pm 1/p$ is not an integer. Contradiction.
+
+*Conclusion.* $\mathbb{Z}[i]$ is a UFD, so $p$, being non-prime, is reducible: $p = \alpha\beta$ with both factors non-units. Taking norms, $p^2 = N(\alpha)N(\beta)$ with $N(\alpha), N(\beta) > 1$, so $N(\alpha) = N(\beta) = p$. Writing $\alpha = a+bi$ gives
+$$p = a^2+b^2,$$
+a sum of two integer squares. $\blacksquare$
+
+*Remark.* The converse direction ($p = a^2+b^2$ with $p$ odd implies $p \equiv 1 \pmod 4$) is immediate: $a^2+b^2 \equiv 1 \pmod 4$ when $a,b$ have opposite parity.
+
+**21.** **Strategy.** Read the fundamental unit off the continued fraction, then check (7.4) against the known residue of $\zeta\cdot L$.
+
+*$K = \mathbb{Q}(\sqrt5)$.* Fundamental unit $\varepsilon = (1+\sqrt5)/2$, so
+$$R_K = \log\frac{1+\sqrt5}{2} \approx \log 1.618034 \approx 0.481212 .$$
+With $r_1 = 2$, $r_2 = 0$, $h_K = 1$, $w_K = 2$, $\Delta_K = 5$, the formula predicts
+$$\text{residue} = \frac{2^2\cdot 1\cdot 1\cdot 0.481212}{2\sqrt5} = \frac{2\cdot0.481212}{2.236068} \approx 0.430409 .$$
+Independently, $\zeta_K = \zeta\,L(\cdot,\chi_5)$ and $L(1,\chi_5) = \frac{2}{\sqrt5}\log\frac{1+\sqrt5}{2} \approx 0.430409$ ✓.
+
+*$K = \mathbb{Q}(\sqrt2)$.* Fundamental unit $1+\sqrt2$, so $R_K = \log(1+\sqrt2) \approx 0.881374$. With $r_1 = 2$, $r_2=0$, $h_K = 1$, $w_K = 2$, $\Delta_K = 8$,
+$$\text{residue} = \frac{4\cdot0.881374}{2\sqrt8} = \frac{0.881374}{\sqrt2} \approx 0.623225 .$$
+And $L(1,\chi_8) = \frac{1}{\sqrt2}\log(1+\sqrt2) \approx 0.623225$ ✓, using $\zeta_K = \zeta L(\cdot,\chi_8)$.
+
+**22.** **Strategy.** Use the unit group of $\mathbb{Z}[\sqrt2]$ and the odd powers of the fundamental unit.
+
+The element $1+\sqrt2$ has norm $-1$, so $(1+\sqrt2)^{2k+1}$ has norm $-1$ for every $k \ge 0$. Writing
+$$(1+\sqrt2)^{2k+1} = x_k + y_k\sqrt2,$$
+the equation $N = -1$ reads $x_k^2 - 2y_k^2 = -1$, and $x_k, y_k > 0$ for $k \ge 0$ (the powers increase). The first three are
+$$(1+\sqrt2)^1 = 1+\sqrt2 \Rightarrow (1,1), \qquad (1+\sqrt2)^3 = 7+5\sqrt2 \Rightarrow (7,5), \qquad (1+\sqrt2)^5 = 41+29\sqrt2 \Rightarrow (41,29).$$
+The solutions are distinct because the powers are strictly increasing, and there are infinitely many because $k$ ranges over $\mathbb{N}_0$. *Check:* $7^2-2\cdot5^2 = 49-50 = -1$ ✓ and $41^2-2\cdot29^2 = 1681-1682 = -1$ ✓. $\blacksquare$
+
+## Advanced
+
+**23.** **Strategy.** Compare the two bases by a rational change-of-basis matrix and use the multiplicativity of the determinant.
+
+Let $\omega_1,\omega_2$ be an integral basis and $\alpha_1,\alpha_2$ the given $\mathbb{Q}$-basis, with $M = \mathbb{Z}\alpha_1+\mathbb{Z}\alpha_2 \subseteq \mathcal{O}_K$. Write $\alpha_j = \sum_i c_{ij}\omega_i$ with $c_{ij} \in \mathbb{Q}$ and let $C = (c_{ij})$. Then, for each embedding $\sigma_k$,
+$$\sigma_k(\alpha_j) = \sum_i c_{ij}\sigma_k(\omega_i),$$
+so the matrices satisfy $(\sigma_k(\alpha_j)) = (\sigma_k(\omega_i))\,C$, hence
+$$\det(\sigma_k(\alpha_j)) = \det(\sigma_k(\omega_i))\cdot \det C .$$
+Squaring and using Definition 5.9,
+$$\operatorname{disc}(\alpha_1,\alpha_2) = \Delta_K\cdot(\det C)^2 .$$
+It remains to identify $\lvert\det C\rvert$. The matrix $C$ expresses the inclusion $M \subseteq \mathcal{O}_K$ of lattices; by the theory of lattices (Smith normal form), the index of $M$ in $\mathcal{O}_K$ equals $\lvert\det C\rvert$. Hence
+$$\operatorname{disc}(\alpha_1,\alpha_2) = [\mathcal{O}_K:M]^2\,\Delta_K . \qquad\blacksquare$$
+
+**24.** **Strategy.** Interpret both sides as the index of the same sublattice.
+
+By Proposition 5.8(6), $\lvert N(\alpha)\rvert = [\mathcal{O}_K:\alpha\mathcal{O}_K]$. By Definition 5.12, $N((\alpha)) = \lvert\mathcal{O}_K/(\alpha)\rvert$. But $(\alpha) = \alpha\mathcal{O}_K$ by definition of the principal ideal, so the two indices agree:
+$$N((\alpha)) = \lvert\mathcal{O}_K/\alpha\mathcal{O}_K\rvert = [\mathcal{O}_K:\alpha\mathcal{O}_K] = \lvert N(\alpha)\rvert . \qquad\blacksquare$$
+The middle equality uses that $\mathcal{O}_K/\alpha\mathcal{O}_K$ is a finite abelian group of order equal to the index, which holds because $\alpha\mathcal{O}_K$ is a full sublattice of the lattice $\mathcal{O}_K$.
+
+**25.** **Strategy.** Reduce to prime powers (where a filtration computes the index) and use the Chinese remainder theorem.
+
+*Step 1: prime powers.* Let $\mathfrak{p}$ be a nonzero prime ideal and $k \ge 1$. The chain
+$$\mathcal{O}_K \supset \mathfrak{p} \supset \mathfrak{p}^2 \supset \cdots \supset \mathfrak{p}^k$$
+has successive quotients $\mathfrak{p}^i/\mathfrak{p}^{i+1}$. Each is a one-dimensional vector space over the field $\mathcal{O}_K/\mathfrak{p}$: it is annihilated by $\mathfrak{p}$, hence is an $\mathcal{O}_K/\mathfrak{p}$-module, and it is nonzero and generated by any element of $\mathfrak{p}^i\setminus\mathfrak{p}^{i+1}$ (such an element exists by unique factorisation of ideals). Hence $\lvert\mathfrak{p}^i/\mathfrak{p}^{i+1}\rvert = N(\mathfrak{p})$, and multiplicativity of the index along the chain gives
+$$N(\mathfrak{p}^k) = [\mathcal{O}_K:\mathfrak{p}^k] = \prod_{i=0}^{k-1}[\mathfrak{p}^i:\mathfrak{p}^{i+1}] = N(\mathfrak{p})^k .$$
+
+*Step 2: coprime ideals.* If $\mathfrak{a}+\mathfrak{b} = \mathcal{O}_K$, the Chinese remainder theorem gives $\mathcal{O}_K/\mathfrak{a}\mathfrak{b} \cong \mathcal{O}_K/\mathfrak{a}\times\mathcal{O}_K/\mathfrak{b}$, so $N(\mathfrak{a}\mathfrak{b}) = N(\mathfrak{a})N(\mathfrak{b})$.
+
+*Step 3: general case.* Write $\mathfrak{a} = \prod\mathfrak{p}^{e_\mathfrak{p}}$ and $\mathfrak{b} = \prod\mathfrak{p}^{f_\mathfrak{p}}$. The prime powers occurring in $\mathfrak{a}$ and $\mathfrak{b}$ are pairwise coprime, so Steps 1 and 2 give
+$$N(\mathfrak{a}\mathfrak{b}) = \prod_\mathfrak{p} N(\mathfrak{p})^{e_\mathfrak{p}+f_\mathfrak{p}} = \prod_\mathfrak{p}N(\mathfrak{p})^{e_\mathfrak{p}}\cdot\prod_\mathfrak{p}N(\mathfrak{p})^{f_\mathfrak{p}} = N(\mathfrak{a})N(\mathfrak{b}). \qquad\blacksquare$$
+
+**26.** **Strategy.** One direction uses that a PID is a UFD; the other uses that in a UFD height-one primes are principal, plus unique factorisation of ideals.
+
+*($\Leftarrow$)* If $\mathrm{Cl}_K$ is trivial, every fractional ideal is principal; in particular every integral ideal is principal, so $\mathcal{O}_K$ is a PID. Every PID is a UFD (the usual argument: factor into irreducibles using ascending chain condition, and Euclid's lemma holds because prime = irreducible in a PID).
+
+*($\Rightarrow$)* Suppose $\mathcal{O}_K$ is a UFD. Let $\mathfrak{p} \ne 0$ be a prime ideal. Choose $0 \ne a \in \mathfrak{p}$ and factor $a = u p_1\cdots p_r$ into irreducibles. Since $\mathfrak{p}$ is prime and contains the product, it contains some $p_i$; then $(p_i) \subseteq \mathfrak{p}$. In a UFD, an irreducible element generates a prime ideal, so $(p_i)$ is a nonzero prime ideal contained in $\mathfrak{p}$. By Theorem 7.9, $\mathcal{O}_K$ has dimension $1$, so $(p_i)$ is maximal, and hence $\mathfrak{p} = (p_i)$. So every prime ideal is principal.
+
+Now let $\mathfrak{a} \ne 0$ be any integral ideal. By Theorem 7.7 (unique factorisation of ideals, the only place where that theorem is used), $\mathfrak{a} = \mathfrak{p}_1\cdots\mathfrak{p}_r$, and each $\mathfrak{p}_i = (p_i)$ is principal. Then $\mathfrak{a} = (p_1\cdots p_r)$ is principal. Hence $P_K = I_K$ and $\mathrm{Cl}_K$ is trivial. $\blacksquare$
+
+**27.** **Strategy.** Transitivity of integrality; finiteness of the residue field.
+
+*Integrally closed.* Let $\alpha \in K$ be integral over $\mathcal{O}_K$: there are $c_0,\dots,c_{m-1} \in \mathcal{O}_K$ with $\alpha^m + \sum c_i\alpha^i = 0$. Each $c_i$ is integral over $\mathbb{Z}$, so the ring $\mathbb{Z}[c_0,\dots,c_{m-1},\alpha]$ is a finitely generated $\mathbb{Z}$-module (integrals generate finite modules, and finite generation is preserved by adjoining an integral element). Hence $\alpha$ lies in a finitely generated $\mathbb{Z}$-module that is a ring, so $\alpha$ is integral over $\mathbb{Z}$ by Lemma 5.4, i.e. $\alpha \in \mathcal{O}_K$.
+
+*Every nonzero prime is maximal.* Let $\mathfrak{p} \ne 0$ be prime and $0 \ne a \in \mathfrak{p}$. Then $\mathcal{O}_K/\mathfrak{p}$ is a quotient of $\mathcal{O}_K/(a)$, which is finite of order $\lvert N(a)\rvert$ (Proposition 5.8(6)). So $\mathcal{O}_K/\mathfrak{p}$ is a finite integral domain, hence a field, and $\mathfrak{p}$ is maximal. $\blacksquare$
+
+**28.** **Strategy.** Compute dimensions over $\mathbb{F}_p$.
+
+Since $\mathcal{O}_K$ is a free $\mathbb{Z}$-module of rank $2$, the ring $\mathcal{O}_K/p\mathcal{O}_K = \mathcal{O}_K\otimes_{\mathbb{Z}}\mathbb{F}_p$ is a $2$-dimensional $\mathbb{F}_p$-algebra. By unique factorisation of ideals, $p\mathcal{O}_K = \prod_i\mathfrak{p}_i^{e_i}$, and the generalised Chinese remainder theorem for pairwise coprime ideals gives
+$$\mathcal{O}_K/p\mathcal{O}_K \;\cong\; \prod_{i=1}^{g}\mathcal{O}_K/\mathfrak{p}_i^{e_i}.$$
+Each factor $\mathcal{O}_K/\mathfrak{p}_i^{e_i}$ has a filtration with $e_i$ successive quotients $\mathfrak{p}_i^{j}/\mathfrak{p}_i^{j+1} \cong \mathcal{O}_K/\mathfrak{p}_i$, each of $\mathbb{F}_p$-dimension $f_i$; hence $\dim_{\mathbb{F}_p}\mathcal{O}_K/\mathfrak{p}_i^{e_i} = e_if_i$. Adding dimensions over the product,
+$$2 = \dim_{\mathbb{F}_p}\mathcal{O}_K/p\mathcal{O}_K = \sum_{i=1}^{g}e_if_i . \qquad\blacksquare$$
+
+**29.** **Strategy.** Minkowski bound, list the small primes, test principality, find the relations.
+
+$K = \mathbb{Q}(\sqrt{10})$: $10 \equiv 2 \pmod 4$, so $\mathcal{O}_K = \mathbb{Z}[\sqrt{10}]$ and $\Delta_K = 40$. The bound is
+$$N(I) \le \frac{\sqrt{40}}{2} = \sqrt{10} \approx 3.162,$$
+so it suffices to consider ideals of norm $1, 2, 3$.
+
+*Primes above $2$.* Modulo $2$, $x^2-10 \equiv x^2$, so $(2) = \mathfrak{p}_2^2$ with $\mathfrak{p}_2 = (2,\sqrt{10})$ and $N(\mathfrak{p}_2) = 2$.
+
+*Primes above $3$.* $\left(\frac{40}{3}\right) = \left(\frac13\right) = 1$, so $3$ splits. Modulo $3$, $x^2-10 \equiv x^2-1 = (x-1)(x+1)$, so
+$$(3) = \mathfrak{q}\bar{\mathfrak{q}}, \qquad \mathfrak{q} = (3, 1+\sqrt{10}),\quad \bar{\mathfrak{q}} = (3,1-\sqrt{10}),\qquad N(\mathfrak{q}) = 3 .$$
+
+*Principality tests.* An element $a+b\sqrt{10}$ has norm $a^2-10b^2$.
+* $a^2-10b^2 = \pm2$: modulo $5$, $a^2 \equiv \pm2 \pmod 5$, but the squares mod $5$ are $0,1,4$; neither $2$ nor $3$ occurs. No solutions, so $\mathfrak{p}_2$ is not principal.
+* $a^2-10b^2 = \pm3$: modulo $5$, $a^2 \equiv \pm3$, i.e. $3$ or $2$ mod $5$; again impossible. So $\mathfrak{q},\bar{\mathfrak{q}}$ are not principal.
+
+*Relations.* $\mathfrak{p}_2^2 = (2)$ is principal, so $[\mathfrak{p}_2]^2 = 1$ and $[\mathfrak{p}_2] \ne 1$. Also $\mathfrak{q}\bar{\mathfrak{q}} = (3)$ is principal, so $[\bar{\mathfrak{q}}] = [\mathfrak{q}]^{-1}$. Finally, $\mathfrak{p}_2\mathfrak{q}$ has norm $6$ and is principal: $4+\sqrt{10}$ has norm $16-10 = 6$, so
+$$\mathfrak{p}_2\mathfrak{q} = (4+\sqrt{10}), \qquad [\mathfrak{q}] = [\mathfrak{p}_2]^{-1} = [\mathfrak{p}_2].$$
+(Check the containment: $\mathfrak{p}_2\mathfrak{q} \subseteq (4+\sqrt{10})$ follows from equal norms and $4+\sqrt{10}\in\mathfrak{p}_2\cap\mathfrak{q}$.)
+
+*Conclusion.* Every class is represented by $\mathcal{O}_K$, $\mathfrak{p}_2$ or $\mathfrak{q}$, and the last two both equal $[\mathfrak{p}_2]$, of order $2$. Hence
+$$\mathrm{Cl}_K = \{1, [\mathfrak{p}_2]\} \cong \mathbb{Z}/2, \qquad h_K = 2 . \qquad\blacksquare$$
+
+**30.** **Strategy.** Division with remainder using nearest lattice points.
+
+Let $\alpha,\beta \in \mathbb{Z}[i]$ with $\beta \ne 0$. Write
+$$\frac{\alpha}{\beta} = x+yi, \qquad x,y \in \mathbb{Q}.$$
+Choose $m,n \in \mathbb{Z}$ with $\lvert x-m\rvert \le \tfrac12$ and $\lvert y-n\rvert \le \tfrac12$, and put $\gamma := m+ni \in \mathbb{Z}[i]$. Then
+$$N\!\left(\frac{\alpha}{\beta}-\gamma\right) = (x-m)^2+(y-n)^2 \le \frac14+\frac14 = \frac12 < 1 .$$
+Multiplying by $N(\beta) > 0$,
+$$N(\alpha-\beta\gamma) = N(\beta)\,N\!\left(\frac{\alpha}{\beta}-\gamma\right) < N(\beta).$$
+So $\alpha = \beta\gamma + \rho$ with $\rho = \alpha-\beta\gamma$ and $N(\rho) < N(\beta)$: division with remainder holds, and $\mathbb{Z}[i]$ is Euclidean for $N$.
+
+A Euclidean domain is a PID (iterate the Euclidean algorithm; the last nonzero remainder divides both inputs), and a PID is a UFD. $\blacksquare$
+
+**31.** **Strategy.** Produce one unit of infinite order, then descend.
+
+Let $K = \mathbb{Q}(\sqrt d)$ with $d>0$ squarefree. By Theorem 7.26 (applied to the order $\mathbb{Z}[\sqrt d] \subseteq \mathcal{O}_K$) the equation $x^2-dy^2 = 1$ has a solution with $y \ne 0$, giving a unit $x+y\sqrt d \ne \pm1$ of infinite order. So $\mathcal{O}_K^\times$ is infinite, and by Theorem 7.22 its rank is $r_1+r_2-1 = 2+0-1 = 1$.
+
+*Descent.* Let $\varepsilon$ be the least unit of $\mathcal{O}_K$ with $\varepsilon > 1$; it exists because the set of units is discrete in $\mathbb{R}$ (an algebraic integer all of whose conjugates lie in a bounded interval belongs to a finite set). Let $u > 1$ be any unit. Let $k$ be the largest integer with $\varepsilon^k \le u$. Then $v := u\varepsilon^{-k}$ is a unit with $1 \le v < \varepsilon$. By minimality of $\varepsilon$, $v = 1$, so $u = \varepsilon^k$.
+
+*Why the set of units in $[1,M]$ is finite.* If $u = x+y\sqrt d$ is a unit with $1 \le u \le M$, then $u' = \pm u^{-1}$ satisfies $\lvert u'\rvert \le 1$, so
+$$\lvert 2x\rvert = \lvert u+u'\rvert \le M+1, \qquad \lvert 2y\sqrt d\rvert = \lvert u-u'\rvert \le M+1,$$
+bounding $x$ and $y$; finitely many such pairs exist. (For $d \equiv 1 \pmod 4$ the same argument applies to half-integers $u = (x+y\sqrt d)/2$ with $x \equiv y \bmod 2$.)
+
+Therefore $\mathcal{O}_K^\times = \{\pm\varepsilon^n : n \in \mathbb{Z}\} \cong \{\pm1\}\times\mathbb{Z}$. $\blacksquare$
+
+## Challenge
+
+**32.** **Strategy.** Compute $L(1,\chi_{-24})$ with the standard formula for even primitive characters and compare with (7.4).
+
+The character $\chi = \chi_{-24}$ has conductor $f = 24$ and is odd, as is necessarily the case for a fundamental discriminant $D = -24 < 0$: indeed $\chi(-1) = \chi(23) = -1$ in the table below. For a real odd primitive character of conductor $f$,
+$$L(1,\chi) = -\frac{\pi}{f^{3/2}}\sum_{a=1}^{f}a\,\chi(a).$$
+$\chi$ vanishes unless $\gcd(a,24) = 1$, i.e. unless $a$ is odd and not divisible by $3$. Writing $\chi = \chi_{-8}\chi_{3}$ (since $-24 = -8\cdot3$ with $\gcd(8,3)=1$), and using $\chi_{-8}(a) = 1$ for $a \equiv \pm1 \pmod 8$, $-1$ for $a \equiv \pm3\pmod 8$, while $\chi_3(a) = (a/3)$:
+
+| $a$ | $1$ | $5$ | $7$ | $11$ | $13$ | $17$ | $19$ | $23$ |
+|---|---|---|---|---|---|---|---|---|
+| $\chi(a)$ | $1$ | $1$ | $1$ | $1$ | $-1$ | $-1$ | $-1$ | $-1$ |
+
+Hence
+$$\sum_{a=1}^{24}a\chi(a) = 1+5+7+11-13-17-19-23 = 24-72 = -48,$$
+and
+$$L(1,\chi_{-24}) = -\frac{\pi}{24^{3/2}}\cdot(-48) = \frac{48\pi}{24\sqrt{24}} = \frac{2\pi}{\sqrt{24}} = \frac{\pi}{\sqrt6} \approx 1.2825 .$$
+
+*The formula's prediction.* For $K = \mathbb{Q}(\sqrt{-6})$: $r_1 = 0$, $r_2 = 1$, $h_K = 2$ (Example 9.6), $R_K = 1$ (rank $0$), $w_K = 2$, $\lvert\Delta_K\rvert = 24$. Then
+$$\frac{2^{0}(2\pi)^{1}\cdot 2\cdot 1}{2\sqrt{24}} = \frac{4\pi}{2\sqrt{24}} = \frac{2\pi}{\sqrt{24}} = \frac{\pi}{\sqrt6},$$
+which agrees exactly with $L(1,\chi_{-24})$; and $\zeta_K = \zeta\cdot L(\cdot,\chi_{-24})$ has the same residue because $\zeta$ has residue $1$ at $s=1$. $\blacksquare$
+
+**33.** **Strategy.** Euclid-style argument, with $\mathbb{Z}[i]$ supplying the "new prime" step.
+
+Suppose, for contradiction, that $p_1,\dots,p_k$ are all the primes congruent to $1$ modulo $4$. Let
+$$N := (2p_1p_2\cdots p_k)^2+1 .$$
+Then $N > 1$ and $N$ is odd. Let $q$ be any prime divisor of $N$. Since $(2p_1\cdots p_k)^2 \equiv -1 \pmod q$, the congruence $x^2 \equiv -1 \pmod q$ is solvable, so $-1$ is a quadratic residue modulo $q$. By Euler's criterion this forces $q = 2$ or $q \equiv 1 \pmod 4$; and $q \ne 2$ because $N$ is odd. So $q \equiv 1 \pmod 4$.
+
+But $q \ne p_i$ for every $i$: indeed $N \equiv 1 \pmod{p_i}$, since $p_i$ divides the square term, so $p_i \nmid N$. Hence $q$ is a prime $\equiv 1 \pmod 4$ different from all the $p_i$, contradicting the assumption that the list was complete. Therefore infinitely many such primes exist. $\blacksquare$
+
+*Remark.* The role of $\mathbb{Z}[i]$ is in the implication "$q \mid x^2+1 \Rightarrow q \equiv 1 \pmod 4$", which is the statement that $q$ splits in $\mathbb{Z}[i]$ (Theorem 7.14 with $d = -1$).
+
+**34.** **Strategy.** For each $d$, compute the Minkowski bound; if it is $<2$, conclude $h=1$ immediately; otherwise enumerate the ideals of small norm and test principality.
+
+Recall: for imaginary quadratic, $B = \frac{2}{\pi}\sqrt{\lvert\Delta_K\rvert}$; for real quadratic, $B = \frac12\sqrt{\Delta_K}$.
+
+*Imaginary cases.*
+
+| $d$ | $\Delta_K$ | $B$ | conclusion |
+|---|---|---|---|
+| $-1$ | $-4$ | $1.273$ | $h=1$ |
+| $-2$ | $-8$ | $1.801$ | $h=1$ |
+| $-3$ | $-3$ | $1.103$ | $h=1$ |
+| $-5$ | $-20$ | $2.847$ | $h=2$ (Example 9.4) |
+| $-6$ | $-24$ | $3.119$ | $h=2$ (Example 9.6) |
+| $-7$ | $-7$ | $1.684$ | $h=1$ |
+| $-10$ | $-40$ | $4.011$ | $h=2$ (below) |
+
+For $d = -10$: $\mathcal{O}_K = \mathbb{Z}[\sqrt{-10}]$ and the bound is $4.011$, so norms $1,2,3,4$ must be checked. $(2) = \mathfrak{p}_2^2$ with $\mathfrak{p}_2 = (2,\sqrt{-10})$ of norm $2$; $\mathfrak{p}_2$ is not principal because $a^2+10b^2 = 2$ has no solution. $(3)$ is inert: $\left(\frac{-40}{3}\right) = \left(\frac23\right) = -1$. Ideals of norm $4$ are $\mathfrak{p}_2^2 = (2)$. So $\mathrm{Cl}_K = \{1,[\mathfrak{p}_2]\} \cong \mathbb{Z}/2$ and $h=2$.
+
+*Real cases.*
+
+| $d$ | $\Delta_K$ | $B$ | conclusion |
+|---|---|---|---|
+| $2$ | $8$ | $1.414$ | $h=1$ |
+| $3$ | $12$ | $1.732$ | $h=1$ |
+| $5$ | $5$ | $1.118$ | $h=1$ |
+| $6$ | $24$ | $2.449$ | $h=1$ (below) |
+| $7$ | $28$ | $2.646$ | $h=1$ (below) |
+| $10$ | $40$ | $3.162$ | $h=2$ (Exercise 29) |
+
+For $d = 6$: the bound is $2.449$, so only ideal norms $1,2$ occur; $2$ ramifies ($6 \equiv 2 \pmod 4$), $\mathfrak{p}_2 = (2,\sqrt6)$, and $2-\sqrt6$ has norm $4 - 6 = -2$, so $\mathfrak{p}_2$ is principal; hence $h=1$.
+
+For $d = 7$: the bound is $2.646$, so norms $1,2$ occur; $2$ splits ($7 \equiv 7 \pmod 8$), and $3-\sqrt7$ has norm $9-7 = 2$, so both primes above $2$ are principal; hence $h=1$.
+
+*Answer.* $h=1$ for $d \in \{-1,-2,-3,-7,2,3,5,6,7\}$; $h=2$ for $d \in \{-5,-6,-10,10\}$. This is consistent with the Heegner list (Theorem 8.4), which predicts $h=1$ exactly for $d = -1,-2,-3,-7$ in the range $\lvert d\rvert\le 10$. $\blacksquare$
+
+**35.** **Strategy.** Euclidean algorithm in the triangular lattice; then a splitting argument plus a parity reduction.
+
+*Step 1: $\mathbb{Z}[\omega]$ is Euclidean.* Here $\omega = (1+\sqrt{-3})/2$ satisfies $\omega^2-\omega+1 = 0$, and $N(a+b\omega) = a^2+ab+b^2$. Let $z = x+y\omega$ with $x,y \in \mathbb{Q}$ and choose $m,n \in \mathbb{Z}$ with $\lvert x-m\rvert \le \tfrac12$, $\lvert y-n\rvert \le \tfrac12$. Put $\gamma = m+n\omega$ and $\delta = z-\gamma = (x-m)+(y-n)\omega$. Then
+$$N(\delta) = u^2+uv+v^2 \quad\text{with } \lvert u\rvert,\lvert v\rvert \le \tfrac12,$$
+and the maximum of $u^2+uv+v^2$ on the square $[-\tfrac12,\tfrac12]^2$ is attained at a corner, giving $\tfrac14+\tfrac14+\tfrac14 = \tfrac34 < 1$. So for $\alpha,\beta \in \mathbb{Z}[\omega]$, $\beta \ne 0$, the element $\alpha/\beta$ has a nearest lattice point $\gamma$ with $N(\alpha/\beta-\gamma) < 1$, hence $N(\alpha-\beta\gamma) < N(\beta)$, and division with remainder holds.
+
+Consequently $\mathbb{Z}[\omega]$ is a PID and a UFD.
+
+*Step 2: $p \equiv 1 \pmod 3$ splits.* By quadratic reciprocity and the supplementary laws, $\left(\frac{-3}{p}\right) = 1$ exactly when $p \equiv 1 \pmod 3$. So there is $n$ with $n^2 \equiv -3 \pmod p$, i.e. $p \mid (n+\sqrt{-3})(n-\sqrt{-3})$. Since $p$ is not prime in $\mathbb{Z}[\omega]$ (the quotient $\mathbb{Z}[\omega]/(p)$ contains a square root of $-3$, so it is not a domain), $p$ is reducible: $p = \pi\pi'$ with $N(\pi) = p$.
+
+*Step 3: from $a^2+ab+b^2$ to $x^2+3y^2$.* Write $\pi = a+b\omega$, so $4p = (2a+b)^2+3b^2$. If $b$ is even, $b = 2y$, then $p = (a+y)^2+3y^2$. If $b$ is odd, then $u := 2a+b$ is odd as well, and
+$$p = \left(\frac{u+3b}{4}\right)^2 + 3\left(\frac{u-b}{4}\right)^2 \quad\text{or}\quad p = \left(\frac{u-3b}{4}\right)^2+3\left(\frac{u+b}{4}\right)^2,$$
+according as $u \equiv b \pmod 4$ or $u \equiv -b \pmod 4$; in each case the entries are integers, as one checks from $u \equiv b \pmod 2$ and the two possible residues modulo $4$. Hence $p = x^2+3y^2$ in all cases. $\blacksquare$
+
+**36.** **Strategy.** Compute the residue predicted by (7.4) and compare with $L(1,\chi_5)$, using $\zeta_K = \zeta\,L(\cdot,\chi_5)$.
+
+For $K = \mathbb{Q}(\sqrt5)$: $n = 2$, $r_1 = 2$, $r_2 = 0$, $\Delta_K = 5$, $w_K = 2$, $h_K = 1$ (Example 7.21), and the fundamental unit is $\varepsilon = \frac{1+\sqrt5}{2}$, so
+$$R_K = \log\varepsilon = \log\frac{1+\sqrt5}{2} \approx 0.4812118 .$$
+The formula predicts
+$$\lim_{s\to1}(s-1)\zeta_K(s) = \frac{2^{2}(2\pi)^{0}\cdot1\cdot\log\varepsilon}{2\sqrt5} = \frac{2\log\varepsilon}{\sqrt5} \approx \frac{2(0.4812118)}{2.2360680} \approx 0.4304089 .$$
+
+*Independent computation.* Since $5 \equiv 1 \pmod 4$, the quadratic character $\chi_5$ has conductor $5$ and $L(1,\chi_5) = \frac{2}{\sqrt5}\log\frac{1+\sqrt5}{2} \approx 0.4304089$. Because $\zeta_K = \zeta\cdot L(\cdot,\chi_5)$ and $\zeta$ has residue $1$, the residue of $\zeta_K$ is exactly $L(1,\chi_5)$, in agreement.
+
+*Numerical value of $h_KR_K$.* From $h_KR_K = \frac{w_K\sqrt{\lvert\Delta_K\rvert}}{2^{r_1}(2\pi)^{r_2}}\cdot(\text{residue}) = \frac{2\sqrt5}{4}\cdot\frac{2\log\varepsilon}{\sqrt5} = \log\varepsilon$, and since $h_K = 1$ we get
+$$h_KR_K = R_K = \log\frac{1+\sqrt5}{2} \approx 0.4812 .$$
+This is consistent with Brauer–Siegel (Theorem 8.5): $h_KR_K \approx \Delta^{1/2+o(1)} = 5^{1/2} = 2.236$ is the *asymptotic* scale, while the actual value for this small field is $0.4812$; the asymptotic is not an approximation for individual small fields. $\blacksquare$

@@ -89,7 +89,7 @@ After working through this tutorial you will be able to:
 
 ## 4. Intuition
 
-Every family in this topic answers one of five questions.
+Every family in this topic answers one of a handful of questions.
 
 *How many successes in a fixed number of attempts?* Bernoulli for one attempt; binomial for $n$ independent
 attempts. *How long until the first success, or until the $r$-th?* Geometric and negative binomial, counting
@@ -110,10 +110,6 @@ can be U-shaped, bell-shaped, uniform or monotone, which is why it models propor
 bell curve fixed up to location and scale, and it is *the same* curve for every parameter value once the axis is
 standardised.
 
-Finally, one discipline of thought repays everything else: when a formula is needed, **derive it from the
-definition, not from memory**. Every mean and variance in this topic follows from a summation identity or one
-integration by parts. A reader who can do those five or six computations never needs the table.
-
 ## 5. Formal Definition
 
 **Definition 5.1 (Parametric family).** A *parametric family* of distributions is a set
@@ -122,10 +118,8 @@ $\{P_\theta:\theta\in\Theta\}$ of probability measures on $(\mathbb{R},\mathcal{
 *has that law*, written $X\sim P_\theta$, if its distribution is $P_\theta$. The *support* of $P_\theta$ is the
 smallest closed set carrying probability $1$.
 
-Parameters are *identifiable* if distinct parameter values give distinct distributions; all families below are
-identifiable, with one caveat noted for mixtures of binomials in §7.12. Statements such as "$X$ is binomial with
-$n$ trials and success probability $p$", written $X\sim\operatorname{Bin}(n,p)$, specify both the family and the
-parameter.
+Parameters are *identifiable* if distinct parameter values give distinct distributions; all the families below are
+identifiable. Writing $X\sim\operatorname{Bin}(n,p)$ specifies both the family and the parameter values.
 
 **Definition 5.2 (The six discrete families).** In the table, $k$ ranges over the support shown, $q:=1-p$, and
 $\binom{n}{k}:=0$ when $k\notin\{0,\dots,n\}$.
@@ -208,9 +202,8 @@ $$
 \operatorname{Var}(X)=p-p^2=p(1-p)=pq .
 $$
 
-The MGF is $M(t)=q+pe^{t}$, and the Bernoulli family is the atom from which the binomial, geometric, negative
-binomial and hypergeometric families are assembled. Its variance is largest at $p=\tfrac12$ (value $\tfrac14$)
-and vanishes at $p=0$ and $p=1$, where the variable is degenerate.
+The MGF is $M(t)=q+pe^{t}$. The family models a single yes/no outcome and is the building block of the binomial,
+geometric and negative binomial families.
 
 ### 7.2 Binomial: successes in a fixed number of trials
 
@@ -313,8 +306,8 @@ $$
 so $\mathbb{E}[X]=r/p$ and $\operatorname{Var}(X)=rq/p^2$ (Lemma 8.1).
 
 *What it models.* The number of trials to achieve $r$ successes; the number of customers to reach $r$ sales; the
-number of days until $r$ accidents. Because $r$ need not be an integer, the same formula defines a
-*polya* family for real $r>0$, which is the continuous mixture of Poisson laws by a gamma rate (§7.14).
+number of days until $r$ accidents. For real $r>0$ the same formula defines the *polya* family, which is the
+gamma mixture of Poisson laws (§7.14).
 
 ### 7.5 Hypergeometric: sampling without replacement
 
@@ -349,8 +342,8 @@ reflecting the certainty of a census. Since the factor is below $1$, sampling wi
 variable than sampling with replacement — the hypergeometric variance is smaller than the binomial variance.
 
 *What it models.* Quality control by sampling a batch without replacement; the number of aces in a poker hand;
-capture–recapture estimates; the composition of a sample from a finite population. Its limit as $N\to\infty$ with
-$K/N\to p$ and $n$ fixed is $\operatorname{Bin}(n,p)$ (Exercise 28).
+capture–recapture estimates. Its limit as $N\to\infty$ with $K/N\to p$ and $n$ fixed is
+$\operatorname{Bin}(n,p)$ (Exercise 28).
 
 ### 7.6 Poisson: rare events in a continuum
 
@@ -428,8 +421,6 @@ $$
 =\frac{4(a^2+ab+b^2)-3(a^2+2ab+b^2)}{12}=\frac{(b-a)^2}{12}.
 $$
 
-*MGF.* $M(t)=\dfrac{e^{tb}-e^{ta}}{t(b-a)}$ for $t\ne0$, by integrating $e^{tx}$.
-
 *What it models.* A completely unknown point in a bounded interval; rounding error; the quantile transform
 $X=Q(U)$ of Theorem 8.7 in the previous topic. Uniform$(0,1)$ is also Beta$(1,1)$ (§7.10) and is the raw material
 of simulation.
@@ -474,9 +465,8 @@ $$
 f(x)=\frac{\lambda^\alpha x^{\alpha-1}e^{-\lambda x}}{\Gamma(\alpha)},\quad x>0,\ \alpha,\lambda>0 .
 $$
 
-*Normalisation.* Substitute $u=\lambda x$:
-$\int_0^\infty\frac{\lambda^\alpha x^{\alpha-1}e^{-\lambda x}}{\Gamma(\alpha)}dx
-=\frac{1}{\Gamma(\alpha)}\int_0^\infty u^{\alpha-1}e^{-u}du=1$.
+*Normalisation.* Substitute $u=\lambda x$; the factor $\lambda^\alpha x^{\alpha-1}e^{-\lambda x}dx$ becomes
+$u^{\alpha-1}e^{-u}du$, so the integral equals $\Gamma(\alpha)/\Gamma(\alpha)=1$.
 
 *Mean and variance.* The same substitution, or the gamma integral $\int_0^\infty x^{s-1}e^{-\lambda x}dx=\Gamma(s)/\lambda^s$,
 gives
@@ -642,9 +632,8 @@ conditional density of $z_1$ given $z_2$ is normal with mean $\rho z_2$ and vari
 $\sigma_1,\sigma_2$ gives the general formula.
 
 *What it models.* Several correlated measurements: height and weight, the vector of returns on several assets, the
-weights of a neural network layer under a Gaussian prior, errors in a multivariate regression. Its three
-conveniences — closure under linear maps, explicit conditionals, and equivalence of independence and zero
-correlation — are why it dominates multivariate statistics.
+weights of a layer under a Gaussian prior. Closure under linear maps, explicit conditionals, and the equivalence
+of independence and zero correlation are why it dominates multivariate statistics.
 
 ### 7.14 The web of relationships
 
@@ -668,9 +657,9 @@ variables to the standard normal, which is why the normal law approximates binom
 and gamma laws.
 
 **A mixture identity.** If $\Lambda\sim\text{Gamma}(\alpha,\beta)$ and $N\mid\Lambda\sim\text{Poisson}(\Lambda)$,
-then $N$ has the negative binomial (polya) law with parameters $\alpha$ and $p=\beta/(\beta+1)$. This *gamma–Poisson
-mixture* explains overdispersion in count data: the counts inherit the variability of the rate. The computation is
-Exercise 34.
+then $N$ follows the negative binomial (polya) law in its *failure-counting* form, with shape $\alpha$, success
+probability $p=\beta/(\beta+1)$ and mean $\alpha/\beta$; this *gamma–Poisson mixture* explains overdispersion
+(Exercise 34).
 
 ## 8. Formulas and Properties
 
@@ -720,8 +709,7 @@ $\mathbb{E}[e^{t(X+Y)}]=\mathbb{E}[e^{tX}e^{tY}]=\mathbb{E}[e^{tX}]\mathbb{E}[e^
 | Normal | $\mu,\sigma^2$ | $\mu$ | $\sigma^2$ | $e^{\mu t+\sigma^2t^2/2}$ |
 | Multivariate normal | $\mu,\Sigma$ | $\mu$ | $\Sigma$ | $e^{t^{\mathsf{T}}\mu+\frac12t^{\mathsf{T}}\Sigma t}$ |
 
-Here $q=1-p$ and, in the hypergeometric row, $p=K/N$. The entries without an MGF have no simple closed form (the
-hypergeometric MGF exists but does not simplify; the beta MGF is a confluent hypergeometric function).
+Here $q=1-p$ and, in the hypergeometric row, $p=K/N$. The two blank MGF cells have no simple closed form.
 
 ### 8.3 Closure under sums
 
@@ -752,13 +740,13 @@ $X\overset{d}{\to}\operatorname{Bin}(n,p)$. (iii) If $X_p\sim\text{Geometric}(p)
 $pX_p\overset{d}{\to}\text{Exponential}(1)$ as $p\downarrow0$.*
 
 *Proof.* (i) is the computation of §7.6. (ii) Write
-$\Pr(X=k)=\dfrac{\binom{K}{k}\binom{N-K}{n-k}}{\binom{N}{n}}$; for fixed $k$, each binomial coefficient ratio tends to
-the corresponding power of $p$:
-$\binom{K}{k}/\binom{N}{k}\to p^k$ and
-$\binom{N-K}{n-k}/\binom{N-k}{n-k}\to(1-p)^{n-k}$, while
-$\binom{N}{k}\binom{N-k}{n-k}/\binom{N}{n}=1$ identically. Multiplying gives $\binom{n}{k}p^k(1-p)^{n-k}$. (iii) For
-$x>0$, $\Pr(pX_p>x)=\Pr(X_p>\lfloor x/p\rfloor)=(1-p)^{\lfloor x/p\rfloor}\to e^{-x}$, using
-$(1-p)^{1/p}\to e^{-1}$ and $\lfloor x/p\rfloor p\to x$. $\blacksquare$
+$\Pr(X=k)=\dfrac{\binom{K}{k}\binom{N-K}{n-k}}{\binom{N}{n}}$ and split it as
+$\dfrac{\binom{K}{k}}{\binom{N}{k}}\cdot\dfrac{\binom{N-K}{n-k}}{\binom{N-k}{n-k}}\cdot\binom{n}{k}$, using
+$\binom{N}{k}\binom{N-k}{n-k}=\binom{N}{n}\binom{n}{k}$. For fixed $k$ the first ratio tends to $p^k$ and the second
+to $(1-p)^{n-k}$, while the third is constant, so the product tends to
+$\binom{n}{k}p^k(1-p)^{n-k}$. (iii) For $x>0$,
+$\Pr(pX_p>x)=\Pr(X_p>\lfloor x/p\rfloor)=(1-p)^{\lfloor x/p\rfloor}\to e^{-x}$, using $(1-p)^{1/p}\to e^{-1}$ and
+$\lfloor x/p\rfloor p\to x$. $\blacksquare$
 
 ### 8.5 Memorylessness
 
@@ -781,8 +769,8 @@ $$
 \Pr(X=3)=\binom{10}{3}(0.2)^3(0.8)^7=120\cdot0.008\cdot0.2097152\approx0.2013 .
 $$
 The mean is $np=2$ and the variance $npq=10(0.2)(0.8)=1.6$, so the standard deviation is about $1.265$.
-*Check.* $\Pr(X=0)=0.8^{10}\approx0.1074$ and $\Pr(X=1)=10(0.2)(0.8)^9\approx0.2684$; the three probabilities
-$0.1074+0.2684+0.2013\approx0.577$ are plausible for a law with mean $2$. ✓
+$\Pr(X=0)=0.8^{10}\approx0.1074$ and $\Pr(X=1)=10(0.2)(0.8)^9\approx0.2684$; these probabilities are plausible for
+a law with mean $2$. ✓
 
 ### 9.2 Waiting for the third success
 
@@ -813,12 +801,9 @@ $$
 \Pr(X=0)=e^{-3}\approx0.0498,\qquad
 \Pr(X\ge2)=1-e^{-3}(1+3)\approx1-0.1991=0.8009 .
 $$
-If instead $1000$ independent customers each call with probability $0.003$, the exact binomial has mean $3$ and
-$$
-\Pr(X=0)=(0.997)^{1000}\approx0.0496,
-$$
-within $0.0002$ of the Poisson value: with $n$ large, $p$ small and $np=3$, the two laws are nearly identical.
-*Check.* The approximation is exact in the limit $n\to\infty$ with $np\to3$ (Theorem 8.5(i)). ✓
+If instead $1000$ independent customers each call with probability $0.003$, the exact binomial gives
+$\Pr(X=0)=(0.997)^{1000}\approx0.0496$, within $0.0002$ of the Poisson value: with $n$ large, $p$ small and
+$np=3$, the two laws nearly coincide, as Theorem 8.5(i) guarantees. ✓
 
 ### 9.5 Memorylessness in practice
 
@@ -868,9 +853,9 @@ $$
 \mathbb{E}[X_1\mid X_2=5]=1+\frac{3}{9}(5-2)=2,\qquad
 \operatorname{Var}(X_1\mid X_2=5)=4-\frac{3^2}{9}=3 .
 $$
-So $X_1\mid X_2=5\sim\mathcal{N}(2,3)$, with a smaller variance than the marginal variance $4$: knowing $X_2$
-removes part of the uncertainty. *Check.* The reduction is $\rho^2\sigma_1^2=0.25\cdot4=1$, and $4-1=3$. ✓ If
-$\rho=0$ the conditional law would equal the marginal, as independence would require.
+So $X_1\mid X_2=5\sim\mathcal{N}(2,3)$, with a smaller variance than the marginal variance $4$. *Check.* The
+reduction is $\rho^2\sigma_1^2=0.25\cdot4=1$, and $4-1=3$. ✓ If $\rho=0$ the conditional law would equal the
+marginal, as independence would require.
 
 ## 10. Visual Explanations
 
@@ -935,11 +920,6 @@ The second table is a decision aid: read the mechanism in the left column and th
    $\tfrac12$, not $1$, and the shape is $\nu/2$, not $\nu$.
 9. **Believing the memoryless property applies to everything.** It characterises the geometric and exponential
    laws; a wear-out component or a fatigue crack does not have it.
-10. **Assuming uncorrelated means independent outside the normal family.** Only for jointly normal variables is
-    zero covariance equivalent to independence.
-11. **Reading a density as a probability.** $f(x)$ may exceed $1$; the beta density near an endpoint often does.
-12. **Reporting a mean as a typical value for skewed data.** The exponential with mean $5$ has median $3.47$; the
-    gamma with shape $2$ has its mode at $(\alpha-1)/\lambda$, not at $\alpha/\lambda$.
 
 ## 12. Applications
 
@@ -978,12 +958,11 @@ step, and a check. Proofs are complete.
   negative binomial (wait for $r$), hypergeometric (sample without replacement), Poisson (rare counts).
 * **Continuous**: uniform (no information), exponential (constant hazard), gamma (sums of exponentials), beta
   (proportions), chi-squared (sums of squares), normal (aggregates), multivariate normal (correlated coordinates).
-* Every mean and variance in the table of §8.2 follows from one summation identity or one integration by parts;
-  the derivations are in §7.
-* The **MGF** $M(t)=\mathbb{E}[e^{tX}]$ has $M(0)=1$, gives moments by differentiation, multiplies under sums of
-  independent variables, and determines the law.
 * **Closure under sums** holds within the binomial (common $p$), Poisson, gamma (common rate), chi-squared and
   normal families, and for geometrics summing to a negative binomial.
+* The **MGF** $M(t)=\mathbb{E}[e^{tX}]$ has $M(0)=1$, gives moments by differentiation, multiplies under sums of
+  independent variables, and determines the law; every entry of the table in §8.2 follows from one summation
+  identity or one integration by parts.
 * **Limits**: binomial $\to$ Poisson for rare events; hypergeometric $\to$ binomial for large populations; scaled
   geometric $\to$ exponential; standardised sums $\to$ normal by the central limit theorem.
 * The geometric and exponential laws are **memoryless**, and no others are.
@@ -997,14 +976,12 @@ step, and a check. Proofs are complete.
 ## 16. Further Learning
 
 **Next in this repository.** *Expectation and Variance*, and then *The Law of Large Numbers and the Central Limit
-Theorem*, are the following topics of the discipline; see the [discipline index](../README.md). The first proves
-the moment machinery of §8.1 in general and treats covariance and generating functions systematically; the second
-proves the limit theorems that §7.14 and §8.4 only sketch.
+Theorem*, are the following topics of the discipline; see the [discipline index](../README.md). The first treats
+covariance and generating functions systematically; the second proves the limit theorems sketched in §7.14 and §8.4.
 
 **Related.** [Statistics](../../11-statistics/README.md) uses every family here for estimation and testing;
 [Combinatorics](../../20-combinatorics/README.md) supplies the counting identities behind the binomial,
-hypergeometric and negative binomial pmfs; [Random Variables](../03-random-variables/README.md) supplies the
-change-of-variable and mixture tools used throughout.
+hypergeometric and negative binomial pmfs.
 
 **Standard texts.**
 

@@ -12,7 +12,7 @@ A focused preparation for calculus: function families, transformations, sequence
 
 | | |
 |---|---|
-| Topics | 6 (4 complete, 0 draft, 2 planned) |
+| Topics | 6 (6 complete, 0 draft, 0 planned) |
 | Estimated study time | ~50 hours |
 | Prerequisites | [03-algebra](../03-algebra/README.md), [05-trigonometry](../05-trigonometry/README.md) |
 
@@ -42,10 +42,10 @@ flowchart LR
 |---|---|---|---|---|---|
 | 1 | [Functions and Graphs](01-functions-and-graphs/README.md) | Intermediate | 9 h | Complete | [Tutorial](01-functions-and-graphs/README.md) · [Exercises](01-functions-and-graphs/exercises.md) · [Solutions](01-functions-and-graphs/solutions.md) |
 | 2 | [Polynomial and Rational Functions](02-polynomial-and-rational-functions/README.md) | Intermediate | 9 h | Complete | [Tutorial](02-polynomial-and-rational-functions/README.md) · [Exercises](02-polynomial-and-rational-functions/exercises.md) · [Solutions](02-polynomial-and-rational-functions/solutions.md) |
-| 3 | Exponential and Logarithmic Models | Intermediate | 8 h | Planned | — |
+| 3 | [Exponential and Logarithmic Models](03-exponential-and-logarithmic-models/README.md) | Intermediate | 8 h | Complete | [Tutorial](03-exponential-and-logarithmic-models/README.md) · [Exercises](03-exponential-and-logarithmic-models/exercises.md) · [Solutions](03-exponential-and-logarithmic-models/solutions.md) |
 | 4 | [Conic Sections](04-conic-sections/README.md) | Intermediate | 8 h | Complete | [Tutorial](04-conic-sections/README.md) · [Exercises](04-conic-sections/exercises.md) · [Solutions](04-conic-sections/solutions.md) |
 | 5 | [Sequences and Series](05-sequences-and-series/README.md) | Intermediate | 9 h | Complete | [Tutorial](05-sequences-and-series/README.md) · [Exercises](05-sequences-and-series/exercises.md) · [Solutions](05-sequences-and-series/solutions.md) |
-| 6 | Introduction to Limits | Intermediate | 7 h | Planned | — |
+| 6 | [Introduction to Limits](06-introduction-to-limits/README.md) | Intermediate | 7 h | Complete | [Tutorial](06-introduction-to-limits/README.md) · [Exercises](06-introduction-to-limits/exercises.md) · [Solutions](06-introduction-to-limits/solutions.md) |
 
 ### What each topic covers
 

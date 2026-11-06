@@ -137,8 +137,11 @@ been $0$, $4$ and $100$.
 (a) $H=-\sum_{j=1}^{8}\frac18\log_2\frac18=8\cdot\frac18\cdot3=3$ bits. In nats,
 $H=3\ln2=3(0.693147)=2.0794$ nats.
 
-(b) $H=-\tfrac12\log_2\tfrac12-\tfrac14\log_2\tfrac14-\tfrac18\log_2\tfrac18-\tfrac18\log_2\tfrac18
-=\tfrac12+\tfrac12+\tfrac38+\tfrac38=1.75$ bits, i.e. $1.75\ln2=1.2130$ nats.
+(b) Here
+
+$$H=-\tfrac12\log_2\tfrac12-\tfrac14\log_2\tfrac14-\tfrac18\log_2\tfrac18-\tfrac18\log_2\tfrac18=\tfrac12+\tfrac12+\tfrac38+\tfrac38=1.75,$$
+
+so $H=1.75$ bits, i.e. $1.75\ln2=1.2130$ nats.
 
 *Check:* both are below the maximum $\log_2n$ for their supports — $3$ bits for $n=8$, and
 $\log_24=2$ bits for (b) — consistent with Theorem 7.34. Also (b) is a uniform distribution "stretched"

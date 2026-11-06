@@ -12,7 +12,7 @@ Descriptive statistics, estimation, hypothesis testing, regression and Bayesian 
 
 | | |
 |---|---|
-| Topics | 6 (0 complete, 1 draft, 5 planned) |
+| Topics | 6 (6 complete, 0 draft, 0 planned) |
 | Estimated study time | ~53 hours |
 | Prerequisites | [10-probability](../10-probability/README.md) |
 
@@ -40,12 +40,12 @@ flowchart LR
 
 | # | Topic | Level | Est. time | Status | Materials |
 |---|---|---|---|---|---|
-| 1 | [Descriptive Statistics](01-descriptive-statistics/README.md) | Beginner | 8 h | Draft | [Tutorial](01-descriptive-statistics/README.md) |
-| 2 | Sampling and Estimation | Intermediate | 9 h | Planned | — |
-| 3 | Hypothesis Testing | Intermediate | 10 h | Planned | — |
-| 4 | Linear Regression | Intermediate | 9 h | Planned | — |
-| 5 | Bayesian Statistics | Advanced | 10 h | Planned | — |
-| 6 | Experimental Design | Intermediate | 7 h | Planned | — |
+| 1 | [Descriptive Statistics](01-descriptive-statistics/README.md) | Beginner | 8 h | Complete | [Tutorial](01-descriptive-statistics/README.md) · [Exercises](01-descriptive-statistics/exercises.md) · [Solutions](01-descriptive-statistics/solutions.md) |
+| 2 | [Sampling and Estimation](02-sampling-and-estimation/README.md) | Intermediate | 9 h | Complete | [Tutorial](02-sampling-and-estimation/README.md) · [Exercises](02-sampling-and-estimation/exercises.md) · [Solutions](02-sampling-and-estimation/solutions.md) |
+| 3 | [Hypothesis Testing](03-hypothesis-testing/README.md) | Intermediate | 10 h | Complete | [Tutorial](03-hypothesis-testing/README.md) · [Exercises](03-hypothesis-testing/exercises.md) · [Solutions](03-hypothesis-testing/solutions.md) |
+| 4 | [Linear Regression](04-linear-regression/README.md) | Intermediate | 9 h | Complete | [Tutorial](04-linear-regression/README.md) · [Exercises](04-linear-regression/exercises.md) · [Solutions](04-linear-regression/solutions.md) |
+| 5 | [Bayesian Statistics](05-bayesian-statistics/README.md) | Advanced | 10 h | Complete | [Tutorial](05-bayesian-statistics/README.md) · [Exercises](05-bayesian-statistics/exercises.md) · [Solutions](05-bayesian-statistics/solutions.md) |
+| 6 | [Experimental Design](06-experimental-design/README.md) | Intermediate | 7 h | Complete | [Tutorial](06-experimental-design/README.md) · [Exercises](06-experimental-design/exercises.md) · [Solutions](06-experimental-design/solutions.md) |
 
 ### What each topic covers
 

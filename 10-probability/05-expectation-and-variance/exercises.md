@@ -27,7 +27,7 @@ $0.5$ and $0.3$ respectively.
 (c) Show that the bound in (a) cannot be improved by any argument that uses only the mean: exhibit a
 distribution with $\mathbb{E}[X]=4$ for which $\Pr(X\ge10)=0.4$ exactly.
 
-**3.** *(§7.11)* A fair die shows $X$.
+**3.** *(§7.4)* A fair die shows $X$.
 
 (a) Compute $\mathbb{E}[X]$ and $\operatorname{Var}(X)$.
 (b) Compute $\mathbb{E}[2X-1]$ and $\operatorname{Var}(2X-1)$.
@@ -44,14 +44,14 @@ distribution with $\mathbb{E}[X]=4$ for which $\Pr(X\ge10)=0.4$ exactly.
 (b) Compute $\mathbb{E}[e^{X}]$ by LOTUS. Is the answer finite? Explain via the MGF.
 (c) Compute $\mathbb{E}[e^{2X}]$ and explain why it is infinite.
 
-**6.** *(§7.12, §7.14)* Two random variables have $\operatorname{Var}(X)=4$, $\operatorname{Var}(Y)=9$ and
+**6.** *(§7.4)* Two random variables have $\operatorname{Var}(X)=4$, $\operatorname{Var}(Y)=9$ and
 $\operatorname{Cov}(X,Y)=4$.
 
 (a) Compute $\operatorname{Var}(X+Y)$ and $\operatorname{Var}(X-Y)$.
 (b) Compute $\rho(X,Y)$.
 (c) Verify the parallelogram law $\operatorname{Var}(X+Y)+\operatorname{Var}(X-Y)=2\operatorname{Var}(X)+2\operatorname{Var}(Y)$.
 
-**7.** *(§7.13)* Let $X$ take the values $+1$ and $-1$ with probability $\tfrac12$ each.
+**7.** *(§7.4)* Let $X$ take the values $+1$ and $-1$ with probability $\tfrac12$ each.
 
 (a) Compute $\mathbb{E}[X]$ and $\operatorname{Var}(X)$.
 (b) Put $Y=X^{2}$ and compute $\operatorname{Var}(Y)$.
@@ -60,7 +60,7 @@ $\operatorname{Cov}(X,Y)=4$.
 **8.** *(§7.2)* An urn holds $10$ balls, $3$ of them red. Five are drawn without replacement. Using
 indicator variables, compute the expected number of red balls drawn.
 
-**9.** *(§7.17)* A random variable has $\mathbb{E}[X]=10$ and $\operatorname{Var}(X)=4$. Compute
+**9.** *(§7.4)* A random variable has $\mathbb{E}[X]=10$ and $\operatorname{Var}(X)=4$. Compute
 $\mathbb{E}[(X-c)^{2}]$ for $c=10$, $c=12$ and $c=0$, and say which $c$ is optimal.
 
 **10.** *(§7.9)* Compute the entropy in bits and in nats of
@@ -83,7 +83,7 @@ $\mathbb{E}[(X-c)^{2}]$ for $c=10$, $c=12$ and $c=0$, and say which $c$ is optim
 the truth.
 (c) Which inequality would you use for a bound on $\Pr(X\ge70)$, and why is it better here?
 
-**13.** *(§7.4, §7.16)* An urn holds $N=10$ balls, $K=3$ red; $n=5$ are drawn without replacement, and
+**13.** *(§7.2, §7.4)* An urn holds $N=10$ balls, $K=3$ red; $n=5$ are drawn without replacement, and
 $X$ counts reds.
 
 (a) Compute $\mathbb{E}[X]$ and $\operatorname{Var}(X)$ using the hypergeometric formulas
@@ -125,14 +125,14 @@ $\Pr(X=1,Y=0)=0.3$, $\Pr(X=0,Y=1)=0.1$, $\Pr(X=1,Y=1)=0.4$.
 (b) Verify the tower property numerically.
 (c) Verify the law of total variance numerically.
 
-**20.** *(§7.8, §7.32)* Let $X$ take the values $1$ and $9$ with probability $\tfrac12$ each.
+**20.** *(§7.8)* Let $X$ take the values $1$ and $9$ with probability $\tfrac12$ each.
 
 (a) Compute $\mathbb{E}[X]$, $\mathbb{E}[X^{2}]$ and $(\mathbb{E}X)^{2}$, and observe the direction of
 Jensen's inequality for $\varphi(x)=x^{2}$.
 (b) Verify AM–GM for the two numbers: compare $\sqrt{1\cdot9}$ with $(1+9)/2$.
 (c) Explain why $\mathbb{E}[\ln X]\le\ln\mathbb{E}[X]$ is the same inequality with a different $\varphi$.
 
-**21.** *(§7.6, §7.24)* A random number $N$ is uniform on $\{1,\dots,10\}$. Given $N=n$, the variables
+**21.** *(§7.6)* A random number $N$ is uniform on $\{1,\dots,10\}$. Given $N=n$, the variables
 $X_1,\dots,X_n$ are i.i.d. $\operatorname{Exp}(1)$ and $S_N=X_1+\cdots+X_N$.
 
 (a) Compute $\mathbb{E}[S_N]$ using conditioning.
@@ -146,7 +146,7 @@ gives $\Pr(\lvert X-\mu\rvert\ge k\sigma)\le1/k^{2}$.
 (b) What does the bound say at $k=1$? Is that informative?
 (c) Give a distribution for which the bound is attained at $k=2$.
 
-**23.** *(§7.7, §7.29)* Let $X\sim\operatorname{Pois}(2)$ and $Y\sim\operatorname{Pois}(3)$ be independent.
+**23.** *(§7.7)* Let $X\sim\operatorname{Pois}(2)$ and $Y\sim\operatorname{Pois}(3)$ be independent.
 
 (a) Identify the distribution of $X+Y$ and justify it with MGFs.
 (b) Compute $\Pr(X+Y=0)$ and $\mathbb{E}[(X+Y)^{2}]$.
@@ -168,30 +168,30 @@ $\lvert x\rvert\le1+x^{2}$.
 $\Pr(T\ge k)=(1-p)^{k-1}$.
 (c) Compute $\sum_{k\ge1}k\Pr(T\ge k)$ and explain what quantity it represents.
 
-**26.** *(§7.31)*
+**26.** *(§7.8)*
 
 (a) Prove Chebyshev's inequality from Markov's inequality.
 (b) Show that the bound is attained, for each $k>1$, by a three-point distribution, and give its masses.
 (c) Deduce that no better bound depending only on $\mu$ and $\sigma$ is possible.
 
-**27.** *(§7.19)*
+**27.** *(§7.5)*
 
 (a) Prove that $(\mathbb{E}[XY])^{2}\le\mathbb{E}[X^{2}]\mathbb{E}[Y^{2}]$ for $X,Y\in L^{2}$.
 (b) Deduce $\mathbb{E}\lvert XY\rvert\le\sqrt{\mathbb{E}[X^{2}]\mathbb{E}[Y^{2}]}$.
 (c) Show that $\mathbb{E}\lvert X\rvert\le\sqrt{\mathbb{E}[X^{2}]}$ and identify when equality holds.
 
-**28.** *(§7.22)* Let $X$ and $Y$ be discrete with finite ranges, and let $Z$ be discrete.
+**28.** *(§7.6)* Let $X$ and $Y$ be discrete with finite ranges, and let $Z$ be discrete.
 
 (a) Prove $\mathbb{E}\bigl[\mathbb{E}[X\mid Y,Z]\bigm|Y\bigr]=\mathbb{E}[X\mid Y]$ by direct summation.
 (b) Explain where the hypothesis "$\sigma(Y)\subseteq\sigma(Y,Z)$" is used.
 (c) Give a one-line counterexample showing that
 $\mathbb{E}\bigl[\mathbb{E}[X\mid Y]\bigm|Y,Z\bigr]=\mathbb{E}[X\mid Y]$ is nevertheless also true.
 
-**29.** *(§7.24)* Prove the law of total variance
+**29.** *(§7.6)* Prove the law of total variance
 $\operatorname{Var}(X)=\mathbb{E}[\operatorname{Var}(X\mid Y)]+\operatorname{Var}(\mathbb{E}[X\mid Y])$
 under the hypothesis $\mathbb{E}[X^{2}]<\infty$, stating which theorems you use at each step.
 
-**30.** *(§7.26, §7.29)*
+**30.** *(§7.7)*
 
 (a) Prove $M_{X+Y}=M_XM_Y$ for independent $X,Y$ at a value $t$ where both MGFs are finite.
 (b) Use it to prove that the sum of independent $\operatorname{Bin}(m,p)$ and $\operatorname{Bin}(n,p)$
@@ -199,7 +199,7 @@ variables is $\operatorname{Bin}(m+n,p)$.
 (c) Explain why the same argument does *not* prove that a sum of binomials with different $p$'s is
 binomial.
 
-**31.** *(§7.30, extension)* *(Cantelli's one-sided inequality.)* Let $\operatorname{Var}(X)=\sigma^{2}$ and
+**31.** *(§7.8, extension)* *(Cantelli's one-sided inequality.)* Let $\operatorname{Var}(X)=\sigma^{2}$ and
 $a>0$.
 
 (a) For $t>0$, apply Markov to $(X-\mu+t)^{2}$ to show
@@ -217,7 +217,7 @@ $\Pr(X-\mu\ge a)\le(\sigma^{2}+t^{2})/(a+t)^{2}$.
 (d) A casino charges $\mathbb{E}[X_m]$ to play the capped game. Discuss why "the mean is infinite, so any
 finite fee is favourable" is not a valid decision rule.
 
-**33.** *(§7.27, challenge)* Let $f(x)=\frac{1}{x\sqrt{2\pi}}e^{-(\ln x)^{2}/2}$ for $x>0$ be the
+**33.** *(§7.7, challenge)* Let $f(x)=\frac{1}{x\sqrt{2\pi}}e^{-(\ln x)^{2}/2}$ for $x>0$ be the
 lognormal density, and put $g(x)=f(x)\bigl(1+\sin(2\pi\ln x)\bigr)$.
 
 (a) Show $g\ge0$ and $\int_0^\infty g=1$.
@@ -233,7 +233,7 @@ contradict Theorem 7.27.
 and explain why that limit is *not* the expectation. (It is the Cauchy principal value.)
 (d) Explain what part of the proof of the weak law of large numbers fails for Cauchy variables.
 
-**35.** *(§7.19, §7.20)* Let $X,Y\in L^{2}$.
+**35.** *(§7.5)* Let $X,Y\in L^{2}$.
 
 (a) Prove that equality holds in Cauchy–Schwarz if and only if $X$ and $Y$ are linearly dependent almost
 surely: there are constants $\alpha,\beta$, not both zero, with $\alpha X+\beta Y=0$ a.s.
@@ -241,7 +241,7 @@ surely: there are constants $\alpha,\beta$, not both zero, with $\alpha X+\beta 
 $\rho(X,Y)=-1$ forces $a<0$.
 (c) Give an example with $\rho=1$ in which $Y\ne X$, to show that correlation one is not equality.
 
-**36.** *(§7.25)* Prove Theorem 7.25: for $X\in L^{2}$ and any function $g$ with
+**36.** *(§7.6)* Prove Theorem 7.25: for $X\in L^{2}$ and any function $g$ with
 $\mathbb{E}[g(Y)^{2}]<\infty$,
 
 $$\mathbb{E}\bigl[(X-g(Y))^{2}\bigr]=\mathbb{E}\bigl[\operatorname{Var}(X\mid Y)\bigr]+\mathbb{E}\bigl[(\mathbb{E}[X\mid Y]-g(Y))^{2}\bigr],$$

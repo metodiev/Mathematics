@@ -12,7 +12,7 @@ Euclid's axiomatic method is the ancestor of all mathematics. From congruent tri
 
 | | |
 |---|---|
-| Topics | 8 (7 complete, 0 draft, 1 planned) |
+| Topics | 8 (8 complete, 0 draft, 0 planned) |
 | Estimated study time | ~73 hours |
 | Prerequisites | [01-arithmetic](../01-arithmetic/README.md) |
 
@@ -51,7 +51,7 @@ flowchart TD
 | 5 | [Solid Geometry](05-solid-geometry/README.md) | Intermediate | 9 h | Complete | [Tutorial](05-solid-geometry/README.md) · [Exercises](05-solid-geometry/exercises.md) · [Solutions](05-solid-geometry/solutions.md) |
 | 6 | [Geometric Transformations](06-transformations/README.md) | Intermediate | 8 h | Complete | [Tutorial](06-transformations/README.md) · [Exercises](06-transformations/exercises.md) · [Solutions](06-transformations/solutions.md) |
 | 7 | [Analytic Geometry](07-analytic-geometry/README.md) | Intermediate | 8 h | Complete | [Tutorial](07-analytic-geometry/README.md) · [Exercises](07-analytic-geometry/exercises.md) · [Solutions](07-analytic-geometry/solutions.md) |
-| 8 | Non-Euclidean Geometry | Advanced | 8 h | Planned | — |
+| 8 | [Non-Euclidean Geometry](08-non-euclidean-geometry/README.md) | Advanced | 8 h | Complete | [Tutorial](08-non-euclidean-geometry/README.md) · [Exercises](08-non-euclidean-geometry/exercises.md) · [Solutions](08-non-euclidean-geometry/solutions.md) |
 
 ### What each topic covers
 

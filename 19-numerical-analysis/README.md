@@ -12,7 +12,7 @@ Floating point, root finding, interpolation, numerical integration and iterative
 
 | | |
 |---|---|
-| Topics | 5 (0 complete, 0 draft, 5 planned) |
+| Topics | 5 (5 complete, 0 draft, 0 planned) |
 | Estimated study time | ~40 hours |
 | Prerequisites | [07-calculus](../07-calculus/README.md), [08-linear-algebra](../08-linear-algebra/README.md) |
 
@@ -38,11 +38,11 @@ flowchart LR
 
 | # | Topic | Level | Est. time | Status | Materials |
 |---|---|---|---|---|---|
-| 1 | Floating-Point Arithmetic | Intermediate | 7 h | Planned | — |
-| 2 | Root Finding | Intermediate | 8 h | Planned | — |
-| 3 | Interpolation and Approximation | Advanced | 9 h | Planned | — |
-| 4 | Numerical Integration | Advanced | 8 h | Planned | — |
-| 5 | Iterative Methods for Linear Systems | Advanced | 8 h | Planned | — |
+| 1 | [Floating-Point Arithmetic](01-floating-point-arithmetic/README.md) | Intermediate | 7 h | Complete | [Tutorial](01-floating-point-arithmetic/README.md) · [Exercises](01-floating-point-arithmetic/exercises.md) · [Solutions](01-floating-point-arithmetic/solutions.md) |
+| 2 | [Root Finding](02-root-finding/README.md) | Intermediate | 8 h | Complete | [Tutorial](02-root-finding/README.md) · [Exercises](02-root-finding/exercises.md) · [Solutions](02-root-finding/solutions.md) |
+| 3 | [Interpolation and Approximation](03-interpolation-and-approximation/README.md) | Advanced | 9 h | Complete | [Tutorial](03-interpolation-and-approximation/README.md) · [Exercises](03-interpolation-and-approximation/exercises.md) · [Solutions](03-interpolation-and-approximation/solutions.md) |
+| 4 | [Numerical Integration](04-numerical-integration/README.md) | Advanced | 8 h | Complete | [Tutorial](04-numerical-integration/README.md) · [Exercises](04-numerical-integration/exercises.md) · [Solutions](04-numerical-integration/solutions.md) |
+| 5 | [Iterative Methods for Linear Systems](05-iterative-methods-for-linear-systems/README.md) | Advanced | 8 h | Complete | [Tutorial](05-iterative-methods-for-linear-systems/README.md) · [Exercises](05-iterative-methods-for-linear-systems/exercises.md) · [Solutions](05-iterative-methods-for-linear-systems/solutions.md) |
 
 ### What each topic covers
 

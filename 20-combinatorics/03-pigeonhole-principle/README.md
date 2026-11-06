@@ -211,7 +211,7 @@ There is no contradiction: $23$ people form $\binom{23}{2} = 253$ *pairs*, each 
 
 **Graph form.** Every simple graph with at least two vertices has two vertices of the same degree: the degrees lie in $\{0,\dots,n-1\}$, and $0$ and $n-1$ are incompatible.
 
-*Sharpness.* The argument is optimal in the sense that the obstruction is real: the path $P_1$–$P_2$–$P_3$ has degrees $1,2,1$, repeating; but a graph with all degrees distinct is impossible for any $n\ge2$, so there is no "one smaller" example to build within a fixed $n$.
+*No sharpness example exists.* The conclusion holds for every $n \ge 2$, so there is no configuration that avoids it and nothing to compare against. What can be said is that the naive count of $n$ values is genuinely too coarse: the pair $\{0,n-1\}$ is excluded because the two counts cannot coexist, and that exclusion is exactly what makes the argument work. For $n = 3$ the possible degree sequences are $(0,1,1)$, $(1,1,2)$ and $(2,2,2)$ — always with a repetition.
 
 **Related, but not pigeonhole.** The *handshake lemma* $\sum_v \deg v = 2\lvert E\rvert$ (proved by double counting in [Counting Principles](../01-counting-principles/README.md), Section 7.13) implies that the number of odd-degree vertices is even. That is a parity statement, not a pigeonhole statement; the two are often confused because both are proved by counting.
 
@@ -233,7 +233,7 @@ There is no contradiction: $23$ people form $\binom{23}{2} = 253$ *pairs*, each 
 
 *Proof.* The midpoint of $(x_1,y_1)$ and $(x_2,y_2)$ is integral exactly when $x_1 \equiv x_2$ and $y_1 \equiv y_2 \pmod 2$. There are $4$ parity classes $(\text{even},\text{even})$, $(\text{even},\text{odd})$, $(\text{odd},\text{even})$, $(\text{odd},\text{odd})$, so $5$ points give two in the same class. $\square$
 
-**The general recipe.** Partition the region into $k$ pieces each of diameter at most $d$; then $k+1$ points force two within distance $d$. The art is choosing a partition whose pieces have small diameter — square pieces for squares, triangles for triangles, parity classes for lattices.
+**The general recipe.** Partition the region into $k$ pieces each of diameter at most $d$; then $k+1$ points force two within distance $d$. Points lying on a boundary may be assigned to any piece containing them; the diameter bound is unaffected. The art is choosing a partition whose pieces have small diameter — square pieces for squares, triangles for triangles, parity classes for lattices.
 
 ### 7.7 Divisible subsequences
 
@@ -569,10 +569,10 @@ The unit square cut into four quarter-squares. Any five points put two in the sa
 
 ```mermaid
 flowchart LR
-    S["Unit square"] --> Q1["[0,1/2] x [1/2,1]  diam 0.707"]
-    S --> Q2["[1/2,1] x [1/2,1]  diam 0.707"]
-    S --> Q3["[0,1/2] x [0,1/2]  diam 0.707"]
-    S --> Q4["[1/2,1] x [0,1/2]  diam 0.707"]
+    S["Unit square"] --> Q1["top left quarter, diam 0.707"]
+    S --> Q2["top right quarter, diam 0.707"]
+    S --> Q3["bottom left quarter, diam 0.707"]
+    S --> Q4["bottom right quarter, diam 0.707"]
 ```
 
 Four points at the corners show that the number $5$ is right: their pairwise distances are $1,1,1,1,\sqrt2$, all exceeding $\sqrt2/2$.
@@ -592,7 +592,7 @@ Four points at the corners show that the number $5$ is right: their pairwise dis
 
 **11.2 Overlapping boxes.** If the classes overlap, an object may be counted in two, and the sum rule fails. Either make the classes disjoint or use the union form (which is still valid, since overlap only helps the conclusion) but never add sizes of overlapping classes.
 
-**11.3 Using the floor instead of the ceiling.** With $100$ objects in $9$ boxes the guaranteed maximum is $\lceil 100/9\rceil = 12$, not $\lfloor 100/9\rfloor = 11$. The floor is a lower bound on the average, not a guarantee about any box; the ceiling is the guarantee.
+**11.3 Using the floor instead of the ceiling.** With $100$ objects in $9$ boxes the guaranteed maximum is $\lceil 100/9\rceil = 12$, not $\lfloor 100/9\rfloor = 11$. The floor is merely the integer part of the average; the guarantee comes from rounding *up*, because the box counts are integers summing to $N$.
 
 **11.4 Off by one in the threshold.** $k$ boxes force $m$ in one box when there are $k(m-1)+1$ objects, not $km$ objects. The extremal example — $m-1$ objects in every box, $k(m-1)$ in total — is the check.
 
@@ -608,7 +608,7 @@ Four points at the corners show that the number $5$ is right: their pairwise dis
 
 **11.10 Confusing "at least" with "exactly".** The generalised principle gives *at least* $\lceil N/k\rceil$ in some box; it says nothing about the other boxes, and nothing prevents several boxes from being large.
 
-**11.11 Applying the infinite principle to a countable union of finite sets.** Finitely many boxes is essential in Theorem 5.4.1: infinitely many finite boxes can hold only finitely many objects each and still cover infinitely many.
+**11.11 Applying the infinite principle with infinitely many boxes.** "Finitely many boxes" is essential in Theorem 5.4.1: with infinitely many boxes one object can go in each, every box is finite, and no box is infinite.
 
 ## 12. Applications
 

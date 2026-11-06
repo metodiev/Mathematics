@@ -12,7 +12,7 @@ The art of counting without listing: bijections, inclusion-exclusion, generating
 
 | | |
 |---|---|
-| Topics | 6 (0 complete, 1 draft, 5 planned) |
+| Topics | 6 (6 complete, 0 draft, 0 planned) |
 | Estimated study time | ~49 hours |
 | Prerequisites | [00-foundations](../00-foundations/README.md), [09-discrete-mathematics](../09-discrete-mathematics/README.md) |
 
@@ -40,12 +40,12 @@ flowchart LR
 
 | # | Topic | Level | Est. time | Status | Materials |
 |---|---|---|---|---|---|
-| 1 | [Counting Principles](01-counting-principles/README.md) | Intermediate | 9 h | Draft | [Tutorial](01-counting-principles/README.md) · [Exercises](01-counting-principles/exercises.md) |
-| 2 | Inclusion-Exclusion | Intermediate | 7 h | Planned | — |
-| 3 | The Pigeonhole Principle | Intermediate | 6 h | Planned | — |
-| 4 | Generating Functions | Advanced | 10 h | Planned | — |
-| 5 | Partitions and Compositions | Advanced | 8 h | Planned | — |
-| 6 | Extremal Combinatorics | Advanced | 9 h | Planned | — |
+| 1 | [Counting Principles](01-counting-principles/README.md) | Intermediate | 9 h | Complete | [Tutorial](01-counting-principles/README.md) · [Exercises](01-counting-principles/exercises.md) · [Solutions](01-counting-principles/solutions.md) |
+| 2 | [Inclusion-Exclusion](02-inclusion-exclusion/README.md) | Intermediate | 7 h | Complete | [Tutorial](02-inclusion-exclusion/README.md) · [Exercises](02-inclusion-exclusion/exercises.md) · [Solutions](02-inclusion-exclusion/solutions.md) |
+| 3 | [The Pigeonhole Principle](03-pigeonhole-principle/README.md) | Intermediate | 6 h | Complete | [Tutorial](03-pigeonhole-principle/README.md) · [Exercises](03-pigeonhole-principle/exercises.md) · [Solutions](03-pigeonhole-principle/solutions.md) |
+| 4 | [Generating Functions](04-generating-functions/README.md) | Advanced | 10 h | Complete | [Tutorial](04-generating-functions/README.md) · [Exercises](04-generating-functions/exercises.md) · [Solutions](04-generating-functions/solutions.md) |
+| 5 | [Partitions and Compositions](05-partitions-and-compositions/README.md) | Advanced | 8 h | Complete | [Tutorial](05-partitions-and-compositions/README.md) · [Exercises](05-partitions-and-compositions/exercises.md) · [Solutions](05-partitions-and-compositions/solutions.md) |
+| 6 | [Extremal Combinatorics](06-extremal-combinatorics/README.md) | Advanced | 9 h | Complete | [Tutorial](06-extremal-combinatorics/README.md) · [Exercises](06-extremal-combinatorics/exercises.md) · [Solutions](06-extremal-combinatorics/solutions.md) |
 
 ### What each topic covers
 

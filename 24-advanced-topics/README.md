@@ -12,7 +12,7 @@ Measure theory, functional analysis, category theory, differential and algebraic
 
 | | |
 |---|---|
-| Topics | 13 (0 complete, 0 draft, 13 planned) |
+| Topics | 13 (13 complete, 0 draft, 0 planned) |
 | Estimated study time | ~162 hours |
 | Prerequisites | [14-real-analysis](../14-real-analysis/README.md), [13-abstract-algebra](../13-abstract-algebra/README.md), [08-linear-algebra](../08-linear-algebra/README.md) |
 
@@ -54,19 +54,19 @@ flowchart TD
 
 | # | Topic | Level | Est. time | Status | Materials |
 |---|---|---|---|---|---|
-| 1 | Measure Theory | Advanced | 14 h | Planned | — |
-| 2 | Functional Analysis | Advanced | 14 h | Planned | — |
-| 3 | Category Theory | Advanced | 12 h | Planned | — |
-| 4 | Differential Geometry | Advanced | 14 h | Planned | — |
-| 5 | Algebraic Topology | Advanced | 14 h | Planned | — |
-| 6 | Algebraic Geometry | Advanced | 14 h | Planned | — |
-| 7 | Dynamical Systems and Chaos | Advanced | 11 h | Planned | — |
-| 8 | Representation Theory | Advanced | 12 h | Planned | — |
-| 9 | Commutative Algebra | Advanced | 12 h | Planned | — |
-| 10 | Model Theory | Advanced | 11 h | Planned | — |
-| 11 | Computability and Decidability | Advanced | 10 h | Planned | — |
-| 12 | Algebraic Number Theory | Advanced | 12 h | Planned | — |
-| 13 | Homological Algebra | Advanced | 12 h | Planned | — |
+| 1 | [Measure Theory](01-measure-theory/README.md) | Advanced | 14 h | Complete | [Tutorial](01-measure-theory/README.md) · [Exercises](01-measure-theory/exercises.md) · [Solutions](01-measure-theory/solutions.md) |
+| 2 | [Functional Analysis](02-functional-analysis/README.md) | Advanced | 14 h | Complete | [Tutorial](02-functional-analysis/README.md) · [Exercises](02-functional-analysis/exercises.md) · [Solutions](02-functional-analysis/solutions.md) |
+| 3 | [Category Theory](03-category-theory/README.md) | Advanced | 12 h | Complete | [Tutorial](03-category-theory/README.md) · [Exercises](03-category-theory/exercises.md) · [Solutions](03-category-theory/solutions.md) |
+| 4 | [Differential Geometry](04-differential-geometry/README.md) | Advanced | 14 h | Complete | [Tutorial](04-differential-geometry/README.md) · [Exercises](04-differential-geometry/exercises.md) · [Solutions](04-differential-geometry/solutions.md) |
+| 5 | [Algebraic Topology](05-algebraic-topology/README.md) | Advanced | 14 h | Complete | [Tutorial](05-algebraic-topology/README.md) · [Exercises](05-algebraic-topology/exercises.md) · [Solutions](05-algebraic-topology/solutions.md) |
+| 6 | [Algebraic Geometry](06-algebraic-geometry/README.md) | Advanced | 14 h | Complete | [Tutorial](06-algebraic-geometry/README.md) · [Exercises](06-algebraic-geometry/exercises.md) · [Solutions](06-algebraic-geometry/solutions.md) |
+| 7 | [Dynamical Systems and Chaos](07-dynamical-systems/README.md) | Advanced | 11 h | Complete | [Tutorial](07-dynamical-systems/README.md) · [Exercises](07-dynamical-systems/exercises.md) · [Solutions](07-dynamical-systems/solutions.md) |
+| 8 | [Representation Theory](08-representation-theory/README.md) | Advanced | 12 h | Complete | [Tutorial](08-representation-theory/README.md) · [Exercises](08-representation-theory/exercises.md) · [Solutions](08-representation-theory/solutions.md) |
+| 9 | [Commutative Algebra](09-commutative-algebra/README.md) | Advanced | 12 h | Complete | [Tutorial](09-commutative-algebra/README.md) · [Exercises](09-commutative-algebra/exercises.md) · [Solutions](09-commutative-algebra/solutions.md) |
+| 10 | [Model Theory](10-model-theory/README.md) | Advanced | 11 h | Complete | [Tutorial](10-model-theory/README.md) · [Exercises](10-model-theory/exercises.md) · [Solutions](10-model-theory/solutions.md) |
+| 11 | [Computability and Decidability](11-computability-and-decidability/README.md) | Advanced | 10 h | Complete | [Tutorial](11-computability-and-decidability/README.md) · [Exercises](11-computability-and-decidability/exercises.md) · [Solutions](11-computability-and-decidability/solutions.md) |
+| 12 | [Algebraic Number Theory](12-algebraic-number-theory/README.md) | Advanced | 12 h | Complete | [Tutorial](12-algebraic-number-theory/README.md) · [Exercises](12-algebraic-number-theory/exercises.md) · [Solutions](12-algebraic-number-theory/solutions.md) |
+| 13 | [Homological Algebra](13-homological-algebra/README.md) | Advanced | 12 h | Complete | [Tutorial](13-homological-algebra/README.md) · [Exercises](13-homological-algebra/exercises.md) · [Solutions](13-homological-algebra/solutions.md) |
 
 ### What each topic covers
 

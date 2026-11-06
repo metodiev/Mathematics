@@ -440,8 +440,9 @@ $$
 $$
 The second case is possible because if $m_n$ is not an upper bound of $S$, some element of $S$ exceeds it. By construction each $a_n \in S$, each $b_n$ is an upper bound of $S$, and
 $$
-b_n - a_n = \frac{b_0 - a_0}{2^n}.
+b_n - a_n \le \frac{b_0 - a_0}{2^n}
 $$
+(the interval is halved at each step; in the second case it is shortened by more than half).
 Induction gives $2^n \ge n$, so for every $\varepsilon > 0$ the Archimedean property provides $n$ with $b_n - a_n = (b_0-a_0)/2^n \le (b_0-a_0)/n < \varepsilon$.
 
 By hypothesis there is $\alpha \in \bigcap_n [a_n, b_n]$.
@@ -620,7 +621,7 @@ $$
 $$
 A point lies in at most two of them (only if it is an endpoint), so at least one of the three does not contain $x_n$; take it to be $I_n$. Its length is $(b-a)/3$, which gives the stated bound.
 
-By Theorem 7.28 there is $x \in \bigcap_n I_n$. For each $n$, $x \in I_n$ while $x_n \notin I_n$, so $x \ne x_n$. Hence no term of the sequence equals $x$, and $(x_n)$ is not a listing of $[0,1]$. If $[0,1]$ were countable, Lemma 7.42 would give a sequence listing it — contradiction. Since $[0,1] \subseteq \mathbb{R}$, $\mathbb{R}$ is uncountable too (an uncountable subset of a set forces the set to be uncountable: Exercise 31). $\blacksquare$
+By Theorem 7.28 there is $x \in \bigcap_n I_n$. For each $n$, $x \in I_n$ while $x_n \notin I_n$, so $x \ne x_n$. Hence no term of the sequence equals $x$, and $(x_n)$ is not a listing of $[0,1]$. If $[0,1]$ were countable, Lemma 7.42 would give a sequence listing it — contradiction. Since $[0,1] \subseteq \mathbb{R}$, the whole line is uncountable as well: a subset of a countable set is countable (enumerate the larger set as $a_1, a_2, \dots$ and list the elements of the subset in the order of their indices). $\blacksquare$
 
 **Lemma 7.50 (decimal expansions).** Every $x \in [0,1)$ has a decimal expansion
 $$

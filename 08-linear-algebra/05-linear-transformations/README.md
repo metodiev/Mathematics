@@ -63,9 +63,10 @@ to the plane, where rotation, reflection, projection, shear and scaling can be d
 inverses, and row reduction as a working tool: see
 [Systems of Linear Equations](../03-systems-of-linear-equations/README.md).
 
-**Independence, span, basis, dimension.** Defined again in §5.2 for self-containedness, but used
-constantly; the full treatment belongs to the vector spaces topic of this discipline. A reader meeting
-them first here should read §5.2 twice and do the Beginner exercises before continuing.
+**Independence, span, basis, dimension.** Defined again in §5 (Definitions 5.2 and 5.3) for
+self-containedness, but used constantly; the full treatment belongs to the vector spaces topic of this
+discipline. A reader meeting them first here should read those definitions twice and do the Beginner
+exercises before continuing.
 
 **Functions, images, preimages, injectivity, surjectivity, bijectivity.** See
 [Relations and Functions](../../00-foundations/05-relations-and-functions/README.md).
@@ -507,9 +508,9 @@ $$
 $$
 
 with the same trace $0$, rank $2$ and nullity $1$, as Proposition 7.19 and rank–nullity demand. Here
-$P = [\operatorname{id}]_B^{B'}$ has columns $[1]_{B'} = (1,0,0)^{\mathsf{T}}$,
-$[x]_{B'} = (-1,1,0)^{\mathsf{T}}$, $[x^2]_{B'} = (0,-1,1)^{\mathsf{T}}$, and
-$[D]_{B'} = P^{-1}[D]_BP$.
+$P = [\operatorname{id}]_B^{B'}$ has columns $[1]_B = (1,0,0)^{\mathsf{T}}$,
+$[1+x]_B = (1,1,0)^{\mathsf{T}}$, $[1+x+x^2]_B = (1,1,1)^{\mathsf{T}}$ — the new basis vectors written
+in the old basis — and one checks $[D]_{B'} = P^{-1}[D]_BP$.
 
 **Why change basis?** A good basis makes a matrix simple. The shear $\begin{pmatrix}1&1\\0&1\end{pmatrix}$
 and the triangular matrix above are as simple as a non-diagonalisable map can be; a diagonal matrix is
@@ -565,8 +566,8 @@ linear because the dot product is linear in each argument, with matrix
 $P_\theta = \mathbf{u}\mathbf{u}^{\mathsf{T}} = \begin{pmatrix}c^2&cs\\ cs&s^2\end{pmatrix}$. Its kernel
 is the perpendicular line, its image the line $\operatorname{span}\mathbf{u}$, and
 $\operatorname{rank} + \operatorname{nullity} = 1+1 = 2$. It is idempotent ($P_\theta^2 = P_\theta$) and
-symmetric ($P_\theta^{\mathsf{T}} = P_\theta$), and among plane maps those two properties characterise
-orthogonal projections onto a line.
+symmetric ($P_\theta^{\mathsf{T}} = P_\theta$), and among plane maps of rank $1$ those two properties
+characterise orthogonal projection onto the image line.
 
 **Shear.** $S_k = \begin{pmatrix}1&k\\0&1\end{pmatrix}$ fixes the $x$-axis pointwise and slides each
 horizontal line sideways in proportion to its height; $S_k^{-1} = S_{-k}$. It is the standard example of

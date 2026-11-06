@@ -12,7 +12,7 @@ Open sets, compactness, connectedness and the classification of spaces. Topology
 
 | | |
 |---|---|
-| Topics | 5 (0 complete, 0 draft, 5 planned) |
+| Topics | 5 (5 complete, 0 draft, 0 planned) |
 | Estimated study time | ~52 hours |
 | Prerequisites | [00-foundations](../00-foundations/README.md), [14-real-analysis](../14-real-analysis/README.md) |
 
@@ -38,11 +38,11 @@ flowchart LR
 
 | # | Topic | Level | Est. time | Status | Materials |
 |---|---|---|---|---|---|
-| 1 | Topological Spaces | Advanced | 11 h | Planned | — |
-| 2 | Continuity and Homeomorphisms | Advanced | 10 h | Planned | — |
-| 3 | Compactness | Advanced | 10 h | Planned | — |
-| 4 | Connectedness | Advanced | 9 h | Planned | — |
-| 5 | Introduction to Algebraic Topology | Advanced | 12 h | Planned | — |
+| 1 | [Topological Spaces](01-topological-spaces/README.md) | Advanced | 11 h | Complete | [Tutorial](01-topological-spaces/README.md) · [Exercises](01-topological-spaces/exercises.md) · [Solutions](01-topological-spaces/solutions.md) |
+| 2 | [Continuity and Homeomorphisms](02-continuity-and-homeomorphisms/README.md) | Advanced | 10 h | Complete | [Tutorial](02-continuity-and-homeomorphisms/README.md) · [Exercises](02-continuity-and-homeomorphisms/exercises.md) · [Solutions](02-continuity-and-homeomorphisms/solutions.md) |
+| 3 | [Compactness](03-compactness/README.md) | Advanced | 10 h | Complete | [Tutorial](03-compactness/README.md) · [Exercises](03-compactness/exercises.md) · [Solutions](03-compactness/solutions.md) |
+| 4 | [Connectedness](04-connectedness/README.md) | Advanced | 9 h | Complete | [Tutorial](04-connectedness/README.md) · [Exercises](04-connectedness/exercises.md) · [Solutions](04-connectedness/solutions.md) |
+| 5 | [Introduction to Algebraic Topology](05-algebraic-topology/README.md) | Advanced | 12 h | Complete | [Tutorial](05-algebraic-topology/README.md) · [Exercises](05-algebraic-topology/exercises.md) · [Solutions](05-algebraic-topology/solutions.md) |
 
 ### What each topic covers
 

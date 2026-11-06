@@ -27,8 +27,8 @@ $$s^2=\frac{72.875}{7}=10.4107,\qquad s=\sqrt{10.4107}=3.227.$$
 
 *Choice.* The mean ($15.125$) and median ($14.5$) are close and the data are roughly symmetric with no
 extreme value, so the mean with the standard deviation is a reasonable summary. If robustness were the
-priority, report the median $14.5$ with the IQR: $Q_1=12$ and $Q_3=17$ under the linear rule, so
-$\operatorname{IQR}=5$.
+priority, report the median $14.5$ with the IQR: $Q_1=12$ and $Q_3=17.5$ under the linear rule, so
+$\operatorname{IQR}=5.5$.
 
 *Check.* The deviations sum to $-0.125-9.375+1.875+4.875-1.125+3.875=0$. $\checkmark$
 
@@ -277,28 +277,28 @@ $25$ is plausible. $\checkmark$
 
 **14.** *(Strategy: compute both sets of quartiles from the same ordered data and compare the fences.)*
 
-The data are already ordered: $x_{(1)}=3,\dots,x_{(11)}=33$, with $n=11$ and median $x_{(6)}=11$.
+The data are already ordered: $x_{(1)}=2,\dots,x_{(11)}=30$, with $n=11$ and median $x_{(6)}=10$.
 
 **(a) Linear rule $h=1+(n-1)p$.** For $Q_1$, $h=1+10(0.25)=3.5$, so
 
-$$Q_1=x_{(3)}+0.5(x_{(4)}-x_{(3)})=6+0.5(8-6)=7.$$
+$$Q_1=x_{(3)}+0.5(x_{(4)}-x_{(3)})=5+0.5(7-5)=6.$$
 
 For $Q_3$, $h=1+10(0.75)=8.5$, so
 
-$$Q_3=15+0.5(18-15)=16.5.$$
+$$Q_3=14+0.5(17-14)=15.5.$$
 
-Hence $\operatorname{IQR}=9.5$ and the fences are
+Hence $\operatorname{IQR}=15.5-6=9.5$ and the fences are
 
-$$7-1.5(9.5)=-7.25,\qquad 16.5+1.5(9.5)=30.75.$$
+$$6-1.5(9.5)=-8.25,\qquad 15.5+1.5(9.5)=29.75.$$
 
-Since $33>30.75$, $33$ is flagged as an outlier.
+Since $30>29.75$, $30$ is flagged as an outlier.
 
-**(b) Exclusive rule $h=(n+1)p$.** For $Q_1$, $h=12(0.25)=3$, so $Q_1=x_{(3)}=6$. For $Q_3$,
-$h=12(0.75)=9$, so $Q_3=x_{(9)}=18$. Hence $\operatorname{IQR}=12$ and the fences are
+**(b) Exclusive rule $h=(n+1)p$.** For $Q_1$, $h=12(0.25)=3$, so $Q_1=x_{(3)}=5$. For $Q_3$,
+$h=12(0.75)=9$, so $Q_3=x_{(9)}=17$. Hence $\operatorname{IQR}=12$ and the fences are
 
-$$6-1.5(12)=-12,\qquad 18+1.5(12)=36.$$
+$$5-1.5(12)=-13,\qquad 17+1.5(12)=35.$$
 
-Since $33<36$, $33$ is not flagged.
+Since $30<35$, $30$ is not flagged.
 
 The conclusion therefore *does* depend on the convention. Neither rule is wrong; they answer slightly
 different interpolation questions. The honest report states the rule and, when a decision depends on it,
@@ -463,47 +463,47 @@ median is $0$, but under $y=x^2$ the transformed data $4,1,0,1,4$ have median $1
 
 **21.** *(Strategy: recompute the standard deviation without the suspect value to expose masking.)*
 
-(a) With all eleven values, the sum is $155$, so $\bar{x}=155/11=14.0909$. The sum of squared deviations
-is $1494.909$, so $s=\sqrt{1494.909/10}=\sqrt{149.491}=12.2266$. Hence
+(a) With all eleven values, the sum is $170$, so $\bar{x}=170/11=15.4545$. The sum of squared deviations
+is $1772.727$, so $s=\sqrt{1772.727/10}=\sqrt{177.273}=13.3144$. Hence
 
-$$z_{47}=\frac{47-14.0909}{12.2266}=\frac{32.9091}{12.2266}=2.692.$$
+$$z_{52}=\frac{52-15.4545}{13.3144}=\frac{36.5455}{13.3144}=2.745.$$
 
-(b) Without $47$, the remaining ten values are $3,5,6,8,9,11,12,15,18,21$; their sum is $108$ and their
-mean $10.8$. The deviations are $-7.8,-5.8,-4.8,-2.8,-1.8,0.2,1.2,4.2,7.2,10.2$, whose squares sum to
+(b) Without $52$, the remaining ten values are $4,6,7,9,10,12,13,16,19,22$; their sum is $118$ and their
+mean $11.8$. The deviations are $-7.8,-5.8,-4.8,-2.8,-1.8,0.2,1.2,4.2,7.2,10.2$, whose squares sum to
 
 $$60.84+33.64+23.04+7.84+3.24+0.04+1.44+17.64+51.84+104.04=303.60.$$
 
 Hence $s=\sqrt{303.60/9}=\sqrt{33.733}=5.808$ and
 
-$$z_{47}=\frac{47-10.8}{5.808}=6.233.$$
+$$z_{52}=\frac{52-11.8}{5.808}=6.921.$$
 
-(c) With all eleven values, $Q_1=7$, $Q_3=16.5$, $\operatorname{IQR}=9.5$ and the upper fence is
-$16.5+14.25=30.75$; $47>30.75$, so it is flagged.
+(c) With all eleven values, $Q_1=8$, $Q_3=17.5$, $\operatorname{IQR}=9.5$ and the upper fence is
+$17.5+14.25=31.75$; $52>31.75$, so it is flagged.
 
-(d) The discrepancy between $z=2.69$ (all data) and $z=6.23$ (data without $47$) is **masking**. The
+(d) The discrepancy between $z=2.74$ (all data) and $z=6.92$ (data without $52$) is **masking**. The
 outlier inflates both the mean and, much more strongly, the standard deviation in its own denominator, so
 its $z$-score is pulled below the threshold of $3$. Excluding it gives a scale that reflects the bulk.
-The IQR rule is not fooled, because $Q_1$ and $Q_3$ are unaffected by $47$.
+The IQR rule is not fooled, because $Q_1$ and $Q_3$ are unaffected by $52$.
 
 *Check.* $303.60/9=33.733$ and $\sqrt{33.733}=5.808$; the sum of the ten deviations is
 $-7.8-5.8-4.8-2.8-1.8+0.2+1.2+4.2+7.2+10.2=0$. $\checkmark$
 
 **22.** *(Strategy: compute each summary from its definition and compare the influence of $100$.)*
 
-The mean is $(1+2+3+4+100)/5=110/5=22$; the median is the third ordered value, $3$.
+The mean is $(1+2+4+8+50)/5=65/5=13$; the median is the third ordered value, $4$.
 
-The deviations from the mean are $-21,-20,-19,-18,78$, whose absolute values sum to
-$21+20+19+18+78=156$. Hence $\operatorname{MeanAD}=156/5=31.2$.
+The deviations from the mean are $-12,-11,-9,-5,37$, whose absolute values sum to
+$12+11+9+5+37=74$. Hence $\operatorname{MeanAD}=74/5=14.8$.
 
-The absolute deviations from the median are $2,1,0,1,97$; in order they are $0,1,1,2,97$, whose median
-is $1$. Hence $\operatorname{MedAD}=1$.
+The absolute deviations from the median are $3,2,0,4,46$; in order they are $0,2,3,4,46$, whose median
+is $3$. Hence $\operatorname{MedAD}=3$.
 
-The squared deviations sum to $441+400+361+324+6084=7610$, so $s^2=7610/4=1902.5$ and $s=43.62$.
+The squared deviations sum to $144+121+81+25+1369=1740$, so $s^2=1740/4=435$ and $s=20.86$.
 
-The median $3$ and the MedAD $1$ describe the bulk: four of the five values lie within $2$ of $3$. The
-mean $22$ and the standard deviation $43.62$ are dominated by $100$; the interval $\bar{x}\pm2s$ is
-$[-65.2,109.2]$, which is technically correct and practically useless. The mean absolute deviation
-$31.2$ is intermediate: it is less affected than the standard deviation because it does not square the
+The median $4$ and the MedAD $3$ describe the bulk: four of the five values lie within $4$ of $4$. The
+mean $13$ and the standard deviation $20.86$ are dominated by $50$; the interval $\bar{x}\pm2s$ is
+$[-28.7,54.7]$, which is technically correct and practically useless. The mean absolute deviation
+$14.8$ is intermediate: it is less affected than the standard deviation because it does not square the
 outlier, but it is still unbounded under a single extreme value.
 
 ## Advanced
@@ -683,15 +683,19 @@ $m_k(y)=b^km_k(x)$ for every $k\ge1$, and
 $$g_1(y)=\frac{m_3(y)}{m_2(y)^{3/2}}=\frac{b^3m_3(x)}{\lvert b\rvert^3m_2(x)^{3/2}}
 =\frac{b^3}{\lvert b\rvert^3}g_1(x)=\operatorname{sign}(b)g_1(x).$$
 
-(b) For $1,1,2,2,2,3,10$: $n=7$, mean $3$, deviations $-2,-2,-1,-1,-1,0,7$.
+(b) For $1,1,2,2,2,4,12$: $n=7$ and the mean is $24/7=3.428571$. The deviations are
+$-2.428571,-2.428571,-1.428571,-1.428571,-1.428571,0.571429,8.571429$.
 
-$$m_2=\frac{4+4+1+1+1+0+49}{7}=\frac{60}{7}=8.5714,$$
-$$m_3=\frac{-8-8-1-1-1+0+343}{7}=\frac{324}{7}=46.2857,$$
-$$g_1=\frac{46.2857}{(8.5714)^{3/2}}=\frac{46.2857}{25.0946}=1.8445.$$
+$$m_2=\frac{5.897959(2)+2.040816(3)+0.326531+73.469388}{7}
+=\frac{91.714286}{7}=13.102041,$$
+$$m_3=\frac{-14.323615(2)-2.915452(3)+0.186588+629.737609}{7}
+=\frac{592.530612}{7}=84.647230,$$
+$$g_1=\frac{84.647230}{(13.102041)^{3/2}}=\frac{84.647230}{47.425118}=1.7849.$$
 
-(c) Multiplying every value by $-1$ gives $-1,-1,-2,-2,-2,-3,-10$. Here $b=-1$, so
-$g_1$ must equal $-g_1(x)=-1.8445$. Directly, the mean is $-3$, the deviations are $2,2,1,1,1,0,-7$,
-$m_2=60/7$ and $m_3=-324/7$, so $g_1=-1.8445$. $\checkmark$
+(c) Multiplying every value by $-1$ gives $-1,-1,-2,-2,-2,-4,-12$. Here $b=-1$, so
+$g_1$ must equal $-g_1(x)=-1.7849$. Directly, the mean is $-24/7$, each deviation is the negative of the
+corresponding positive-data deviation, $m_2$ is unchanged and $m_3$ changes sign, so $g_1=-1.7849$.
+$\checkmark$
 
 **30.** *(Strategy: write the transformed deviations explicitly and use the definitions.)*
 
@@ -809,14 +813,14 @@ definition of $\operatorname{MedAD}$ for a normal distribution (the sample versi
 
 (b) Rearranging, $\sigma=\operatorname{MedAD}/0.6745=1.4826\operatorname{MedAD}$.
 
-(c) The ordered data are $11.4,11.7,11.9,12.1,12.2,12.5,12.8,13.0$. The median is
-$(12.1+12.2)/2=12.15$. The absolute deviations are $0.75,0.45,0.25,0.05,0.05,0.35,0.65,0.85$; in order,
-$0.05,0.05,0.25,0.35,0.45,0.65,0.75,0.85$, whose median is $(0.35+0.45)/2=0.40$. Hence
+(c) The ordered data are $9.8,9.9,10.0,10.1,10.2,10.3,10.4,10.5$. The median is
+$(10.1+10.2)/2=10.15$. The absolute deviations are $0.05,0.35,0.35,0.05,0.25,0.15,0.15,0.25$; in order,
+$0.05,0.05,0.15,0.15,0.25,0.25,0.35,0.35$, whose median is $(0.15+0.25)/2=0.20$. Hence
 
-$$1.4826\operatorname{MedAD}=1.4826(0.40)=0.5930 .$$
+$$1.4826\operatorname{MedAD}=1.4826(0.20)=0.29652 .$$
 
-For the same eight values the mean is $12.2$, the squared deviations sum to $2.08$, so
-$s^2=2.08/7=0.29714$ and $s=0.5451$. The robust estimate $0.593$ is about $9\%$ larger than $s$, which is
+For the same eight values the mean is $10.15$, the squared deviations sum to $0.42$, so
+$s^2=0.42/7=0.06$ and $s=0.24495$. The robust estimate $0.2965$ is about $21\%$ larger than $s$, which is
 reasonable agreement for eight observations.
 
 (d) The MedAD is based on the median and on the median of absolute deviations. By Exercise 27, neither

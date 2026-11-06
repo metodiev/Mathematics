@@ -49,7 +49,7 @@ Notation: $e$ is the identity of a multiplicative group and $0$ that of an addit
 
 **19.** *(§7.5)* Use Euler's theorem to compute $7^{222} \bmod 100$, showing each step.
 
-**20.** *(§7.5, §7.6)* *(proof)* Prove that a subgroup of index $2$ is normal. Show that $g^2 \in H$ for every $g \in G$ when $[G:H] = 2$. Is every normal subgroup of index $2$? Justify your answer with an example.
+**20.** *(§7.5, §7.6)* *(proof)* Prove that a subgroup of index $2$ is normal. Show that $g^2 \in H$ for every $g \in G$ when $[G:H] = 2$. Is it true that every normal subgroup has index $2$? Justify your answer with an example.
 
 **21.** *(§7.6)* Prove that $V_4 \trianglelefteq S_4$ and $V_4 \trianglelefteq A_4$. Show that $S_4/V_4$ has order $6$ and has no element of order $6$, and deduce $S_4/V_4 \cong S_3$.
 

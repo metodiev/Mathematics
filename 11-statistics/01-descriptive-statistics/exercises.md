@@ -95,9 +95,9 @@ Estimate the mean, the sample variance and the sample standard deviation using c
 modal class and the grouped-mode estimate. Explain why these are estimates rather than exact values.
 
 **14.** *(§7.6)* For the eleven values
-$$3,\ 5,\ 6,\ 8,\ 9,\ 11,\ 12,\ 15,\ 18,\ 21,\ 33,$$
+$$2,\ 4,\ 5,\ 7,\ 8,\ 10,\ 11,\ 14,\ 17,\ 20,\ 30,$$
 compute $Q_1$, $Q_3$, the IQR and the fences under (a) the linear rule $h=1+(n-1)p$ and (b) the exclusive
-rule $h=(n+1)p$. Does the conclusion about whether $33$ is an outlier depend on the convention? Explain.
+rule $h=(n+1)p$. Does the conclusion about whether $30$ is an outlier depend on the convention? Explain.
 
 **15.** *(§7.9)* A sample of $n=50$ waiting times is grouped into the bins $[0,5)$, $[5,15)$ and
 $[15,30)$ with counts $20$, $25$ and $5$.
@@ -152,14 +152,14 @@ $1.8$ times their Celsius values.
 (d) Explain why the median transforms in the same way as the mean here, and give an example of a
 transformation for which the median of the transformed data is not the transformed median.
 
-**21.** *(§7.7)* The eleven values $3,5,6,8,9,11,12,15,18,21,47$ contain one large observation.
+**21.** *(§7.7)* The eleven values $4,6,7,9,10,12,13,16,19,22,52$ contain one large observation.
 
-(a) Compute the $z$-score of $47$ using the mean and standard deviation of all eleven values.
-(b) Recompute the $z$-score of $47$ using the mean and standard deviation of the other ten values.
+(a) Compute the $z$-score of $52$ using the mean and standard deviation of all eleven values.
+(b) Recompute the $z$-score of $52$ using the mean and standard deviation of the other ten values.
 (c) Apply the $1.5\times\operatorname{IQR}$ rule to the full dataset.
 (d) Explain the discrepancy between (a) and (b) and name the phenomenon.
 
-**22.** *(§7.4)* For the five observations $1,2,3,4,100$, compute the mean, the median, the mean absolute
+**22.** *(§7.4)* For the five observations $1,2,4,8,50$, compute the mean, the median, the mean absolute
 deviation about the mean, the median absolute deviation about the median, and the sample standard
 deviation. Which summaries describe the bulk of the data, and which are dominated by the extreme value?
 Explain.
@@ -202,8 +202,8 @@ normality.
 **29.** *(§8.10)* Let $g_1$ be the moment coefficient of skewness.
 
 (a) Prove that $g_1(a+bx)=\operatorname{sign}(b)g_1(x)$ for $b\ne0$.
-(b) Compute $g_1$ for $1,1,2,2,2,3,10$.
-(c) Compute $g_1$ for $-1,-1,-2,-2,-2,-3,-10$ and check the sign rule.
+(b) Compute $g_1$ for $1,1,2,2,2,4,12$.
+(c) Compute $g_1$ for $-1,-1,-2,-2,-2,-4,-12$ and check the sign rule.
 
 **30.** *(§8.4, §8.9)* (a) Prove that adding a constant to every observation leaves the sample variance
 unchanged and that multiplying by $b$ multiplies the sample variance by $b^2$. (b) Use these facts to
@@ -239,7 +239,7 @@ deviation from the median.
 
 (a) Using $Q_1=\mu-0.6745\sigma$, show that $\operatorname{MedAD}=0.6745\sigma$ for a normal distribution.
 (b) Deduce that $\sigma\approx1.4826\operatorname{MedAD}$.
-(c) For the eight observations $12.1,11.4,12.8,13.0,11.9,12.5,12.2,11.7$, compute the median, the MedAD,
+(c) For the eight observations $10.2,9.8,10.5,10.1,9.9,10.3,10.0,10.4$, compute the median, the MedAD,
 the estimate $1.4826\operatorname{MedAD}$, and the sample standard deviation. Compare them and comment.
 (d) Explain why the MedAD is more robust than the standard deviation, using the breakdown-point idea.
 

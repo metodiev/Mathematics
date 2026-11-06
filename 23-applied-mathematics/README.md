@@ -12,7 +12,7 @@ Mathematical physics, information theory, game theory, finance, control and sign
 
 | | |
 |---|---|
-| Topics | 6 (0 complete, 0 draft, 6 planned) |
+| Topics | 6 (6 complete, 0 draft, 0 planned) |
 | Estimated study time | ~56 hours |
 | Prerequisites | [16-differential-equations](../16-differential-equations/README.md), [10-probability](../10-probability/README.md) |
 
@@ -40,12 +40,12 @@ flowchart LR
 
 | # | Topic | Level | Est. time | Status | Materials |
 |---|---|---|---|---|---|
-| 1 | Mathematical Physics | Advanced | 12 h | Planned | — |
-| 2 | Information Theory | Advanced | 9 h | Planned | — |
-| 3 | Game Theory | Intermediate | 8 h | Planned | — |
-| 4 | Financial Mathematics | Advanced | 9 h | Planned | — |
-| 5 | Control Theory | Advanced | 9 h | Planned | — |
-| 6 | Signal Processing | Advanced | 9 h | Planned | — |
+| 1 | [Mathematical Physics](01-mathematical-physics/README.md) | Advanced | 12 h | Complete | [Tutorial](01-mathematical-physics/README.md) · [Exercises](01-mathematical-physics/exercises.md) · [Solutions](01-mathematical-physics/solutions.md) |
+| 2 | [Information Theory](02-information-theory/README.md) | Advanced | 9 h | Complete | [Tutorial](02-information-theory/README.md) · [Exercises](02-information-theory/exercises.md) · [Solutions](02-information-theory/solutions.md) |
+| 3 | [Game Theory](03-game-theory/README.md) | Intermediate | 8 h | Complete | [Tutorial](03-game-theory/README.md) · [Exercises](03-game-theory/exercises.md) · [Solutions](03-game-theory/solutions.md) |
+| 4 | [Financial Mathematics](04-financial-mathematics/README.md) | Advanced | 9 h | Complete | [Tutorial](04-financial-mathematics/README.md) · [Exercises](04-financial-mathematics/exercises.md) · [Solutions](04-financial-mathematics/solutions.md) |
+| 5 | [Control Theory](05-control-theory/README.md) | Advanced | 9 h | Complete | [Tutorial](05-control-theory/README.md) · [Exercises](05-control-theory/exercises.md) · [Solutions](05-control-theory/solutions.md) |
+| 6 | [Signal Processing](06-signal-processing/README.md) | Advanced | 9 h | Complete | [Tutorial](06-signal-processing/README.md) · [Exercises](06-signal-processing/exercises.md) · [Solutions](06-signal-processing/solutions.md) |
 
 ### What each topic covers
 

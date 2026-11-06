@@ -12,7 +12,7 @@ The derivative measures change; the integral measures accumulation; the fundamen
 
 | | |
 |---|---|
-| Topics | 13 (8 complete, 0 draft, 5 planned) |
+| Topics | 13 (13 complete, 0 draft, 0 planned) |
 | Estimated study time | ~131 hours |
 | Prerequisites | [03-algebra](../03-algebra/README.md), [05-trigonometry](../05-trigonometry/README.md), [06-precalculus](../06-precalculus/README.md) |
 
@@ -62,11 +62,11 @@ flowchart TD
 | 6 | [Integrals](06-integrals/README.md) | Intermediate | 10 h | Complete | [Tutorial](06-integrals/README.md) · [Exercises](06-integrals/exercises.md) · [Solutions](06-integrals/solutions.md) |
 | 7 | [The Fundamental Theorem of Calculus](07-fundamental-theorem-of-calculus/README.md) | Intermediate | 8 h | Complete | [Tutorial](07-fundamental-theorem-of-calculus/README.md) · [Exercises](07-fundamental-theorem-of-calculus/exercises.md) · [Solutions](07-fundamental-theorem-of-calculus/solutions.md) |
 | 8 | [Techniques of Integration](08-techniques-of-integration/README.md) | Advanced | 12 h | Complete | [Tutorial](08-techniques-of-integration/README.md) · [Exercises](08-techniques-of-integration/exercises.md) · [Solutions](08-techniques-of-integration/solutions.md) |
-| 9 | Applications of Integration | Advanced | 9 h | Planned | — |
-| 10 | Improper Integrals | Advanced | 7 h | Planned | — |
-| 11 | Sequences and Series | Advanced | 12 h | Planned | — |
-| 12 | Multivariable Calculus | Advanced | 14 h | Planned | — |
-| 13 | Vector Calculus | Advanced | 12 h | Planned | — |
+| 9 | [Applications of Integration](09-applications-of-integration/README.md) | Advanced | 9 h | Complete | [Tutorial](09-applications-of-integration/README.md) · [Exercises](09-applications-of-integration/exercises.md) · [Solutions](09-applications-of-integration/solutions.md) |
+| 10 | [Improper Integrals](10-improper-integrals/README.md) | Advanced | 7 h | Complete | [Tutorial](10-improper-integrals/README.md) · [Exercises](10-improper-integrals/exercises.md) · [Solutions](10-improper-integrals/solutions.md) |
+| 11 | [Sequences and Series](11-sequences-and-series-in-calculus/README.md) | Advanced | 12 h | Complete | [Tutorial](11-sequences-and-series-in-calculus/README.md) · [Exercises](11-sequences-and-series-in-calculus/exercises.md) · [Solutions](11-sequences-and-series-in-calculus/solutions.md) |
+| 12 | [Multivariable Calculus](12-multivariable-calculus/README.md) | Advanced | 14 h | Complete | [Tutorial](12-multivariable-calculus/README.md) · [Exercises](12-multivariable-calculus/exercises.md) · [Solutions](12-multivariable-calculus/solutions.md) |
+| 13 | [Vector Calculus](13-vector-calculus/README.md) | Advanced | 12 h | Complete | [Tutorial](13-vector-calculus/README.md) · [Exercises](13-vector-calculus/exercises.md) · [Solutions](13-vector-calculus/solutions.md) |
 
 ### What each topic covers
 

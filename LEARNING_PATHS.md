@@ -99,7 +99,7 @@ This is the whole repository in reading order. It alternates between computation
 - [Complex Numbers](03-algebra/13-complex-numbers/README.md)
 - [Functions and Graphs](06-precalculus/01-functions-and-graphs/README.md)
 - [Polynomial and Rational Functions](06-precalculus/02-polynomial-and-rational-functions/README.md)
-- Exponential and Logarithmic Models *(planned)*
+- [Exponential and Logarithmic Models](06-precalculus/03-exponential-and-logarithmic-models/README.md)
 
 *Stage time: ~64 hours.*
 
@@ -116,8 +116,8 @@ This is the whole repository in reading order. It alternates between computation
 - [The Unit Circle and Radian Measure](05-trigonometry/02-unit-circle/README.md)
 - [Triangle Trigonometry](05-trigonometry/05-triangle-trigonometry/README.md)
 - [Trigonometric Identities](05-trigonometry/03-trigonometric-identities/README.md)
-- Inverse Trigonometric Functions *(planned)*
-- Trigonometric Equations *(planned)*
+- [Inverse Trigonometric Functions](05-trigonometry/04-inverse-trigonometric-functions/README.md)
+- [Trigonometric Equations](05-trigonometry/06-trigonometric-equations/README.md)
 
 *Stage time: ~115 hours.*
 
@@ -127,7 +127,7 @@ This is the whole repository in reading order. It alternates between computation
 
 - [Conic Sections](06-precalculus/04-conic-sections/README.md)
 - [Sequences and Series](06-precalculus/05-sequences-and-series/README.md)
-- Introduction to Limits *(planned)*
+- [Introduction to Limits](06-precalculus/06-introduction-to-limits/README.md)
 - [Limits](07-calculus/01-limits/README.md)
 - [Continuity](07-calculus/02-continuity/README.md)
 - [Derivatives](07-calculus/03-derivatives/README.md)
@@ -136,9 +136,9 @@ This is the whole repository in reading order. It alternates between computation
 - [Integrals](07-calculus/06-integrals/README.md)
 - [The Fundamental Theorem of Calculus](07-calculus/07-fundamental-theorem-of-calculus/README.md)
 - [Techniques of Integration](07-calculus/08-techniques-of-integration/README.md)
-- Applications of Integration *(planned)*
-- Improper Integrals *(planned)*
-- Sequences and Series *(planned)*
+- [Applications of Integration](07-calculus/09-applications-of-integration/README.md)
+- [Improper Integrals](07-calculus/10-improper-integrals/README.md)
+- [Sequences and Series](07-calculus/11-sequences-and-series-in-calculus/README.md)
 
 *Stage time: ~129 hours.*
 
@@ -151,22 +151,22 @@ This is the whole repository in reading order. It alternates between computation
 - [Systems of Linear Equations](08-linear-algebra/03-systems-of-linear-equations/README.md)
 - [Vector Spaces](08-linear-algebra/04-vector-spaces/README.md)
 - [Linear Transformations](08-linear-algebra/05-linear-transformations/README.md)
-- Determinants *(planned)*
+- [Determinants](08-linear-algebra/06-determinants/README.md)
 - [Eigenvalues and Eigenvectors](08-linear-algebra/07-eigenvalues-and-eigenvectors/README.md)
-- Inner Product Spaces *(planned)*
+- [Inner Product Spaces](08-linear-algebra/08-inner-product-spaces/README.md)
 - [Mathematical Induction](09-discrete-mathematics/01-mathematical-induction/README.md)
 - [Recurrence Relations](09-discrete-mathematics/02-recurrence-relations/README.md)
-- Boolean Algebra *(planned)*
+- [Boolean Algebra](09-discrete-mathematics/04-boolean-algebra/README.md)
 
 *Stage time: ~103 hours.*
 
 ### Stage 8 — Calculus in several variables
 
-- Multivariable Calculus *(planned)*
-- Vector Calculus *(planned)*
-- First-Order Differential Equations *(planned)*
-- Second-Order Linear ODEs *(planned)*
-- Systems of ODEs *(planned)*
+- [Multivariable Calculus](07-calculus/12-multivariable-calculus/README.md)
+- [Vector Calculus](07-calculus/13-vector-calculus/README.md)
+- [First-Order Differential Equations](16-differential-equations/01-first-order-odes/README.md)
+- [Second-Order Linear ODEs](16-differential-equations/02-second-order-linear-odes/README.md)
+- [Systems of ODEs](16-differential-equations/03-systems-of-odes/README.md)
 
 *Stage time: ~56 hours.*
 
@@ -175,13 +175,13 @@ This is the whole repository in reading order. It alternates between computation
 - [Probability Foundations](10-probability/01-probability-foundations/README.md)
 - [Conditional Probability and Independence](10-probability/02-conditional-probability-and-independence/README.md)
 - [Random Variables](10-probability/03-random-variables/README.md)
-- Probability Distributions *(planned)*
+- [Probability Distributions](10-probability/04-probability-distributions/README.md)
 - [Expectation and Variance](10-probability/05-expectation-and-variance/README.md)
-- Law of Large Numbers and the Central Limit Theorem *(planned)*
+- [Law of Large Numbers and the Central Limit Theorem](10-probability/06-law-of-large-numbers-and-central-limit-theorem/README.md)
 - [Descriptive Statistics](11-statistics/01-descriptive-statistics/README.md)
-- Sampling and Estimation *(planned)*
-- Hypothesis Testing *(planned)*
-- Linear Regression *(planned)*
+- [Sampling and Estimation](11-statistics/02-sampling-and-estimation/README.md)
+- [Hypothesis Testing](11-statistics/03-hypothesis-testing/README.md)
+- [Linear Regression](11-statistics/04-linear-regression/README.md)
 
 *Stage time: ~92 hours.*
 
@@ -195,37 +195,37 @@ This is the whole repository in reading order. It alternates between computation
 - [Divisibility and Primes](12-number-theory/01-divisibility-and-primes/README.md)
 - [Congruences](12-number-theory/02-congruences/README.md)
 - [Groups](13-abstract-algebra/01-groups/README.md)
-- Rings *(planned)*
-- Fields *(planned)*
+- [Rings](13-abstract-algebra/02-rings/README.md)
+- [Fields](13-abstract-algebra/03-fields/README.md)
 
 *Stage time: ~87 hours.*
 
 ### Stage 11 — Analysis
 
 - [The Real Numbers and Completeness](14-real-analysis/01-real-numbers-and-completeness/README.md)
-- Sequences and Series *(planned)*
-- Continuity and Limits *(planned)*
-- Differentiation *(planned)*
-- Riemann Integration *(planned)*
-- Metric Spaces *(planned)*
-- Complex Numbers and Geometry *(planned)*
-- Analytic Functions *(planned)*
-- Complex Integration *(planned)*
-- Power Series and Residues *(planned)*
+- [Sequences and Series](14-real-analysis/02-sequences-and-series/README.md)
+- [Continuity and Limits](14-real-analysis/03-continuity-and-limits/README.md)
+- [Differentiation](14-real-analysis/04-differentiation/README.md)
+- [Riemann Integration](14-real-analysis/05-riemann-integration/README.md)
+- [Metric Spaces](14-real-analysis/06-metric-spaces/README.md)
+- [Complex Numbers and Geometry](15-complex-analysis/01-complex-numbers-and-geometry/README.md)
+- [Analytic Functions](15-complex-analysis/02-analytic-functions/README.md)
+- [Complex Integration](15-complex-analysis/03-complex-integration/README.md)
+- [Power Series and Residues](15-complex-analysis/04-power-series-and-residues/README.md)
 
 *Stage time: ~116 hours.*
 
 ### Stage 12 — Research-level foundations
 
-- Topological Spaces *(planned)*
-- Continuity and Homeomorphisms *(planned)*
-- Compactness *(planned)*
-- Connectedness *(planned)*
-- Measure Theory *(planned)*
-- Functional Analysis *(planned)*
-- Differential Geometry *(planned)*
-- Algebraic Topology *(planned)*
-- Category Theory *(planned)*
+- [Topological Spaces](17-topology/01-topological-spaces/README.md)
+- [Continuity and Homeomorphisms](17-topology/02-continuity-and-homeomorphisms/README.md)
+- [Compactness](17-topology/03-compactness/README.md)
+- [Connectedness](17-topology/04-connectedness/README.md)
+- [Measure Theory](24-advanced-topics/01-measure-theory/README.md)
+- [Functional Analysis](24-advanced-topics/02-functional-analysis/README.md)
+- [Differential Geometry](24-advanced-topics/04-differential-geometry/README.md)
+- [Algebraic Topology](24-advanced-topics/05-algebraic-topology/README.md)
+- [Category Theory](24-advanced-topics/03-category-theory/README.md)
 
 *Stage time: ~108 hours.*
 
@@ -280,13 +280,13 @@ The classical route. It assumes arithmetic is solid, moves quickly through pre-a
 - [The Unit Circle and Radian Measure](05-trigonometry/02-unit-circle/README.md)
 - [Trigonometric Identities](05-trigonometry/03-trigonometric-identities/README.md)
 - [Triangle Trigonometry](05-trigonometry/05-triangle-trigonometry/README.md)
-- Trigonometric Equations *(planned)*
+- [Trigonometric Equations](05-trigonometry/06-trigonometric-equations/README.md)
 
 *Stage time: ~53 hours.*
 
 ### Calculus I and II
 
-- Introduction to Limits *(planned)*
+- [Introduction to Limits](06-precalculus/06-introduction-to-limits/README.md)
 - [Limits](07-calculus/01-limits/README.md)
 - [Continuity](07-calculus/02-continuity/README.md)
 - [Derivatives](07-calculus/03-derivatives/README.md)
@@ -295,8 +295,8 @@ The classical route. It assumes arithmetic is solid, moves quickly through pre-a
 - [Integrals](07-calculus/06-integrals/README.md)
 - [The Fundamental Theorem of Calculus](07-calculus/07-fundamental-theorem-of-calculus/README.md)
 - [Techniques of Integration](07-calculus/08-techniques-of-integration/README.md)
-- Applications of Integration *(planned)*
-- Sequences and Series *(planned)*
+- [Applications of Integration](07-calculus/09-applications-of-integration/README.md)
+- [Sequences and Series](07-calculus/11-sequences-and-series-in-calculus/README.md)
 
 *Stage time: ~105 hours.*
 
@@ -305,9 +305,9 @@ The classical route. It assumes arithmetic is solid, moves quickly through pre-a
 - [Vectors](08-linear-algebra/01-vectors/README.md)
 - [Matrices](08-linear-algebra/02-matrices/README.md)
 - [Systems of Linear Equations](08-linear-algebra/03-systems-of-linear-equations/README.md)
-- Multivariable Calculus *(planned)*
-- First-Order Differential Equations *(planned)*
-- Second-Order Linear ODEs *(planned)*
+- [Multivariable Calculus](07-calculus/12-multivariable-calculus/README.md)
+- [First-Order Differential Equations](16-differential-equations/01-first-order-odes/README.md)
+- [Second-Order Linear ODEs](16-differential-equations/02-second-order-linear-odes/README.md)
 
 *Stage time: ~60 hours.*
 
@@ -333,8 +333,8 @@ Logic and sets first, then the two great proof laboratories — number theory an
 
 - [Divisibility and Primes](12-number-theory/01-divisibility-and-primes/README.md)
 - [Congruences](12-number-theory/02-congruences/README.md)
-- Arithmetic Functions *(planned)*
-- Diophantine Equations *(planned)*
+- [Arithmetic Functions](12-number-theory/03-arithmetic-functions/README.md)
+- [Diophantine Equations](12-number-theory/04-diophantine-equations/README.md)
 
 *Stage time: ~36 hours.*
 
@@ -346,41 +346,41 @@ Logic and sets first, then the two great proof laboratories — number theory an
 - [Linear Transformations](08-linear-algebra/05-linear-transformations/README.md)
 - [Eigenvalues and Eigenvectors](08-linear-algebra/07-eigenvalues-and-eigenvectors/README.md)
 - [Groups](13-abstract-algebra/01-groups/README.md)
-- Rings *(planned)*
-- Fields *(planned)*
-- Galois Theory *(planned)*
+- [Rings](13-abstract-algebra/02-rings/README.md)
+- [Fields](13-abstract-algebra/03-fields/README.md)
+- [Galois Theory](13-abstract-algebra/04-galois-theory/README.md)
 
 *Stage time: ~103 hours.*
 
 ### Analysis and topology
 
-- Introduction to Limits *(planned)*
+- [Introduction to Limits](06-precalculus/06-introduction-to-limits/README.md)
 - [Limits](07-calculus/01-limits/README.md)
 - [Derivatives](07-calculus/03-derivatives/README.md)
 - [Integrals](07-calculus/06-integrals/README.md)
 - [The Fundamental Theorem of Calculus](07-calculus/07-fundamental-theorem-of-calculus/README.md)
 - [The Real Numbers and Completeness](14-real-analysis/01-real-numbers-and-completeness/README.md)
-- Sequences and Series *(planned)*
-- Continuity and Limits *(planned)*
-- Differentiation *(planned)*
-- Riemann Integration *(planned)*
-- Metric Spaces *(planned)*
-- Topological Spaces *(planned)*
-- Continuity and Homeomorphisms *(planned)*
-- Compactness *(planned)*
-- Connectedness *(planned)*
+- [Sequences and Series](14-real-analysis/02-sequences-and-series/README.md)
+- [Continuity and Limits](14-real-analysis/03-continuity-and-limits/README.md)
+- [Differentiation](14-real-analysis/04-differentiation/README.md)
+- [Riemann Integration](14-real-analysis/05-riemann-integration/README.md)
+- [Metric Spaces](14-real-analysis/06-metric-spaces/README.md)
+- [Topological Spaces](17-topology/01-topological-spaces/README.md)
+- [Continuity and Homeomorphisms](17-topology/02-continuity-and-homeomorphisms/README.md)
+- [Compactness](17-topology/03-compactness/README.md)
+- [Connectedness](17-topology/04-connectedness/README.md)
 
 *Stage time: ~157 hours.*
 
 ### Research foundations
 
-- Measure Theory *(planned)*
-- Functional Analysis *(planned)*
-- Category Theory *(planned)*
-- Algebraic Topology *(planned)*
-- Algebraic Geometry *(planned)*
-- Model Theory *(planned)*
-- Computability and Decidability *(planned)*
+- [Measure Theory](24-advanced-topics/01-measure-theory/README.md)
+- [Functional Analysis](24-advanced-topics/02-functional-analysis/README.md)
+- [Category Theory](24-advanced-topics/03-category-theory/README.md)
+- [Algebraic Topology](24-advanced-topics/05-algebraic-topology/README.md)
+- [Algebraic Geometry](24-advanced-topics/06-algebraic-geometry/README.md)
+- [Model Theory](24-advanced-topics/10-model-theory/README.md)
+- [Computability and Decidability](24-advanced-topics/11-computability-and-decidability/README.md)
 
 *Stage time: ~89 hours.*
 
@@ -399,28 +399,28 @@ Discrete mathematics is the mathematics that a computer can actually do. Countin
 - [Proof Techniques](00-foundations/04-proof-techniques/README.md)
 - [Relations and Functions](00-foundations/05-relations-and-functions/README.md)
 - [Mathematical Induction](09-discrete-mathematics/01-mathematical-induction/README.md)
-- Boolean Algebra *(planned)*
+- [Boolean Algebra](09-discrete-mathematics/04-boolean-algebra/README.md)
 
 *Stage time: ~53 hours.*
 
 ### Counting and combinatorics
 
 - [Counting Principles](20-combinatorics/01-counting-principles/README.md)
-- Inclusion-Exclusion *(planned)*
-- The Pigeonhole Principle *(planned)*
-- Generating Functions *(planned)*
+- [Inclusion-Exclusion](20-combinatorics/02-inclusion-exclusion/README.md)
+- [The Pigeonhole Principle](20-combinatorics/03-pigeonhole-principle/README.md)
+- [Generating Functions](20-combinatorics/04-generating-functions/README.md)
 - [Recurrence Relations](09-discrete-mathematics/02-recurrence-relations/README.md)
-- Algorithms and Complexity *(planned)*
+- [Algorithms and Complexity](09-discrete-mathematics/03-algorithms-and-complexity/README.md)
 
 *Stage time: ~50 hours.*
 
 ### Graphs and networks
 
 - [Graph Basics](21-graph-theory/01-graph-basics/README.md)
-- Trees *(planned)*
-- Paths and Connectivity *(planned)*
-- Planarity and Colouring *(planned)*
-- Matching and Flows *(planned)*
+- [Trees](21-graph-theory/02-trees/README.md)
+- [Paths and Connectivity](21-graph-theory/03-paths-and-connectivity/README.md)
+- [Planarity and Colouring](21-graph-theory/04-planarity-and-coloring/README.md)
+- [Matching and Flows](21-graph-theory/05-matching-and-flows/README.md)
 
 *Stage time: ~41 hours.*
 
@@ -428,7 +428,7 @@ Discrete mathematics is the mathematics that a computer can actually do. Countin
 
 - [Divisibility and Primes](12-number-theory/01-divisibility-and-primes/README.md)
 - [Congruences](12-number-theory/02-congruences/README.md)
-- Arithmetic Functions *(planned)*
+- [Arithmetic Functions](12-number-theory/03-arithmetic-functions/README.md)
 
 *Stage time: ~27 hours.*
 
@@ -438,7 +438,7 @@ Discrete mathematics is the mathematics that a computer can actually do. Countin
 - [Matrices](08-linear-algebra/02-matrices/README.md)
 - [Systems of Linear Equations](08-linear-algebra/03-systems-of-linear-equations/README.md)
 - [Eigenvalues and Eigenvectors](08-linear-algebra/07-eigenvalues-and-eigenvectors/README.md)
-- Inner Product Spaces *(planned)*
+- [Inner Product Spaces](08-linear-algebra/08-inner-product-spaces/README.md)
 
 *Stage time: ~47 hours.*
 
@@ -447,9 +447,9 @@ Discrete mathematics is the mathematics that a computer can actually do. Countin
 - [Probability Foundations](10-probability/01-probability-foundations/README.md)
 - [Conditional Probability and Independence](10-probability/02-conditional-probability-and-independence/README.md)
 - [Random Variables](10-probability/03-random-variables/README.md)
-- Discrete Probability *(planned)*
-- Computability and Decidability *(planned)*
-- Information Theory *(planned)*
+- [Discrete Probability](09-discrete-mathematics/05-discrete-probability/README.md)
+- [Computability and Decidability](24-advanced-topics/11-computability-and-decidability/README.md)
+- [Information Theory](23-applied-mathematics/02-information-theory/README.md)
 
 *Stage time: ~54 hours.*
 
@@ -476,8 +476,8 @@ Probability is subtle in a way that calculus is not: the formulas are easy and t
 - [Derivatives](07-calculus/03-derivatives/README.md)
 - [Integrals](07-calculus/06-integrals/README.md)
 - [The Fundamental Theorem of Calculus](07-calculus/07-fundamental-theorem-of-calculus/README.md)
-- Applications of Integration *(planned)*
-- Multivariable Calculus *(planned)*
+- [Applications of Integration](07-calculus/09-applications-of-integration/README.md)
+- [Multivariable Calculus](07-calculus/12-multivariable-calculus/README.md)
 
 *Stage time: ~61 hours.*
 
@@ -487,7 +487,7 @@ Probability is subtle in a way that calculus is not: the formulas are easy and t
 - [Matrices](08-linear-algebra/02-matrices/README.md)
 - [Systems of Linear Equations](08-linear-algebra/03-systems-of-linear-equations/README.md)
 - [Eigenvalues and Eigenvectors](08-linear-algebra/07-eigenvalues-and-eigenvectors/README.md)
-- Inner Product Spaces *(planned)*
+- [Inner Product Spaces](08-linear-algebra/08-inner-product-spaces/README.md)
 
 *Stage time: ~47 hours.*
 
@@ -497,30 +497,30 @@ Probability is subtle in a way that calculus is not: the formulas are easy and t
 - [Probability Foundations](10-probability/01-probability-foundations/README.md)
 - [Conditional Probability and Independence](10-probability/02-conditional-probability-and-independence/README.md)
 - [Random Variables](10-probability/03-random-variables/README.md)
-- Probability Distributions *(planned)*
+- [Probability Distributions](10-probability/04-probability-distributions/README.md)
 - [Expectation and Variance](10-probability/05-expectation-and-variance/README.md)
-- Law of Large Numbers and the Central Limit Theorem *(planned)*
+- [Law of Large Numbers and the Central Limit Theorem](10-probability/06-law-of-large-numbers-and-central-limit-theorem/README.md)
 
 *Stage time: ~65 hours.*
 
 ### Statistics
 
 - [Descriptive Statistics](11-statistics/01-descriptive-statistics/README.md)
-- Sampling and Estimation *(planned)*
-- Hypothesis Testing *(planned)*
-- Linear Regression *(planned)*
-- Experimental Design *(planned)*
-- Bayesian Statistics *(planned)*
+- [Sampling and Estimation](11-statistics/02-sampling-and-estimation/README.md)
+- [Hypothesis Testing](11-statistics/03-hypothesis-testing/README.md)
+- [Linear Regression](11-statistics/04-linear-regression/README.md)
+- [Experimental Design](11-statistics/06-experimental-design/README.md)
+- [Bayesian Statistics](11-statistics/05-bayesian-statistics/README.md)
 
 *Stage time: ~53 hours.*
 
 ### Beyond the basics
 
-- Stochastic Processes *(planned)*
-- Gradient Methods *(planned)*
-- Convex Optimization *(planned)*
-- Information Theory *(planned)*
-- Stochastic Models *(planned)*
+- [Stochastic Processes](10-probability/07-stochastic-processes/README.md)
+- [Gradient Methods](18-optimization/04-gradient-methods/README.md)
+- [Convex Optimization](18-optimization/02-convex-optimization/README.md)
+- [Information Theory](23-applied-mathematics/02-information-theory/README.md)
+- [Stochastic Models](22-mathematical-modeling/05-stochastic-models/README.md)
 
 *Stage time: ~49 hours.*
 
@@ -538,9 +538,9 @@ Applied mathematics is the art of choosing the right approximation and knowing h
 - [Applications of Derivatives](07-calculus/05-applications-of-derivatives/README.md)
 - [Integrals](07-calculus/06-integrals/README.md)
 - [Techniques of Integration](07-calculus/08-techniques-of-integration/README.md)
-- Sequences and Series *(planned)*
-- Multivariable Calculus *(planned)*
-- Vector Calculus *(planned)*
+- [Sequences and Series](07-calculus/11-sequences-and-series-in-calculus/README.md)
+- [Multivariable Calculus](07-calculus/12-multivariable-calculus/README.md)
+- [Vector Calculus](07-calculus/13-vector-calculus/README.md)
 - [Matrices](08-linear-algebra/02-matrices/README.md)
 - [Systems of Linear Equations](08-linear-algebra/03-systems-of-linear-equations/README.md)
 - [Eigenvalues and Eigenvectors](08-linear-algebra/07-eigenvalues-and-eigenvectors/README.md)
@@ -549,41 +549,41 @@ Applied mathematics is the art of choosing the right approximation and knowing h
 
 ### Differential equations
 
-- First-Order Differential Equations *(planned)*
-- Second-Order Linear ODEs *(planned)*
-- Systems of ODEs *(planned)*
-- Laplace Transforms *(planned)*
-- Introduction to PDEs *(planned)*
+- [First-Order Differential Equations](16-differential-equations/01-first-order-odes/README.md)
+- [Second-Order Linear ODEs](16-differential-equations/02-second-order-linear-odes/README.md)
+- [Systems of ODEs](16-differential-equations/03-systems-of-odes/README.md)
+- [Laplace Transforms](16-differential-equations/04-laplace-transforms/README.md)
+- [Introduction to PDEs](16-differential-equations/05-introduction-to-pdes/README.md)
 
 *Stage time: ~51 hours.*
 
 ### Computation
 
-- Floating-Point Arithmetic *(planned)*
-- Root Finding *(planned)*
-- Numerical Integration *(planned)*
-- Iterative Methods for Linear Systems *(planned)*
-- Numerical Solutions of ODEs *(planned)*
+- [Floating-Point Arithmetic](19-numerical-analysis/01-floating-point-arithmetic/README.md)
+- [Root Finding](19-numerical-analysis/02-root-finding/README.md)
+- [Numerical Integration](19-numerical-analysis/04-numerical-integration/README.md)
+- [Iterative Methods for Linear Systems](19-numerical-analysis/05-iterative-methods-for-linear-systems/README.md)
+- [Numerical Solutions of ODEs](16-differential-equations/06-numerical-solutions-of-odes/README.md)
 
 *Stage time: ~39 hours.*
 
 ### Modelling
 
-- Principles of Modeling *(planned)*
-- Population Dynamics *(planned)*
-- Epidemic Models *(planned)*
-- Linear Programming *(planned)*
-- Lagrange Multipliers *(planned)*
+- [Principles of Modeling](22-mathematical-modeling/01-principles-of-modeling/README.md)
+- [Population Dynamics](22-mathematical-modeling/02-population-dynamics/README.md)
+- [Epidemic Models](22-mathematical-modeling/03-epidemic-models/README.md)
+- [Linear Programming](18-optimization/01-linear-programming/README.md)
+- [Lagrange Multipliers](18-optimization/03-lagrange-multipliers/README.md)
 
 *Stage time: ~40 hours.*
 
 ### Applied specialties
 
-- Mathematical Physics *(planned)*
-- Control Theory *(planned)*
-- Signal Processing *(planned)*
-- Game Theory *(planned)*
-- Financial Mathematics *(planned)*
+- [Mathematical Physics](23-applied-mathematics/01-mathematical-physics/README.md)
+- [Control Theory](23-applied-mathematics/05-control-theory/README.md)
+- [Signal Processing](23-applied-mathematics/06-signal-processing/README.md)
+- [Game Theory](23-applied-mathematics/03-game-theory/README.md)
+- [Financial Mathematics](23-applied-mathematics/04-financial-mathematics/README.md)
 
 *Stage time: ~47 hours.*
 
@@ -634,9 +634,9 @@ When you need one subject and nothing else.
 - [Probability Foundations](10-probability/01-probability-foundations/README.md)
 - [Conditional Probability and Independence](10-probability/02-conditional-probability-and-independence/README.md)
 - [Random Variables](10-probability/03-random-variables/README.md)
-- Probability Distributions *(planned)*
+- [Probability Distributions](10-probability/04-probability-distributions/README.md)
 - [Expectation and Variance](10-probability/05-expectation-and-variance/README.md)
-- Gradient Methods *(planned)*
+- [Gradient Methods](18-optimization/04-gradient-methods/README.md)
 
 *About 57 hours.*
 

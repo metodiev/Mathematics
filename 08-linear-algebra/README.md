@@ -12,7 +12,7 @@ Linear algebra is the most widely applied subject in mathematics: geometry, diff
 
 | | |
 |---|---|
-| Topics | 8 (6 complete, 0 draft, 2 planned) |
+| Topics | 8 (8 complete, 0 draft, 0 planned) |
 | Estimated study time | ~79 hours |
 | Prerequisites | [03-algebra](../03-algebra/README.md) |
 
@@ -49,9 +49,9 @@ flowchart TD
 | 3 | [Systems of Linear Equations](03-systems-of-linear-equations/README.md) | Intermediate | 9 h | Complete | [Tutorial](03-systems-of-linear-equations/README.md) · [Exercises](03-systems-of-linear-equations/exercises.md) · [Solutions](03-systems-of-linear-equations/solutions.md) |
 | 4 | [Vector Spaces](04-vector-spaces/README.md) | Advanced | 12 h | Complete | [Tutorial](04-vector-spaces/README.md) · [Exercises](04-vector-spaces/exercises.md) · [Solutions](04-vector-spaces/solutions.md) |
 | 5 | [Linear Transformations](05-linear-transformations/README.md) | Advanced | 11 h | Complete | [Tutorial](05-linear-transformations/README.md) · [Exercises](05-linear-transformations/exercises.md) · [Solutions](05-linear-transformations/solutions.md) |
-| 6 | Determinants | Advanced | 9 h | Planned | — |
+| 6 | [Determinants](06-determinants/README.md) | Advanced | 9 h | Complete | [Tutorial](06-determinants/README.md) · [Exercises](06-determinants/exercises.md) · [Solutions](06-determinants/solutions.md) |
 | 7 | [Eigenvalues and Eigenvectors](07-eigenvalues-and-eigenvectors/README.md) | Advanced | 11 h | Complete | [Tutorial](07-eigenvalues-and-eigenvectors/README.md) · [Exercises](07-eigenvalues-and-eigenvectors/exercises.md) · [Solutions](07-eigenvalues-and-eigenvectors/solutions.md) |
-| 8 | Inner Product Spaces | Advanced | 10 h | Planned | — |
+| 8 | [Inner Product Spaces](08-inner-product-spaces/README.md) | Advanced | 10 h | Complete | [Tutorial](08-inner-product-spaces/README.md) · [Exercises](08-inner-product-spaces/exercises.md) · [Solutions](08-inner-product-spaces/solutions.md) |
 
 ### What each topic covers
 

@@ -487,7 +487,7 @@ $(\lambda_1 - \lambda_2)\langle\mathbf{v}_1,\mathbf{v}_2\rangle = 0$. $\blacksqu
 
 The remaining step is the repeated-eigenvalue case: one shows $g_\lambda = a_\lambda$ by observing that
 the orthogonal complement of an eigenspace is again $A$-invariant and inducting on the dimension; the
-full argument is Theorem 7.14 of the next topic. So every real symmetric matrix is diagonalisable, and in
+full argument is Theorem 7.21 of the next topic. So every real symmetric matrix is diagonalisable, and in
 fact **orthogonally** diagonalisable.
 
 **Intuition.** A symmetric matrix only stretches: it has no twist, and its stretch directions are

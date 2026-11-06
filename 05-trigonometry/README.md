@@ -12,7 +12,7 @@ Trigonometry begins with right triangles and ends as the study of the functions 
 
 | | |
 |---|---|
-| Topics | 6 (4 complete, 0 draft, 2 planned) |
+| Topics | 6 (6 complete, 0 draft, 0 planned) |
 | Estimated study time | ~50 hours |
 | Prerequisites | [04-geometry](../04-geometry/README.md) |
 
@@ -43,9 +43,9 @@ flowchart LR
 | 1 | [Trigonometric Functions](01-trigonometric-functions/README.md) | Intermediate | 10 h | Complete | [Tutorial](01-trigonometric-functions/README.md) · [Exercises](01-trigonometric-functions/exercises.md) · [Solutions](01-trigonometric-functions/solutions.md) |
 | 2 | [The Unit Circle and Radian Measure](02-unit-circle/README.md) | Intermediate | 8 h | Complete | [Tutorial](02-unit-circle/README.md) · [Exercises](02-unit-circle/exercises.md) · [Solutions](02-unit-circle/solutions.md) |
 | 3 | [Trigonometric Identities](03-trigonometric-identities/README.md) | Advanced | 10 h | Complete | [Tutorial](03-trigonometric-identities/README.md) · [Exercises](03-trigonometric-identities/exercises.md) · [Solutions](03-trigonometric-identities/solutions.md) |
-| 4 | Inverse Trigonometric Functions | Advanced | 7 h | Planned | — |
+| 4 | [Inverse Trigonometric Functions](04-inverse-trigonometric-functions/README.md) | Advanced | 7 h | Complete | [Tutorial](04-inverse-trigonometric-functions/README.md) · [Exercises](04-inverse-trigonometric-functions/exercises.md) · [Solutions](04-inverse-trigonometric-functions/solutions.md) |
 | 5 | [Triangle Trigonometry](05-triangle-trigonometry/README.md) | Intermediate | 8 h | Complete | [Tutorial](05-triangle-trigonometry/README.md) · [Exercises](05-triangle-trigonometry/exercises.md) · [Solutions](05-triangle-trigonometry/solutions.md) |
-| 6 | Trigonometric Equations | Advanced | 7 h | Planned | — |
+| 6 | [Trigonometric Equations](06-trigonometric-equations/README.md) | Advanced | 7 h | Complete | [Tutorial](06-trigonometric-equations/README.md) · [Exercises](06-trigonometric-equations/exercises.md) · [Solutions](06-trigonometric-equations/solutions.md) |
 
 ### What each topic covers
 

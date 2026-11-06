@@ -30,31 +30,8 @@ this topic.
 | domain is an interval | domain is a subset of $\mathbb{R}^n$, typically with a curved boundary |
 | $x \to a$ from two sides | $(x,y) \to (a,b)$ from infinitely many directions and along infinitely many curves |
 | derivative is a number $f'(a)$ | derivative is a vector $\nabla f(a)$ (or a matrix, for vector-valued maps) |
-| tangent line | tangent plane (in $\mathbb{R}^3$), tangent space (in general) |
-| critical point: $f'(a) = 0$ | critical point: $\nabla f(a) = \mathbf{0}$, and the second derivative is a symmetric matrix |
 | second derivative test uses one number | second derivative test uses the Hessian matrix, a quadratic form |
 | integral over $[a,b]$ | double and triple integrals; Fubini reduces them to iterated one-variable integrals |
-| substitution $u = g(x)$ | change of variables with the Jacobian determinant |
-
-The tutorial is organised as follows. Sections 2–4 set up the vocabulary and the geometric picture.
-Section 5 states every definition precisely, and Section 6 fixes the notation. Section 7 is the body
-of the subject: it develops, in order, domains and level sets, limits and continuity in
-$\mathbb{R}^n$, partial derivatives and their geometry, differentiability and the total differential
-(including the counterexample that separates "partials exist" from "differentiable"), the chain rule
-with its derivation, directional derivatives and the gradient, tangent planes and normal lines,
-higher-order derivatives and Clairaut's theorem, unconstrained and constrained optimisation, and
-finally multiple integration with the three standard coordinate systems. Section 8 collects the main
-theorems with their hypotheses and the reason each is true. Section 9 works ten examples in
-increasing order of difficulty, and Sections 10–16 provide diagrams, a catalogue of common mistakes,
-applications, exercises, solutions, a summary and directions for further study.
-
-A word on rigour. Several statements below (the equality of mixed partials, the second-derivative
-test, Fubini's theorem, the change-of-variables formula) are proved in full in a course on real
-analysis; here they are stated with complete hypotheses, justified by arguments that show *why* they
-are true, and used. Whenever a hypothesis is omitted in a careless treatment, a counterexample is
-given so that you can see what goes wrong. The one convention worth stating at the outset is that
-"differentiable" always means *Fréchet differentiable*, that is, differentiable in the linear
-approximation sense of Definition 5.7 — never merely "has partial derivatives".
 
 ## 2. Prerequisites
 
@@ -75,8 +52,6 @@ approximation sense of Definition 5.7 — never merely "has partial derivatives"
   Substitution, integration by parts, and trigonometric integrals. Substitution in one variable is the
   shadow of the change-of-variables formula in several variables, and the exercises use
   $u$-substitution constantly.
-* **Functions, graphs and inverse functions** — [Functions](../../03-algebra/11-functions/README.md).
-  Domain, range, composition, and the distinction between a function and its graph.
 * **Trigonometry** — [Trigonometric Functions](../../05-trigonometry/01-trigonometric-functions/README.md).
   The Pythagorean identity, the values of $\sin$ and $\cos$ at multiples of $\pi/6$ and $\pi/4$, the
   addition formulas, and the graphs of $\sin$ and $\cos$. Polar, cylindrical and spherical
@@ -94,11 +69,6 @@ approximation sense of Definition 5.7 — never merely "has partial derivatives"
   as the matrix acting on a vector. The Jacobian is the matrix of the derivative of a vector-valued
   map, and its determinant is exactly the local volume-distortion factor.
 
-You do **not** need measure theory, differential geometry or topology for this tutorial. Where a
-proof needs a result from real analysis — the extreme value theorem, the mean value theorem, the
-completeness of $\mathbb{R}$ — the result is named and its use is explained. Those results are proved
-in [Real Analysis](../../14-real-analysis/README.md), which is the natural sequel to this topic.
-
 ## 3. Learning Objectives
 
 After working through this tutorial and its exercises, you will be able to:
@@ -108,32 +78,30 @@ After working through this tutorial and its exercises, you will be able to:
    given function.
 2. Compute limits in $\mathbb{R}^n$ from the definition and with the squeeze theorem, and prove that
    a limit does not exist by exhibiting two paths with different limits.
-3. Decide whether a function is continuous at a point, including at a point where a formula is
-   extended by a special value.
-4. Compute first and higher partial derivatives, and explain the geometric meaning of
+3. Compute first and higher partial derivatives, and explain the geometric meaning of
    $\partial f/\partial x$ as the slope of a trace curve.
-5. State the definition of differentiability as a linear approximation, use the total differential
+4. State the definition of differentiability as a linear approximation, use the total differential
    $df = f_x\,dx + f_y\,dy$ to estimate changes, and distinguish differentiability from the mere
    existence of partial derivatives, quoting the standard counterexamples.
-6. Apply the chain rule in its tree form for a function of several variables whose arguments depend
+5. Apply the chain rule in its tree form for a function of several variables whose arguments depend
    on one or several parameters, derive the chain rule from the definition, and use it for implicit
    differentiation.
-7. Compute directional derivatives, identify the direction of steepest ascent and descent, relate the
+6. Compute directional derivatives, identify the direction of steepest ascent and descent, relate the
    gradient to level sets, and prove that the gradient is orthogonal to the level set through a point.
-8. Write down the tangent plane and normal line to a graph and to a level surface, and use the
+7. Write down the tangent plane and normal line to a graph and to a level surface, and use the
    tangent plane as a linear approximation.
-9. Compute mixed partial derivatives, state Clairaut's theorem with its continuity hypothesis, and
+8. Compute mixed partial derivatives, state Clairaut's theorem with its continuity hypothesis, and
    reproduce the counterexample showing that the hypothesis cannot be dropped.
-10. Locate and classify the critical points of a function of two variables with the second-derivative
+9. Locate and classify the critical points of a function of two variables with the second-derivative
     test, including the degenerate case, and find absolute extrema on a compact region by checking
     the interior and the boundary.
-11. Solve constrained optimisation problems by Lagrange multipliers, with one or several constraints,
+10. Solve constrained optimisation problems by Lagrange multipliers, with one or several constraints,
     explain the geometric meaning of the multiplier condition, and recognise the degenerate cases in
     which the method can fail.
-12. Set up and evaluate double and triple integrals over elementary regions, change the order of
+11. Set up and evaluate double and triple integrals over elementary regions, change the order of
     integration, and convert integrals to polar, cylindrical and spherical coordinates with the
     correct Jacobian factor $r$ or $\rho^2\sin\varphi$.
-13. State the change-of-variables formula in the plane and use it with a non-linear substitution.
+12. State the change-of-variables formula in the plane and use it with a non-linear substitution.
 
 ## 4. Intuition
 
@@ -166,36 +134,12 @@ one plane approximates it to first order: the error is smaller than the distance
 bounded by some constant times the distance. A cone is not differentiable at its tip although through
 that tip run straight lines in every direction: no single plane hugs the cone.
 
-**Partial derivatives look along two special directions only.** A surface can have a well-defined
-slope along the $x$-direction and along the $y$-direction and still be crumpled in between. The
-standard example is $f(x,y) = xy/(x^2+y^2)$ near the origin: along both axes it is constant, so both
-partial derivatives vanish, yet along the diagonal it equals $1/2$ and it is not even continuous. The
-moral is that *two* one-dimensional probes cannot detect a two-dimensional failure. Differentiability
-is a statement about *all* directions at once, and it is genuinely stronger than the existence of
-partial derivatives.
-
 **Multiple integrals add up over shapes.** A double integral is the continuous analogue of a
 spreadsheet: divide the region into tiny cells, multiply the value of the function in each cell by the
 area of the cell, and add. If $f$ is a density (mass per unit area), the double integral is the total
 mass. If $f = 1$, it is the area. A triple integral does the same with volume cells: with $f=1$ it is
 the volume of a solid, with $f$ a density it is the mass, with $f$ the square of the distance from an
 axis it is a moment of inertia.
-
-**Coordinates are a distorted grid.** Cartesian grid cells are squares. Polar grid cells are small
-curved rectangles with sides $\Delta r$ and $r\,\Delta\theta$; their area is approximately
-$r\,\Delta r\,\Delta\theta$, and the factor $r$ is not a convention but a fact about how much the
-polar grid stretches as you move away from the origin. Spherical grid cells are boxes with sides
-$\Delta\rho$, $\rho\,\Delta\varphi$ and $\rho\sin\varphi\,\Delta\theta$, which is where the factor
-$\rho^2\sin\varphi$ comes from. The general change-of-variables formula replaces these ad hoc factors
-by one universal object, the absolute value of the Jacobian determinant, which measures the local
-volume distortion of an arbitrary smooth substitution.
-
-**Two kinds of difficulty, kept separate.** In this subject, computational difficulty and conceptual
-difficulty are usually independent. Computing a partial derivative is one-variable calculus; deciding
-whether a function is differentiable is a question about a limit in two variables; setting up a triple
-integral is a question about describing a solid. Keep the three activities separate in your mind and
-the topic becomes manageable: *describe the set*, *choose coordinates*, *compute one-variable
-integrals*.
 
 ## 5. Formal Definition
 
@@ -252,8 +196,9 @@ f_{xy} = \frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x}\right),
 \qquad
 f_{yx} = \frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y}\right).$$
 This repository uses the convention $f_{xy} = (f_x)_y$: the differentiation written *closest* to $f$
-is performed first. Some texts use the opposite convention for the symbol $\partial^2 f/\partial y\,
-\partial x$; the written-out form $(f_x)_y$ is unambiguous and is preferred in this tutorial.
+is performed first. Some texts attach the opposite meaning to the symbol
+$\partial^2 f/\partial y\,\partial x$; the written-out form $(f_x)_y$ is unambiguous and is preferred
+in this tutorial.
 
 **Definition 5.7 (Differentiability — the linear approximation definition).** Let $U$ be an open set
 containing $\mathbf{a}$, and let $f : U \to \mathbb{R}^m$. Then $f$ is *differentiable at*
@@ -261,9 +206,9 @@ $\mathbf{a}$ if there exists a linear map $L : \mathbb{R}^n \to \mathbb{R}^m$ su
 $$\lim_{\mathbf{h} \to \mathbf{0}} \frac{\lVert f(\mathbf{a}+\mathbf{h}) - f(\mathbf{a}) -
 L(\mathbf{h})\rVert}{\lVert \mathbf{h}\rVert} = 0.$$
 The map $L$, when it exists, is unique; it is denoted $Df(\mathbf{a})$ and called the *derivative* (or
-*differential*) of $f$ at $\mathbf{a}$. For a scalar function $f : U \subseteq \mathbb{R}^n \to
-\mathbb{R}$, $L$ has the form $L(\mathbf{h}) = \nabla f(\mathbf{a})\cdot\mathbf{h}$ for a unique
-vector $\nabla f(\mathbf{a})$, and the condition becomes
+*differential*) of $f$ at $\mathbf{a}$. For a scalar function $f : U \subseteq \mathbb{R}^n \to \mathbb{R}$, $L$ has the form
+$L(\mathbf{h}) = \nabla f(\mathbf{a})\cdot\mathbf{h}$ for a unique vector $\nabla f(\mathbf{a})$, and
+the condition becomes
 $$f(\mathbf{a}+\mathbf{h}) = f(\mathbf{a}) + \nabla f(\mathbf{a})\cdot\mathbf{h} + o(\lVert
 \mathbf{h}\rVert).$$
 For a vector-valued map the matrix of $L$ in the standard bases is the *Jacobian matrix*
@@ -296,6 +241,7 @@ and the *normal line* through $P$ has direction $\nabla F(P)$.
 
 **Definition 5.11 (Extrema and critical points).** Let $f : D \subseteq \mathbb{R}^n \to \mathbb{R}$
 and $\mathbf{a} \in D$.
+
 * $f(\mathbf{a})$ is a *global maximum* (resp. *global minimum*) of $f$ on $D$ if
   $f(\mathbf{x}) \le f(\mathbf{a})$ (resp. $f(\mathbf{x}) \ge f(\mathbf{a})$) for all
   $\mathbf{x} \in D$.
@@ -304,45 +250,27 @@ and $\mathbf{a} \in D$.
 * $\mathbf{a}$ is a *critical point* of $f$ if $f$ is differentiable at $\mathbf{a}$ and
   $\nabla f(\mathbf{a}) = \mathbf{0}$, or if $f$ is not differentiable at $\mathbf{a}$.
 
-**Definition 5.12 (Hessian and discriminant).** For a twice differentiable $f(x,y)$, the *Hessian* at
-$(a,b)$ is the symmetric matrix
-$$H = \begin{pmatrix} f_{xx}(a,b) & f_{xy}(a,b) \\ f_{yx}(a,b) & f_{yy}(a,b)\end{pmatrix},$$
-and the *discriminant* (or determinant of the Hessian) is
-$$D = \det H = f_{xx}(a,b)\,f_{yy}(a,b) - \left(f_{xy}(a,b)\right)^2 .$$
-By Clairaut's theorem (Theorem 8.7), $f_{xy} = f_{yx}$ whenever the mixed partials are continuous, so
-$H$ is then genuinely symmetric.
+**Definition 5.12 (Multiple integrals).** Let $R = [a,b]\times[c,d]$ and let $f$ be bounded on $R$.
+Partition $R$ into subrectangles using $a = x_0 < \cdots < x_m = b$ and $c = y_0 < \cdots < y_n = d$,
+choose a sample point $(x_{ij}^*,y_{ij}^*)$ in each, and form the Riemann sum
+$\sum_{i,j} f(x_{ij}^*,y_{ij}^*)\,\Delta A_{ij}$ with $\Delta A_{ij} = \Delta x_i\,\Delta y_j$. If these
+sums tend to a single limit as the mesh tends to $0$, that limit is the *double integral*
+$\iint_R f\,dA$. For a bounded region $D$, extend $f$ by $0$ outside $D$ and set
+$\iint_D f\,dA = \iint_R \tilde f\,dA$; the *area* of $D$ is $\iint_D 1\,dA$, and for $f\ge0$ the
+integral is the volume under the graph. Replacing rectangles by boxes and areas by volumes gives the
+*triple integral* $\iiint_E f\,dV$ over a solid $E$, equal to the volume of $E$ when $f=1$ and to the
+total mass when $f$ is a mass density.
 
-**Definition 5.13 (Double integral over a rectangle).** Let $R = [a,b]\times[c,d]$ and let $f$ be
-bounded on $R$. Partition $R$ into subrectangles $R_{ij}$ by choosing
-$a = x_0 < x_1 < \cdots < x_m = b$ and $c = y_0 < y_1 < \cdots < y_n = d$, and pick a sample point
-$(x_{ij}^*, y_{ij}^*)$ in each $R_{ij}$. The *Riemann sum* is
-$\sum_{i=1}^{m}\sum_{j=1}^{n} f(x_{ij}^*, y_{ij}^*)\,\Delta A_{ij}$, where
-$\Delta A_{ij} = (x_i - x_{i-1})(y_j - y_{j-1})$. The function $f$ is *integrable* on $R$ if these
-sums tend to a single limit as the mesh (the largest diagonal of the subrectangles) tends to $0$; that
-limit is the *double integral*
-$$\iint_R f(x,y)\,dA = \iint_R f(x,y)\,dx\,dy .$$
-
-**Definition 5.14 (Double integral over a general region).** Let $D$ be a bounded region contained in
-some rectangle $R$. Extend $f$ to $R$ by setting it equal to $0$ outside $D$, and define
-$\iint_D f\,dA = \iint_R \tilde{f}\,dA$, provided the latter exists. The *area* of $D$ is
-$\iint_D 1\,dA$, and if $f \ge 0$ the integral is the volume of the solid between the graph of $f$ and
-the region $D$; for a general sign it is the signed volume.
-
-**Definition 5.15 (Triple integral).** Replacing rectangles by boxes and areas by volumes in
-Definition 5.13 gives the *triple integral*
-$\iiint_E f(x,y,z)\,dV = \iiint_E f(x,y,z)\,dx\,dy\,dz$ over a solid $E \subseteq \mathbb{R}^3$. With
-$f = 1$ it gives the volume of $E$; with $f$ a mass density it gives the total mass.
-
-**Definition 5.16 (Jacobian matrix and Jacobian determinant).** Let
-$T : U \subseteq \mathbb{R}^n \to \mathbb{R}^n$, $T(\mathbf{u}) = (x_1(\mathbf{u}),\dots,
-x_n(\mathbf{u}))$, be differentiable. Its *Jacobian matrix* at $\mathbf{u}$ is
+**Definition 5.13 (Jacobian matrix and Jacobian determinant).** Let
+$T : U \subseteq \mathbb{R}^n \to \mathbb{R}^n$ be differentiable, written
+$T(\mathbf{u}) = (x_1(\mathbf{u}),\dots,x_n(\mathbf{u}))$. Its *Jacobian matrix* at $\mathbf{u}$ is
 $DT(\mathbf{u}) = \left[\partial x_i/\partial u_j\right]$, and its *Jacobian determinant* is
 $$J_T(\mathbf{u}) = \frac{\partial(x_1,\dots,x_n)}{\partial(u_1,\dots,u_n)}
 = \det\left[\frac{\partial x_i}{\partial u_j}\right].$$
 The number $\lvert J_T\rvert$ is the local factor by which $T$ multiplies $n$-dimensional volume near
 $\mathbf{u}$; the sign records orientation.
 
-**Definition 5.17 (Polar, cylindrical and spherical coordinates).** *Polar* coordinates in the plane:
+**Definition 5.14 (Polar, cylindrical and spherical coordinates).** *Polar* coordinates in the plane:
 $$x = r\cos\theta,\qquad y = r\sin\theta,\qquad r \ge 0,\quad 0 \le \theta < 2\pi .$$
 *Cylindrical* coordinates in space: $(r,\theta,z)$ with $x = r\cos\theta$, $y = r\sin\theta$ and $z$
 unchanged. *Spherical* coordinates: $(\rho,\varphi,\theta)$ with
@@ -350,13 +278,6 @@ $$x = \rho\sin\varphi\cos\theta,\qquad y = \rho\sin\varphi\sin\theta,\qquad z = 
 where $\rho \ge 0$ is the distance to the origin, $\varphi \in [0,\pi]$ is the angle from the positive
 $z$-axis, and $\theta \in [0,2\pi)$ is the longitude. Note that $\varphi$ is measured from the
 $z$-axis, not from the $xy$-plane; this is the standard convention in mathematics and physics.
-
-**Definition 5.18 (Constrained extremum).** Let $f : \mathbb{R}^n \to \mathbb{R}$ and let $S$ be a set
-described by constraints $g_1(\mathbf{x}) = 0,\dots,g_k(\mathbf{x}) = 0$. A point $\mathbf{a} \in S$ is
-a *constrained local maximum* of $f$ on $S$ if $f(\mathbf{x}) \le f(\mathbf{a})$ for all
-$\mathbf{x} \in S \cap B_r(\mathbf{a})$ for some $r > 0$; constrained minima are defined analogously.
-The *constraint qualification* at $\mathbf{a}$ is the condition that the gradients
-$\nabla g_1(\mathbf{a}),\dots,\nabla g_k(\mathbf{a})$ are linearly independent.
 
 ## 6. Mathematical Notation
 
@@ -374,9 +295,6 @@ $\nabla g_1(\mathbf{a}),\dots,\nabla g_k(\mathbf{a})$ are linearly independent.
 | $\nabla f(\mathbf{a})\cdot\mathbf{h}$ | "grad f at a dot h" | the directional change of $f$ in direction $\mathbf{h}$ |
 | $D_{\mathbf{u}}f$ | "D sub u of f" | directional derivative in the unit direction $\mathbf{u}$ |
 | $df$ | "d f" | total differential $f_x\,dx + f_y\,dy$ |
-| $\Delta f$, $\Delta x$ | "delta f", "delta x" | an actual finite change of the quantity |
-| $o(\lVert\mathbf{h}\rVert)$ | "little o of norm h" | a quantity that divided by $\lVert\mathbf{h}\rVert$ tends to $0$ |
-| $H$, $\det H$ | "Hessian", "determinant of H" | matrix of second partials; its determinant |
 | $D$ (in the second-derivative test) | "the discriminant" | $f_{xx}f_{yy}-f_{xy}^2$ |
 | $\iint_D f\,dA$ | "double integral over D of f d A" | integral over a planar region; $dA = dx\,dy$ |
 | $\iiint_E f\,dV$ | "triple integral over E of f d V" | integral over a solid; $dV = dx\,dy\,dz$ |
@@ -385,7 +303,6 @@ $\nabla g_1(\mathbf{a}),\dots,\nabla g_k(\mathbf{a})$ are linearly independent.
 | $r$, $\theta$ | "r", "theta" | polar radius and polar angle |
 | $\rho$, $\varphi$, $\theta$ | "rho", "phi", "theta" | spherical radius, polar angle from the $z$-axis, azimuth |
 | $\lambda$, $\mu$ | "lambda", "mu" | Lagrange multipliers |
-| $\gamma(t)$ | "gamma of t" | a parametrised curve |
 
 Two conventions deserve emphasis because they cause errors. First, $f_{xy}$ means *differentiate in
 $x$ first*: $f_{xy} = (f_x)_y$. Second, in spherical coordinates $\varphi$ is the angle from the
@@ -405,9 +322,6 @@ geometrically.
 * $f(x,y) = \sqrt{9-x^2-y^2}$: need $x^2+y^2 \le 9$, a closed disk of radius $3$.
 * $g(x,y) = \ln(x^2+y^2-1) + \sqrt{4-x^2-y^2}$: need $1 < x^2+y^2 \le 4$, a closed annulus whose inner
   boundary circle is excluded (the logarithm is not defined on it).
-* $h(x,y) = \dfrac{\sqrt{y-x^2}}{x-y}$: need $y \ge x^2$ and $x \ne y$; the parabola $y=x^2$ is
-  included, and the line $y=x$ is removed only where it meets the parabolic region, i.e. at the two
-  points $(0,0)$ and $(1,1)$.
 * $F(x,y,z) = \sqrt{1-x^2-y^2-z^2} + \ln(x+y)$: the ball $x^2+y^2+z^2 \le 1$ intersected with the
   open half-space $x+y>0$.
 
@@ -438,12 +352,6 @@ $x^2+y^2-z^2$ has hyperboloids of one sheet (for $c>0$) and of two sheets (for $
 $x^2+y^2-z^2 = 0$ is a cone. A level surface carries the same information as a contour map: the
 gradient is normal to it, and the spacing of two nearby level surfaces at levels $c$ and $c+\Delta c$
 is inversely proportional to $\lVert\nabla F\rVert$.
-
-**Why level sets rather than graphs?** Three reasons. First, a function of three variables has a
-graph in $\mathbb{R}^4$ which cannot be drawn. Second, many surfaces (a sphere, a cone, a torus) are
-not graphs over the whole plane but are level sets of a single formula. Third, constrained
-optimisation is exactly the study of a function on a level set of another function, so fluency with
-level sets is a prerequisite for Lagrange multipliers.
 
 ### 7.2 Limits and Continuity in $\mathbb{R}^n$
 
@@ -526,19 +434,9 @@ is the geometric content of the failure of differentiability.
 * $f(x,y) = \sin(x/y)$ gives $f_x = \cos(x/y)\cdot\frac1y$ and
   $f_y = \cos(x/y)\cdot\left(-\frac{x}{y^2}\right)$.
 
-**Units and interpretation.** If $f$ is the temperature at position $(x,y)$ in degrees Celsius and
-$x,y$ are measured in metres, then $f_x$ is measured in degrees per metre and answers: how fast does
-the temperature change per metre travelled due east? It says nothing about what happens if you travel
-north, or north-east.
-
 **Partial derivatives need not be continuous, or even exist everywhere.** $f(x,y)=\sqrt{x^2+y^2}$ has
 no partial derivative at the origin (the cone has a corner there); $f(x,y)=|x|+y$ has $f_x$ undefined
 along the whole line $x=0$. At such points the graph has a crease, and no tangent plane exists.
-
-**Higher-order derivatives.** Differentiating $f_x$ again gives $f_{xx}$, $f_{xy}$, and similarly for
-$f_y$. For $f(x,y) = x^3y^2$: $f_{xx}=6xy^2$, $f_{xy}=6x^2y$, $f_{yx}=6x^2y$, $f_{yy}=2x^3$. The mixed
-partials agree here; Clairaut's theorem (Section 7.8) explains why, and gives the hypothesis under
-which the agreement is guaranteed.
 
 ### 7.4 Differentiability and the Total Differential
 
@@ -582,25 +480,6 @@ $$\frac{\lvert f(h,h) - 0\rvert}{\lVert(h,h)\rVert}
 while along $y=0$ the ratio is $0$. The error does not have the required superlinear decay, so $f$ is
 not differentiable at the origin. This example shows that differentiability is strictly stronger than
 "continuous + both partials exist".
-
-**The strongest counterexample: all directional derivatives exist, but no derivative.** Let
-$$f(x,y) = \frac{x^3}{x^2+y^2}\ \text{ for } (x,y)\ne(0,0), \qquad f(0,0)=0 .$$
-In polar coordinates $f = r\cos^3\theta$, which tends to $0$, so $f$ is continuous. For any unit
-$\mathbf{u} = (\cos\alpha,\sin\alpha)$,
-$$D_{\mathbf{u}}f(0,0) = \lim_{t\to0}\frac{f(t\cos\alpha,t\sin\alpha)}{t}
-= \lim_{t\to0}\frac{t^3\cos^3\alpha}{t^3} = \cos^3\alpha ,$$
-so *every* directional derivative exists at the origin. Nevertheless $f$ is not differentiable there:
-a differentiable function would satisfy $D_{\mathbf{u}}f(0,0) = \nabla f(0,0)\cdot\mathbf{u}$ with
-$\nabla f(0,0) = (0,0)$, giving $0$ for every $\mathbf{u}$, contradicting $\cos^3\alpha \ne 0$ when
-$\cos\alpha \ne 0$. The function is homogeneous of degree $1$, so it grows linearly in every
-direction, and its "derivative at the origin" is not linear in $\mathbf{u}$.
-
-**The practical sufficient condition.** If the partial derivatives exist and are continuous on a
-neighbourhood of $\mathbf{a}$, then $f$ is differentiable at $\mathbf{a}$ (Theorem 8.4). Every
-polynomial, every rational function on its domain, and every composition of the elementary functions
-therefore is differentiable wherever its partial derivatives can be computed. In practice one checks
-differentiability at a suspicious point (a point where a formula is pieced together, or where a
-denominator vanishes) by using the definition; everywhere else one invokes Theorem 8.4.
 
 **The total differential and linear approximation.** For a differentiable $f(x,y)$, a finite
 displacement $(dx,dy)$ produces
@@ -648,15 +527,6 @@ $D(f\circ\mathbf{x})(\mathbf{t}) = Df(\mathbf{x}(\mathbf{t}))\,D\mathbf{x}(\math
 between a $1\times n$ matrix, an $n\times m$ matrix and a $1\times m$ matrix. The general chain rule
 for vector-valued maps has exactly this form, and it is the reason matrix multiplication is defined
 the way it is.
-
-**Tree diagrams.** Draw $z$ at the top; draw its immediate arguments below it; draw their arguments
-below them. Each route from the top to a variable at the bottom contributes the product of the labels
-along the route, and the derivative with respect to that variable is the sum over all routes. For
-$z = f(x,y)$ with $x = x(s,t)$, $y = y(s,t)$ there are two routes to $s$ and two to $t$:
-$$\frac{\partial z}{\partial s} = f_x\,x_s + f_y\,y_s, \qquad
-\frac{\partial z}{\partial t} = f_x\,x_t + f_y\,y_t .$$
-A common error is to forget that $\partial z/\partial s$ means "$t$ held fixed" while
-$\partial z/\partial t$ means "$s$ held fixed"; the tree makes the distinction automatic.
 
 **Implicit differentiation.** Suppose $F(x,y) = 0$ defines $y$ as a differentiable function of $x$ near
 a point where $F_y \ne 0$. Differentiate the identity $F(x,y(x)) = 0$ with respect to $x$ by the chain
@@ -708,11 +578,6 @@ planes to level surfaces (Section 7.7) and behind Lagrange multipliers (Section 
 steepest ascent is $(1,2)/\sqrt5$, the maximal slope is $\sqrt{16+64} = 4\sqrt5$, and the level curve
 $x^2+4y^2 = 8$ through $(2,1)$ has tangent direction $(2,-1)$, which is indeed orthogonal to $(4,8)$.
 
-**A warning.** If $f$ is not differentiable, $D_{\mathbf{u}}f$ may exist for every $\mathbf{u}$ and
-still not be a linear function of $\mathbf{u}$; the example $f = x^3/(x^2+y^2)$ of Section 7.4 has
-$D_{\mathbf{u}}f(0,0) = \cos^3\alpha$, which is not of the form $\mathbf{v}\cdot\mathbf{u}$. In that
-case there is no gradient vector and no plane that deserves the name tangent plane.
-
 ### 7.7 Tangent Planes and Normal Lines
 
 **The tangent plane to a graph.** Suppose $f$ is differentiable at $(a,b)$. The plane $y=b$ cuts the
@@ -747,12 +612,6 @@ $(1,2,3)$. The tangent plane is
 $$1(x-1)+2(y-1)+3(z-1)=0, \quad\text{i.e.}\quad x+2y+3z = 6,$$
 and the normal line is $(1+t,\,1+2t,\,1+3t)$.
 
-**Tangent plane as linear approximation.** The two descriptions agree: the graph of the linearisation
-is the tangent plane, and the tangent plane is the unique plane through the point whose vertical
-distance to the surface is $o(\lVert(x,y)-(a,b)\rVert)$. The *normal line* to a graph at $P$ has
-direction $(-f_x,-f_y,1)$ and parametric equations
-$$(x,y,z) = (a,b,f(a,b)) + t\,(-f_x(a,b),\,-f_y(a,b),\,1).$$
-
 ### 7.8 Higher-Order Partial Derivatives and Clairaut's Theorem
 
 Differentiating $n$ times in various directions produces the higher-order partials. If all partials
@@ -785,14 +644,9 @@ $y$, for $x\ne0$,
 $$f_y(x,0) = \lim_{k\to0}\frac{f(x,k)-f(x,0)}{k}
 = \lim_{k\to0}\frac{xk(x^2-k^2)}{k(x^2+k^2)} = x,$$
 so $f_{yx}(0,0) = \dfrac{d}{dx}\big(x\big)\Big|_{x=0} = 1$. Therefore
-$f_{xy}(0,0) = -1 \ne 1 = f_{yx}(0,0)$. The mixed partials are indeed discontinuous at the origin —
-one checks that $f_{xy}$ is unbounded in every neighbourhood of it — so Clairaut's hypothesis fails and
-there is no contradiction.
-
-**Consequences.** The Hessian matrix used in the second-derivative test is symmetric because of
-Clairaut's theorem, and the equality of mixed partials is what makes the order of differentiation
-irrelevant in the chain rule for second derivatives, in the integrability conditions for exact
-differentials, and in the symmetry of second derivatives in thermodynamics and elasticity.
+$f_{xy}(0,0) = -1 \ne 1 = f_{yx}(0,0)$. Indeed $f_{xy}$ has no limit at the origin: it equals $1$ along the $x$-axis (for $x\ne0$,
+$f_{xy}(x,0)=1$) while it equals $-1$ along the $y$-axis, so it is discontinuous at the origin and
+Clairaut's hypothesis fails; there is no contradiction.
 
 ### 7.9 Extrema and the Second-Derivative Test
 
@@ -816,19 +670,12 @@ Then:
 Note that when $D>0$, $A$ and $C$ have the same sign (their product is $B^2+D>0$), so the sign of $A$
 alone decides between minimum and maximum.
 
-**Why the test works.** Taylor's theorem with Peano remainder gives, at a critical point,
-$$f(a+h,b+k)-f(a,b) = \tfrac12\left(Ah^2+2Bhk+Ck^2\right) + o(h^2+k^2).$$
-The quadratic form in brackets can be rewritten, when $A\ne0$, as
-$$Ah^2+2Bhk+Ck^2 = \frac{1}{A}\left[(Ah+Bk)^2 + Dk^2\right].$$
-If $D>0$ and $A>0$, both terms in the bracket are non-negative and vanish only when $k=0$ and then
-$h=0$; the form is positive definite, and the $o$-term cannot overturn the positive quadratic term for
-small non-zero $(h,k)$. Hence $f(a+h,b+k)>f(a,b)$ near $(a,b)$: a strict minimum. If $D>0$ and $A<0$,
-apply the same argument to $-f$. If $D<0$, the form takes both signs; along a line in a direction where
-it is positive, $f$ increases away from $(a,b)$, and along a direction where it is negative, $f$
-decreases: the point is a saddle (the two families of directions are those of the two level curves of
-the quadratic form through the origin). If $D=0$, the quadratic form is degenerate and the $o$-term
-decides; the test cannot conclude. The standard examples $x^4+y^4$ (minimum), $-x^4-y^4$ (maximum) and
-$x^3+y^3$ (saddle-like, but not even a saddle in the strict sense) all have $D=0$ at the origin.
+**Why the test works.** Taylor's theorem gives
+$f(a+h,b+k)-f(a,b)=\tfrac12(Ah^2+2Bhk+Ck^2)+o(h^2+k^2)$, and
+$Ah^2+2Bhk+Ck^2=\frac1A\left[(Ah+Bk)^2+Dk^2\right]$ when $A\ne0$. If $D>0$ and $A>0$ the form is
+positive definite, so the quadratic term dominates the error and the point is a strict minimum; applying
+the same argument to $-f$ handles $A<0$. If $D<0$ the form is indefinite and the point is a saddle.
+If $D=0$ the quadratic term is degenerate, the error term decides, and the test is inconclusive.
 
 **Absolute extrema on a compact region.** A continuous function on a closed and bounded region $R$
 attains its maximum and minimum (extreme value theorem). To find them:
@@ -840,12 +687,6 @@ attains its maximum and minimum (extreme value theorem). To find them:
 
 Omitting the boundary is the most common error in this topic: the maximum of a function on a disk is
 frequently attained on the circle, where $\nabla f \ne \mathbf{0}$.
-
-**Degenerate examples.** $f = x^2+y^4$ has $f_{xx}=2$, $f_{yy}=12y^2$ and $f_{xy}=0$, so
-$D = 24y^2$, which vanishes at the origin; yet $f(x,y)\ge 0 = f(0,0)$, so the origin is a strict
-minimum. $f = x^2+y^3$ also has $D=0$ at the origin and is neither a maximum nor a minimum: along
-$y=0$ it has a minimum, while along $x=0$ it takes both signs. The degenerate case requires a direct
-argument, usually by inspecting the sign of $f-f(a,b)$ on families of curves through the point.
 
 ### 7.10 Constrained Optimisation and Lagrange Multipliers
 
@@ -899,12 +740,6 @@ normals.
 4. Check the constraint qualification $\nabla g \ne \mathbf{0}$ on the constraint set. If it fails at a
    point, examine that point by hand; the method is not applicable there.
 
-**Why the multiplier is useful.** If the constraint is written $g(\mathbf{x}) = c$ and the optimal
-value is $M(c)$, then $\lambda = dM/dc$ under mild regularity: the multiplier measures how much the
-optimal value improves when the constraint is relaxed by one unit. In economics it is the *shadow
-price* of the constraint (for example, the marginal value of one extra unit of budget); in physics it
-is the force of constraint in Lagrangian mechanics.
-
 **Where the method fails.** The condition $\nabla g(\mathbf{a}) \ne \mathbf{0}$ is essential.
 Minimise $f(x,y)=x$ subject to $g(x,y) = x^3-y^2 = 0$. The constraint curve is the cusp $y^2=x^3$,
 which lies in $x\ge0$ and has its leftmost point at the origin, so the minimum is $0$ at $(0,0)$. But
@@ -913,11 +748,6 @@ $\mathbf{0}$: no $\lambda$ exists. The geometric reason is that the constraint c
 tangent line, at the extremum. A second warning: the multiplier condition is *necessary*, not
 sufficient. Solving $\nabla f = \lambda\nabla g$ produces candidates, and each must be tested by
 comparison or by a separate argument.
-
-**Inequality constraints.** If the constraint is $g \le 0$, the extrema either occur in the interior
-$g<0$ (and satisfy $\nabla f = \mathbf{0}$) or on the boundary $g=0$ (and satisfy the multiplier
-condition with $\lambda \ge 0$ for a maximum problem in the appropriate sign convention). This is the
-germ of the Karush–Kuhn–Tucker conditions of nonlinear programming.
 
 ### 7.11 Double Integrals and Fubini's Theorem
 
@@ -928,15 +758,6 @@ $\iint_R f\,dA$. The definition extends to bounded regions by setting $f=0$ outs
 unbounded functions or regions by an improper limit, exactly as in one variable. A bounded function
 that is discontinuous only on a curve (for instance, a function that jumps across the boundary of a
 region) is still integrable; a function unbounded near an interior point may not be.
-
-**Properties.** For integrable $f,g$ and constants $\alpha,\beta$:
-$$\iint_D (\alpha f+\beta g)\,dA = \alpha\iint_D f\,dA+\beta\iint_D g\,dA, \qquad
-\iint_D f\,dA = \iint_{D_1}f\,dA+\iint_{D_2}f\,dA$$
-when $D$ is split into two regions meeting only along a curve; $f\le g$ on $D$ implies
-$\iint_D f \le \iint_D g$; and
-$$\left\lvert\iint_D f\,dA\right\rvert \le \iint_D \lvert f\rvert\,dA \le M\,\operatorname{area}(D)$$
-when $\lvert f\rvert \le M$. The *average value* of $f$ on $D$ is
-$\dfrac{1}{\operatorname{area}(D)}\iint_D f\,dA$.
 
 **Fubini's theorem.** If $f$ is continuous on $R = [a,b]\times[c,d]$, then
 $$\iint_R f(x,y)\,dA = \int_a^b\left(\int_c^d f(x,y)\,dy\right)dx
@@ -1003,21 +824,6 @@ The ranges are $\rho \ge 0$, $0 \le \varphi \le \pi$, $0\le\theta<2\pi$; the fac
 $\sin\varphi$ is non-negative on this range, which is one reason for measuring $\varphi$ from the
 positive $z$-axis.
 
-| Surface | Cartesian | Spherical |
-|---|---|---|
-| sphere of radius $R$ centred at the origin | $x^2+y^2+z^2=R^2$ | $\rho = R$ |
-| cone with apex at the origin, half-angle $\alpha$ | $z^2 = \cot^2\alpha\,(x^2+y^2)$, $z\ge0$ | $\varphi = \alpha$ |
-| plane through the $z$-axis | $y = x\tan\theta_0$ | $\theta = \theta_0$ |
-| horizontal plane | $z = h$ | $\rho\cos\varphi = h$ |
-| cylinder of radius $R$ about the $z$-axis | $x^2+y^2=R^2$ | $\rho\sin\varphi = R$ |
-
-**Example: a sphere through the origin.** The ball $\rho \le 2\cos\varphi$ has
-$$V = \int_0^{2\pi}\int_0^{\pi/2}\int_0^{2\cos\varphi}\rho^2\sin\varphi\,d\rho\,d\varphi\,d\theta
-= 2\pi\int_0^{\pi/2}\frac{8\cos^3\varphi}{3}\sin\varphi\,d\varphi
-= \frac{16\pi}{3}\left[-\frac{\cos^4\varphi}{4}\right]_0^{\pi/2} = \frac{4\pi}{3},$$
-the volume of a unit ball: indeed $\rho = 2\cos\varphi$ is the sphere
-$x^2+y^2+(z-1)^2=1$ of radius $1$ centred at $(0,0,1)$.
-
 ### 7.13 A Preview of Change of Variables
 
 The three coordinate systems above are special cases of one theorem. Let $T : U \to \mathbb{R}^2$,
@@ -1043,19 +849,343 @@ $\partial(x,y)/\partial(u,v) = \det\begin{pmatrix}1&1\\1&-1\end{pmatrix} = -2$, 
 The square $0\le u\le1$, $0\le v\le1$ maps to the parallelogram with vertices $(0,0)$, $(1,1)$,
 $(2,0)$, $(1,-1)$, whose area is $2$, as predicted.
 
-**A non-linear example.** The map $x = u^2-v^2$, $y = 2uv$ (the complex squaring map) has Jacobian
-$$\frac{\partial(x,y)}{\partial(u,v)} = \det\begin{pmatrix}2u & -2v\\ 2v & 2u\end{pmatrix} = 4(u^2+v^2),$$
-so areas are stretched by $4(u^2+v^2)$. On the unit square away from the origin the stretch factor
-lies between $0$ and $8$. Maps of this kind are used to turn awkward regions into rectangles, and the
-next topic, vector calculus, uses the same Jacobian in the divergence theorem and Stokes' theorem.
+## 8. Formulas and Properties
 
-**Standard substitutions.** Polar coordinates are $T(r,\theta) = (r\cos\theta,r\sin\theta)$ with
-$J = r$; cylindrical coordinates are polar coordinates in the $xy$-plane with $z$ unchanged, $J = r$;
-spherical coordinates are the map above with $J = \rho^2\sin\varphi$. In each case the Jacobian
-vanishes on a set of area (or volume) zero — at the origin, or on the $z$-axis for spherical
-coordinates — which is harmless for integration.
+**Theorem 8.1 (Differentiable implies continuous).** If $f$ is differentiable at $\mathbf{a}$, it is
+continuous at $\mathbf{a}$. *Why:* the triangle inequality gives
+$\lvert f(\mathbf{a}+\mathbf{h})-f(\mathbf{a})\rvert \le \lVert\nabla f(\mathbf{a})\rVert\lVert\mathbf{h}\rVert + o(\lVert\mathbf{h}\rVert)$,
+which tends to $0$ as $\mathbf{h}\to\mathbf{0}$.
 
-<!--PART4-->
+**Theorem 8.2 ($C^1$ implies differentiable).** If $f$ is defined on an open set containing
+$\mathbf{a}$, if $f_x$ and $f_y$ exist on a neighbourhood of $\mathbf{a}$ and are continuous at
+$\mathbf{a}$, then $f$ is differentiable at $\mathbf{a}$. *Why:* write the increment as a sum of two
+one-variable increments and apply the mean value theorem to each,
+$$f(a+h,b+k)-f(a,b) = \underbrace{f(a+h,b+k)-f(a,b+k)}_{f_x(\xi,b+k)\,h}
++ \underbrace{f(a,b+k)-f(a,b)}_{f_y(a,\eta)\,k},$$
+with $\xi$ between $a$ and $a+h$ and $\eta$ between $b$ and $b+k$. Continuity of the partials at
+$(a,b)$ makes the coefficients equal to $f_x(a,b)+o(1)$ and $f_y(a,b)+o(1)$, and
+$\lvert h\rvert,\lvert k\rvert \le \lVert(h,k)\rVert$, so the error is $o(\lVert(h,k)\rVert)$.
 
+**Theorem 8.3 (Chain rule).** If $\mathbf{x}(t)$ is differentiable at $t_0$ and $f$ is differentiable
+at $\mathbf{x}(t_0)$, then $t\mapsto f(\mathbf{x}(t))$ is differentiable at $t_0$ and
+$$\frac{d}{dt}f(\mathbf{x}(t_0)) = \nabla f(\mathbf{x}(t_0))\cdot\mathbf{x}'(t_0).$$
+For several parameters, $D(f\circ\mathbf{x}) = Df\cdot D\mathbf{x}$ as a matrix product. *Why:* the
+derivation in Section 7.5; the differentiability of $f$ supplies the two error terms that vanish
+after division by $\Delta t$.
 
+**Theorem 8.4 (Clairaut–Schwarz).** If $f_{xy}$ and $f_{yx}$ exist on a neighbourhood of $(a,b)$ and
+are continuous at $(a,b)$, then $f_{xy}(a,b)=f_{yx}(a,b)$. In particular $C^2$ functions have
+symmetric Hessians. *Why:* apply the mean value theorem twice to the second difference
+$f(a+h,b+k)-f(a+h,b)-f(a,b+k)+f(a,b)$; the two orders of differencing give $f_{xy}(\xi_1,\eta_1)$
+and $f_{yx}(\xi_2,\eta_2)$ with $(\xi_i,\eta_i)\to(a,b)$, and continuity makes the limits equal. The
+hypothesis is necessary: the counterexample of Section 7.8 has $f_{xy}(0,0)=-1$ and $f_{yx}(0,0)=1$.
 
+**Theorem 8.5 (Second-derivative test).** Let $f$ be $C^2$ near a critical point $(a,b)$, and let
+$A=f_{xx}$, $B=f_{xy}$, $C=f_{yy}$, $D=AC-B^2$ at $(a,b)$. If $D>0$ and $A>0$, $(a,b)$ is a strict
+local minimum; if $D>0$ and $A<0$, a strict local maximum; if $D<0$, a saddle point; if $D=0$ the test
+is inconclusive. *Why:* Taylor's theorem gives
+$f(a+h,b+k)-f(a,b) = \frac12(Ah^2+2Bhk+Ck^2)+o(h^2+k^2)$, and
+$Ah^2+2Bhk+Ck^2 = \frac{1}{A}\left[(Ah+Bk)^2+Dk^2\right]$ when $A\ne0$; the sign of the quadratic form
+is decided by $D$ and $A$ (Section 7.9).
+
+**Theorem 8.6 (Lagrange multipliers).** Let $f,g$ be $C^1$ near $\mathbf{a}$, let $\mathbf{a}$ be a
+local extremum of $f$ subject to $g(\mathbf{x})=0$, and suppose $\nabla g(\mathbf{a})\ne\mathbf{0}$.
+Then $\nabla f(\mathbf{a}) = \lambda\nabla g(\mathbf{a})$ for some $\lambda\in\mathbb{R}$. With two
+constraints $g=h=0$ and $\nabla g(\mathbf{a}),\nabla h(\mathbf{a})$ linearly independent,
+$\nabla f(\mathbf{a}) = \lambda\nabla g(\mathbf{a})+\mu\nabla h(\mathbf{a})$. *Why:* the level set is
+a smooth curve (or surface) near $\mathbf{a}$ by the implicit function theorem; along any curve in it,
+$\frac{d}{dt}f(\gamma(t)) = \nabla f\cdot\gamma' = 0$, so $\nabla f$ is normal to the level set, as is
+$\nabla g$; in the plane two normals to the same line are parallel. The condition is necessary, not
+sufficient, and it fails when $\nabla g(\mathbf{a})=\mathbf{0}$ (Section 7.10).
+
+**Theorem 8.7 (Fubini).** If $f$ is continuous on $R=[a,b]\times[c,d]$, then
+$$\iint_R f\,dA = \int_a^b\!\!\int_c^d f\,dy\,dx = \int_c^d\!\!\int_a^b f\,dx\,dy .$$
+More generally, if $f$ is integrable on $R$ and $\int_a^b\int_c^d\lvert f\rvert\,dy\,dx<\infty$, then
+both iterated integrals exist and equal the double integral. *Why:* both sides are limits of the same
+two-dimensional Riemann sums; continuity makes the upper and lower sums converge to the integral, and
+the inner integral is itself a limit of one-dimensional sums. Without the integrability hypothesis the
+conclusion can fail (Exercise 30).
+
+**Theorem 8.8 (Change of variables).** Let $T:U\to\mathbb{R}^2$ be $C^1$ and injective on the
+interior of $U$ except on a curve, with $J = \partial(x,y)/\partial(u,v)$ non-zero except on a curve.
+Then, for integrable $f$ on $T(U)$,
+$$\iint_{T(U)} f(x,y)\,dx\,dy = \iint_U f(T(u,v))\,\lvert J(u,v)\rvert\,du\,dv .$$
+The same formula holds in $\mathbb{R}^3$ with the $3\times3$ Jacobian determinant. *Why:* $T$ maps a
+small rectangle of area $\Delta u\Delta v$ to a parallelogram of area $\lvert J\rvert\Delta u\Delta v$
+to first order, so Riemann sums in the $(u,v)$-plane with weights $\lvert J\rvert$ coincide with
+Riemann sums for $f$ over $T(U)$.
+
+## 9. Step-by-Step Examples
+
+**Example 9.1 (Domain, graph and level curves — easy).** Describe the domain, range, graph and level
+curves of $f(x,y)=\sqrt{9-x^2-y^2}$.
+
+*Domain.* The square root requires $9-x^2-y^2\ge0$, so $x^2+y^2\le9$: the closed disk of radius $3$
+centred at the origin.
+
+*Range.* On the disk, $0\le 9-x^2-y^2\le9$, so $0\le f\le3$. Every value in $[0,3]$ is attained
+(take $y=0$, $x=\sqrt{9-c^2}$ for $c\in[0,3]$), so the range is $[0,3]$.
+
+*Level curves.* For $0\le c\le3$, $\sqrt{9-x^2-y^2}=c$ gives $x^2+y^2 = 9-c^2$: circles of radius
+$\sqrt{9-c^2}$. The level $c=0$ is the boundary circle $x^2+y^2=9$; the level $c=3$ degenerates to the
+single point $(0,0)$; levels outside $[0,3]$ are empty. The circles crowd together as $c\to3$, which
+is the contour-map signature of the vertical tangent at the top of the sphere.
+
+**Example 9.2 (A limit in two variables).** Compute
+$\displaystyle\lim_{(x,y)\to(0,0)}\frac{x^3+y^3}{x^2+y^2}$.
+
+Since $\lvert x\rvert^3 \le (x^2+y^2)^{3/2}$ and $\lvert y\rvert^3\le(x^2+y^2)^{3/2}$,
+$$0 \le \left\lvert\frac{x^3+y^3}{x^2+y^2}\right\rvert
+\le \frac{2(x^2+y^2)^{3/2}}{x^2+y^2} = 2\sqrt{x^2+y^2}\longrightarrow0 .$$
+By the squeeze theorem the limit is $0$. In polar coordinates the same computation reads
+$f = r(\cos^3\theta+\sin^3\theta)$, and $\lvert\cos^3\theta+\sin^3\theta\rvert\le2$ gives
+$\lvert f\rvert\le2r\to0$. Note that $\cos^3\theta+\sin^3\theta$ does depend on $\theta$; the bound is
+what matters, not constancy.
+
+**Example 9.3 (Chain rule with two parameters).** Let $z = x^2-xy+y^2$ with $x=s+t$, $y=s-t$. Find
+$\partial z/\partial s$ and $\partial z/\partial t$, and check by direct substitution.
+
+The partials of $z$ are $z_x = 2x-y$ and $z_y = -x+2y$; the coordinate derivatives are $x_s=1$,
+$y_s=1$, $x_t=1$, $y_t=-1$. The chain rule gives
+$$\frac{\partial z}{\partial s} = (2x-y)(1)+(-x+2y)(1) = x+y, \qquad
+\frac{\partial z}{\partial t} = (2x-y)(1)+(-x+2y)(-1) = 3x-3y .$$
+Substituting $x=s+t$, $y=s-t$ gives $\partial z/\partial s = 2s$ and $\partial z/\partial t = 6t$.
+*Direct check:* $z = (s+t)^2-(s+t)(s-t)+(s-t)^2 = s^2+3t^2$, whose partials are $2s$ and $6t$. Both
+routes agree, which is a useful habit: the substitution check catches most chain-rule slips.
+
+**Example 9.4 (Gradient, steepest ascent and the level curve).** For $f(x,y)=x^2+4y^2$ at
+$P=(2,1)$, find the direction and rate of steepest ascent, the directional derivative in the direction
+of $(1,-1)$, and the tangent to the level curve through $P$.
+
+$\nabla f = (2x,8y)$, so $\nabla f(P) = (4,8)$. The steepest-ascent direction is
+$(4,8)/\lVert(4,8)\rVert = (1,2)/\sqrt5$, and the maximal slope is
+$\lVert(4,8)\rVert = \sqrt{80} = 4\sqrt5$. The unit vector in the direction $(1,-1)$ is
+$(1,-1)/\sqrt2$, so
+$$D_{\mathbf{u}}f(P) = (4,8)\cdot\frac{(1,-1)}{\sqrt2} = \frac{4-8}{\sqrt2} = -2\sqrt2 .$$
+The level curve through $P$ is $x^2+4y^2=8$; differentiating implicitly, $2x+8y\,y'=0$, so at $P$
+$y' = -2x/(8y) = -4/8 = -1/2$. A tangent direction is therefore $(2,-1)$, and indeed
+$(4,8)\cdot(2,-1) = 8-8 = 0$: the gradient is orthogonal to the level curve.
+
+**Example 9.5 (Differentiability at a pieced-together point).** Decide whether
+$$f(x,y)=\begin{cases}\dfrac{x^2y}{x^2+y^2}, & (x,y)\ne(0,0),\\[4pt] 0, & (x,y)=(0,0)\end{cases}$$
+is continuous and differentiable at the origin.
+
+*Continuity:* $\lvert x^2y/(x^2+y^2)\rvert \le \lvert y\rvert\to0 = f(0,0)$, so $f$ is continuous.
+
+*Partials:* $f(h,0)=0$ and $f(0,h)=0$ for $h\ne0$, so both partials at the origin are $0$. If $f$ were
+differentiable, the derivative would be the zero map.
+
+*Differentiability:* test the definition with $\mathbf{h}=(h,k)$:
+$$\frac{\lvert f(h,k)-0-0\rvert}{\sqrt{h^2+k^2}} = \frac{\lvert h^2k\rvert}{(h^2+k^2)^{3/2}} .$$
+Along $k=h$ this equals $\dfrac{\lvert h\rvert^3}{2\sqrt2\,\lvert h\rvert^3} = \dfrac{1}{2\sqrt2}$, which
+does not tend to $0$ as $h\to0$; along $k=0$ it is $0$. Since the quotient has different limits along
+different paths, the limit is not $0$ and $f$ is **not differentiable** at the origin. The linear
+approximation fails even though the function is continuous and both partials exist. (Compare Section 7.4, where the same function is analysed and the ratio
+$\lvert f(h,k)\rvert/(h^2+k^2)^{1/2}$ is shown to be bounded but not small.)
+
+**Example 9.6 (Extrema of a cubic — medium).** Find and classify the critical points of
+$f(x,y)=x^3+y^3-3xy$.
+
+*Critical points.* $f_x = 3x^2-3y$ and $f_y = 3y^2-3x$. Setting both to zero gives $y=x^2$ and $x=y^2$,
+hence $x = x^4$, that is $x(x^3-1)=0$. The real solutions are $x=0$ (then $y=0$) and $x=1$ (then
+$y=1$). So the critical points are $(0,0)$ and $(1,1)$.
+
+*Second derivatives.* $f_{xx}=6x$, $f_{yy}=6y$, $f_{xy}=-3$, so $D = 36xy-9$.
+
+*Classification.* At $(0,0)$: $D = -9<0$, a saddle point. At $(1,1)$: $D = 36-9 = 27>0$ and
+$f_{xx}=6>0$, a strict local minimum, with value $f(1,1) = 1+1-3 = -1$.
+
+*Remarks.* The function is unbounded above and below (take $y=0$, $x\to\pm\infty$), so the local
+minimum is not global. The saddle at the origin is visible from the curves through it: on $y=x$,
+$f = 2x^3-3x^2 = x^2(2x-3)$, which is negative for $0<x<\frac32$; on $y=-x$,
+$f = 3x^2\ge0$. Different curves through the origin give different signs, which is exactly what
+"saddle" means.
+
+**Example 9.7 (Lagrange multipliers — medium).** Find the maximum and minimum of
+$f(x,y,z)=x+2y+3z$ on the sphere $x^2+y^2+z^2=14$.
+
+*Set-up.* Let $g = x^2+y^2+z^2-14$. The constraint set is closed and bounded, so both extrema exist.
+The multiplier equations are
+$$1 = 2\lambda x, \qquad 2 = 2\lambda y, \qquad 3 = 2\lambda z, \qquad x^2+y^2+z^2 = 14 .$$
+*Solve.* The first three equations give $x = 1/(2\lambda)$, $y = 1/\lambda$, $z = 3/(2\lambda)$, so
+$(x,y,z) = \frac{1}{2\lambda}(1,2,3)$. Substituting into the constraint:
+$\frac{1}{4\lambda^2}(1+4+9) = \frac{14}{4\lambda^2} = 14$, hence $\lambda^2 = 1/4$ and
+$\lambda = \pm1/2$. The candidates are $(1,2,3)$ (for $\lambda = 1/2$) and $(-1,-2,-3)$ (for
+$\lambda = -1/2$), with values $1+4+9 = 14$ and $-14$.
+
+*Conclusion.* The maximum is $14$ at $(1,2,3)$, the minimum is $-14$ at $(-1,-2,-3)$. Note that
+$\nabla g = (2x,2y,2z)\ne\mathbf{0}$ on the sphere, so the constraint qualification holds and no
+candidate is lost. The answer is also geometrically obvious: the extreme points of a linear function
+on a sphere lie on the line through the origin in the direction of the coefficient vector $(1,2,3)$.
+
+**Example 9.8 (Double integral over a region between two curves — harder).** Evaluate
+$\displaystyle\iint_D (x+y)\,dA$ where $D$ is bounded by $y=x^2$ and $y=x$.
+
+*Describe the region.* The curves meet where $x^2=x$, i.e. $x=0$ and $x=1$; between them
+$x^2\le x$. So $D = \{(x,y): 0\le x\le1,\ x^2\le y\le x\}$, a vertically simple region.
+
+*Integrate.*
+$$\iint_D (x+y)\,dA = \int_0^1\!\!\int_{x^2}^{x}(x+y)\,dy\,dx
+= \int_0^1\left[xy+\frac{y^2}{2}\right]_{y=x^2}^{y=x}dx .$$
+At $y=x$ the bracket is $x^2+\frac{x^2}{2} = \frac32x^2$; at $y=x^2$ it is $x^3+\frac{x^4}{2}$. Hence
+$$\int_0^1\left(\frac32x^2-x^3-\frac12x^4\right)dx
+= \frac12-\frac14-\frac{1}{10} = \frac{10-5-2}{20} = \frac{3}{20}.$$
+*Check by the other order.* The region is also horizontally simple:
+$0\le y\le1$ with $y\le x\le\sqrt y$. Then
+$$\int_0^1\!\!\int_y^{\sqrt y}(x+y)\,dx\,dy
+= \int_0^1\left[\frac{x^2}{2}+xy\right]_{x=y}^{x=\sqrt y}dy
+= \int_0^1\left(\frac y2+y^{3/2}-\frac{3y^2}{2}\right)dy
+= \frac14+\frac25-\frac12 = \frac{3}{20},$$
+which confirms the value. Reversing the order is the standard way to catch a mistake in the limits.
+
+## 10. Visual Explanations
+
+The logical dependencies of the topic form a single chain from limits to integration, with the
+gradient as the hinge between the differential and the integral parts.
+
+```mermaid
+flowchart TD
+    A["Functions of several variables"] --> B["Limits and continuity"]
+    B --> C["Partial derivatives"]
+    C --> D["Differentiability: linear approximation"]
+    D --> E["Chain rule"]
+    D --> F["Tangent plane and normal line"]
+    E --> G["Directional derivatives and gradient"]
+    G --> H["Unconstrained extrema"]
+    G --> I["Lagrange multipliers"]
+    B --> J["Double and triple integrals"]
+    J --> K["Fubini and iterated integrals"]
+    K --> L["Polar, cylindrical, spherical"]
+    L --> M["General change of variables"]
+    C --> N["Higher-order partials and Clairaut"]
+    N --> H
+```
+
+## 11. Common Mistakes
+
+1. **"Partial derivatives exist, therefore the function is differentiable."** False, and false even
+   with continuity added: $x^2y/(x^2+y^2)$ is continuous at the origin with both partials zero and is
+   not differentiable there (Section 7.4). Differentiability is the superlinear-error condition.
+2. **"A limit exists if it is the same along every line."** False. $x^2y/(x^4+y^2)$ tends to $0$ along
+   every line through the origin and to $1/2$ along the parabola $y=x^2$ (Section 7.2). Use a global
+   inequality or polar coordinates with a bounded angular factor, or test curves.
+3. **Forgetting to normalise the direction.** The directional derivative is defined with a *unit*
+   vector. For $\mathbf{v}=(3,4)$ the unit vector is $(3,4)/5$, not $(3,4)$; using the unnormalised
+   vector multiplies the answer by $5$.
+4. **Treating $\partial f/\partial x$ as a quotient of differentials.** Identities such as
+   $\frac{\partial z}{\partial x}\frac{\partial x}{\partial y}\frac{\partial y}{\partial z} = -1$
+   for implicit functions are delicate; naive cancellation of partials is wrong. The chain rule is the
+   only reliable tool.
+5. **Cancelling partials in the chain rule.** $\partial z/\partial s$ is not $\partial z/\partial x$
+   times $\partial x/\partial s$ alone when $z$ also depends on $y$; every route in the dependency
+   tree contributes.
+6. **Assuming $f_{xy}=f_{yx}$ always.** It holds for $C^2$ functions, and the counterexample
+   $xy(x^2-y^2)/(x^2+y^2)$ has $f_{xy}(0,0)=-1$, $f_{yx}(0,0)=1$ (Section 7.8).
+7. **Using only the sign of $f_{xx}$ in the second-derivative test.** $f_{xx}>0$ alone does not imply a
+   minimum; $D>0$ is needed. For $f = x^2-y^2$, $f_{xx}=2>0$ but the origin is a saddle because
+   $D=-4<0$.
+8. **Forgetting the boundary in an absolute-extremum problem.** On a disk, the maximum of $f$ may lie
+   on the circle, where $\nabla f\neq\mathbf{0}$. Check the interior critical points, then the
+   boundary, then compare.
+9. **Dropping the constraint qualification in Lagrange multipliers.** If $\nabla g = \mathbf{0}$ at the
+   extremum, no multiplier exists; the cusp example of Section 7.10 has its minimum exactly there.
+   Also, the multiplier condition gives candidates only — compare values, and do not divide by a
+   variable that may vanish without treating that case separately.
+10. **Wrong Jacobian or wrong order.** Polar area is $r\,dr\,d\theta$, not $dr\,d\theta$; spherical
+    volume is $\rho^2\sin\varphi\,d\rho\,d\varphi\,d\theta$, not $\rho^2\sin\theta$; and in spherical
+    coordinates $\varphi$ is measured from the $z$-axis. In iterated integrals the inner limits may
+    depend on the outer variables, but never the other way round.
+
+## 12. Applications
+
+**Physics and thermodynamics.** State functions such as internal energy $U(S,V)$ have partial
+derivatives that are measurable quantities: $(\partial U/\partial S)_V = T$ and
+$(\partial U/\partial V)_S = -p$. The equality of mixed partials applied to $U$ produces the Maxwell
+relations, and the test for an exact differential decides whether a proposed infinitesimal change
+$P\,dV + Q\,dT$ is the differential of a state function.
+
+**Optimisation in engineering and economics.** Lagrange multipliers are the standard tool for
+allocating a fixed budget among competing inputs: maximising a production function subject to a cost
+constraint gives the condition that marginal product per unit cost is equal across inputs, and the
+multiplier is the shadow price of the budget. The same computation underlies portfolio optimisation
+with a risk constraint and the design of structures of minimal weight subject to stress constraints.
+
+**Machine learning.** Training a model means minimising a loss function of many variables. Gradient
+descent iterates $\mathbf{x}_{k+1} = \mathbf{x}_k - \eta\nabla L(\mathbf{x}_k)$; the chain rule is the
+backpropagation algorithm, written as a product of Jacobians through the layers; and the Hessian
+determines whether a critical point is a minimum and how fast the iteration converges.
+
+**Probability and statistics.** A joint density $f(x,y)$ is integrated over regions to give
+probabilities, marginal densities are iterated integrals, and the normalising constant of the
+multivariate normal distribution follows from the Gaussian integral
+$\int_{-\infty}^{\infty}e^{-x^2}dx = \sqrt{\pi}$, which is computed in polar coordinates. The
+transformation formula for densities is the change-of-variables theorem with the Jacobian.
+
+**Geometry, graphics and geodesy.** Spherical coordinates describe the Earth, the celestial sphere and
+every rendering pipeline that shades a sphere; triple integrals give volumes, centroids and moments of
+inertia; and the tangent plane is the local linear model used for surface normals in computer graphics
+and for Newton's method in numerical analysis.
+
+## 13. Exercises
+
+[Exercises](exercises.md) contains 40 problems in four groups — Beginner (fluency with domains, limits,
+partials, tangent planes and simple integrals), Intermediate (chain rule, implicit differentiation,
+classification of extrema, Lagrange multipliers, coordinate changes), Advanced (proofs of the main
+theorems and substantial computations) and Challenge (a counterexample with unbounded partials, the
+weighted AM–GM inequality, the Gaussian integral, and an integral computed by reversing the order).
+Attempt them before opening the solutions.
+
+## 14. Solutions
+
+[Solutions](solutions.md) gives a complete worked solution for every exercise, with the strategy
+stated first and every algebraic step shown; where a second approach exists, it is indicated.
+
+## 15. Summary
+
+* A function of several variables is studied through its domain, its graph and its level sets;
+  level curves are contour lines and level surfaces are the three-dimensional analogue.
+* Limits in $\mathbb{R}^n$ require agreement along *every* path; a limit fails if two paths disagree,
+  and agreement along all lines is not enough. Polar coordinates help when the angular factor is
+  bounded.
+* Partial derivatives freeze all but one variable and measure slopes of traces; they are ordinary
+  one-variable derivatives.
+* Differentiability is the linear approximation condition
+  $f(\mathbf{a}+\mathbf{h}) = f(\mathbf{a})+\nabla f(\mathbf{a})\cdot\mathbf{h}+o(\lVert\mathbf{h}\rVert)$.
+  It implies continuity and the existence of all partial and directional derivatives; none of the
+  converse implications holds. Continuous partials suffice.
+* The chain rule multiplies the derivatives along the dependency tree; in matrix form it is
+  $D(f\circ g) = Df\cdot Dg$, and it yields implicit differentiation
+  $z_x = -F_x/F_z$.
+* The gradient points in the direction of steepest ascent with length equal to the maximal slope, and
+  it is orthogonal to the level set.
+* The tangent plane to a graph is $z = f(a,b)+f_x(x-a)+f_y(y-b)$; to a level surface $F=c$ it is
+  $\nabla F\cdot(\mathbf{x}-P)=0$, with $\nabla F$ as normal.
+* The second-derivative test classifies critical points by the signs of $D=f_{xx}f_{yy}-f_{xy}^2$ and
+  $f_{xx}$; $D=0$ is inconclusive and requires a separate argument.
+* Mixed partial derivatives commute when they are continuous (Clairaut's theorem); the
+  counterexample $xy(x^2-y^2)/(x^2+y^2)$ shows that the hypothesis cannot be dropped.
+* Double and triple integrals are limits of Riemann sums, evaluated by Fubini as iterated
+  integrals; polar, cylindrical and spherical coordinates contribute the Jacobian factors $r$,
+  $r$ and $\rho^2\sin\varphi$, and the change-of-variables formula generalises this to any smooth
+  substitution via $\lvert\partial(x,y)/\partial(u,v)\rvert$.
+* Lagrange multipliers state that at a constrained extremum $\nabla f = \lambda\nabla g$ (plus
+  $\mu\nabla h$ for a second constraint), because the level sets are tangent; the constraint
+  qualification $\nabla g\ne\mathbf{0}$ is required, and the condition is necessary but not sufficient.
+
+## 16. Further Learning
+
+Within this repository:
+
+* [Real Analysis](../../14-real-analysis/README.md) for the proofs of the theorems stated here — the
+  implicit function theorem, Fubini's theorem, the change-of-variables formula and the equality of
+  mixed partials.
+* [Differential Equations](../../16-differential-equations/README.md) for partial differential
+  equations, where the chain rule and the gradient become the language of the whole subject.
+
+Standard texts, in increasing order of difficulty: James Stewart, *Calculus: Early Transcendentals*
+(chapters on partial derivatives and multiple integrals) for computation and applications; Robert
+A. Adams and Christopher Essex, *Calculus: A Complete Course*; Michael Spivak, *Calculus on
+Manifolds*, for the linear-algebraic viewpoint on differentiability and the change-of-variables
+theorem; Walter Rudin, *Principles of Mathematical Analysis*, chapters 9 and 10, for complete proofs;
+and John H. Hubbard and Barbara Burke Hubbard, *Vector Calculus, Linear Algebra, and Differential
+Forms*, for the modern geometric treatment that leads naturally into the next topic.

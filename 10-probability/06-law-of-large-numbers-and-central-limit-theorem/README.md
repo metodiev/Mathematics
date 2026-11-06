@@ -517,10 +517,15 @@ $\operatorname{Var}(S_n)\sim n^{2H}L(n)$ with $H>\tfrac12$, and the limit is a f
 functional, not a normal law. Independence can be replaced by weak dependence (mixing), but not by
 nothing.
 
-**(d) A dominant term.** Let $X_n$ take the values $\pm2^{n}$ with probability $\tfrac12$ each, independent.
-Then $S_n/2^{n}=\sum_{k\le n}\pm2^{k-n}$ is dominated by its last term and converges in distribution to
-the two-point law $\pm1$, not to a normal law. The Lindeberg condition fails because the last term
-carries essentially all the variance.
+**(d) A dominant term.** Let $X_n$ take the values $\pm2^{n}$ with probability $\tfrac12$ each, independently.
+Then
+
+$$\frac{S_n}{2^{n}}=\sum_{j=0}^{n-1}\varepsilon_{n-j}2^{-j}\xrightarrow{d}\sum_{j\ge0}\varepsilon_j2^{-j},$$
+
+where $\varepsilon_j=\pm1$ are independent signs. The characteristic function of the limit is
+$\prod_{j\ge0}\cos(2^{-j}t)=\frac{\sin 2t}{2t}$, which is the characteristic function of the uniform law on
+$[-2,2]$: the limit is uniform, not normal. The Lindeberg condition fails because the last term
+$\pm2^{n}$ carries essentially all the variance, so no single summand is negligible.
 
 **(e) Lattices and local approximations.** The CDF-level CLT holds for lattice variables, but the
 *density-level* statement does not: if $X$ takes values in $h\mathbb{Z}$, then

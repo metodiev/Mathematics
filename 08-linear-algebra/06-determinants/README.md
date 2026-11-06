@@ -95,7 +95,7 @@ By the end of this tutorial you will be able to
 
 1. state the three defining properties of the determinant and explain each as a statement about volume;
 2. prove that a function with those three properties is unique (Theorem 7.5);
-3. prove the Leibniz formula and hence existence (Theorem 7.6);
+3. prove the Leibniz formula and hence existence (Theorem 7.4);
 4. derive cofactor expansion along the first row, and then along any row or column;
 5. compute determinants of size $2,3,4$ and general $n$ by expansion, by row reduction and by spotting
    structure (triangular, block, zeros, proportional rows);
@@ -201,14 +201,23 @@ $$
 \operatorname{sgn}(\sigma) = \prod_{1 \le i < j \le n} \frac{\sigma(j) - \sigma(i)}{j - i} \in \{1,-1\}.
 $$
 
-The product has the same factors in numerator and denominator, merely reordered, so it is $\pm 1$. The
-sign is multiplicative, $\operatorname{sgn}(\sigma\tau) = \operatorname{sgn}(\sigma)\operatorname{sgn}(\tau)$,
-because each side is the ratio of the two ordered products for the composite permutation; in particular
+The product has the same factors in numerator and denominator, merely reordered, so it is $\pm 1$. Write
+$\Delta(x_1,\dots,x_n) = \prod_{i<j}(x_j - x_i)$; then the definition says
+$\Delta(\sigma(1),\dots,\sigma(n)) = \operatorname{sgn}(\sigma)\Delta(1,\dots,n)$. Applying this twice,
+
+$$
+\Delta\big(\sigma\tau(1),\dots,\sigma\tau(n)\big) = \operatorname{sgn}(\sigma)\Delta\big(\tau(1),\dots,\tau(n)\big)
+= \operatorname{sgn}(\sigma)\operatorname{sgn}(\tau)\Delta(1,\dots,n),
+$$
+
+while directly it is $\operatorname{sgn}(\sigma\tau)\Delta(1,\dots,n)$. Since
+$\Delta(1,\dots,n) \ne 0$, the sign is multiplicative:
+$\operatorname{sgn}(\sigma\tau) = \operatorname{sgn}(\sigma)\operatorname{sgn}(\tau)$. In particular
 $\operatorname{sgn}(\sigma^{-1}) = \operatorname{sgn}(\sigma)$ and
 $\operatorname{sgn}(\operatorname{id}) = 1$. A **transposition** is a permutation swapping exactly two
-values; its sign is $-1$, since exactly one factor in the numerator changes sign. Every permutation is a
-product of transpositions, and the number of factors has the same parity for all such products — that
-parity is what $\operatorname{sgn}$ measures.
+values, say $p < q$; substituting it into the product shows that exactly $2(q-p)-1$ factors change sign,
+an odd number, so its sign is $-1$. Every permutation is a product of transpositions, and the number of
+factors has the same parity for all such products — that parity is what $\operatorname{sgn}$ measures.
 
 **Definition 5.7 (Minor and cofactor).** For $A \in M_n(K)$ with $n \ge 2$, the **$(i,j)$-minor** $M_{ij}$
 is the determinant of the $(n-1)\times(n-1)$ matrix obtained by deleting row $i$ and column $j$. The
@@ -325,11 +334,12 @@ a_{i,\sigma(i)}$. Then $L$ is multilinear, alternating and normalised.
 $a_{\sigma^{-1}(j),\,j}$, and every other factor comes from other columns. Each term is therefore a
 constant times that entry, so $L$ is linear in column $j$; this holds for every $j$.
 
-**Alternating.** Suppose columns $j$ and $k$ of $A$ are equal, $j \neq k$, and let
-$\tau = (j\,k)$ be the transposition swapping them. Right multiplication by $\tau$ permutes the
-columns, so the matrix $A'$ with $a'_{i,\sigma(i)} = a_{i,\sigma(\tau(i))}$ is again $A$ (the two columns
-are equal). Hence the term indexed by $\sigma\tau$ equals the term indexed by $\sigma$, while
-$\operatorname{sgn}(\sigma\tau) = -\operatorname{sgn}(\sigma)$. The terms cancel in pairs, so $L(A) = 0$.
+**Alternating.** Suppose columns $j$ and $k$ of $A$ are equal, $j \neq k$, and let $\tau = (j\,k)$ be the
+transposition swapping them. Compare the terms indexed by $\sigma$ and by $\sigma\tau$: at position $i$
+they use $a_{i,\sigma(i)}$ and $a_{i,\sigma(\tau(i))}$, which differ only by reading column $j$ in place
+of column $k$ (or the reverse), and those columns are equal. So the two products coincide, while
+$\operatorname{sgn}(\sigma\tau) = -\operatorname{sgn}(\sigma)$. The map $\sigma \mapsto \sigma\tau$ is a
+fixed-point-free pairing of $S_n$, so the terms cancel in pairs and $L(A) = 0$.
 
 **Normalised.** For $A = I_n$ we have $a_{i,\sigma(i)} = \delta_{i,\sigma(i)}$, which is $1$ only when
 $\sigma(i) = i$ for all $i$. Only the identity permutation contributes, and
@@ -383,7 +393,7 @@ $$
 because deleting row $1$ of $A'$ (which is row $i$ of $A$) and column $j$ leaves the same minor $M_{ij}$.
 Multiplying by $(-1)^{i-1}$ and using $(-1)^{i-1}(-1)^{1+j} = (-1)^{i+j}$ gives the claim. $\square$
 
-Expansion along a *column* is obtained from Theorem 7.7 below, since $\det A = \det A^{\mathsf{T}}$.
+Expansion along a *column* is obtained from Theorem 7.8 below, since $\det A = \det A^{\mathsf{T}}$.
 
 ### 7.6 Row operations
 
@@ -395,8 +405,10 @@ Expansion along a *column* is obtained from Theorem 7.7 below, since $\det A = \
 4. If $A$ has a row of zeros, or two equal rows, then $\det A = 0$.
 5. If $A$ is upper or lower triangular, $\det A = a_{11}a_{22}\cdots a_{nn}$.
 
-*Proof.* (1) is the row-swap argument used in Corollary 7.6. (2) is multilinearity in that row, viewing
-$\det$ as a function of the rows (equivalently, a consequence of Theorem 7.8). For (3), let $A'$ be $A$
+*Proof.* (1) is proved in Exercise 22: exchanging two rows replaces each permutation $\sigma$ in the
+Leibniz sum by $\tau\circ\sigma$ for a transposition $\tau$, which negates every term. (2) holds because
+every term of the Leibniz sum contains exactly one entry from row $i$, so scaling that row scales every
+term by $c$. For (3), let $A'$ be $A$
 with $c$ times row $i$ added to row $j$, $i \neq j$. Multilinearity in row $j$ gives
 $\det A' = \det A + c\det A''$, where $A''$ is $A$ with row $j$ replaced by row $i$; $A''$ has two equal
 rows, so $\det A'' = 0$. Part (4) for equal rows is alternation; for a zero row, scale that row by $0$
@@ -519,8 +531,9 @@ $\det(\operatorname{adj}A) = (\det A)^{n-1}$.
 $A\operatorname{adj}A = (\det A)I$: $\det A\cdot\det(\operatorname{adj}A) = (\det A)^n$, and divide by
 $\det A \neq 0$. $\square$
 
-The formula $A^{-1} = \operatorname{adj}A/\det A$ is the only general closed formula for an inverse, and
-the only one that works over rings where division may fail.
+The formula $A^{-1} = \operatorname{adj}A/\det A$ is the only general closed formula for an inverse; it
+makes sense over any commutative ring in which $\det A$ is a unit, and it is the formula a computer
+algebra system uses for exact inverses of small matrices.
 
 ### 7.12 Block matrices
 
@@ -585,11 +598,13 @@ $\mathbf{u}, \mathbf{v}, \mathbf{w} \in \mathbb{R}^3$ as columns of $A \in M_3(\
 parallelepiped $\{s\mathbf{u} + t\mathbf{v} + r\mathbf{w} : 0 \le s,t,r \le 1\}$ has volume
 $\lvert\det A\rvert$.
 
-*Proof.* The area function $(\mathbf{u},\mathbf{v}) \mapsto \text{area}$ of the spanned parallelogram is
-multilinear, alternating (a degenerate parallelogram has area $0$) and normalised (the unit square has
-area $1$) — the three properties are the elementary properties of area in the plane. By Theorem 7.3 it
-equals $\lvert\det\rvert$ applied to the matrix with those columns; taking absolute values removes the
-sign. The same argument in $\mathbb{R}^3$ uses the elementary properties of volume. $\square$
+*Proof.* Consider the **signed** area $(\mathbf{u},\mathbf{v}) \mapsto \pm\text{area}$ of the spanned
+parallelogram, the sign being $+$ for a counter-clockwise pair and $-$ for a clockwise one. This
+function is multilinear (doubling one edge doubles the signed area; sliding one edge parallel to itself
+adds signed areas, by Cavalieri), alternating (a degenerate parallelogram has signed area $0$) and
+normalised (the unit square spanned by $\mathbf{e}_1,\mathbf{e}_2$ has signed area $1$). By Theorem 7.3
+it equals $\det$ of the matrix with those columns, so the unsigned area is $\lvert\det A\rvert$. The same
+argument in $\mathbb{R}^3$ uses the elementary properties of signed volume. $\square$
 
 **Proposition 7.20 (Triple product).** For $\mathbf{a}, \mathbf{b}, \mathbf{c} \in \mathbb{R}^3$,
 
@@ -894,9 +909,9 @@ elimination with pivoting, or avoids the determinant entirely.
 ## 12. Applications
 
 **Change of variables in integration.** In the substitution $\mathbf{x} = \Phi(\mathbf{u})$ for a
-differentiable map, the volume element transforms by the absolute value of the Jacobian determinant:
-$d\mathbf{x} = \lvert\det D\Phi(\mathbf{u})\rvert\,d\mathbf{u}$. The linear case is Proposition 7.19; the
-nonlinear case applies it infinitesimally. See
+differentiable map, the volume element transforms by the absolute Jacobian determinant,
+$d\mathbf{x} = \lvert\det D\Phi(\mathbf{u})\rvert\,d\mathbf{u}$: the linear case is Proposition 7.19, and
+the nonlinear case applies it infinitesimally. See
 [The Fundamental Theorem of Calculus](../../07-calculus/07-fundamental-theorem-of-calculus/README.md) for
 the one-variable prototype, where the "determinant" is $\Phi'(u)$.
 
@@ -918,14 +933,13 @@ minor of its Laplacian. Determinants over finite fields also drive coding theory
 of a linear code is required to have a nonzero maximal minor.
 
 **Computer graphics and robotics.** Whether a triangle is front-facing is decided by the sign of a
-$2\times2$ determinant (a projected area); whether a configuration of joints is singular is decided by the
-determinant of a Jacobian, and that is exactly where a robot arm loses a degree of freedom.
+$2\times2$ determinant (a projected area); whether a configuration of joints is singular is decided by a
+Jacobian determinant, exactly where a robot arm loses a degree of freedom.
 
 **Numerical practice.** Determinants are computed by elimination, never by expansion: Gaussian
-elimination costs $O(n^3)$ operations, expansion costs $n!$. Because a determinant is a product of $n$
-pivots, it underflows or overflows easily, which is why numerical libraries expose the logarithm of the
-absolute determinant or the determinant of a scaled matrix. The determinant is best used as a theoretical
-and structural tool, not as a numerical scale.
+elimination costs $O(n^3)$ operations, expansion costs $n!$. Since a determinant is a product of $n$
+pivots it underflows or overflows easily, which is why libraries expose the logarithm of its absolute
+value. The determinant is best used as a structural tool, not as a numerical scale.
 
 ## 13. Exercises
 
@@ -974,9 +988,6 @@ arguments of §7.
 
 **Standard texts.**
 
-* S. Axler, *Linear Algebra Done Right* — develops the determinant from multilinearity exactly as §7.1–§7.4
-  do, and uses it sparingly.
-* G. Strang, *Introduction to Linear Algebra* — the volume interpretation and the $\det(AB)$ argument of
-  §7.9, with many examples.
-* R. A. Horn and C. R. Johnson, *Matrix Analysis* — block identities, the adjugate, and determinant
-  inequalities at reference level.
+* S. Axler, *Linear Algebra Done Right* — develops the determinant from multilinearity as in §7.1–§7.4.
+* G. Strang, *Introduction to Linear Algebra* — the volume interpretation and §7.9 with many examples.
+* R. A. Horn and C. R. Johnson, *Matrix Analysis* — block identities and the adjugate at reference level.

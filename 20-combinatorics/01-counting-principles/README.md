@@ -198,7 +198,7 @@ The product rule applies to objects described by *independent* coordinates: elem
 
 *Bad use.* "Choose a $3$-element subset of $[10]$: $10$ choices, then $9$, then $8$." The product $10\cdot9\cdot8$ is a correct count of injective maps $[3]\to[10]$; it is not the count of subsets, because each subset is produced $3!$ times.
 
-*Repairing dependence by ordering.* To count $5$-card hands whose cards all have distinct ranks and which contain at least one ace, count hands with distinct ranks and subtract those with no ace. A hand with $5$ distinct ranks: choose $5$ ranks ($\binom{13}{5}$) and one suit for each ($4^5$), so $\binom{13}{5}4^5 = 1287\cdot 1024 = 1\,317\,888$. Hands with distinct ranks and no ace: $\binom{12}{5}4^5 = 792\cdot 1024 = 810\,864$. The difference is $507\,024$. Each step is a genuine product of independent choices, and the two cases are disjoint.
+*Repairing dependence by ordering.* To count $5$-card hands whose cards all have distinct ranks and which contain at least one ace, count hands with distinct ranks and subtract those with no ace. A hand with $5$ distinct ranks: choose $5$ ranks ($\binom{13}{5}$) and one suit for each ($4^5$), so $\binom{13}{5}4^5 = 1287\cdot 1024 = 1\,317\,888$. Hands with distinct ranks and no ace: $\binom{12}{5}4^5 = 792\cdot 1024 = 811\,008$. The difference is $506\,880$. Each step is a genuine product of independent choices, and the two cases are disjoint.
 
 ### 7.3 Counting functions between finite sets
 
@@ -715,7 +715,7 @@ Each entry is the sum of the two above it, because a $k$-subset either contains 
 
 **Probability.** A finite probability space assigns $1/\lvert\Omega\rvert$ to each outcome when outcomes are equally likely, so every probability computation begins with a count. Poker probabilities, the birthday problem (see [Probability Foundations](../../10-probability/01-probability-foundations/README.md)) and the binomial distribution all rest on $\binom{n}{k}$. The hypergeometric distribution — the chance that a hand of $k$ cards from a deck with $m$ "special" cards contains exactly $j$ special ones — is $\binom{m}{j}\binom{N-m}{k-j}\big/\binom{N}{k}$, which is Vandermonde's identity in probabilistic dress.
 
-**Algorithms and complexity.** The number of possible inputs of size $n$ bounds the number of distinguishable behaviours of an algorithm. Sorting $n$ items has $n!$ possible inputs, hence requires at least $\log_2(n!)$ comparisons, which by Stirling's formula is about $n\log_2 n - 1.44n$; this is the lower bound behind the $\Omega(n\log n)$ comparison-sorting theorem. Hash tables rely on counting too: with $n$ keys in $m$ slots some slot holds at least $\lceil n/m\rceil$ keys — a pigeonhole argument, the subject of the next-but-one topic ([discipline index](../README.md)).
+**Algorithms and complexity.** The number of possible inputs of size $n$ bounds the number of distinguishable behaviours of an algorithm. Sorting $n$ items has $n!$ possible inputs, hence requires at least $\log_2(n!)$ comparisons, which by Stirling's formula is about $n\log_2 n - 1.44n$; this is the lower bound behind the $\Omega(n\log n)$ comparison-sorting theorem. Hash tables rely on counting too: with $n$ keys in $m$ slots some slot holds at least $\lceil n/m\rceil$ keys — a pigeonhole argument, treated in [The Pigeonhole Principle](../03-pigeonhole-principle/README.md).
 
 **Cryptography.** Security is measured by the size of the space of possibilities: $26^8$ for eight lowercase letters, $62^8 \approx 2.18\times10^{14}$ for alphanumerics, $95^{12}$ for twelve printable ASCII characters. Counting is the first tool of any security analysis, and the product rule is the calculation.
 
@@ -753,6 +753,7 @@ Complete worked solutions — strategy, every significant step, numerical checks
 **Next in this discipline.**
 
 * *Inclusion–Exclusion* — the second topic of this discipline, listed in the [discipline index](../README.md): counting unions of overlapping sets, derangements, the full surjection formula, and the "at most" form of stars and bars. Everything flagged above as needing inclusion–exclusion is treated there.
+* [The Pigeonhole Principle](../03-pigeonhole-principle/README.md) — the third topic of the discipline, and the natural next read: it takes the counting facts proved here and turns them into existence theorems.
 * *Generating Functions*, *Partitions and Compositions*, *Extremal Combinatorics* — the later topics of the discipline, also listed in the [discipline index](../README.md). Generating functions turn counting problems into algebra; partitions count multisets in *identical* boxes, the case this tutorial deliberately avoided.
 
 **Earlier material worth revisiting.**

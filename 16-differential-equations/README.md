@@ -12,7 +12,7 @@ The language of physics, engineering, biology and economics. From separable equa
 
 | | |
 |---|---|
-| Topics | 6 (0 complete, 0 draft, 6 planned) |
+| Topics | 6 (6 complete, 0 draft, 0 planned) |
 | Estimated study time | ~59 hours |
 | Prerequisites | [07-calculus](../07-calculus/README.md), [08-linear-algebra](../08-linear-algebra/README.md) |
 
@@ -40,12 +40,12 @@ flowchart LR
 
 | # | Topic | Level | Est. time | Status | Materials |
 |---|---|---|---|---|---|
-| 1 | First-Order Differential Equations | Intermediate | 10 h | Planned | — |
-| 2 | Second-Order Linear ODEs | Advanced | 10 h | Planned | — |
-| 3 | Systems of ODEs | Advanced | 10 h | Planned | — |
-| 4 | Laplace Transforms | Advanced | 9 h | Planned | — |
-| 5 | Introduction to PDEs | Advanced | 12 h | Planned | — |
-| 6 | Numerical Solutions of ODEs | Advanced | 8 h | Planned | — |
+| 1 | [First-Order Differential Equations](01-first-order-odes/README.md) | Intermediate | 10 h | Complete | [Tutorial](01-first-order-odes/README.md) · [Exercises](01-first-order-odes/exercises.md) · [Solutions](01-first-order-odes/solutions.md) |
+| 2 | [Second-Order Linear ODEs](02-second-order-linear-odes/README.md) | Advanced | 10 h | Complete | [Tutorial](02-second-order-linear-odes/README.md) · [Exercises](02-second-order-linear-odes/exercises.md) · [Solutions](02-second-order-linear-odes/solutions.md) |
+| 3 | [Systems of ODEs](03-systems-of-odes/README.md) | Advanced | 10 h | Complete | [Tutorial](03-systems-of-odes/README.md) · [Exercises](03-systems-of-odes/exercises.md) · [Solutions](03-systems-of-odes/solutions.md) |
+| 4 | [Laplace Transforms](04-laplace-transforms/README.md) | Advanced | 9 h | Complete | [Tutorial](04-laplace-transforms/README.md) · [Exercises](04-laplace-transforms/exercises.md) · [Solutions](04-laplace-transforms/solutions.md) |
+| 5 | [Introduction to PDEs](05-introduction-to-pdes/README.md) | Advanced | 12 h | Complete | [Tutorial](05-introduction-to-pdes/README.md) · [Exercises](05-introduction-to-pdes/exercises.md) · [Solutions](05-introduction-to-pdes/solutions.md) |
+| 6 | [Numerical Solutions of ODEs](06-numerical-solutions-of-odes/README.md) | Advanced | 8 h | Complete | [Tutorial](06-numerical-solutions-of-odes/README.md) · [Exercises](06-numerical-solutions-of-odes/exercises.md) · [Solutions](06-numerical-solutions-of-odes/solutions.md) |
 
 ### What each topic covers
 

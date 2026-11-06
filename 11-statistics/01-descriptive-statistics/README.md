@@ -71,7 +71,7 @@ the resulting load — its centre of mass. The median is the middle person after
 the crowd on each side. The mode is the most crowded position, and the only sensible centre when the
 values are labels. Spread is the width of the crowd. Two couriers with the same mean delivery time can
 have completely different reliability: $8,9,10,11,12$ minutes and $1,5,10,15,19$ minutes both average
-$10$, but the first has standard deviation $1.58$ and the second $7.07$.
+$10$, but the first has standard deviation $1.58$ and the second $7.28$.
 
 **Why square the deviations?** Signed deviations cancel, so they cannot measure spread. Squaring removes
 the signs, makes the function differentiable, and identifies the mean as the unique minimiser of
@@ -135,9 +135,9 @@ $$\tilde{x}=\begin{cases}x_{((n+1)/2)}, & n\text{ odd},\\[2pt]
 For $0<p<1$ the *$p$-quantile* under the linear interpolation rule is obtained from $h=1+(n-1)p$: writing
 $h=j+g$ with $j=\lfloor h\rfloor$ and $0\le g<1$,
 
-$$Q(p)=x_{(j)}+g\bigl(x_{(j+1)}-x_{(j)}\bigr),$$
+$$Q(p)=x_{(j)}+g\bigl(x_{(j+1)}-x_{(j)}\bigr).$$
 
-with $x_{(n+1)}:=x_{(n)}$. The *quartiles* are $Q_1=Q(0.25)$, $Q_2=Q(0.50)=\tilde{x}$ and
+The *quartiles* are $Q_1=Q(0.25)$, $Q_2=Q(0.50)=\tilde{x}$ and
 $Q_3=Q(0.75)$. Other conventions exist and are compared in §7.6.
 
 **Definition 5.6 (Mode).** A *mode* is a value of maximal frequency. A dataset is unimodal, bimodal or
@@ -311,8 +311,9 @@ breakdown point zero, and one distant point can make it arbitrarily large.
 
 For a normal distribution about $68.3\%$ of observations lie within one standard deviation of the mean,
 $95.4\%$ within two and $99.7\%$ within three. These are exact statements about the normal distribution,
-not about an arbitrary dataset. For any distribution with finite variance, Chebyshev guarantees only
-$75\%$ within two standard deviations and $88.9\%$ within three.
+not about an arbitrary dataset. For any distribution with finite variance, Chebyshev's inequality
+$\Pr(\lvert X-\mu\rvert\ge k\sigma)\le1/k^2$ guarantees only $75\%$ within two standard deviations and
+$88.9\%$ within three.
 
 **Mean absolute deviation.** $\operatorname{MeanAD}=\frac1n\sum_i\lvert x_i-\bar{x}\rvert$. It is in the
 original units, less sensitive to extremes than the standard deviation, and matches absolute loss. It is
@@ -401,9 +402,10 @@ $0.7\%$ of normal observations (Proposition 8.7). Values beyond $3\operatorname{
 
 The competing $z$-score rule flags $\lvert z_i\rvert>3$. It fails where outliers matter most: the mean and
 standard deviation in the denominator are computed from the same data, so an extreme value inflates both
-and shrinks its own $z$-score. This is **masking**. In the eleven-value example above, $47$ has
-$z\approx2.69$ with all data but $z\approx6.23$ when the standard deviation is computed without it: the
-outlier hides itself. A robust alternative is the modified $z$-score
+and shrinks its own $z$-score. This is **masking**. For the eleven values
+$3,5,6,8,9,11,12,15,18,21,47$, the largest has $z\approx2.69$ with all data but $z\approx6.23$ when the
+standard deviation is computed without it: the outlier hides itself. A robust alternative is the modified
+$z$-score
 $M_i=0.6745(x_i-\tilde{x})/\operatorname{MedAD}$, with threshold $\lvert M_i\rvert>3.5$ (Iglewicz and
 Hoaglin); the constant matches its scale to an ordinary $z$-score under normality, and the robust
 denominator cannot be masked.
@@ -434,8 +436,8 @@ $(\bar{x}-\text{mode})/s$, and Pearson's second, $3(\bar{x}-\tilde{x})/s$; neith
 can disagree in small or multimodal samples.
 
 Skewness is moment-based and therefore sensitive to extremes: one large value can create large positive
-skewness in otherwise symmetric data. It measures asymmetry, not non-normality — a symmetric heavy-tailed
-distribution has $g_1=0$, and so does a symmetric bimodal one — and says nothing about the number of
+skewness in otherwise symmetric data. It measures asymmetry, not non-normality — a symmetric distribution
+with a finite third moment has $g_1=0$, and so does a symmetric bimodal one — and says nothing about the number of
 peaks. Report it with a histogram. The ordering mode $<$ median $<$ mean for right-skewed data is a rule
 of thumb, not a theorem; it fails for some multimodal or mixture distributions. A large gap between mean
 and median is a signal to look at the shape, not a proof of skewness.
@@ -723,7 +725,7 @@ $99$th; without normality, only the position in standard-deviation units is know
 
 Applying the same formula to §9.1 with $\bar{x}=10$ and $s=5.8878$ gives $z=-1.019,-0.679,-0.510,-0.170,
 0.170,0.170,2.038$. The $z$-scores sum to $0$ and have sample variance $1$ (§8.9). The largest value is
-$2.04$ standard deviations above the mean — unusual but not extreme by the normal benchmark ($2.3\%$
+$2.04$ standard deviations above the mean — unusual but not extreme by the normal benchmark ($2.1\%$
 above), and its own $z$-score is pulled towards zero because it inflates $s$ (§7.7).
 
 ### 9.6 A histogram with unequal bins
@@ -868,9 +870,9 @@ every significant step, the pitfalls and a check where one exists.
 * The **sample variance** uses divisor $n-1$ and is unbiased for $\sigma^2$ under independent sampling;
   the divisor-$n$ version is biased low by $\sigma^2/n$.
 * The **standard deviation** has the data's units and is not robust; the **IQR** and **MedAD** are.
-* **Quartiles depend on a convention.** State it when an outlier conclusion depends on it.
-* The **$1.5\times\operatorname{IQR}$ rule** flags about $0.7\%$ of normal observations. Investigate
-  flagged values; never delete them automatically. Ordinary $z$-scores hide outliers through masking.
+* **Quartiles depend on a convention.** State it when an outlier conclusion depends on it. The
+  **$1.5\times\operatorname{IQR}$ rule** flags about $0.7\%$ of normal observations; investigate flagged
+  values, never delete them automatically, and note that ordinary $z$-scores hide outliers through masking.
 * **Skewness** measures asymmetry; reflection reverses its sign, and changes of location or positive scale
   leave it unchanged. Mean–median ordering is a rule of thumb, not a theorem.
 * A **histogram with unequal bins** must plot densities; shape depends on bin width and origin, so check
@@ -879,8 +881,7 @@ every significant step, the pitfalls and a check where one exists.
   $1$. Percentile readings need normality; Chebyshev gives only a bound.
 * **Aggregation** can reverse comparisons (Simpson's paradox) and can suggest individual relationships
   that do not hold (ecological fallacy). Stratify, standardise and report stratum sizes.
-* Every summary is lossy: a table of summaries and a graph of the raw data together say more than either
-  alone.
+* Every summary is lossy; a table of summaries and a graph of the raw data say more than either alone.
 
 ## 16. Further Learning
 
@@ -890,9 +891,9 @@ every significant step, the pitfalls and a check where one exists.
   for expectation, variance, independence and the normal distribution.
 * **Reference:** [Reference: Formulas](../../reference/formulas/README.md).
 * **Books.** Tukey, *Exploratory Data Analysis* (1977), for the boxplot and robust summaries; Moore, *The
-  Basic Practice of Statistics*, for a careful introduction with exercises; Freedman, Pisani and Purves,
-  *Statistics*, for what statistical claims mean; Huff, *How to Lie with Statistics* (1954), for graphical
-  distortion; Hampel, Ronchetti, Rousseeuw and Stahel, *Robust Statistics* (1986), for the theory.
+  Basic Practice of Statistics*; Freedman, Pisani and Purves, *Statistics*, for what statistical claims
+  mean; Huff, *How to Lie with Statistics* (1954), for graphical distortion; Hampel, Ronchetti, Rousseeuw
+  and Stahel, *Robust Statistics* (1986), for the theory.
 * **After this discipline:** hypothesis testing, regression, Bayesian statistics and experimental design,
   the remaining topics of [Statistics](../README.md).
 

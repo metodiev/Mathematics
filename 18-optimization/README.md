@@ -12,7 +12,7 @@ Linear programming, convexity, Lagrange multipliers and gradient methods: the ma
 
 | | |
 |---|---|
-| Topics | 4 (0 complete, 0 draft, 4 planned) |
+| Topics | 4 (4 complete, 0 draft, 0 planned) |
 | Estimated study time | ~37 hours |
 | Prerequisites | [08-linear-algebra](../08-linear-algebra/README.md), [07-calculus](../07-calculus/README.md) |
 
@@ -36,10 +36,10 @@ flowchart LR
 
 | # | Topic | Level | Est. time | Status | Materials |
 |---|---|---|---|---|---|
-| 1 | Linear Programming | Intermediate | 9 h | Planned | — |
-| 2 | Convex Optimization | Advanced | 11 h | Planned | — |
-| 3 | Lagrange Multipliers | Advanced | 8 h | Planned | — |
-| 4 | Gradient Methods | Advanced | 9 h | Planned | — |
+| 1 | [Linear Programming](01-linear-programming/README.md) | Intermediate | 9 h | Complete | [Tutorial](01-linear-programming/README.md) · [Exercises](01-linear-programming/exercises.md) · [Solutions](01-linear-programming/solutions.md) |
+| 2 | [Convex Optimization](02-convex-optimization/README.md) | Advanced | 11 h | Complete | [Tutorial](02-convex-optimization/README.md) · [Exercises](02-convex-optimization/exercises.md) · [Solutions](02-convex-optimization/solutions.md) |
+| 3 | [Lagrange Multipliers](03-lagrange-multipliers/README.md) | Advanced | 8 h | Complete | [Tutorial](03-lagrange-multipliers/README.md) · [Exercises](03-lagrange-multipliers/exercises.md) · [Solutions](03-lagrange-multipliers/solutions.md) |
+| 4 | [Gradient Methods](04-gradient-methods/README.md) | Advanced | 9 h | Complete | [Tutorial](04-gradient-methods/README.md) · [Exercises](04-gradient-methods/exercises.md) · [Solutions](04-gradient-methods/solutions.md) |
 
 ### What each topic covers
 

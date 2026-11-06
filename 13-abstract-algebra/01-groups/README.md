@@ -56,7 +56,7 @@ So a group is a set of *verbs*, not a set of nouns: transformations, with a rule
 
 ### 4.2 The multiplication table is the whole group
 
-Suppose a group has four elements. Write them as row and column headings of a $4\times 4$ table and fill each cell with the product. That table — the **Cayley table** — determines the group completely: it tells you every product, hence every property that can be expressed using the operation. Two groups with the same table up to relabelling are "the same group" (isomorphic, Definition 7.7.4).
+Suppose a group has four elements. Write them as row and column headings of a $4\times 4$ table and fill each cell with the product. That table — the **Cayley table** — determines the group completely: it tells you every product, hence every property that can be expressed using the operation. Two groups with the same table up to relabelling are "the same group" (isomorphic, Definition 7.7.1).
 
 This is worth pausing on. It means that the identity of the elements is irrelevant. The group of rotations of a square by $0°, 90°, 180°, 270°$ and the group $\{0,1,2,3\}$ under addition modulo $4$ have the same table. They are the same group wearing different costumes. Abstraction is the act of noticing this.
 
@@ -102,19 +102,9 @@ Note carefully what (G2) and (G3) say: the identity must work on *both* sides, a
 
 ### 5.3 Multiplicative and additive notation
 
-For a general group we write the operation as multiplication: $ab$ means $a \ast b$, $e$ (or $1$) is the identity, $a^{-1}$ is the inverse, and $a^n$ is the $n$-fold product (Section 7.2 defines this for negative $n$ too). We call this **multiplicative notation**.
-
-When the group is abelian, and especially when the operation is addition of numbers, we use **additive notation**: $a + b$, identity $0$, inverse $-a$, and $na$ instead of $a^n$.
-
-| Concept | Multiplicative | Additive |
-|---|---|---|
-| operation | $ab$ | $a + b$ |
-| identity | $e$ or $1$ | $0$ |
-| inverse of $a$ | $a^{-1}$ | $-a$ |
-| $n$-fold repeated operation | $a^n$ | $na$ |
-| order of $a$ | least $n \ge 1$ with $a^n = e$ | least $n \ge 1$ with $na = 0$ |
-
-Never mix the two in one computation. Writing $a^{-1}$ in an additive abelian group is a notation error even though the underlying idea is the same.
+For a general group we write the operation multiplicatively: $ab$ means $a \ast b$, $e$ (or $1$) is the identity, $a^{-1}$ is the inverse, and $a^n$ is the $n$-fold product (Section 7.2 defines this for negative $n$ as well). When the group is abelian, and especially when the operation is addition of numbers, we use **additive notation**: $a+b$ for the operation, $0$ for the identity, $-a$ for the inverse, and $na$ in place of $a^n$. The dictionary is
+$$(ab,\ e,\ a^{-1},\ a^n) \quad \longleftrightarrow \quad (a+b,\ 0,\ -a,\ na).$$
+Never mix the two in one computation: writing $a^{-1}$ in an additive group is a notation error even though the underlying idea is the same.
 
 ### 5.4 The order of a group
 
@@ -161,7 +151,7 @@ Each row of the following table is a group; the reader should be able to name th
 | $S_n = \operatorname{Sym}(\{1,\dots,n\})$ | composition | $\operatorname{id}$ | $\sigma^{-1}$ | $n!$ |
 | $GL_n(\mathbb{R})$ | matrix multiplication | $I_n$ | $A^{-1}$ | infinite |
 | $SL_n(\mathbb{R}) = \{A : \det A = 1\}$ | matrix multiplication | $I_n$ | $A^{-1}$ | infinite |
-| $D_n$ (symmetries of a regular $n$-gon) | composition | $\operatorname{id}$ | see Section 7.9 | $2n$ |
+| $D_n$ (symmetries of a regular $n$-gon) | composition | $\operatorname{id}$ | the inverse motion | $2n$ |
 | $Q_8 = \{\pm 1, \pm i, \pm j, \pm k\}$ | quaternion multiplication | $1$ | $-i = i^{-1}$, etc. | $8$ |
 | $\{e\}$ | trivial | $e$ | $e$ | $1$ |
 
@@ -184,16 +174,12 @@ Knowing what fails is as instructive as knowing what holds.
 | $(\mathbb{N}_0, +)$ | (G3) fails: $1$ has no inverse in $\mathbb{N}_0$ |
 | $(\mathbb{Z}, \cdot)$ | (G3) fails: $2$ has no inverse in $\mathbb{Z}$ |
 | $(\mathbb{Q}, \cdot)$ | (G3) fails: $0$ has no inverse |
-| $(\mathbb{Z}, -)$ | (G1) fails: $(5-3)-1 = 1 \ne 3 = 5-(3-1)$; also (G2) fails |
-| $(2\mathbb{Z}, \cdot)$ | (G2) fails: an identity would have to satisfy $e \cdot 2 = 2$, so $e = 1 \notin 2\mathbb{Z}$ |
+| $(\mathbb{Z}, -)$ | (G1) fails: $(5-3)-1 = 1 \ne 3 = 5-(3-1)$; (G2) also fails |
+| $(2\mathbb{Z}, \cdot)$ | (G2) fails: an identity would need $e\cdot 2 = 2$, so $e = 1 \notin 2\mathbb{Z}$ |
 | $(M_n(\mathbb{R}), \cdot)$ | (G3) fails: singular matrices have no inverse |
-| $(\{z \in \mathbb{C} : |z| \le 1\}, \cdot)$ | (G3) fails: $0$ has no inverse, and $\tfrac12$ has inverse $2$ outside the set |
+| $(\{z : \vert z\vert \le 1\}, \cdot)$ | (G3) fails: $\tfrac12$ has inverse $2$ outside the set |
 
-Each axiom earns its place by the theorems it makes possible.
-
-* Without **(G1)**, the product $abc$ has no meaning, so no argument about products of three or more elements survives. Subtraction on $\mathbb{Z}$ shows that associativity is a genuine restriction, not a formality.
-* Without **(G3)**, cancellation fails: in the monoid $(\mathbb{Z}, \cdot)$ we have $0 \cdot 1 = 0 \cdot 2$ with $1 \ne 2$. Proposition 7.1.3 shows that a group never behaves like this.
-* Without **(G2)**, we cannot even state (G3), and the element $a^0$ has no meaning.
+Each axiom earns its place by the theorems it makes possible. Without **(G1)** the product $abc$ has no meaning, and subtraction on $\mathbb{Z}$ shows that associativity is a genuine restriction. Without **(G3)** cancellation fails: in the monoid $(\mathbb{Z},\cdot)$ we have $0\cdot 1 = 0\cdot 2$ with $1 \ne 2$, whereas Proposition 7.1.3 shows that groups never behave like this. Without **(G2)** we cannot even state (G3), and $a^0$ has no meaning.
 
 ### 5.8 How weak can the axioms be?
 
@@ -220,7 +206,7 @@ We keep the symmetric axioms because the examples satisfy them and because they 
 | $e$, $1$ | the identity | the neutral element of $G$ |
 | $a^{-1}$ | $a$ inverse | the unique element with $aa^{-1} = a^{-1}a = e$ |
 | $a^n$ | $a$ to the $n$ | $n$-fold product; defined for $n \in \mathbb{Z}$ in Section 7.2 |
-| $|G|$ | order of $G$ | the number of elements of $G$ |
+| $\vert G\vert$ | order of $G$ | the number of elements of $G$ |
 | $\operatorname{ord}(a)$ | order of $a$ | least $n \ge 1$ with $a^n = e$ |
 | $a \equiv b \pmod n$ | $a$ congruent to $b$ mod $n$ | $n \mid (a-b)$ |
 | $\mathbb{Z}/n\mathbb{Z}$ | $\mathbb{Z}$ mod $n$ | the additive group of residue classes |
@@ -249,7 +235,7 @@ We keep the symmetric axioms because the examples satisfy them and because they 
 | $A_n$ | alternating group | the even permutations, $\ker(\operatorname{sgn})$ |
 | $\operatorname{sgn}(\sigma)$ | sign of $\sigma$ | $+1$ for even, $-1$ for odd |
 | $(a_1\,a_2\,\cdots\,a_k)$ | a $k$-cycle | $a_1 \mapsto a_2 \mapsto \cdots \mapsto a_k \mapsto a_1$ |
-| $D_n$ | dihedral group | symmetries of a regular $n$-gon, $|D_n| = 2n$ |
+| $D_n$ | dihedral group | symmetries of a regular $n$-gon, $\vert D_n\vert = 2n$ |
 | $GL_n(\mathbb{R})$, $SL_n(\mathbb{R})$ | general, special linear group | invertible matrices; those with determinant $1$ |
 | $Q_8$ | quaternion group | $\{\pm1, \pm i, \pm j, \pm k\}$ |
 | $G \times H$ | direct product | pairs $(g,h)$ with componentwise operation |
@@ -300,7 +286,7 @@ The mnemonic is *socks and shoes*: to undo "put on socks, then shoes" you must "
 $$b = eb = (a^{-1}a)b = a^{-1}(ab) = a^{-1}e = a^{-1}.$$
 For the second claim: if $a^2 = e$ then $a a = e$, so $a = a^{-1}$ by the first part. Conversely if $a = a^{-1}$ then $a^2 = a a^{-1} = e$. $\blacksquare$
 
-**Proposition 7.1.6 (the inverse of a product in abelian groups).** If $G$ is abelian then $(ab)^n = a^n b^n$ for all $n \in \mathbb{Z}$.
+**Proposition 7.1.6 (powers in abelian groups).** If $G$ is abelian then $(ab)^n = a^n b^n$ for all $n \in \mathbb{Z}$.
 
 *Proof.* For $n \ge 0$ this is induction using $ab = ba$ (Section 7.2, Proposition 7.2.2); for $n < 0$ apply the positive case to $a^{-1}, b^{-1}$, which also commute. $\blacksquare$
 
@@ -553,13 +539,13 @@ So the cosets of $H$ form a group under the natural multiplication **if and only
 
 **Example 7.6.7.** $\mathbb{Z}/n\mathbb{Z}$ is the quotient of $(\mathbb{Z},+)$ by $n\mathbb{Z}$ and has order $n$: the residue-class group of Section 5.6, now seen as an instance of a general construction. In $G = \mathbb{Z}/12\mathbb{Z}$ with $H = \langle\bar 4\rangle = \{\bar 0,\bar 4,\bar 8\}$ the cosets are $H$, $\bar 1+H$, $\bar 2+H$, $\bar 3+H$, and $G/H$ is cyclic of order $4$ generated by $\bar 1+H$, so $G/H \cong \mathbb{Z}/4\mathbb{Z}$.
 
-**Proposition 7.6.9 (when is a quotient abelian?).** For $H \trianglelefteq G$, the quotient $G/H$ is abelian if and only if $aba^{-1}b^{-1} \in H$ for all $a,b \in G$.
+**Proposition 7.6.8 (when is a quotient abelian?).** For $H \trianglelefteq G$, the quotient $G/H$ is abelian if and only if $aba^{-1}b^{-1} \in H$ for all $a,b \in G$.
 
 *Proof.* $aH\cdot bH = bH\cdot aH \iff abH = baH \iff (ba)^{-1}ab \in H \iff a^{-1}b^{-1}ab \in H$ (Corollary 7.5.3); replacing $a,b$ by $a^{-1},b^{-1}$ turns the last condition into $aba^{-1}b^{-1} \in H$. $\blacksquare$
 
 The elements $[a,b] = aba^{-1}b^{-1}$ are the **commutators** and $G' = \langle [a,b]\rangle$ is the **commutator subgroup**; the proposition says that $G/H$ is abelian iff $G' \le H$.
 
-**Theorem 7.6.10 (normality is not transitive).** Let $V_4 = \{e,(1\,2)(3\,4),(1\,3)(2\,4),(1\,4)(2\,3)\}$. Then $V_4 \trianglelefteq A_4$ and $A_4 \trianglelefteq S_4$, but $K = \{e,(1\,2)(3\,4)\}$ is not normal in $S_4$.
+**Theorem 7.6.9 (normality is not transitive).** Let $V_4 = \{e,(1\,2)(3\,4),(1\,3)(2\,4),(1\,4)(2\,3)\}$. Then $V_4 \trianglelefteq A_4$ and $A_4 \trianglelefteq S_4$, but $K = \{e,(1\,2)(3\,4)\}$ is not normal in $S_4$.
 
 *Proof.* $V_4$ is a subgroup: the product of two distinct double transpositions is the third and each double transposition is its own inverse. Conjugation preserves cycle type (Proposition 7.9.11), so $gV_4g^{-1} \subseteq V_4$ for all $g \in S_4$; conjugation is injective and $V_4$ is finite, so equality holds. Hence $V_4 \trianglelefteq S_4$ and therefore $V_4 \trianglelefteq A_4$. Also $A_4 \trianglelefteq S_4$ because $[S_4:A_4] = 2$. Finally, using Proposition 7.9.11,
 $$(1\,2\,3)(1\,2)(3\,4)(1\,2\,3)^{-1} = (2\,3)(1\,4) = (1\,4)(2\,3) \notin K,$$
@@ -602,11 +588,11 @@ the quotient wraps the real line around the circle, identifying all integers wit
 
 **Example 7.7.8 (normal subgroups are kernels).** The quotient map $\pi : G \to G/H$ has kernel exactly $H$, since $\pi(a) = aH = H$ iff $a \in H$. With Proposition 7.7.3 this shows that the normal subgroups are precisely the kernels of homomorphisms.
 
-**Proposition 7.7.10 (inner automorphisms).** For $g \in G$ define $\gamma_g(x) = gxg^{-1}$. Then $\gamma_g \in \operatorname{Aut}(G)$; the map $\gamma : G \to \operatorname{Aut}(G)$, $g \mapsto \gamma_g$, is a homomorphism with kernel $Z(G)$; hence $\operatorname{Inn}(G) := \operatorname{im}\gamma \cong G/Z(G)$.
+**Proposition 7.7.9 (inner automorphisms).** For $g \in G$ define $\gamma_g(x) = gxg^{-1}$. Then $\gamma_g \in \operatorname{Aut}(G)$; the map $\gamma : G \to \operatorname{Aut}(G)$, $g \mapsto \gamma_g$, is a homomorphism with kernel $Z(G)$; hence $\operatorname{Inn}(G) := \operatorname{im}\gamma \cong G/Z(G)$.
 
 *Proof.* $\gamma_g(xy) = gxyg^{-1} = (gxg^{-1})(gyg^{-1})$, so $\gamma_g$ is a homomorphism, and $\gamma_{g^{-1}}$ is a two-sided inverse, so it is bijective. Next, $\gamma_{gh}(x) = g(hxh^{-1})g^{-1} = (\gamma_g \circ \gamma_h)(x)$, so $\gamma$ is a homomorphism; and $\gamma_g = \operatorname{id}$ iff $gxg^{-1} = x$ for all $x$, i.e. iff $g \in Z(G)$. Apply the first isomorphism theorem. $\blacksquare$
 
-**Proposition 7.7.11.** If $G/Z(G)$ is cyclic, then $G$ is abelian.
+**Proposition 7.7.10.** If $G/Z(G)$ is cyclic, then $G$ is abelian.
 
 *Proof.* If $G/Z(G) = \langle gZ(G)\rangle$, every element has the form $g^kz$ with $k \in \mathbb{Z}$ and $z \in Z(G)$ (Corollary 7.5.3). Then
 $$(g^kz)(g^\ell w) = g^{k+\ell}zw = g^{\ell+k}wz = (g^\ell w)(g^k z),$$
@@ -804,7 +790,7 @@ So there are exactly two groups of order $6$: $\mathbb{Z}/6\mathbb{Z}$ and $S_3$
 
 **Order 8.** Five groups: $\mathbb{Z}/8$, $\mathbb{Z}/4\times\mathbb{Z}/2$, $(\mathbb{Z}/2)^3$, $D_4$ and $Q_8$. The proof is a longer case analysis; Exercise 33 carries it out completely. (The result is also in Dummit & Foote, §5.5.)
 
-**Order 9.** Every group of order $p^2$ is abelian. Indeed, by the class equation $|G| = |Z(G)| + \sum_i [G:C_G(a_i)]$ where each index is a nontrivial power of $p$, so $p \mid |Z(G)|$ and the centre is nontrivial. Then $|G/Z(G)|$ is $1$ or $p$, hence cyclic, and Proposition 7.7.11 gives that $G$ is abelian. So $G$ is abelian of order $9$: either it has an element of order $9$ and $G \cong \mathbb{Z}/9\mathbb{Z}$, or every non-identity element has order $3$, in which case choosing $a \ne e$ and $b \notin \langle a\rangle$ gives $\langle a\rangle \cap \langle b\rangle = \{e\}$ and $| \langle a\rangle\langle b\rangle| = 9$, so $G \cong \mathbb{Z}/3\mathbb{Z}\times\mathbb{Z}/3\mathbb{Z}$.
+**Order 9.** Every group of order $p^2$ is abelian. Indeed, by the class equation $|G| = |Z(G)| + \sum_i [G:C_G(a_i)]$ where each index is a nontrivial power of $p$, so $p \mid |Z(G)|$ and the centre is nontrivial. Then $|G/Z(G)|$ is $1$ or $p$, hence cyclic, and Proposition 7.7.10 gives that $G$ is abelian. So $G$ is abelian of order $9$: either it has an element of order $9$ and $G \cong \mathbb{Z}/9\mathbb{Z}$, or every non-identity element has order $3$, in which case choosing $a \ne e$ and $b \notin \langle a\rangle$ gives $\langle a\rangle \cap \langle b\rangle = \{e\}$ and $| \langle a\rangle\langle b\rangle| = 9$, so $G \cong \mathbb{Z}/3\mathbb{Z}\times\mathbb{Z}/3\mathbb{Z}$.
 
 **Order 10.** By Cauchy take $a$ of order $5$ and $b$ of order $2$; $\langle a\rangle$ has index $2$, hence is normal and $bab^{-1} = a^j$ with $j^2 \equiv 1 \pmod 5$ (conjugating twice by $b$ gives back $a$). So $j \in \{1,4\}$. For $j=1$, $ab = ba$ and $G \cong \mathbb{Z}/10\mathbb{Z}$; for $j=4$, $bab^{-1} = a^{-1}$ and the same normal-form computation as for order $6$ shows $G \cong D_5$, the symmetry group of the regular pentagon.
 
@@ -829,19 +815,19 @@ The table collects the working formulas with their hypotheses and the reason eac
 
 | Result | Hypotheses | Statement | Why it holds |
 |---|---|---|---|
-| Lagrange | $G$ finite, $H \le G$ | $|G| = [G:H]\,|H|$ | the cosets partition $G$ into blocks of size $|H|$ (§7.5) |
-| Element order | $G$ finite, $a \in G$ | $\operatorname{ord}(a)$ divides $|G|$ | $\operatorname{ord}(a) = |\langle a\rangle|$ and Lagrange (§7.2, §7.5) |
+| Lagrange | $G$ finite, $H \le G$ | $\vert G\vert = [G:H]\,\vert H\vert$ | the cosets partition $G$ into blocks of size $\vert H\vert$ (§7.5) |
+| Element order | $G$ finite, $a \in G$ | $\operatorname{ord}(a)$ divides $\vert G\vert$ | $\operatorname{ord}(a) = \vert\langle a\rangle\vert$ and Lagrange (§7.2, §7.5) |
 | Index tower | $K \le H \le G$ | $[G:K] = [G:H]\,[H:K]$ | count cosets of $K$ inside each coset of $H$ (§7.5) |
-| Quotient order | $H \trianglelefteq G$, $G$ finite | $|G/H| = |G|/|H|$ | the elements of $G/H$ are the cosets (§7.6) |
+| Quotient order | $H \trianglelefteq G$, $G$ finite | $\vert G/H\vert = \vert G\vert/\vert H\vert$ | the elements of $G/H$ are the cosets (§7.6) |
 | Order of a power | $\operatorname{ord}(g) = n$, $k \in \mathbb{Z}$ | $\operatorname{ord}(g^k) = n/\gcd(n,k)$ | Bézout plus minimality of $n$ (§7.2) |
 | Number of generators | $G$ cyclic of order $n$ | $\varphi(n)$ | $g^k$ generates iff $\gcd(k,n)=1$ (§7.4) |
 | Order of a permutation | $\sigma \in S_n$ | $\operatorname{lcm}$ of the cycle lengths | disjoint cycles have their own orders (§7.9) |
 | Sign | $\sigma \in S_n$ | $\operatorname{sgn}(\sigma) = (-1)^{N(\sigma)} = (-1)^{n-c(\sigma)}$ | parity of the transposition count (§7.9) |
-| Orbit–stabiliser | $G$ finite acting on $X$ | $|G\cdot x| = [G:G_x]$ | $gG_x \mapsto g\cdot x$ is a bijection (§7.8) |
-| Burnside | $G$ finite acting on finite $X$ | $\#\text{orbits} = \frac{1}{|G|}\sum_{g}|\operatorname{Fix}(g)|$ | double count the pairs $(g,x)$ with $gx = x$ (§7.8) |
-| Class equation | $G$ finite | $|G| = |Z(G)| + \sum_i [G:C_G(a_i)]$ | the orbits of conjugation (§7.8) |
-| Product of subgroups | $H, K$ finite subgroups | $|HK| = |H||K|/|H\cap K|$ | every fibre of $H\times K \to HK$ has size $|H\cap K|$ (below) |
-| Homomorphism order | $G$ finite, $\varphi : G \to H$ | $|G| = |\ker\varphi|\,|\operatorname{im}\varphi|$ | the first isomorphism theorem (§7.7) |
+| Orbit–stabiliser | $G$ finite acting on $X$ | $\vert G\cdot x\vert = [G:G_x]$ | $gG_x \mapsto g\cdot x$ is a bijection (§7.8) |
+| Burnside | $G$ finite acting on finite $X$ | $\#\text{orbits} = \frac{1}{\vert G\vert}\sum_{g}\vert\operatorname{Fix}(g)\vert$ | double count the pairs $(g,x)$ with $gx = x$ (§7.8) |
+| Class equation | $G$ finite | $\vert G\vert = \vert Z(G)\vert + \sum_i [G:C_G(a_i)]$ | the orbits of conjugation (§7.8) |
+| Product of subgroups | $H, K$ finite subgroups | $\vert HK\vert = \vert H\vert\vert K\vert/\vert H\cap K\vert$ | every fibre of $H\times K \to HK$ has size $\vert H\cap K\vert$ (below) |
+| Homomorphism order | $G$ finite, $\varphi : G \to H$ | $\vert G\vert = \vert\ker\varphi\vert\,\vert\operatorname{im}\varphi\vert$ | the first isomorphism theorem (§7.7) |
 
 **The product formula.** The map $H\times K \to HK$, $(h,k)\mapsto hk$, is onto. The fibre over $hk$ consists of the pairs $(hu^{-1}, uk)$ with $u \in H\cap K$: from $h'k' = hk$ we get $h^{-1}h' = kk'^{-1} \in H\cap K$, and each such $u$ gives a pair. So every fibre has $|H\cap K|$ elements and $|H||K| = |HK|\,|H\cap K|$.
 
@@ -1048,33 +1034,29 @@ flowchart TD
 
 ## 11. Common Mistakes
 
-**1. Assuming $ab = ba$.** The single most common error. Every computation in a non-abelian group must keep the order of factors. Test yourself: in $S_3$, $(1\,2)(1\,3) = (1\,3\,2)$ but $(1\,3)(1\,2) = (1\,2\,3)$.
+**1. Assuming $ab = ba$.** Factor order matters: in $S_3$, $(1\,2)(1\,3) = (1\,3\,2)$ but $(1\,3)(1\,2) = (1\,2\,3)$.
 
-**2. Writing $(ab)^{-1} = a^{-1}b^{-1}$.** The correct formula is $b^{-1}a^{-1}$ (Proposition 7.1.4). It happens to be the same in an abelian group, which is why the error survives in elementary courses.
+**2. Writing $(ab)^{-1} = a^{-1}b^{-1}$.** The correct formula is $b^{-1}a^{-1}$, which agrees with it only when the group is abelian.
 
-**3. Cancelling on the wrong side, or cancelling sums.** In a group, $ab = ac$ gives $b = c$; but $ab = ca$ gives nothing. And in $(\mathbb{Z},+)$ one cancels additively: $a + b = a + c$ gives $b = c$, which is $b$ and $c$ subtracted, not divided.
+**3. Cancelling on the wrong side.** From $ab = ac$ one gets $b = c$; from $ab = ca$, nothing.
 
-**4. Confusing $\operatorname{ord}(a)$ with $|G|$.** The order of an element divides $|G|$; it is not equal to it unless the element generates the group. In $S_3$, $|S_3| = 6$ but the elements have orders $1,2,2,2,3,3$.
+**4. Confusing $\operatorname{ord}(a)$ with $|G|$.** In $S_3$, $|S_3| = 6$ while the element orders are $1,2,2,2,3,3$.
 
-**5. Believing the converse of Lagrange.** $|H| \mid |G|$ does not guarantee a subgroup of that order; $A_4$ has order $12$ and no subgroup of order $6$ (Theorem 7.5.11).
+**5. Believing the converse of Lagrange.** $|H| \mid |G|$ does not force a subgroup of that order: $A_4$ has none of order $6$ (Theorem 7.5.11).
 
-**6. Treating "normal" as automatic.** Subgroups of index $2$ are normal, and subgroups of abelian groups are normal, but in general normality must be checked. $\langle(1\,2)\rangle$ is not normal in $S_3$.
+**6. Treating normality as automatic.** Index $2$ and abelian groups give it for free, but in general it must be checked: $\langle(1\,2)\rangle$ is not normal in $S_3$.
 
-**7. Assuming normality is transitive.** $V_4 \trianglelefteq A_4$ and $A_4 \trianglelefteq S_4$, yet $V_4$'s subgroup of order $2$ is not normal in $S_4$ (Theorem 7.6.10).
+**7. Assuming normality is transitive.** $V_4 \trianglelefteq A_4 \trianglelefteq S_4$, yet $\{e,(1\,2)(3\,4)\}$ is not normal in $S_4$ (Theorem 7.6.9).
 
-**8. Forming $G/H$ for a non-normal $H$.** The set of cosets exists, but the multiplication is not well defined and the result is not a group (Theorem 7.6.5). For example, the cosets of $\langle(1\,2)\rangle$ in $S_3$ do not multiply consistently.
+**8. Forming $G/H$ for a non-normal $H$.** The cosets exist as sets, but the multiplication is not well defined (Theorem 7.6.5).
 
-**9. Reading $aH = Ha$ as $ah = ha$ for each $h$.** Equality of the two *sets* does not mean each element commutes with $a$; it means that for each $h$ there is some $h'$ with $ah = h'a$. In $S_3$ with $H = A_3$ and $a = (1\,2)$, indeed $(1\,2)H = H(1\,2)$, but $(1\,2)(1\,2\,3) = (2\,3)$ while $(1\,2\,3)(1\,2) = (1\,3)$.
+**9. Reading $aH = Ha$ as $ah = ha$ for each $h$.** It only says that for each $h$ there is $h'$ with $ah = h'a$: in $S_3$ with $H = A_3$ and $a = (1\,2)$, $(1\,2)(1\,2\,3) = (2\,3)$ while $(1\,2\,3)(1\,2) = (1\,3)$.
 
-**10. Thinking the sign of a permutation depends on the factorization.** A permutation can be written as a product of transpositions in many ways, but the parity is invariant (Theorem 7.9.7(4)).
-
-**11. Forgetting that $A_n$ has index $2$ but is not abelian for $n \ge 4$.** $A_4$ is non-abelian of order $12$; index $2$ gives normality, not commutativity.
-
-**12. Confusing a group with a set of numbers.** $(\mathbb{Z},+)$ and $(\mathbb{Z},\cdot)$ are different groups with the same underlying set, and only the first is a group at all. Always name the operation.
+**10. Thinking the sign depends on the factorization, or that index $2$ gives commutativity.** Transposition factorizations are many but their parity is invariant (Theorem 7.9.7(4)); and $A_4$ has index $2$ in $S_4$ yet is non-abelian.
 
 ## 12. Applications
 
-**Symmetry and crystallography.** Symmetry groups classify crystal structures (230 space groups, 32 point groups in three dimensions), and molecular point groups determine which vibrational modes are infrared or Raman active. A molecule is chiral exactly when its symmetry group contains no orientation-reversing element.
+**Symmetry, crystallography and chemistry.** Symmetry groups classify crystal structures (230 space groups, 32 point groups in three dimensions). Molecular point groups (for example $D_{4h}$ for a square-planar molecule, $T_d$ for methane) determine which vibrational modes are infrared or Raman active, and a molecule is chiral exactly when its symmetry group contains no orientation-reversing element.
 
 **Physics.** Noether's theorem attaches a conserved quantity to every continuous symmetry: translations give momentum, rotations give angular momentum, time translations give energy. Quantum states carry representations of the symmetry group, elementary particles are classified by representations of groups such as $SU(3)\times SU(2)\times U(1)$, spin is the representation theory of $SU(2)$, and the Pauli principle is the sign homomorphism of $S_n$ acting on $n$-particle wavefunctions.
 

@@ -12,7 +12,7 @@ From coin flips to measure-theoretic foundations, probability is the mathematics
 
 | | |
 |---|---|
-| Topics | 7 (3 complete, 1 draft, 3 planned) |
+| Topics | 7 (7 complete, 0 draft, 0 planned) |
 | Estimated study time | ~68 hours |
 | Prerequisites | [07-calculus](../07-calculus/README.md) |
 
@@ -44,11 +44,11 @@ flowchart TD
 |---|---|---|---|---|---|
 | 1 | [Probability Foundations](01-probability-foundations/README.md) | Intermediate | 9 h | Complete | [Tutorial](01-probability-foundations/README.md) · [Exercises](01-probability-foundations/exercises.md) · [Solutions](01-probability-foundations/solutions.md) |
 | 2 | [Conditional Probability and Independence](02-conditional-probability-and-independence/README.md) | Intermediate | 8 h | Complete | [Tutorial](02-conditional-probability-and-independence/README.md) · [Exercises](02-conditional-probability-and-independence/exercises.md) · [Solutions](02-conditional-probability-and-independence/solutions.md) |
-| 3 | [Random Variables](03-random-variables/README.md) | Advanced | 10 h | Draft | [Tutorial](03-random-variables/README.md) · [Exercises](03-random-variables/exercises.md) |
-| 4 | Probability Distributions | Advanced | 12 h | Planned | — |
+| 3 | [Random Variables](03-random-variables/README.md) | Advanced | 10 h | Complete | [Tutorial](03-random-variables/README.md) · [Exercises](03-random-variables/exercises.md) · [Solutions](03-random-variables/solutions.md) |
+| 4 | [Probability Distributions](04-probability-distributions/README.md) | Advanced | 12 h | Complete | [Tutorial](04-probability-distributions/README.md) · [Exercises](04-probability-distributions/exercises.md) · [Solutions](04-probability-distributions/solutions.md) |
 | 5 | [Expectation and Variance](05-expectation-and-variance/README.md) | Advanced | 9 h | Complete | [Tutorial](05-expectation-and-variance/README.md) · [Exercises](05-expectation-and-variance/exercises.md) · [Solutions](05-expectation-and-variance/solutions.md) |
-| 6 | Law of Large Numbers and the Central Limit Theorem | Advanced | 8 h | Planned | — |
-| 7 | Stochastic Processes | Advanced | 12 h | Planned | — |
+| 6 | [Law of Large Numbers and the Central Limit Theorem](06-law-of-large-numbers-and-central-limit-theorem/README.md) | Advanced | 8 h | Complete | [Tutorial](06-law-of-large-numbers-and-central-limit-theorem/README.md) · [Exercises](06-law-of-large-numbers-and-central-limit-theorem/exercises.md) · [Solutions](06-law-of-large-numbers-and-central-limit-theorem/solutions.md) |
+| 7 | [Stochastic Processes](07-stochastic-processes/README.md) | Advanced | 12 h | Complete | [Tutorial](07-stochastic-processes/README.md) · [Exercises](07-stochastic-processes/exercises.md) · [Solutions](07-stochastic-processes/solutions.md) |
 
 ### What each topic covers
 

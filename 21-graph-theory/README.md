@@ -12,7 +12,7 @@ Graphs model everything from road networks to social networks. Trees, connectivi
 
 | | |
 |---|---|
-| Topics | 6 (0 complete, 1 draft, 5 planned) |
+| Topics | 6 (6 complete, 0 draft, 0 planned) |
 | Estimated study time | ~50 hours |
 | Prerequisites | [09-discrete-mathematics](../09-discrete-mathematics/README.md) |
 
@@ -40,12 +40,12 @@ flowchart LR
 
 | # | Topic | Level | Est. time | Status | Materials |
 |---|---|---|---|---|---|
-| 1 | [Graph Basics](01-graph-basics/README.md) | Intermediate | 8 h | Draft | [Tutorial](01-graph-basics/README.md) · [Exercises](01-graph-basics/exercises.md) |
-| 2 | Trees | Intermediate | 7 h | Planned | — |
-| 3 | Paths and Connectivity | Intermediate | 8 h | Planned | — |
-| 4 | Planarity and Colouring | Advanced | 9 h | Planned | — |
-| 5 | Matching and Flows | Advanced | 9 h | Planned | — |
-| 6 | Spectral Graph Theory | Advanced | 9 h | Planned | — |
+| 1 | [Graph Basics](01-graph-basics/README.md) | Intermediate | 8 h | Complete | [Tutorial](01-graph-basics/README.md) · [Exercises](01-graph-basics/exercises.md) · [Solutions](01-graph-basics/solutions.md) |
+| 2 | [Trees](02-trees/README.md) | Intermediate | 7 h | Complete | [Tutorial](02-trees/README.md) · [Exercises](02-trees/exercises.md) · [Solutions](02-trees/solutions.md) |
+| 3 | [Paths and Connectivity](03-paths-and-connectivity/README.md) | Intermediate | 8 h | Complete | [Tutorial](03-paths-and-connectivity/README.md) · [Exercises](03-paths-and-connectivity/exercises.md) · [Solutions](03-paths-and-connectivity/solutions.md) |
+| 4 | [Planarity and Colouring](04-planarity-and-coloring/README.md) | Advanced | 9 h | Complete | [Tutorial](04-planarity-and-coloring/README.md) · [Exercises](04-planarity-and-coloring/exercises.md) · [Solutions](04-planarity-and-coloring/solutions.md) |
+| 5 | [Matching and Flows](05-matching-and-flows/README.md) | Advanced | 9 h | Complete | [Tutorial](05-matching-and-flows/README.md) · [Exercises](05-matching-and-flows/exercises.md) · [Solutions](05-matching-and-flows/solutions.md) |
+| 6 | [Spectral Graph Theory](06-spectral-graph-theory/README.md) | Advanced | 9 h | Complete | [Tutorial](06-spectral-graph-theory/README.md) · [Exercises](06-spectral-graph-theory/exercises.md) · [Solutions](06-spectral-graph-theory/solutions.md) |
 
 ### What each topic covers
 

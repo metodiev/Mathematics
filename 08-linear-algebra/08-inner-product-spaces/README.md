@@ -69,7 +69,7 @@ By the end of this tutorial you will be able to
 1. state the inner-product axioms over $\mathbb{R}$ and over $\mathbb{C}$ and verify them for concrete
    examples, including function spaces;
 2. derive the induced norm and distance and prove the parallelogram and polarization identities;
-3. prove the Cauchy–Schwarz inequality (two ways) and characterise its equality case;
+3. prove the Cauchy–Schwarz inequality and characterise its equality case;
 4. prove the triangle inequality and use it to show that the induced distance is a metric;
 5. define angles and orthogonality, and prove that orthogonal nonzero vectors are independent;
 6. carry out Gram–Schmidt orthogonalisation, prove it works, and compute orthonormal bases;
@@ -78,7 +78,7 @@ By the end of this tutorial you will be able to
 8. characterise orthogonal matrices, prove they are exactly the isometries fixing the origin, and
    classify the $2\times2$ cases;
 9. derive the normal equations for least squares as a projection, and solve data-fitting problems;
-10. compute a QR decomposition and use it to solve least squares;
+10. compute a QR decomposition and use it to solve least squares.
 
 ## 4. Intuition
 
@@ -240,7 +240,7 @@ $$
 
 Equality holds if and only if $\mathbf{u}$ and $\mathbf{v}$ are linearly dependent.
 
-**Proof 1 (minimising a quadratic).** If $\mathbf{v} = \mathbf{0}$ both sides are $0$, so assume
+**Proof (minimising a quadratic).** If $\mathbf{v} = \mathbf{0}$ both sides are $0$, so assume
 $\mathbf{v} \neq \mathbf{0}$. For every real $t$, positive definiteness gives
 
 $$
@@ -266,7 +266,7 @@ $$
 
 **Equality case.** If $\mathbf{u} = c\mathbf{v}$ then
 $\lvert\langle\mathbf{u},\mathbf{v}\rangle\rvert = \lvert c\rvert\lVert\mathbf{v}\rVert^2 = \lVert\mathbf{u}\rVert\lVert\mathbf{v}\rVert$.
-Conversely, equality in Proof 1 forces the quadratic $\lVert\mathbf{u}-t\mathbf{v}\rVert^2$ to vanish for
+Conversely, equality in the proof forces the quadratic $\lVert\mathbf{u}-t\mathbf{v}\rVert^2$ to vanish for
 $t = \operatorname{Re}\langle\mathbf{u},\mathbf{v}\rangle/\lVert\mathbf{v}\rVert^2$ in the real case, i.e.
 $\mathbf{u} = t\mathbf{v}$. In the complex case equality forces $\mathbf{u} = e^{i\theta}t\mathbf{v}$.
 Either way the vectors are dependent. $\blacksquare$
@@ -295,6 +295,10 @@ $d(\mathbf{u},\mathbf{v}) = d(\mathbf{v},\mathbf{u})$, and $d(\mathbf{u},\mathbf
 
 **Proof.** The first two are immediate from (IP3) and conjugate symmetry. For the third write
 $\mathbf{u}-\mathbf{w} = (\mathbf{u}-\mathbf{v}) + (\mathbf{v}-\mathbf{w})$ and apply Theorem 7.5. $\blacksquare$
+
+**Corollary 7.7 (reverse triangle inequality).** $\big\lvert\lVert\mathbf{u}\rVert-\lVert\mathbf{v}\rVert\big\rvert \le \lVert\mathbf{u}-\mathbf{v}\rVert$.
+
+**Proof.** $\lVert\mathbf{u}\rVert \le \lVert\mathbf{u}-\mathbf{v}\rVert+\lVert\mathbf{v}\rVert$ by Theorem 7.5; exchanging the roles gives the modulus. $\blacksquare$
 
 ### 7.4 Angles and orthogonality
 
@@ -758,8 +762,9 @@ is an orthonormal basis (note $\mathbf{v}_2 = \tfrac12(1,-1,2)$ and $\mathbf{v}_
 
 Project $\mathbf{b} = (1,2,3)$ onto $W = \operatorname{span}\{(1,1,0),(0,1,1)\}$.
 
-An orthonormal basis of $W$ is $\mathbf{e}_1 = (1,1,0)/\sqrt2$ and (from Example 9.2's second step)
-$\mathbf{e}_2 = (-1,1,2)/\sqrt6$. The coefficients are
+An orthonormal basis of $W$ is $\mathbf{e}_1 = (1,1,0)/\sqrt2$ and
+$\mathbf{e}_2 = (-1,1,2)/\sqrt6$, obtained by normalising $(0,1,1) - \tfrac12(1,1,0) = (-\tfrac12,\tfrac12,1)$.
+The coefficients are
 
 $$
 \langle\mathbf{b},\mathbf{e}_1\rangle = \frac{1+2}{\sqrt2} = \frac{3}{\sqrt2},
@@ -829,9 +834,8 @@ Q = \begin{pmatrix}\tfrac{1}{\sqrt2} & \tfrac{1}{\sqrt6}\\[2pt] \tfrac{1}{\sqrt2
 R = \begin{pmatrix}\sqrt2 & \tfrac{1}{\sqrt2}\\ 0 & \tfrac{\sqrt6}{2}\end{pmatrix}.
 $$
 
-*Check* $Q^{\mathsf{T}}Q = I$: columns have norm $1$ and inner product
-$\tfrac{1}{\sqrt{12}} - \tfrac{1}{\sqrt{12}} + 0 = 0$ ✓. *Check* $QR = A$: the first column is
-$\sqrt2\,\mathbf{q}_1 = (1,1,0)$ ✓, and the second is
+*Checks:* the columns of $Q$ have norm $1$ and inner product $\tfrac{1}{\sqrt{12}}-\tfrac{1}{\sqrt{12}}+0 = 0$, so $Q^{\mathsf{T}}Q = I$ ✓;
+and $QR = A$ because $\sqrt2\,\mathbf{q}_1 = (1,1,0)$ and
 $\tfrac{1}{\sqrt2}\mathbf{q}_1 + \tfrac{\sqrt6}{2}\mathbf{q}_2 = (\tfrac12,\tfrac12,0) + (\tfrac12,-\tfrac12,1) = (1,0,1)$ ✓.
 
 ### Example 9.6 (Fourier coefficients and Parseval)
@@ -879,10 +883,6 @@ flowchart TD
     G --> L["Fourier coefficients, Parseval"]
     I --> M["Spectral theorem via orthogonal eigenbasis"]
 ```
-
-The left branch is *metric* (lengths, angles, inequalities); the right branch is *structural*
-(decomposition, projection). Cauchy–Schwarz is the bridge: it is the only inequality needed to make the
-left branch rigorous, and every theorem on the right uses it at least once.
 
 ## 11. Common Mistakes
 

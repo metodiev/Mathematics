@@ -238,7 +238,7 @@ Both are closed walks (note $v_k = v_0$ in $W_2$). Their lengths are $\ell_1 = j
 
 Hence $v_0, \dots, v_{k-1}$ are pairwise distinct. Since $G$ is a simple graph, $k \neq 1$ (no loops) and $k \neq 2$ (no parallel edges), so $k \ge 3$ and $W$ is a cycle of odd length. $\blacksquare$
 
-*Remark.* Without simplicity, the conclusion still holds with "cycle" allowing length $1$ (a loop) or $2$ (parallel edges); the argument above only uses that a closed walk of length $1$ or $2$ with distinct internal vertices *is* itself a cycle in that wider sense.
+*Remark.* Simplicity was used only to exclude the case $k = 1$: in a multigraph a closed walk of length $1$ is a loop, which is itself a cycle of length $1$, so the conclusion holds there too. The case $k = 2$ never arises, since $k$ is odd.
 
 **25.** *Strategy: extract a closed trail greedily, then split it into cycles, then induct on $m$.*
 
@@ -310,7 +310,7 @@ $$\sum_{v \in V} \deg(v)^2 \ \ge \ \frac{4m^2}{n}. \qquad\blacksquare$$
 
 **Claim.** A triangle-free simple graph on $n \ge 1$ vertices has at most $\lfloor n^2/4 \rfloor$ edges.
 
-**Proof.** Induct on $n$. For $n = 1$ there are no edges and $\lfloor 1/4 \rfloor = 0$.
+**Proof.** Induct on $n$. For $n = 0$ and $n = 1$ there are no edges, and $\lfloor n^2/4 \rfloor = 0$.
 
 For $n \ge 2$: if $G$ has no edge, then $m = 0 \le \lfloor n^2/4\rfloor$ and we are done. Otherwise choose an edge $uv$. Because $G$ is triangle-free, $u$ and $v$ have no common neighbour: if $w$ were adjacent to both, then $u,v,w$ would form a triangle. Hence $N(u) \cap N(v) = \varnothing$. Also $u \in N(v)$ and $v \in N(u)$, so $N(u) \cup N(v) \subseteq V$ and
 $$\deg(u) + \deg(v) = \lvert N(u)\rvert + \lvert N(v)\rvert = \lvert N(u) \cup N(v)\rvert \le n .$$

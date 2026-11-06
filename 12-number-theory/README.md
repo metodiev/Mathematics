@@ -12,7 +12,7 @@ Divisibility, primes, congruences and Diophantine equations. Elementary to state
 
 | | |
 |---|---|
-| Topics | 6 (1 complete, 1 draft, 4 planned) |
+| Topics | 6 (6 complete, 0 draft, 0 planned) |
 | Estimated study time | ~58 hours |
 | Prerequisites | [00-foundations](../00-foundations/README.md), [01-arithmetic](../01-arithmetic/README.md) |
 
@@ -41,11 +41,11 @@ flowchart LR
 | # | Topic | Level | Est. time | Status | Materials |
 |---|---|---|---|---|---|
 | 1 | [Divisibility and Primes](01-divisibility-and-primes/README.md) | Intermediate | 9 h | Complete | [Tutorial](01-divisibility-and-primes/README.md) · [Exercises](01-divisibility-and-primes/exercises.md) · [Solutions](01-divisibility-and-primes/solutions.md) |
-| 2 | [Congruences](02-congruences/README.md) | Intermediate | 10 h | Draft | [Tutorial](02-congruences/README.md) |
-| 3 | Arithmetic Functions | Advanced | 8 h | Planned | — |
-| 4 | Diophantine Equations | Advanced | 9 h | Planned | — |
-| 5 | Quadratic Residues and Reciprocity | Advanced | 10 h | Planned | — |
-| 6 | Analytic Number Theory | Advanced | 12 h | Planned | — |
+| 2 | [Congruences](02-congruences/README.md) | Intermediate | 10 h | Complete | [Tutorial](02-congruences/README.md) · [Exercises](02-congruences/exercises.md) · [Solutions](02-congruences/solutions.md) |
+| 3 | [Arithmetic Functions](03-arithmetic-functions/README.md) | Advanced | 8 h | Complete | [Tutorial](03-arithmetic-functions/README.md) · [Exercises](03-arithmetic-functions/exercises.md) · [Solutions](03-arithmetic-functions/solutions.md) |
+| 4 | [Diophantine Equations](04-diophantine-equations/README.md) | Advanced | 9 h | Complete | [Tutorial](04-diophantine-equations/README.md) · [Exercises](04-diophantine-equations/exercises.md) · [Solutions](04-diophantine-equations/solutions.md) |
+| 5 | [Quadratic Residues and Reciprocity](05-quadratic-reciprocity/README.md) | Advanced | 10 h | Complete | [Tutorial](05-quadratic-reciprocity/README.md) · [Exercises](05-quadratic-reciprocity/exercises.md) · [Solutions](05-quadratic-reciprocity/solutions.md) |
+| 6 | [Analytic Number Theory](06-analytic-number-theory/README.md) | Advanced | 12 h | Complete | [Tutorial](06-analytic-number-theory/README.md) · [Exercises](06-analytic-number-theory/exercises.md) · [Solutions](06-analytic-number-theory/solutions.md) |
 
 ### What each topic covers
 

@@ -425,9 +425,9 @@ $$
 (s,\, b_n) \text{ with } s \in S,\ s > m_n, & \text{otherwise.}
 \end{cases}
 $$
-Then $b_n - a_n = (b_0 - a_0)/2^n$, and for $m > n$,
+Then $b_n - a_n \le (b_0 - a_0)/2^n$, and for $m > n$,
 $$
-\lvert a_m - a_n\rvert \le b_n - a_n = \frac{b_0 - a_0}{2^n},
+\lvert a_m - a_n\rvert \le b_n - a_n \le \frac{b_0 - a_0}{2^n},
 $$
 so $(a_n)$ is Cauchy (given $\varepsilon > 0$, use the Archimedean property and $2^n \ge n$ to find $n$ with $(b_0-a_0)/n < \varepsilon$). By hypothesis $a_n \to \alpha$ for some $\alpha \in F$; also $b_n - a_n \to 0$, so $b_n \to \alpha$.
 
@@ -559,7 +559,7 @@ In particular, if $L = \lim_n \lvert a_{n+1}/a_n\rvert$ exists, then the series 
 
 The limit form follows by taking $q$ with $L < q < 1$ (then the ratio is eventually $\le q$) or by noting the ratio is eventually $\ge 1$. $\blacksquare$
 
-**Example 7.40 (the ratio test is inconclusive when $L = 1$).** For $a_n = 1/n$ and $a_n = 1/n^2$ the ratio is $n/(n+1) \to 1$ and $n^2/(n+1)^2 \to 1$ respectively, yet $\sum 1/n$ diverges (Theorem 7.38) while $\sum 1/n^2$ converges (Corollary 7.42). So no conclusion can be drawn from $L = 1$.
+**Example 7.40 (the ratio test is inconclusive when $L = 1$).** For $a_n = 1/n$ and $a_n = 1/n^2$ the ratio is $n/(n+1) \to 1$ and $n^2/(n+1)^2 \to 1$ respectively, yet $\sum 1/n$ diverges (Theorem 7.38) while $\sum 1/n^2$ converges (Corollary 7.43). So no conclusion can be drawn from $L = 1$.
 
 **Theorem 7.41 (root test).** Let $\rho = \limsup_{n\to\infty}\lvert a_n\rvert^{1/n}$.
 (a) If $\rho < 1$, then $\sum a_n$ converges absolutely.
@@ -711,7 +711,286 @@ If $\lvert x\rvert < R$ then $\lvert x\rvert\rho < 1$ (with the evident conventi
 
 Theorem 7.50 is only a preview. Inside the interval of convergence a power series defines a function that can be differentiated and integrated term by term; that theory belongs to later chapters of this discipline (see the [Real Analysis index](../README.md)) and to [Complex Analysis](../../15-complex-analysis/README.md), where the same series are studied with complex $x$.
 
-<!--SPART5-->
+## 8. Formulas and Properties
+
+**8.1 Algebra of limits** (Theorems 7.7–7.12). Hypotheses: $a_n \to L$, $b_n \to M$, all limits finite.
+
+| Rule | Conclusion | Where the proof uses the hypothesis |
+|---|---|---|
+| sum | $a_n + b_n \to L + M$ | triangle inequality, $\varepsilon/2$ split |
+| scalar | $c\,a_n \to cL$ | division by $\lvert c\rvert$ (or trivial if $c=0$) |
+| product | $a_nb_n \to LM$ | boundedness of a convergent sequence |
+| quotient | $a_n/b_n \to L/M$ | eventual $\lvert b_n\rvert > \lvert M\rvert/2$, needs $M \ne 0$ |
+| absolute value | $\lvert a_n\rvert \to \lvert L\rvert$ | reverse triangle inequality |
+| powers | $a_n^k \to L^k$ | induction on $k$ |
+| roots | $\sqrt{a_n} \to \sqrt L$ | needs $a_n \ge 0$; rationalise |
+| squeeze | $a_n \le c_n \le b_n$, both ends $\to L$ | order and $\varepsilon$-window |
+| order | $a_n \le b_n$ eventually $\Rightarrow L \le M$ | contradiction with $\varepsilon = (L-M)/2$ |
+
+**8.2 The convergence tests.** Each row states the hypotheses that must be checked and the reason the test works.
+
+| Test | Hypotheses | Conclusion | Mechanism |
+|---|---|---|---|
+| term | — | $\sum a_n$ converges $\Rightarrow a_n \to 0$ | $a_n = S_n - S_{n-1}$ |
+| Cauchy | — | $\sum a_n$ converges $\iff$ $\lvert\sum_{n<k\le m}a_k\rvert < \varepsilon$ eventually | partial sums are Cauchy |
+| absolute | $\sum\lvert a_n\rvert < \infty$ | $\sum a_n$ converges | triangle inequality |
+| comparison | $0 \le a_n \le b_n$, $\sum b_n < \infty$ | $\sum a_n < \infty$ | partial sums monotone bounded |
+| limit comparison | $a_n, b_n > 0$, $a_n/b_n \to c \in (0,\infty)$ | both converge or both diverge | two-sided comparison |
+| ratio | $\lvert a_{n+1}/a_n\rvert \le q < 1$ eventually | absolute convergence | geometric bound $\lvert a_n\rvert \le Cq^n$ |
+| root | $\limsup\lvert a_n\rvert^{1/n} < 1$ | absolute convergence | $\lvert a_n\rvert < q^n$ eventually |
+| integral | $f \ge 0$ continuous nonincreasing | $\sum f(n) < \infty \iff \int_1^N f$ bounded | $f(k+1) \le \int_k^{k+1} f \le f(k)$ |
+| $p$-series | — | $\sum n^{-p} < \infty \iff p > 1$ | integral test |
+| alternating | $b_n \downarrow 0$ | $\sum(-1)^{n+1}b_n$ converges, error $\le b_{N+1}$ | nested even/odd partial sums |
+
+**8.3 Standard limits.** Each is proved in the text or is an exercise.
+
+| Limit | Value | Reason |
+|---|---|---|
+| $1/n$ | $0$ | Archimedean property (Example 7.1) |
+| $q^n$ for $\lvert q\rvert < 1$ | $0$ | Bernoulli: $\lvert q\rvert = 1/(1+h)$, $(1+h)^n \ge 1+nh$ |
+| $n^{1/n}$ | $1$ | binomial theorem, Theorem 7.41(c) |
+| $(1+1/n)^n$ | $e$ (increasing, bounded by $3$) | Example 7.16 |
+| $n^k/q^n$ for $q > 1$ | $0$ | ratio test style; exponential beats polynomial |
+| $q^n/n!$ | $0$ | ratio $\to 0$; factorial beats exponential |
+
+**8.4 Inequalities used constantly.**
+
+* Bernoulli: $(1+x)^n \ge 1 + nx$ for $x \ge -1$, $n \in \mathbb{N}$.
+* AM–GM: $\frac{x+y}{2} \ge \sqrt{xy}$ for $x, y \ge 0$, with equality iff $x = y$.
+* Triangle: $\lvert x + y\rvert \le \lvert x\rvert + \lvert y\rvert$; reverse form $\lvert\lvert x\rvert - \lvert y\rvert\rvert \le \lvert x - y\rvert$.
+* $2^n \ge n$ and $n! \ge 2^{n-1}$ for $n \ge 1$; $n! \ge (n/2)^{n/2}$.
+* For $0 \le a \le b$: $a^2 \le b^2$ and $\sqrt a \le \sqrt b$.
+
+## 9. Step-by-Step Examples
+
+### Example 9.1 (easy): an $\varepsilon$-$N$ proof with a linear numerator
+
+Prove from the definition that $\dfrac{3n+2}{n-5} \to 3$.
+
+**Solution.** We must estimate the distance for $n > 5$. Compute
+$$
+\frac{3n+2}{n-5} - 3 = \frac{3n + 2 - 3n + 15}{n-5} = \frac{17}{n-5}.
+$$
+For $n \ge 10$ we have $n - 5 \ge n/2$, so
+$$
+\left\lvert \frac{3n+2}{n-5} - 3\right\rvert = \frac{17}{n-5} \le \frac{34}{n}.
+$$
+Given $\varepsilon > 0$, choose $N = \max\{10, \lceil 34/\varepsilon\rceil\}$ (ceiling exists by Lemma 7.19 of [The Real Numbers and Completeness](../01-real-numbers-and-completeness/README.md)). For $n \ge N$, $\lvert(3n+2)/(n-5) - 3\rvert \le 34/n \le 34/N \le \varepsilon$. So the limit is $3$.
+
+*Strategy note.* The only decisions are (i) restricting to $n > 5$ so the denominator is positive, and (ii) simplifying the denominator from below by $n/2$ so that the bound depends on $n$ alone.
+
+### Example 9.2 (easy–medium): a difference of square roots
+
+Prove that $\sqrt{n+1} - \sqrt n \to 0$.
+
+**Solution.** Rationalise:
+$$
+\sqrt{n+1} - \sqrt n = \frac{(n+1) - n}{\sqrt{n+1} + \sqrt n} = \frac{1}{\sqrt{n+1} + \sqrt n} \le \frac{1}{2\sqrt n} \le \frac{1}{\sqrt n}.
+$$
+Given $\varepsilon > 0$, choose $N > 1/\varepsilon^2$; for $n \ge N$, $\sqrt{n+1} - \sqrt n \le 1/\sqrt n \le 1/\sqrt N < \varepsilon$. Since the quantity is positive, its absolute value is itself, and the limit is $0$.
+
+### Example 9.3 (medium): a recursive sequence by the monotone convergence theorem
+
+Let $a_1 = 1$ and $a_{n+1} = \sqrt{2 + a_n}$. Prove that $(a_n)$ converges and find the limit.
+
+**Solution.** *Bounded above by $2$.* Induction: $a_1 = 1 \le 2$; if $a_n \le 2$ then $a_{n+1} = \sqrt{2+a_n} \le \sqrt 4 = 2$.
+
+*Increasing.* $a_{n+1} \ge a_n \iff \sqrt{2+a_n} \ge a_n \iff 2 + a_n \ge a_n^2$ (both sides nonnegative) $\iff (2-a_n)(1+a_n) \ge 0$, which holds because $0 \le a_n \le 2$.
+
+By Theorem 7.13 the sequence converges; let $L = \lim a_n \ge 0$. Passing to the limit in $a_{n+1} = \sqrt{2+a_n}$ using the sum rule, the root rule (Theorem 7.12) and Theorem 7.18 (a subsequence — here the shifted sequence — has the same limit),
+$$
+L = \sqrt{2+L} \implies L^2 = 2 + L \implies L^2 - L - 2 = 0 \implies (L-2)(L+1) = 0 .
+$$
+Since $L \ge 0$, $L = 2$.
+
+### Example 9.4 (medium): limsup and liminf
+
+Compute $\limsup a_n$ and $\liminf a_n$ for $a_n = 1 + (-1)^n + \frac1n$, and decide whether the sequence converges.
+
+**Solution.** For even $n = 2k$, $a_n = 2 + 1/(2k) \to 2$ and every even term exceeds $2$. For odd $n = 2k-1$, $a_n = 1/(2k-1) \to 0$ and every odd term is positive.
+
+The tail supremum is attained at the even terms:
+$$
+s_n = \max_{k \ge n}\left(1 + (-1)^k + \frac1k\right) = 2 + \frac{1}{n'} \quad \text{with } n' = \text{smallest even integer} \ge n,
+$$
+so $s_n \to 2$ and $\limsup a_n = 2$. Similarly the tail infimum is $1/n''$ with $n''$ the smallest odd integer $\ge n$, so $\liminf a_n = 0$. Since $0 \ne 2$, the sequence diverges; indeed $a_{2k} \to 2$ and $a_{2k-1} \to 0$ are two subsequences with different limits (Theorem 7.18).
+
+### Example 9.5 (medium): a telescoping series
+
+Prove that $\displaystyle\sum_{n=1}^{\infty}\frac{1}{n(n+1)}$ converges and compute its sum.
+
+**Solution.** Partial fractions:
+$$
+\frac{1}{n(n+1)} = \frac{1}{n} - \frac{1}{n+1}.
+$$
+Hence the partial sums telescope:
+$$
+S_N = \sum_{n=1}^{N}\left(\frac1n - \frac1{n+1}\right) = 1 - \frac{1}{N+1},
+$$
+because all intermediate terms cancel. Therefore $S_N \to 1$, and the series converges with sum $1$.
+
+*Remark.* The same computation gives the comparison $1/n^2 \le 1/(n(n-1))$ for $n \ge 2$, hence
+$$
+\sum_{n=1}^{N}\frac{1}{n^2} \le 1 + \sum_{n=2}^{N}\left(\frac{1}{n-1} - \frac1n\right) = 1 + 1 - \frac1N < 2,
+$$
+which proves that $\sum 1/n^2$ converges and its sum is at most $2$ — without evaluating it.
+
+### Example 9.6 (medium–hard): the ratio test
+
+Prove that $\displaystyle\sum_{n=1}^{\infty}\frac{n^2}{2^n}$ converges.
+
+**Solution.** Let $a_n = n^2/2^n > 0$. Then
+$$
+\frac{a_{n+1}}{a_n} = \frac{(n+1)^2}{2^{n+1}}\cdot\frac{2^n}{n^2} = \frac12\left(\frac{n+1}{n}\right)^2 = \frac12\left(1 + \frac1n\right)^2 \longrightarrow \frac12 .
+$$
+By the limit form of the ratio test (Theorem 7.39), since $\tfrac12 < 1$ the series converges absolutely. Concretely, for $n \ge 4$ the ratio is at most $\tfrac12(5/4)^2 = 25/32 < 1$, so $a_n \le a_4 (25/32)^{n-4}$ and comparison with a geometric series applies.
+
+### Example 9.7 (hard): an alternating series and its error
+
+Prove that $\displaystyle\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{\sqrt n}$ converges, that it does not converge absolutely, and estimate the error of $S_{100}$.
+
+**Solution.** *Convergence.* Let $b_n = 1/\sqrt n$. Then $b_n > 0$, $b_n \to 0$, and $b_{n+1} < b_n$ because $\sqrt{n+1} > \sqrt n$. By the alternating series test (Theorem 7.44) the series converges. The error bound gives
+$$
+\lvert S - S_{100}\rvert \le b_{101} = \frac{1}{\sqrt{101}} < \frac{1}{10}.
+$$
+
+*Not absolutely convergent.* $\sum 1/\sqrt n$ diverges by the $p$-series test with $p = \tfrac12 \le 1$ (Corollary 7.43). Hence the series is conditionally convergent.
+
+### Example 9.8 (hard): the integral test
+
+Show that $\displaystyle\sum_{n=2}^{\infty}\frac{1}{n(\ln n)^2}$ converges while $\displaystyle\sum_{n=2}^{\infty}\frac{1}{n\ln n}$ diverges.
+
+**Solution.** Both series start at $n = 2$ so that $\ln n > 0$. Let $f(x) = 1/(x(\ln x)^p)$ for $p > 0$; it is positive, continuous, and decreasing for $x \ge 2$ (its derivative is negative). Substituting $u = \ln x$, $du = dx/x$,
+$$
+\int_2^N \frac{dx}{x(\ln x)^p} = \int_{\ln 2}^{\ln N} u^{-p}\,du =
+\begin{cases}
+\dfrac{(\ln N)^{1-p} - (\ln 2)^{1-p}}{1-p}, & p \ne 1,\\[2mm]
+\ln(\ln N) - \ln(\ln 2), & p = 1.
+\end{cases}
+$$
+For $p = 2$ this is bounded (it increases to $1/\ln 2$), so the first series converges by Theorem 7.42. For $p = 1$ it equals $\ln(\ln N) \to \infty$, so the integrals are unbounded and the second series diverges by Theorem 7.42.
+
+*Moral.* The boundary between convergence and divergence is not "how fast the terms decrease" but whether the cumulative area stays finite; $\ln\ln N$ grows without bound, slowly but surely.
+
+### Example 9.9 (hard): a divergence that needs the boundedness of $n^{1/n}$
+
+Prove that $\displaystyle\sum_{n=1}^{\infty}\frac{1}{n^{1+1/n}}$ diverges.
+
+**Solution.** *Step 1: $n^{1/n}$ is bounded.* By Theorem 7.41(c) we know $n^{1/n} \to 1$; a convergent sequence is bounded (Theorem 7.5), so there is $C \ge 1$ with $n^{1/n} \le C$ for all $n$.
+
+*Step 2: comparison with the harmonic series.* For every $n$,
+$$
+\frac{1}{n^{1+1/n}} = \frac{1}{n\cdot n^{1/n}} \ge \frac{1}{C\,n}.
+$$
+Since $\sum 1/n$ diverges (Theorem 7.38), the comparison test in the form "if $\sum a_n$ diverges and $a_n \le b_n$ then $\sum b_n$ diverges" gives divergence of $\sum 1/(Cn) = (1/C)\sum 1/n$, and hence of $\sum 1/n^{1+1/n}$.
+
+*Why this is not obvious.* The terms satisfy $1/n^{1+1/n} \sim 1/n$ *asymptotically*, and asymptotic equivalence alone does not decide convergence; here the pointwise inequality $n^{1/n} \le C$ converts the asymptotic statement into a proof.
+
+## 10. Visual Explanations
+
+**Which theorem implies which.** Solid arrows are proved in this chapter; the arrow from (LUB) enters from the previous topic.
+
+```mermaid
+flowchart TD
+    LUB["(LUB) completeness"] --> MCT["Monotone convergence"]
+    LUB --> NIP["Nested intervals"]
+    MCT --> BW["Bolzano-Weierstrass"]
+    LUB --> BW
+    BW --> CAUCHY["Every Cauchy sequence converges"]
+    CAUCHY --> LUB2["(LUB) again"]
+    BW --> LIMSUP["limsup is a subsequential limit"]
+    MCT --> SERIES["Comparison and integral tests"]
+    CAUCHY --> CRIT["Cauchy criterion for series"]
+    CRIT --> ABS["Absolute convergence"]
+    LIMSUP --> ROOT["Root test and radius of convergence"]
+```
+
+**The four classical false converses.**
+
+| Statement | True? | Counterexample |
+|---|---|---|
+| convergent $\Rightarrow$ bounded | yes (Theorem 7.5) | — |
+| bounded $\Rightarrow$ convergent | **no** | $a_n = (-1)^n$ |
+| $\sum a_n$ converges $\Rightarrow$ $\sum\lvert a_n\rvert$ converges | **no** | $\sum(-1)^{n+1}/n$ |
+| $a_n \to 0$ $\Rightarrow$ $\sum a_n$ converges | **no** | $\sum 1/n$ |
+| $\sum a_n$ converges $\Rightarrow$ every rearrangement has the same sum | **no** | Theorem 7.47 |
+
+**Growth hierarchy.** For $n \to \infty$, with $a > 0$ and $q > 1$,
+$$
+\ln n \ \ll\ n^{a} \ \ll\ q^{n} \ \ll\ n! \ \ll\ n^{n}.
+$$
+Each "$\ll$" means the ratio of the right quantity to the left tends to $+\infty$; the two middle comparisons are the reason the ratio and root tests succeed on $q^n$ and $n!$ but fail at the boundary.
+
+## 11. Common Mistakes
+
+1. **Choosing $N$ after seeing $n$.** The definition requires $N$ to depend only on $\varepsilon$. A "proof" that picks $N = n$ is circular; a valid proof produces a bound like $34/n \le 34/N < \varepsilon$.
+
+2. **Proving the inequality in the wrong direction.** To show $\lvert a_n - L\rvert < \varepsilon$ one must *simplify the left side downwards*, i.e. replace it by something larger that is still $<\varepsilon$. Replacing the error by a smaller quantity proves nothing.
+
+3. **Assuming bounded $\Rightarrow$ convergent.** Boundedness plus monotonicity gives convergence (Theorem 7.13); boundedness alone gives only Bolzano–Weierstrass, i.e. *some* convergent subsequence.
+
+4. **Applying the algebra of limits when one limit does not exist.** The rule $a_n + b_n \to L + M$ requires both limits to exist. Writing $\lim(\sin n - \sin n) = \lim\sin n - \lim\sin n$ is meaningless because $\sin n$ has no limit.
+
+5. **Using $a_n \to 0$ as a convergence test for series.** It is necessary, not sufficient (Theorem 7.38 is the counterexample). For an alternating series the extra hypothesis $b_n \downarrow 0$ is what makes it sufficient.
+
+6. **Forgetting the hypotheses in the ratio test.** The test requires a *strict* geometric bound $q < 1$ eventually. "The ratio is less than $1$ for every $n$" is not enough: $a_n = 1/n$ has ratio $n/(n+1) < 1$ and diverges.
+
+7. **Computing $\limsup$ as $\lim$ of a subsequence that looks biggest.** One must take the supremum over the whole tail; for $a_n = 1 + (-1)^n + 1/n$, the even terms give $2$ and the odd terms give $0$, and $\limsup$ is the larger of the two subsequential limits — not the limit of an arbitrary subsequence.
+
+8. **Treating a Cauchy sequence as automatically convergent.** This is true in $\mathbb{R}$ (Theorem 7.27) and false in $\mathbb{Q}$ (Remark 7.29); it is a theorem about the completeness of the ambient space, not a definition.
+
+9. **Rearranging a conditionally convergent series.** Finite sums can be reordered freely; infinite sums cannot. Theorem 7.46 shows the reordering is safe exactly when the series converges absolutely.
+
+10. **Believing that convergence at the endpoints follows from the radius of convergence.** Theorem 7.50 says nothing when $\lvert x\rvert = R$; Example 7.51(b) shows that one endpoint can converge while the other diverges.
+
+## 12. Applications
+
+**Numerical approximation.** Every floating-point evaluation of $\sin$, $\exp$ or $\log$ uses a truncated power series; the error term is exactly the alternating-series remainder $b_{N+1}$ of Theorem 7.44 or the Lagrange remainder of Taylor's theorem. Knowing the error bound is what separates a computation from a guess.
+
+**Signal processing.** A discrete signal is a sequence; filters are linear operations on sequences; convergence of the Fourier series of a signal is convergence in a complete space. The distinction between absolute and conditional convergence corresponds to the difference between stable (summable) and merely oscillating responses.
+
+**Probability and statistics.** A probability distribution on $\mathbb{N}$ is a sequence $p_n \ge 0$ with $\sum p_n = 1$; expectations are series $\sum n\,p_n$, and the law of large numbers is a statement about convergence of sequences of random variables. The harmonic series appears in the "coupon collector" and "record" problems.
+
+**Computer science.** The running time of an algorithm is a sequence in $n$; asymptotic notation $O$, $o$, $\sim$ is defined through limits (Section 6). Amortised analysis uses series (for example, the geometric series behind dynamic arrays). The divergence of the harmonic series is the reason a "random permutation" search takes $\Theta(n\log n)$ comparisons.
+
+**Physics.** Zeno's paradox, geometric series for resistances and for radioactive decay, and the divergence of the harmonic series behind the "olbers paradox" style arguments about infinite sums. In quantum mechanics, perturbation series are frequently only conditionally convergent, and the order of summation matters — a physical instance of Riemann's theorem.
+
+**Finance.** The present value of a perpetuity is a geometric series $\sum C/(1+r)^n = C/r$; the convergence condition $r > 0$ is exactly the ratio test. Loan amortisation is a finite truncation, and the difference between the two is the tail bound.
+
+## 13. Exercises
+
+The problem set is in [exercises.md](exercises.md): 38 problems in four bands, from $\varepsilon$-$N$ computations to Cauchy completeness, limsup arithmetic, the convergence tests and rearrangements. Complete solutions are in [solutions.md](solutions.md).
+
+## 14. Solutions
+
+Full worked solutions, with every estimate and every hypothesis check, are in [solutions.md](solutions.md). Several problems have a "second approach" remark, and the solutions flag the mistakes listed in Section 11 where they are most likely to occur.
+
+## 15. Summary
+
+* $a_n \to L$ means: for every $\varepsilon > 0$ there is $N$ with $\lvert a_n - L\rvert < \varepsilon$ for all $n \ge N$. Limits are unique; convergent sequences are bounded; bounded sequences need not converge.
+* The algebra of limits — sums, scalars, products, quotients, absolute values, roots — is proved from the definition, with boundedness supplying the product estimate and an eventual lower bound supplying the quotient estimate.
+* The monotone convergence theorem turns bounded monotonicity into convergence, with limit equal to the supremum (or infimum) of the terms. It is (LUB) in disguise and powers the analysis of recursive sequences.
+* Every sequence has a monotone subsequence; hence every bounded sequence has a convergent subsequence (Bolzano–Weierstrass).
+* Cauchy sequences are exactly the convergent sequences in $\mathbb{R}$; this is equivalent to completeness in the presence of the Archimedean property, and it fails in $\mathbb{Q}$.
+* $\limsup$ and $\liminf$ always exist in the extended line; they are the largest and smallest subsequential limits, and $\limsup = \liminf$ is equivalent to convergence.
+* A series converges iff its partial sums are Cauchy. Absolute convergence implies convergence; the harmonic series shows that $a_n \to 0$ is not enough; the alternating harmonic series shows that conditional convergence is genuinely weaker.
+* Comparison, limit comparison, ratio, root, integral and alternating tests each convert the problem into a comparison with a geometric series or an integral; each has a boundary case where it gives no information.
+* Absolutely convergent series can be rearranged freely; conditionally convergent series cannot, and Riemann's theorem says that every real number is the sum of some rearrangement.
+
+## 16. Further Learning
+
+**Next in this discipline.** The tools developed here are applied to functions in the continuity chapter (see the [Real Analysis index](../README.md)): sequential continuity, the intermediate value theorem (a supremum argument on sequences) and the extreme value theorem (Bolzano–Weierstrass). The completeness results are used again in [Metric Spaces](../../17-topology/README.md), where Cauchy sequences and completeness are defined in an abstract setting.
+
+**Companions.** [The Real Numbers and Completeness](../01-real-numbers-and-completeness/README.md) supplies the least upper bound property and the constructions of $\mathbb{R}$. [Limits](../../07-calculus/01-limits/README.md) develops the parallel theory for functions of a real variable. [Complex Analysis](../../15-complex-analysis/README.md) starts with power series and shows that differentiability in $\mathbb{C}$ forces absolute convergence of Taylor series — a striking contrast with the real case.
+
+**Standard references.**
+
+* W. Rudin, *Principles of Mathematical Analysis*, 3rd ed., Chapter 3 — sequences, series, limsup, and Riemann's rearrangement theorem (Theorem 3.54).
+* T. Tao, *Analysis I*, 3rd ed., Chapters 6–7 — sequences and series with every $\varepsilon$ written out.
+* S. Abbott, *Understanding Analysis*, 2nd ed., Chapters 2–3 — the most readable treatment of the tests and of rearrangements.
+* K. Knopp, *Theory and Application of Infinite Series* — the classical reference for the tests and for condensation methods.
+* G. H. Hardy, *A Course of Pure Mathematics*, Chapters 4–5 — historical treatment with many examples.
+
 
 
 

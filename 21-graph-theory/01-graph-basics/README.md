@@ -28,7 +28,7 @@ Everything below is taught earlier in the repository; the list is short on purpo
 * **Logic and quantifiers.** Reading "for all $v \in V$ there exists $e \in E$ such that …", and negating such a statement. Taught in [Logic](../../00-foundations/02-logic/README.md) and [Mathematical Thinking](../../00-foundations/01-mathematical-thinking/README.md).
 * **Proof techniques: direct, contrapositive, contradiction, cases.** The two long proofs of this topic (the handshake lemma and the odd-cycle theorem) use double counting and contradiction respectively. Taught in [Proof Techniques](../../00-foundations/04-proof-techniques/README.md).
 * **Mathematical induction.** Used for the walk-counting theorem and for the claim that every graph has at least $n - c$ edges. Taught in [Mathematical Induction](../../09-discrete-mathematics/01-mathematical-induction/README.md).
-* **Binomial coefficients.** $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ counts the $k$-element subsets of an $n$-element set; $\binom{n}{2} = \frac{n(n-1)}{2}$ counts the pairs. Taught in [Combinatorics](../../20-combinatorics/README.md) and in [Advanced Algebra](../../03-algebra/14-advanced-algebra/README.md), Section 7.9.
+* **Binomial coefficients.** $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ counts the $k$-element subsets of an $n$-element set; $\binom{n}{2} = \frac{n(n-1)}{2}$ counts the pairs. Taught in [Combinatorics](../../20-combinatorics/README.md) and in [Polynomials](../../03-algebra/06-polynomials/README.md), where the binomial coefficient and the binomial theorem are introduced.
 * **Matrices (helpful, not essential).** Rows, columns, matrix multiplication, transpose. The two sections on adjacency and incidence matrices can be read as a first course in matrices. Taught in [Linear Algebra](../../08-linear-algebra/README.md).
 
 Conventions, matching [MATHEMATICAL_NOTATION.md](../../MATHEMATICAL_NOTATION.md): all graphs in this topic are **finite**; $\mathbb{N} = \{1,2,3,\dots\}$ and $\mathbb{N}_0 = \{0,1,2,3,\dots\}$; a graph always has at least one vertex unless we say otherwise.
@@ -74,7 +74,7 @@ The pleasant surprise is that bipartiteness is a property of the *shape alone*, 
 
 ### 4.4 One object, many descriptions
 
-The same graph can be given as a picture, as a list of edges, as a table (the adjacency matrix), or as a set of degrees. Each description loses something. The degree list loses the most: it is a remarkably weak invariant, and two quite different graphs can share it, as Section 9.3 shows. The adjacency matrix loses nothing at all — it is the graph, written as numbers — which is why linear algebra can be brought to bear.
+The same graph can be given as a picture, as a list of edges, as a table (the adjacency matrix), or as a set of degrees. Each description loses something. The degree list loses the most: it is a remarkably weak invariant, and two quite different graphs can share it, as Examples 7.7.3 and 7.7.4 show. The adjacency matrix loses nothing at all — it is the graph, written as numbers — which is why linear algebra can be brought to bear.
 
 ### 4.5 Why "simple" is a technical word
 
@@ -147,7 +147,7 @@ Throughout this section $G$ is a graph, possibly a multigraph.
 $$W = (v_0, e_1, v_1, e_2, v_2, \dots, e_k, v_k)$$
 in which each $e_i$ is an edge with endpoints $v_{i-1}$ and $v_i$. Its **length** is $k$, the number of edges counted with repetition. Its **endpoints** are $v_0$ and $v_k$, and $v_1,\dots,v_{k-1}$ are its **internal vertices**. The walk is **closed** if $v_0 = v_k$. In a simple graph the edges are determined by the vertices, so we abbreviate $W$ to $v_0 v_1 \cdots v_k$.
 
-**Definition 5.5.2 (trail, path).** A walk is a **trail** if its edges $e_1,\dots,e_k$ are pairwise distinct. A walk is a **path** if its vertices $v_0, \dots, v_k$ are pairwise distinct. Every path is a trail (if a vertex repeats then so does an edge), but not conversely.
+**Definition 5.5.2 (trail, path).** A walk is a **trail** if its edges $e_1,\dots,e_k$ are pairwise distinct. A walk is a **path** if its vertices $v_0, \dots, v_k$ are pairwise distinct. Every path is a trail, because its edges $v_{i-1}v_i$ have distinct pairs of endpoints; a trail, however, may revisit vertices.
 
 **Definition 5.5.3 (circuit).** A **circuit** is a closed trail of positive length.
 
@@ -329,9 +329,9 @@ which is still a walk from $u$ to $v$ (because $v_i = v_j$), contradicting minim
 
 The converse of Lemma 7.5.1 fails: a path is a walk but a walk need not be a path. The walk $1,2,3,1,2$ in $K_3$ is not a path because $1$ and $2$ repeat.
 
-**Proposition 7.5.3 (a closed walk of length $2$).** A simple graph has no closed walk of length $1$ or $2$; a graph has a closed walk of length $1$ exactly when it has a loop, and of length $2$ exactly when it has parallel edges.
+**Proposition 7.5.3 (short closed walks).** (a) Every closed walk of length $2$ in a loopless graph is a back-and-forth along a single edge, $v_0 e v_1 e v_0$; it is never a cycle. (b) A graph has a cycle of length $1$ exactly when it has a loop, and a cycle of length $2$ exactly when it has two parallel edges. (c) A simple graph has neither, so every cycle in a simple graph has length at least $3$.
 
-**Proof.** A closed walk of length $1$ is $v_0 e_1 v_0$, so $e_1$ has both ends at $v_0$: a loop. A closed walk of length $2$ is $v_0 e_1 v_1 e_2 v_0$ with $e_1 \ne$ or $=$ $e_2$; if $v_1 \ne v_0$ then $e_1$ and $e_2$ both join $v_0$ to $v_1$, so they are parallel (or equal, which would make the walk repeat an edge and fail to be a cycle). A simple graph has neither loops nor parallel edges. $\blacksquare$
+**Proof.** (a) A closed walk of length $2$ is $v_0 e_1 v_1 e_2 v_0$ with $v_1 \ne v_0$ (otherwise $e_1$ would be a loop). If $e_1 \ne e_2$ then both join $v_0$ to $v_1$, so they are parallel; if $e_1 = e_2$ the walk traverses one edge twice. In neither case are the vertices distinct in the sense required by Definition 5.5.4, and in the second case an edge repeats, so the walk is not a cycle. (b) A length-$1$ closed walk is $v_0 e v_0$ with both ends of $e$ at $v_0$, that is, a loop; a length-$2$ closed walk with $e_1 \ne e_2$ is exactly a pair of parallel edges. (c) A simple graph has no loops and no parallel edges. $\blacksquare$
 
 **Proposition 7.5.4 (parity and bipartiteness of a cycle).** A cycle of length $k$ has $k$ vertices, $k$ edges, and every vertex of it has degree $2$ in the cycle. In a bipartite graph every cycle has even length.
 
@@ -411,7 +411,7 @@ $$A(G) = \begin{pmatrix} 0 & C \\ C^{\mathsf T} & 0 \end{pmatrix}.$$
 
 **Proof.** Let $W = v_0 e_1 v_1 \cdots e_k v_k$ with $v_0 = v_k$ and $k$ odd, chosen with $k$ as small as possible among all odd closed walks. Suppose two vertices of $W$ coincide: $v_i = v_j$ with $0 \le i < j \le k-1$. Then $W$ splits into two closed walks
 $$W_1 = v_i e_{i+1} \cdots e_j v_j, \qquad W_2 = v_j e_{j+1} \cdots v_k e_1 \cdots e_i v_i,$$
-of lengths $j - i$ and $k - j + i$. Both lengths are at least $1$, and their sum is $k$, which is odd; hence exactly one of them has odd length, and that one is shorter than $k$. This contradicts the choice of $W$. Therefore $v_0, \dots, v_{k-1}$ are pairwise distinct and $W$ is a cycle of length $k$, which is odd. $\blacksquare$
+of lengths $j - i$ and $k - j + i$. Both lengths are at least $1$, and their sum is $k$, which is odd; hence exactly one of them has odd length, and that one is shorter than $k$. This contradicts the choice of $W$. Therefore $v_0, \dots, v_{k-1}$ are pairwise distinct. Since $k$ is odd, $k \ne 2$; and $k \ne 1$, because a closed walk of length $1$ would be a loop, which a simple graph does not have. Hence $k \ge 3$ and $W$ is a cycle of length $k$, which is odd. $\blacksquare$
 
 **Theorem 7.8.3 (König's characterisation of bipartite graphs).** A graph is bipartite if and only if it contains no cycle of odd length.
 
@@ -447,13 +447,15 @@ In particular a bipartite graph on $n$ vertices has at most $\lfloor n^2/4\rfloo
 
 **The Petersen graph.** The graph with vertices the two-element subsets of $\{1,2,3,4,5\}$ and an edge between two subsets when they are disjoint. It has $10$ vertices, is $3$-regular, so has $15$ edges; its girth is $5$; it is not bipartite, because it contains $5$-cycles and $5$ is odd.
 
-**Planar graphs.** A graph is **planar** if it can be drawn in the plane so that edges meet only at a shared endpoint. Planarity is an isomorphism invariant (it depends only on the abstract graph, not on one drawing). $K_4$ is planar; $K_5$ and $K_{3,3}$ are not, and these two graphs are the obstructions in Kuratowski's theorem, which is proved in the next-but-one topic of this discipline (listed in the [discipline index](../README.md)). As a preview of the counting argument used there: in a connected plane graph with $n \ge 3$ vertices, $m$ edges and $f$ faces, Euler's formula $n - m + f = 2$ holds, every face is bounded by at least $3$ edges, and double counting face-edge incidences gives $2m \ge 3f$; eliminating $f$ yields $m \le 3n - 6$. For $K_5$, $m = 10 > 9 = 3\cdot 5 - 6$, so $K_5$ is not planar. For a bipartite plane graph every face has length at least $4$, giving $m \le 2n-4$; for $K_{3,3}$, $m = 9 > 8 = 2\cdot 6 - 4$, so $K_{3,3}$ is not planar either.
+**Planar graphs.** A graph is **planar** if it can be drawn in the plane so that edges meet only at a shared endpoint. Planarity is an isomorphism invariant (it depends only on the abstract graph, not on one drawing). $K_4$ is planar; $K_5$ and $K_{3,3}$ are not, and these two graphs are the obstructions in Kuratowski's theorem, which is proved in a later topic of this discipline (listed in the [discipline index](../README.md)). As a preview of the counting argument used there: in a connected simple plane graph with $n \ge 3$ vertices, $m$ edges and $f$ faces, Euler's formula $n - m + f = 2$ holds, every face is bounded by at least $3$ edges, and double counting face-edge incidences gives $2m \ge 3f$; eliminating $f$ yields $m \le 3n - 6$. For $K_5$, $m = 10 > 9 = 3\cdot 5 - 6$, so $K_5$ is not planar. For a bipartite plane graph every face has length at least $4$, giving $m \le 2n-4$; for $K_{3,3}$, $m = 9 > 8 = 2\cdot 6 - 4$, so $K_{3,3}$ is not planar either.
 
 ### 7.10 Adjacency and incidence matrices
 
 Matrices turn graph questions into linear algebra. This section proves only the two facts needed later; the spectral theory of graphs is a topic of its own.
 
-**Theorem 7.10.1 (walks are counted by powers of $A$).** Let $G$ be a graph with vertices $v_1,\dots,v_n$ and adjacency matrix $A$. Then for every $k \ge 0$, the entry $(A^k)_{ij}$ equals the number of walks of length $k$ from $v_i$ to $v_j$.
+**Theorem 7.10.1 (walks are counted by powers of $A$).** Let $G$ be a loopless graph (simple, or with parallel edges) with vertices $v_1,\dots,v_n$ and adjacency matrix $A$, where $a_{ij}$ is the number of edges joining $v_i$ and $v_j$. Then for every $k \ge 0$, the entry $(A^k)_{ij}$ equals the number of walks of length $k$ from $v_i$ to $v_j$.
+
+The restriction to loopless graphs matters: a loop can be traversed twice in a row, and the convention "$a_{ii} = 2$" of Definition 5.9.1 (chosen so that row sums are degrees) would then double-count. For walk counting with loops one uses the matrix with $a_{ii}$ equal to the number of loops.
 
 **Proof.** Induct on $k$. For $k=0$, $A^0 = I$, and there is exactly one walk of length $0$ from $v_i$ to $v_j$ if $i = j$ and none otherwise. For the step, a walk of length $k+1$ from $v_i$ to $v_j$ consists of a walk of length $k$ from $v_i$ to some vertex $v_\ell$ followed by one edge from $v_\ell$ to $v_j$. Summing over $\ell$,
 $$(A^{k+1})_{ij} = \sum_{\ell=1}^{n} (A^{k})_{i\ell}\, a_{\ell j},$$
@@ -483,7 +485,7 @@ Not every list of numbers is a degree sequence. Three necessary conditions follo
 
 * the sum $\sum_i d_i$ is even (Theorem 7.3.1);
 * $0 \le d_i \le n-1$ (Proposition 7.3.5);
-* at least two indices have equal values unless $n = 1$ (the pigeonhole argument of Example 9.7).
+* at least two indices have equal values unless $n = 1$: the $n$ degrees lie in the $n$-element set $\{0,1,\dots,n-1\}$, and the values $0$ and $n-1$ cannot both occur, so at most $n-1$ different values are available for $n$ vertices.
 
 These are not sufficient. The classical decision procedures are the following.
 
@@ -535,8 +537,8 @@ The table collects the results of Section 7 in one place, with the hypothesis ea
 | Bipartite bound | $m \le ab \le \lfloor n^2/4 \rfloor$ | bipartite with parts $a,b$ | each edge is one cross pair (Proposition 7.8.5) |
 | Edge lower bound | $m \ge n-c$ | any graph with $c$ components | induction on $m$ (Theorem 7.6.4) |
 | Connected lower bound | $m \ge n-1$ | connected | special case $c=1$ |
-| Walk counting | $(A^k)_{ij}$ = number of $v_i$–$v_j$ walks of length $k$ | any graph | induction on $k$ (Theorem 7.10.1) |
-| Closed walks of length $2$ | $\operatorname{tr}(A^2) = \sum_v \deg(v) = 2m$ | any graph | diagonal entries are degrees |
+| Walk counting | $(A^k)_{ij}$ = number of $v_i$–$v_j$ walks of length $k$ | loopless graph | induction on $k$ (Theorem 7.10.1) |
+| Closed walks of length $2$ | $\operatorname{tr}(A^2) = \sum_v \deg(v) = 2m$ | loopless graph | diagonal entries are degrees |
 | Triangles | $\operatorname{tr}(A^3) = 6\,t(G)$ | simple graph | each triangle is traversed $6$ ways |
 | Graphical sequences | $\sum_i d_i$ even and $0 \le d_i \le n-1$ necessary | simple graph | handshake lemma and simplicity |
 
@@ -643,7 +645,7 @@ Now $k = 4$:
 $$(4,2,2,1,1) \longmapsto (2-1,\,2-1,\,1-1,\,1-1) = (1,1,0,0).$$
 Then $k=1$: $(1,1,0,0) \mapsto (0,0,0)$, which is graphical; hence the original sequence is graphical.
 
-To see the realisation that the proof of Theorem 7.11.1 constructs, run the algorithm backwards. Start from the empty graph on $\{3,4,5,6\}$ and add vertices in reverse order: from $(1,1,0,0)$ add a vertex joined to the two vertices of positive degree; from $(4,2,2,1,1)$ add a vertex joined to all four of the remaining ones; and finally add the last vertex of degree $5$ joined to everything. Concretely: take vertices $1,\dots,6$, join $1$ to all others, join $2$ to $3,4,5,6$, and add the edge $34$. The degrees are $5, 5, 3, 3, 2, 2$ and the edge count is $10$, consistent with $20/2 = 10$.
+To see the realisation that the proof of Theorem 7.11.1 constructs, run the algorithm backwards. Start from the empty graph on $\{3,4,5,6\}$ and add vertices in reverse order: from $(1,1,0,0)$ add a vertex joined to the two vertices of positive degree; from $(4,2,2,1,1)$ add a vertex joined to all four of the remaining ones; and finally add the last vertex of degree $5$ joined to everything. Concretely: take vertices $1,\dots,6$, join both $1$ and $2$ to every other vertex, and add the edge $34$. The degrees are $5, 5$ (for $1,2$), then $3,3$ (for $3,4$, which gain one from the edge $34$) and $2,2$ (for $5,6$); the edge count is $10$, consistent with $20/2 = 10$.
 
 **Second sequence.** The sum is $4+4+4+4+2 = 18$, even, and the largest entry is $4 = n-1$. One step with $k=4$:
 $$(4,4,4,4,2) \longmapsto (3,3,3,1).$$
