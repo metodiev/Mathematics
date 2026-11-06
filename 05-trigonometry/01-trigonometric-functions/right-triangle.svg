@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 400" width="460" height="400" role="img" aria-labelledby="rightTriangleTitle">
+  <title id="rightTriangleTitle">A right triangle with an acute angle theta at the left vertex, the horizontal leg labelled adjacent, the vertical leg labelled opposite, and the hypotenuse labelled hypotenuse</title>
+  <rect x="0" y="0" width="460" height="400" fill="#ffffff"/>
+  <g fill="none" stroke="#333333" stroke-width="2.5" stroke-linejoin="round">
+    <path d="M60 330 L370 330 L370 80 Z"/>
+  </g>
+  <g fill="none" stroke="#2b6cb0" stroke-width="2">
+    <path d="M110 330 A50 50 0 0 0 98.9 298.6"/>
+  </g>
+  <path d="M350 330 L350 310 L370 310" fill="none" stroke="#333333" stroke-width="1.5"/>
+  <g font-family="serif" font-size="19" fill="#222222">
+    <text x="215" y="362" text-anchor="middle">adjacent</text>
+    <text x="392" y="205" text-anchor="middle" transform="rotate(-90 392 205)">opposite</text>
+    <text x="193" y="179" text-anchor="middle" transform="rotate(-38.9 193 179)">hypotenuse</text>
+    <text x="88" y="322" font-size="22" font-style="italic" fill="#2b6cb0">&#952;</text>
+    <text x="344" y="322" font-size="15" text-anchor="end">90&#176;</text>
+  </g>
+  <g font-family="serif" font-size="16" fill="#555555">
+    <text x="46" y="348" text-anchor="middle">A</text>
+    <text x="380" y="350">B</text>
+    <text x="378" y="74">C</text>
+  </g>
+</svg>

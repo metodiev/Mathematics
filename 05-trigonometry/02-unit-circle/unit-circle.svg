@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" width="480" height="480" role="img" aria-labelledby="unitCircleTitle unitCircleDesc">
+  <title id="unitCircleTitle">The unit circle with the sixteen special angles</title>
+  <desc id="unitCircleDesc">A circle of radius one centred at the origin, with points marked at every multiple of thirty degrees and of forty-five degrees. Each point is labelled outside the circle in degrees and inside the circle in radians. The coordinates of each marked point are the cosine and the sine of the angle shown.</desc>
+  <rect x="0" y="0" width="480" height="480" fill="#ffffff"/>
+
+  <g stroke="#9aa5b1" stroke-width="1.5">
+    <line x1="55" y1="240" x2="430" y2="240"/>
+    <line x1="240" y1="425" x2="240" y2="50"/>
+  </g>
+  <g fill="#9aa5b1">
+    <polygon points="440,240 427,235 427,245"/>
+    <polygon points="240,40 235,52 245,52"/>
+  </g>
+
+  <circle cx="240" cy="240" r="150" fill="none" stroke="#1f2933" stroke-width="2"/>
+
+  <g fill="#1f2933">
+    <circle cx="390.00" cy="240.00" r="3.6"/>
+    <circle cx="369.90" cy="165.00" r="3.6"/>
+    <circle cx="346.07" cy="133.93" r="3.6"/>
+    <circle cx="315.00" cy="110.10" r="3.6"/>
+    <circle cx="240.00" cy="90.00" r="3.6"/>
+    <circle cx="165.00" cy="110.10" r="3.6"/>
+    <circle cx="133.93" cy="133.93" r="3.6"/>
+    <circle cx="110.10" cy="165.00" r="3.6"/>
+    <circle cx="90.00" cy="240.00" r="3.6"/>
+    <circle cx="110.10" cy="315.00" r="3.6"/>
+    <circle cx="133.93" cy="346.07" r="3.6"/>
+    <circle cx="165.00" cy="369.90" r="3.6"/>
+    <circle cx="240.00" cy="390.00" r="3.6"/>
+    <circle cx="315.00" cy="369.90" r="3.6"/>
+    <circle cx="346.07" cy="346.07" r="3.6"/>
+    <circle cx="369.90" cy="315.00" r="3.6"/>
+  </g>
+
+  <g font-family="Georgia, 'Times New Roman', serif" font-size="12.5" fill="#1f2933" text-anchor="middle" stroke="#ffffff" stroke-width="3.2" stroke-linejoin="round" paint-order="stroke">
+    <text x="412" y="258">0&#176;</text>
+    <text x="391.6" y="152.5">30&#176;</text>
+    <text x="363.7" y="116.3">45&#176;</text>
+    <text x="327.5" y="88.5">60&#176;</text>
+    <text x="262" y="68">90&#176;</text>
+    <text x="152.5" y="88.5">120&#176;</text>
+    <text x="116.3" y="116.3">135&#176;</text>
+    <text x="88.5" y="152.5">150&#176;</text>
+    <text x="68" y="258">180&#176;</text>
+    <text x="88.5" y="327.5">210&#176;</text>
+    <text x="116.3" y="363.7">225&#176;</text>
+    <text x="152.5" y="391.6">240&#176;</text>
+    <text x="262" y="412">270&#176;</text>
+    <text x="327.5" y="391.6">300&#176;</text>
+    <text x="363.7" y="363.7">315&#176;</text>
+    <text x="391.6" y="327.5">330&#176;</text>
+  </g>
+
+  <g font-family="Georgia, 'Times New Roman', serif" font-size="12.5" font-style="italic" fill="#2b6cb0" text-anchor="middle" stroke="#ffffff" stroke-width="3.2" stroke-linejoin="round" paint-order="stroke">
+    <text x="343.9" y="240">0</text>
+    <text x="343.9" y="180">&#960;/6</text>
+    <text x="324.9" y="155.2">&#960;/4</text>
+    <text x="300" y="136.1">&#960;/3</text>
+    <text x="240" y="118">&#960;/2</text>
+    <text x="180" y="136.1">2&#960;/3</text>
+    <text x="155.2" y="155.2">3&#960;/4</text>
+    <text x="136.1" y="180">5&#960;/6</text>
+    <text x="118" y="240">&#960;</text>
+    <text x="136.1" y="300">7&#960;/6</text>
+    <text x="155.2" y="324.9">5&#960;/4</text>
+    <text x="180" y="343.9">4&#960;/3</text>
+    <text x="240" y="362">3&#960;/2</text>
+    <text x="300" y="343.9">5&#960;/3</text>
+    <text x="324.9" y="324.9">7&#960;/4</text>
+    <text x="343.9" y="300">11&#960;/6</text>
+  </g>
+
+  <g font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#52606d" text-anchor="middle">
+    <text x="240" y="466">P(&#952;) = (cos&#160;&#952;, sin&#160;&#952;) on the circle of radius 1</text>
+  </g>
+</svg>

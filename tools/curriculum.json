@@ -1,0 +1,423 @@
+{
+  "$comment": "Single source of truth for the curriculum. Discipline and topic folders, their order, level and one-line description. tools/build_indexes.py generates every index file from this manifest; tools/validate_repo.py checks the result.",
+  "disciplines": [
+    {
+      "id": "00-foundations",
+      "title": "Foundations",
+      "subtitle": "How mathematics itself works",
+      "blurb": "Mathematical thinking, logic, sets, proof and the language of functions. These are not prerequisites you finish once: they are the grammar that every later subject is written in.",
+      "prerequisites": [],
+      "related": ["09-discrete-mathematics", "24-advanced-topics"],
+      "topics": [
+        {"slug": "01-mathematical-thinking", "title": "Mathematical Thinking and Problem Solving", "level": "Beginner", "hours": 6, "blurb": "Abstraction, conjecture, counterexample and the heuristics of solving unfamiliar problems."},
+        {"slug": "02-logic", "title": "Propositional and First-Order Logic", "level": "Beginner", "hours": 8, "blurb": "Connectives, truth tables, quantifiers, inference rules and the anatomy of a valid argument."},
+        {"slug": "03-set-theory", "title": "Set Theory", "level": "Beginner", "hours": 10, "blurb": "Sets, operations, identities, cardinality and Cantor's diagonal argument."},
+        {"slug": "04-proof-techniques", "title": "Proof Techniques", "level": "Beginner", "hours": 10, "blurb": "Direct proof, contraposition, contradiction, cases, existence and uniqueness."},
+        {"slug": "05-relations-and-functions", "title": "Relations and Functions", "level": "Intermediate", "hours": 10, "blurb": "Ordered pairs, equivalence relations, orders, injections, surjections and bijections."}
+      ]
+    },
+    {
+      "id": "01-arithmetic",
+      "title": "Arithmetic",
+      "subtitle": "Number and operation from the ground up",
+      "blurb": "Counting, the integers, fractions, decimals, percentages, ratios and powers. Arithmetic is not a preliminary to mathematics; it is where the number systems are built, and every later subject leans on it.",
+      "prerequisites": [],
+      "related": ["02-pre-algebra", "12-number-theory"],
+      "topics": [
+        {"slug": "01-natural-numbers", "title": "Natural Numbers", "level": "Beginner", "hours": 6, "blurb": "Place value, the operations and their properties, primes, GCD and LCM, other bases."},
+        {"slug": "02-integers", "title": "Integers and Negative Numbers", "level": "Beginner", "hours": 6, "blurb": "Signed numbers, absolute value and the real reason negative times negative is positive."},
+        {"slug": "03-fractions", "title": "Fractions", "level": "Beginner", "hours": 8, "blurb": "Fractions as numbers, equivalent forms, the four operations and why the rules work."},
+        {"slug": "04-decimals", "title": "Decimals", "level": "Beginner", "hours": 6, "blurb": "Place value beyond the point, repeating decimals, rounding, scientific notation."},
+        {"slug": "05-percentages", "title": "Percentages", "level": "Beginner", "hours": 6, "blurb": "Percent as a ratio, increases and decreases, successive changes, reverse percentages."},
+        {"slug": "06-ratios-and-proportions", "title": "Ratios, Rates and Proportions", "level": "Beginner", "hours": 7, "blurb": "Comparison, unit rates, proportional reasoning, scaling and dimensional analysis."},
+        {"slug": "07-exponents-and-roots", "title": "Exponents and Roots", "level": "Beginner", "hours": 8, "blurb": "The exponent laws and their proofs, radicals, rational exponents, irrationality."}
+      ]
+    },
+    {
+      "id": "02-pre-algebra",
+      "title": "Pre-Algebra",
+      "subtitle": "The bridge from numbers to symbols",
+      "blurb": "Order of operations, variables, factors, first equations and the coordinate plane. This is the shortest and most important bridge in the curriculum: after it, arithmetic becomes algebra.",
+      "prerequisites": ["01-arithmetic"],
+      "related": ["03-algebra"],
+      "topics": [
+        {"slug": "01-order-of-operations", "title": "Order of Operations", "level": "Beginner", "hours": 3, "blurb": "Why a convention is needed, precedence, grouping symbols and evaluation."},
+        {"slug": "02-variables-and-expressions", "title": "Variables and Algebraic Expressions", "level": "Beginner", "hours": 5, "blurb": "Letters as unknowns, translating words, terms, like terms, distributivity."},
+        {"slug": "03-factors-and-multiples", "title": "Factors, Multiples, GCD and LCM", "level": "Beginner", "hours": 5, "blurb": "Divisibility rules, prime factorisation, the Euclidean algorithm and its uses."},
+        {"slug": "04-introduction-to-equations", "title": "Introduction to Equations", "level": "Beginner", "hours": 6, "blurb": "The balance model, inverse operations and solving one- and two-step equations."},
+        {"slug": "05-the-coordinate-plane", "title": "The Coordinate Plane", "level": "Beginner", "hours": 6, "blurb": "Coordinates, distance, midpoint, slope and the graph of a relationship."}
+      ]
+    },
+    {
+      "id": "03-algebra",
+      "title": "Algebra",
+      "subtitle": "Symbolic reasoning and the study of structure",
+      "blurb": "From linear equations to complex numbers. Algebra teaches you to reason about whole classes of quantities at once, and it is the language in which geometry, calculus and everything after it is written.",
+      "prerequisites": ["02-pre-algebra"],
+      "related": ["04-geometry", "06-precalculus", "08-linear-algebra"],
+      "topics": [
+        {"slug": "01-elementary-algebra", "title": "Elementary Algebra", "level": "Beginner", "hours": 8, "blurb": "Expressions, the field properties, simplification, formulas and modelling."},
+        {"slug": "02-linear-equations", "title": "Linear Equations", "level": "Beginner", "hours": 8, "blurb": "Solving with justification, fractional coefficients, absolute value, applications."},
+        {"slug": "03-inequalities", "title": "Inequalities", "level": "Intermediate", "hours": 8, "blurb": "Order axioms, interval notation, absolute-value inequalities and sign charts."},
+        {"slug": "04-intermediate-algebra", "title": "Intermediate Algebra", "level": "Intermediate", "hours": 10, "blurb": "Rational exponents, radicals, rational expressions, division and the binomial theorem."},
+        {"slug": "05-systems-of-equations", "title": "Systems of Linear Equations", "level": "Intermediate", "hours": 8, "blurb": "Substitution, elimination, three variables and the geometry of solution sets."},
+        {"slug": "06-polynomials", "title": "Polynomials", "level": "Intermediate", "hours": 9, "blurb": "Degree, arithmetic, end behaviour, the division algorithm and Vieta's formulas."},
+        {"slug": "07-factoring", "title": "Factoring", "level": "Intermediate", "hours": 8, "blurb": "Common factors, grouping, quadratics, special forms and general strategies."},
+        {"slug": "08-quadratic-equations", "title": "Quadratic Equations", "level": "Intermediate", "hours": 9, "blurb": "Four solving methods, completing the square, the discriminant and the vertex form."},
+        {"slug": "09-rational-expressions", "title": "Rational Expressions", "level": "Intermediate", "hours": 8, "blurb": "Domains, simplification, LCD arithmetic, complex fractions and rational equations."},
+        {"slug": "10-radicals-and-rational-exponents", "title": "Radicals and Rational Exponents", "level": "Intermediate", "hours": 7, "blurb": "Root laws, simplification, conjugates, radical equations and extraneous roots."},
+        {"slug": "11-functions", "title": "Functions", "level": "Intermediate", "hours": 10, "blurb": "Domain, range, graphs, transformations, composition, inverses and families."},
+        {"slug": "12-exponential-and-logarithmic-functions", "title": "Exponential and Logarithmic Functions", "level": "Intermediate", "hours": 10, "blurb": "Exponential growth, the number e, logarithms as inverses and their laws."},
+        {"slug": "13-complex-numbers", "title": "Complex Numbers", "level": "Intermediate", "hours": 8, "blurb": "The complex plane, arithmetic, conjugates, polar form and roots of unity."},
+        {"slug": "14-advanced-algebra", "title": "Advanced Algebra", "level": "Advanced", "hours": 10, "blurb": "Polynomial equations, the fundamental theorem of algebra, partial fractions, sequences."}
+      ]
+    },
+    {
+      "id": "04-geometry",
+      "title": "Geometry",
+      "subtitle": "Shape, space and rigorous deduction",
+      "blurb": "Euclid's axiomatic method is the ancestor of all mathematics. From congruent triangles to coordinates, transformations and non-Euclidean spaces, geometry is where proof becomes visible.",
+      "prerequisites": ["01-arithmetic"],
+      "related": ["05-trigonometry", "17-topology", "24-advanced-topics"],
+      "topics": [
+        {"slug": "01-euclidean-geometry", "title": "Euclidean Geometry", "level": "Beginner", "hours": 12, "blurb": "Axioms, postulates, angles, parallel lines, and geometry as a deductive system."},
+        {"slug": "02-triangles", "title": "Triangles", "level": "Intermediate", "hours": 10, "blurb": "Congruence, similarity, the Pythagorean theorem, area and triangle centres."},
+        {"slug": "03-circles", "title": "Circles", "level": "Intermediate", "hours": 9, "blurb": "Chords, tangents, inscribed angles, power of a point and circle theorems."},
+        {"slug": "04-coordinate-geometry", "title": "Coordinate Geometry", "level": "Intermediate", "hours": 9, "blurb": "Lines, distance, midpoint, slope, and algebraic proofs of geometric facts."},
+        {"slug": "05-solid-geometry", "title": "Solid Geometry", "level": "Intermediate", "hours": 9, "blurb": "Polyhedra, spheres, cylinders, cones, volume, surface area and cross-sections."},
+        {"slug": "06-transformations", "title": "Geometric Transformations", "level": "Intermediate", "hours": 8, "blurb": "Isometries, dilations, composition, symmetry groups and tessellations."},
+        {"slug": "07-analytic-geometry", "title": "Analytic Geometry", "level": "Intermediate", "hours": 8, "blurb": "Conic sections from the focus-directrix definition and their equations."},
+        {"slug": "08-non-euclidean-geometry", "title": "Non-Euclidean Geometry", "level": "Advanced", "hours": 8, "blurb": "The parallel postulate, spherical and hyperbolic geometry, curvature."}
+      ]
+    },
+    {
+      "id": "05-trigonometry",
+      "title": "Trigonometry",
+      "subtitle": "Angles, circles and periodic phenomena",
+      "blurb": "Trigonometry begins with right triangles and ends as the study of the functions that model every oscillation in nature. The unit circle is the bridge between the two.",
+      "prerequisites": ["04-geometry"],
+      "related": ["06-precalculus", "07-calculus", "15-complex-analysis"],
+      "topics": [
+        {"slug": "01-trigonometric-functions", "title": "Trigonometric Functions", "level": "Intermediate", "hours": 10, "blurb": "Right-triangle ratios, sine, cosine, tangent, exact values and applications."},
+        {"slug": "02-unit-circle", "title": "The Unit Circle and Radian Measure", "level": "Intermediate", "hours": 8, "blurb": "Radians, arc length, the unit circle definition, periodicity and graphs."},
+        {"slug": "03-trigonometric-identities", "title": "Trigonometric Identities", "level": "Advanced", "hours": 10, "blurb": "Pythagorean, sum, double-angle and half-angle identities, with proofs."},
+        {"slug": "04-inverse-trigonometric-functions", "title": "Inverse Trigonometric Functions", "level": "Advanced", "hours": 7, "blurb": "Principal branches, domains, graphs and solving trigonometric equations."},
+        {"slug": "05-triangle-trigonometry", "title": "Triangle Trigonometry", "level": "Intermediate", "hours": 8, "blurb": "The laws of sines and cosines, the ambiguous case and surveying problems."},
+        {"slug": "06-trigonometric-equations", "title": "Trigonometric Equations", "level": "Advanced", "hours": 7, "blurb": "General solutions, periodicity, substitutions and modelling with sinusoids."}
+      ]
+    },
+    {
+      "id": "06-precalculus",
+      "title": "Precalculus",
+      "subtitle": "The functions and tools that calculus needs",
+      "blurb": "A focused preparation for calculus: function families, transformations, sequences and series, conics, and an honest first look at limits.",
+      "prerequisites": ["03-algebra", "05-trigonometry"],
+      "related": ["07-calculus"],
+      "topics": [
+        {"slug": "01-functions-and-graphs", "title": "Functions and Graphs", "level": "Intermediate", "hours": 9, "blurb": "Function notation, domains, transformations, composition, inverses and rates."},
+        {"slug": "02-polynomial-and-rational-functions", "title": "Polynomial and Rational Functions", "level": "Intermediate", "hours": 9, "blurb": "Roots, multiplicity, asymptotes, end behaviour and inequality sign charts."},
+        {"slug": "03-exponential-and-logarithmic-models", "title": "Exponential and Logarithmic Models", "level": "Intermediate", "hours": 8, "blurb": "Growth and decay, half-life, log scales, and fitting exponential data."},
+        {"slug": "04-conic-sections", "title": "Conic Sections", "level": "Intermediate", "hours": 8, "blurb": "Circles, parabolas, ellipses and hyperbolas as loci and as equations."},
+        {"slug": "05-sequences-and-series", "title": "Sequences and Series", "level": "Intermediate", "hours": 9, "blurb": "Arithmetic and geometric sequences, summation notation, induction, convergence."},
+        {"slug": "06-introduction-to-limits", "title": "Introduction to Limits", "level": "Intermediate", "hours": 7, "blurb": "Average and instantaneous rate of change, limit intuition and the tangent problem."}
+      ]
+    },
+    {
+      "id": "07-calculus",
+      "title": "Calculus",
+      "subtitle": "Change, accumulation and the link between them",
+      "blurb": "The derivative measures change; the integral measures accumulation; the fundamental theorem says they are inverse. Calculus turns geometry into algebra and motion into equations.",
+      "prerequisites": ["03-algebra", "05-trigonometry", "06-precalculus"],
+      "related": ["14-real-analysis", "16-differential-equations", "18-optimization"],
+      "topics": [
+        {"slug": "01-limits", "title": "Limits", "level": "Intermediate", "hours": 10, "blurb": "Epsilon-delta, one-sided limits, limit laws, indeterminate forms and asymptotes."},
+        {"slug": "02-continuity", "title": "Continuity", "level": "Intermediate", "hours": 7, "blurb": "Definition, types of discontinuity, the intermediate and extreme value theorems."},
+        {"slug": "03-derivatives", "title": "Derivatives", "level": "Intermediate", "hours": 10, "blurb": "The derivative as a limit, differentiability, tangent lines and rates of change."},
+        {"slug": "04-differentiation-rules", "title": "Differentiation Rules", "level": "Intermediate", "hours": 10, "blurb": "Product, quotient, chain and implicit differentiation, with proofs."},
+        {"slug": "05-applications-of-derivatives", "title": "Applications of Derivatives", "level": "Intermediate", "hours": 10, "blurb": "Extrema, the mean value theorem, curve sketching, related rates, optimization."},
+        {"slug": "06-integrals", "title": "Integrals", "level": "Intermediate", "hours": 10, "blurb": "Riemann sums, the definite integral, area and the integral as accumulation."},
+        {"slug": "07-fundamental-theorem-of-calculus", "title": "The Fundamental Theorem of Calculus", "level": "Intermediate", "hours": 8, "blurb": "Both parts, their proofs, and why differentiation and integration are inverse."},
+        {"slug": "08-techniques-of-integration", "title": "Techniques of Integration", "level": "Advanced", "hours": 12, "blurb": "Substitution, parts, partial fractions, trigonometric substitution and numerics."},
+        {"slug": "09-applications-of-integration", "title": "Applications of Integration", "level": "Advanced", "hours": 9, "blurb": "Volumes, arc length, averages, work, and probability density functions."},
+        {"slug": "10-improper-integrals", "title": "Improper Integrals", "level": "Advanced", "hours": 7, "blurb": "Unbounded intervals and integrands, convergence tests and comparison."},
+        {"slug": "11-sequences-and-series-in-calculus", "title": "Sequences and Series", "level": "Advanced", "hours": 12, "blurb": "Convergence tests, power series, Taylor series and error estimates."},
+        {"slug": "12-multivariable-calculus", "title": "Multivariable Calculus", "level": "Advanced", "hours": 14, "blurb": "Partial derivatives, gradients, multiple integrals, Lagrange multipliers."},
+        {"slug": "13-vector-calculus", "title": "Vector Calculus", "level": "Advanced", "hours": 12, "blurb": "Vector fields, line and surface integrals, Green, Stokes and Gauss theorems."}
+      ]
+    },
+    {
+      "id": "08-linear-algebra",
+      "title": "Linear Algebra",
+      "subtitle": "Vectors, matrices and linear structure",
+      "blurb": "Linear algebra is the most widely applied subject in mathematics: geometry, differential equations, statistics, physics, machine learning and abstract algebra all run on it.",
+      "prerequisites": ["03-algebra"],
+      "related": ["13-abstract-algebra", "18-optimization", "14-real-analysis"],
+      "topics": [
+        {"slug": "01-vectors", "title": "Vectors", "level": "Intermediate", "hours": 8, "blurb": "Geometric and algebraic vectors, dot and cross products, projections."},
+        {"slug": "02-matrices", "title": "Matrices", "level": "Intermediate", "hours": 9, "blurb": "Matrix algebra, multiplication as composition, inverses, transpose, rank."},
+        {"slug": "03-systems-of-linear-equations", "title": "Systems of Linear Equations", "level": "Intermediate", "hours": 9, "blurb": "Gaussian elimination, row reduction, solution structure and LU factorisation."},
+        {"slug": "04-vector-spaces", "title": "Vector Spaces", "level": "Advanced", "hours": 12, "blurb": "Axioms, subspaces, span, independence, bases, dimension and coordinates."},
+        {"slug": "05-linear-transformations", "title": "Linear Transformations", "level": "Advanced", "hours": 11, "blurb": "Matrices as maps, kernel and image, rank-nullity, change of basis."},
+        {"slug": "06-determinants", "title": "Determinants", "level": "Advanced", "hours": 9, "blurb": "Volume interpretation, properties, cofactor expansion and Cramer's rule."},
+        {"slug": "07-eigenvalues-and-eigenvectors", "title": "Eigenvalues and Eigenvectors", "level": "Advanced", "hours": 11, "blurb": "Characteristic polynomials, diagonalisation, spectral theorem, applications."},
+        {"slug": "08-inner-product-spaces", "title": "Inner Product Spaces", "level": "Advanced", "hours": 10, "blurb": "Orthogonality, Gram-Schmidt, projections, least squares and Fourier ideas."}
+      ]
+    },
+    {
+      "id": "09-discrete-mathematics",
+      "title": "Discrete Mathematics",
+      "subtitle": "Induction, algorithms and finite structures",
+      "blurb": "The mathematics of computer science and of counting: induction, recurrences, complexity, logic circuits and discrete probability.",
+      "prerequisites": ["00-foundations"],
+      "related": ["20-combinatorics", "21-graph-theory", "10-probability"],
+      "topics": [
+        {"slug": "01-mathematical-induction", "title": "Mathematical Induction", "level": "Intermediate", "hours": 7, "blurb": "Weak and strong induction, well-ordering, and writing induction proofs."},
+        {"slug": "02-recurrence-relations", "title": "Recurrence Relations", "level": "Advanced", "hours": 9, "blurb": "Iteration, characteristic equations, master theorem and divide-and-conquer."},
+        {"slug": "03-algorithms-and-complexity", "title": "Algorithms and Complexity", "level": "Advanced", "hours": 9, "blurb": "Big-O, growth rates, sorting bounds, P vs NP and computability preview."},
+        {"slug": "04-boolean-algebra", "title": "Boolean Algebra", "level": "Intermediate", "hours": 8, "blurb": "Boolean laws, normal forms, Karnaugh maps and logic circuits."},
+        {"slug": "05-discrete-probability", "title": "Discrete Probability", "level": "Intermediate", "hours": 8, "blurb": "Finite sample spaces, counting with probability, expectation and variance."}
+      ]
+    },
+    {
+      "id": "10-probability",
+      "title": "Probability",
+      "subtitle": "Uncertainty made rigorous",
+      "blurb": "From coin flips to measure-theoretic foundations, probability is the mathematics of uncertainty and the foundation of statistics, physics and machine learning.",
+      "prerequisites": ["07-calculus"],
+      "related": ["11-statistics", "24-advanced-topics"],
+      "topics": [
+        {"slug": "01-probability-foundations", "title": "Probability Foundations", "level": "Intermediate", "hours": 9, "blurb": "Sample spaces, axioms, inclusion-exclusion, counting and conditional probability."},
+        {"slug": "02-conditional-probability-and-independence", "title": "Conditional Probability and Independence", "level": "Intermediate", "hours": 8, "blurb": "Bayes' theorem, independence, the base-rate fallacy and Markov chains."},
+        {"slug": "03-random-variables", "title": "Random Variables", "level": "Advanced", "hours": 10, "blurb": "Discrete and continuous variables, PMFs, PDFs, CDFs and transformations."},
+        {"slug": "04-probability-distributions", "title": "Probability Distributions", "level": "Advanced", "hours": 12, "blurb": "Binomial, Poisson, geometric, normal, exponential, gamma and friends."},
+        {"slug": "05-expectation-and-variance", "title": "Expectation and Variance", "level": "Advanced", "hours": 9, "blurb": "Linearity, moments, generating functions, covariance and inequalities."},
+        {"slug": "06-law-of-large-numbers-and-central-limit-theorem", "title": "Law of Large Numbers and the Central Limit Theorem", "level": "Advanced", "hours": 8, "blurb": "Modes of convergence and why the normal distribution is universal."},
+        {"slug": "07-stochastic-processes", "title": "Stochastic Processes", "level": "Advanced", "hours": 12, "blurb": "Markov chains, Poisson processes, random walks, martingales and Brownian motion."}
+      ]
+    },
+    {
+      "id": "11-statistics",
+      "title": "Statistics",
+      "subtitle": "Learning from data",
+      "blurb": "Descriptive statistics, estimation, hypothesis testing, regression and Bayesian inference: the part of probability that turns data into decisions.",
+      "prerequisites": ["10-probability"],
+      "related": ["19-numerical-analysis", "23-applied-mathematics"],
+      "topics": [
+        {"slug": "01-descriptive-statistics", "title": "Descriptive Statistics", "level": "Beginner", "hours": 8, "blurb": "Means, medians, spread, quartiles, outliers and honest data visualisation."},
+        {"slug": "02-sampling-and-estimation", "title": "Sampling and Estimation", "level": "Intermediate", "hours": 9, "blurb": "Sampling distributions, standard error, confidence intervals and bias."},
+        {"slug": "03-hypothesis-testing", "title": "Hypothesis Testing", "level": "Intermediate", "hours": 10, "blurb": "Null models, p-values, t-tests, power, multiplicity and common misuses."},
+        {"slug": "04-linear-regression", "title": "Linear Regression", "level": "Intermediate", "hours": 9, "blurb": "Least squares, inference for coefficients, residuals and model checking."},
+        {"slug": "05-bayesian-statistics", "title": "Bayesian Statistics", "level": "Advanced", "hours": 10, "blurb": "Priors, posteriors, conjugacy, credible intervals and Bayesian computation."},
+        {"slug": "06-experimental-design", "title": "Experimental Design", "level": "Intermediate", "hours": 7, "blurb": "Randomisation, blocking, confounding, causal inference and Simpson's paradox."}
+      ]
+    },
+    {
+      "id": "12-number-theory",
+      "title": "Number Theory",
+      "subtitle": "The integers and their hidden structure",
+      "blurb": "Divisibility, primes, congruences and Diophantine equations. Elementary to state, deep to prove, and the historical engine of algebraic abstraction.",
+      "prerequisites": ["00-foundations", "01-arithmetic"],
+      "related": ["13-abstract-algebra", "24-advanced-topics"],
+      "topics": [
+        {"slug": "01-divisibility-and-primes", "title": "Divisibility and Primes", "level": "Intermediate", "hours": 9, "blurb": "The division algorithm, the Euclidean algorithm, uniqueness of factorisation."},
+        {"slug": "02-congruences", "title": "Congruences", "level": "Intermediate", "hours": 10, "blurb": "Modular arithmetic, the Chinese remainder theorem, Euler and Fermat."},
+        {"slug": "03-arithmetic-functions", "title": "Arithmetic Functions", "level": "Advanced", "hours": 8, "blurb": "Divisor functions, Möbius inversion, Euler's totient and multiplicativity."},
+        {"slug": "04-diophantine-equations", "title": "Diophantine Equations", "level": "Advanced", "hours": 9, "blurb": "Linear equations, Pell's equation, Pythagorean triples and Fermat's method."},
+        {"slug": "05-quadratic-reciprocity", "title": "Quadratic Residues and Reciprocity", "level": "Advanced", "hours": 10, "blurb": "Legendre symbols, Gauss's lemma and the law of quadratic reciprocity."},
+        {"slug": "06-analytic-number-theory", "title": "Analytic Number Theory", "level": "Advanced", "hours": 12, "blurb": "The prime number theorem, Dirichlet series, the zeta function and primes."}
+      ]
+    },
+    {
+      "id": "13-abstract-algebra",
+      "title": "Abstract Algebra",
+      "subtitle": "Structure for its own sake",
+      "blurb": "Groups, rings and fields: the axiomatic study of algebraic structure, culminating in Galois theory and the impossibility of solving the quintic by radicals.",
+      "prerequisites": ["00-foundations", "08-linear-algebra", "12-number-theory"],
+      "related": ["24-advanced-topics", "15-complex-analysis"],
+      "topics": [
+        {"slug": "01-groups", "title": "Groups", "level": "Advanced", "hours": 14, "blurb": "Axioms, subgroups, cosets, Lagrange's theorem, homomorphisms and quotients."},
+        {"slug": "02-rings", "title": "Rings", "level": "Advanced", "hours": 12, "blurb": "Ideals, quotient rings, integral domains, polynomial rings and UFDs."},
+        {"slug": "03-fields", "title": "Fields", "level": "Advanced", "hours": 12, "blurb": "Field extensions, finite fields, algebraic and transcendental elements."},
+        {"slug": "04-galois-theory", "title": "Galois Theory", "level": "Advanced", "hours": 14, "blurb": "Galois groups, the fundamental theorem, solvability and the quintic."},
+        {"slug": "05-modules", "title": "Modules", "level": "Advanced", "hours": 10, "blurb": "Modules over rings, free modules, structure theory and exact sequences."}
+      ]
+    },
+    {
+      "id": "14-real-analysis",
+      "title": "Real Analysis",
+      "subtitle": "Calculus made rigorous",
+      "blurb": "Completeness, limits, continuity, differentiation, integration and metric spaces. The subject where you learn why the theorems of calculus are true — and when they fail.",
+      "prerequisites": ["00-foundations", "07-calculus"],
+      "related": ["15-complex-analysis", "17-topology", "24-advanced-topics"],
+      "topics": [
+        {"slug": "01-real-numbers-and-completeness", "title": "The Real Numbers and Completeness", "level": "Advanced", "hours": 12, "blurb": "Ordered fields, supremum, Dedekind cuts and Cantor's construction."},
+        {"slug": "02-sequences-and-series", "title": "Sequences and Series", "level": "Advanced", "hours": 12, "blurb": "Convergence, subsequences, Cauchy sequences and absolute convergence."},
+        {"slug": "03-continuity-and-limits", "title": "Continuity and Limits", "level": "Advanced", "hours": 12, "blurb": "Epsilon-delta, compactness arguments and the intermediate value theorem."},
+        {"slug": "04-differentiation", "title": "Differentiation", "level": "Advanced", "hours": 12, "blurb": "The derivative, the mean value theorem, Taylor's theorem and convexity."},
+        {"slug": "05-riemann-integration", "title": "Riemann Integration", "level": "Advanced", "hours": 12, "blurb": "Partitions, the Riemann criterion, the fundamental theorem and improper integrals."},
+        {"slug": "06-metric-spaces", "title": "Metric Spaces", "level": "Advanced", "hours": 12, "blurb": "Open and closed sets, completeness, compactness and the contraction principle."}
+      ]
+    },
+    {
+      "id": "15-complex-analysis",
+      "title": "Complex Analysis",
+      "subtitle": "Calculus in the complex plane",
+      "blurb": "Complex differentiability is far stronger than real differentiability, and the consequences — Cauchy's theorem, power series, residues — are astonishingly powerful.",
+      "prerequisites": ["07-calculus", "03-algebra"],
+      "related": ["14-real-analysis", "17-topology"],
+      "topics": [
+        {"slug": "01-complex-numbers-and-geometry", "title": "Complex Numbers and Geometry", "level": "Advanced", "hours": 9, "blurb": "Arithmetic, polar form, Möbius maps and the geometry of the complex plane."},
+        {"slug": "02-analytic-functions", "title": "Analytic Functions", "level": "Advanced", "hours": 11, "blurb": "Holomorphy, the Cauchy-Riemann equations and harmonic functions."},
+        {"slug": "03-complex-integration", "title": "Complex Integration", "level": "Advanced", "hours": 12, "blurb": "Contour integrals, Cauchy's theorem and formula, Liouville and Morera."},
+        {"slug": "04-power-series-and-residues", "title": "Power Series and Residues", "level": "Advanced", "hours": 12, "blurb": "Laurent series, singularities, the residue theorem and integral evaluation."},
+        {"slug": "05-conformal-mappings", "title": "Conformal Mappings", "level": "Advanced", "hours": 9, "blurb": "Conformality, fractional linear maps, the Riemann mapping theorem."}
+      ]
+    },
+    {
+      "id": "16-differential-equations",
+      "title": "Differential Equations",
+      "subtitle": "Modelling how things change",
+      "blurb": "The language of physics, engineering, biology and economics. From separable equations to PDEs and Laplace transforms.",
+      "prerequisites": ["07-calculus", "08-linear-algebra"],
+      "related": ["22-mathematical-modeling", "19-numerical-analysis", "23-applied-mathematics"],
+      "topics": [
+        {"slug": "01-first-order-odes", "title": "First-Order Differential Equations", "level": "Intermediate", "hours": 10, "blurb": "Separable, linear and exact equations, integrating factors and modelling."},
+        {"slug": "02-second-order-linear-odes", "title": "Second-Order Linear ODEs", "level": "Advanced", "hours": 10, "blurb": "Characteristic equations, undetermined coefficients, resonance and oscillations."},
+        {"slug": "03-systems-of-odes", "title": "Systems of ODEs", "level": "Advanced", "hours": 10, "blurb": "Matrix methods, phase portraits, stability and linearisation."},
+        {"slug": "04-laplace-transforms", "title": "Laplace Transforms", "level": "Advanced", "hours": 9, "blurb": "Transform rules, inverse transforms, convolution and discontinuous forcing."},
+        {"slug": "05-introduction-to-pdes", "title": "Introduction to PDEs", "level": "Advanced", "hours": 12, "blurb": "The heat, wave and Laplace equations, separation of variables, Fourier series."},
+        {"slug": "06-numerical-solutions-of-odes", "title": "Numerical Solutions of ODEs", "level": "Advanced", "hours": 8, "blurb": "Euler, Runge-Kutta, stability, stiffness and error control."}
+      ]
+    },
+    {
+      "id": "17-topology",
+      "title": "Topology",
+      "subtitle": "Continuity without distance",
+      "blurb": "Open sets, compactness, connectedness and the classification of spaces. Topology is geometry stripped to its essential structure.",
+      "prerequisites": ["00-foundations", "14-real-analysis"],
+      "related": ["14-real-analysis", "24-advanced-topics", "04-geometry"],
+      "topics": [
+        {"slug": "01-topological-spaces", "title": "Topological Spaces", "level": "Advanced", "hours": 11, "blurb": "Open sets, bases, subspaces, quotient and product topologies, separation."},
+        {"slug": "02-continuity-and-homeomorphisms", "title": "Continuity and Homeomorphisms", "level": "Advanced", "hours": 10, "blurb": "Continuity via preimages, homeomorphism, invariance of topological properties."},
+        {"slug": "03-compactness", "title": "Compactness", "level": "Advanced", "hours": 10, "blurb": "Open covers, Heine-Borel, sequential compactness, Tychonoff's theorem."},
+        {"slug": "04-connectedness", "title": "Connectedness", "level": "Advanced", "hours": 9, "blurb": "Connected and path-connected spaces, components and the intermediate value theorem."},
+        {"slug": "05-algebraic-topology", "title": "Introduction to Algebraic Topology", "level": "Advanced", "hours": 12, "blurb": "Homotopy, the fundamental group, covering spaces and Euler characteristic."}
+      ]
+    },
+    {
+      "id": "18-optimization",
+      "title": "Optimization",
+      "subtitle": "Finding the best answer",
+      "blurb": "Linear programming, convexity, Lagrange multipliers and gradient methods: the mathematics behind scheduling, engineering design and machine learning.",
+      "prerequisites": ["08-linear-algebra", "07-calculus"],
+      "related": ["19-numerical-analysis", "22-mathematical-modeling", "23-applied-mathematics"],
+      "topics": [
+        {"slug": "01-linear-programming", "title": "Linear Programming", "level": "Intermediate", "hours": 9, "blurb": "Feasible regions, the simplex method, duality and sensitivity."},
+        {"slug": "02-convex-optimization", "title": "Convex Optimization", "level": "Advanced", "hours": 11, "blurb": "Convex sets and functions, duality, KKT conditions and optimality certificates."},
+        {"slug": "03-lagrange-multipliers", "title": "Lagrange Multipliers", "level": "Advanced", "hours": 8, "blurb": "Equality and inequality constraints, the geometry behind the multiplier."},
+        {"slug": "04-gradient-methods", "title": "Gradient Methods", "level": "Advanced", "hours": 9, "blurb": "Gradient descent, convergence rates, stochastic and accelerated variants."}
+      ]
+    },
+    {
+      "id": "19-numerical-analysis",
+      "title": "Numerical Analysis",
+      "subtitle": "Mathematics that runs on a computer",
+      "blurb": "Floating point, root finding, interpolation, numerical integration and iterative solvers — plus the error analysis that says whether an answer can be trusted.",
+      "prerequisites": ["07-calculus", "08-linear-algebra"],
+      "related": ["18-optimization", "16-differential-equations"],
+      "topics": [
+        {"slug": "01-floating-point-arithmetic", "title": "Floating-Point Arithmetic", "level": "Intermediate", "hours": 7, "blurb": "IEEE 754, rounding error, catastrophic cancellation and condition numbers."},
+        {"slug": "02-root-finding", "title": "Root Finding", "level": "Intermediate", "hours": 8, "blurb": "Bisection, Newton, secant and fixed-point iteration with convergence orders."},
+        {"slug": "03-interpolation-and-approximation", "title": "Interpolation and Approximation", "level": "Advanced", "hours": 9, "blurb": "Lagrange and Newton forms, splines, least squares and Runge's phenomenon."},
+        {"slug": "04-numerical-integration", "title": "Numerical Integration", "level": "Advanced", "hours": 8, "blurb": "Trapezoid, Simpson, Gaussian quadrature and error bounds."},
+        {"slug": "05-iterative-methods-for-linear-systems", "title": "Iterative Methods for Linear Systems", "level": "Advanced", "hours": 8, "blurb": "Jacobi, Gauss-Seidel, conjugate gradients and condition numbers."}
+      ]
+    },
+    {
+      "id": "20-combinatorics",
+      "title": "Combinatorics",
+      "subtitle": "Counting, arranging and extremal structure",
+      "blurb": "The art of counting without listing: bijections, inclusion-exclusion, generating functions and extremal arguments.",
+      "prerequisites": ["00-foundations", "09-discrete-mathematics"],
+      "related": ["21-graph-theory", "10-probability"],
+      "topics": [
+        {"slug": "01-counting-principles", "title": "Counting Principles", "level": "Intermediate", "hours": 9, "blurb": "Product and sum rules, permutations, combinations, bijective proofs."},
+        {"slug": "02-inclusion-exclusion", "title": "Inclusion-Exclusion", "level": "Intermediate", "hours": 7, "blurb": "The principle, its proof, derangements and applications to counting."},
+        {"slug": "03-pigeonhole-principle", "title": "The Pigeonhole Principle", "level": "Intermediate", "hours": 6, "blurb": "Basic and generalised forms, with classic and surprising applications."},
+        {"slug": "04-generating-functions", "title": "Generating Functions", "level": "Advanced", "hours": 10, "blurb": "Ordinary and exponential generating functions as algebraic counters."},
+        {"slug": "05-partitions-and-compositions", "title": "Partitions and Compositions", "level": "Advanced", "hours": 8, "blurb": "Integer partitions, Ferrers diagrams, Euler's pentagonal theorem preview."},
+        {"slug": "06-extremal-combinatorics", "title": "Extremal Combinatorics", "level": "Advanced", "hours": 9, "blurb": "Turán's theorem, Ramsey theory, matching and the probabilistic method."}
+      ]
+    },
+    {
+      "id": "21-graph-theory",
+      "title": "Graph Theory",
+      "subtitle": "Networks, connectivity and optimisation on them",
+      "blurb": "Graphs model everything from road networks to social networks. Trees, connectivity, colouring, flows and spectra.",
+      "prerequisites": ["09-discrete-mathematics"],
+      "related": ["20-combinatorics", "08-linear-algebra"],
+      "topics": [
+        {"slug": "01-graph-basics", "title": "Graph Basics", "level": "Intermediate", "hours": 8, "blurb": "Vertices, edges, degree, isomorphism, handshake lemma, adjacency matrices."},
+        {"slug": "02-trees", "title": "Trees", "level": "Intermediate", "hours": 7, "blurb": "Characterisations, spanning trees, Kruskal and Prim, Cayley's formula."},
+        {"slug": "03-paths-and-connectivity", "title": "Paths and Connectivity", "level": "Intermediate", "hours": 8, "blurb": "Euler and Hamilton paths, shortest paths, Menger's theorem and cuts."},
+        {"slug": "04-planarity-and-coloring", "title": "Planarity and Colouring", "level": "Advanced", "hours": 9, "blurb": "Euler's formula, Kuratowski's theorem, chromatic number and the four-colour theorem."},
+        {"slug": "05-matching-and-flows", "title": "Matching and Flows", "level": "Advanced", "hours": 9, "blurb": "Bipartite matching, Hall's theorem, max-flow min-cut and applications."},
+        {"slug": "06-spectral-graph-theory", "title": "Spectral Graph Theory", "level": "Advanced", "hours": 9, "blurb": "Adjacency and Laplacian spectra, Cheeger inequality, random walks."}
+      ]
+    },
+    {
+      "id": "22-mathematical-modeling",
+      "title": "Mathematical Modeling",
+      "subtitle": "Turning the real world into equations",
+      "blurb": "How to build, validate and criticise a model: population dynamics, epidemics, optimisation and stochastic simulation.",
+      "prerequisites": ["07-calculus", "16-differential-equations"],
+      "related": ["23-applied-mathematics", "11-statistics"],
+      "topics": [
+        {"slug": "01-principles-of-modeling", "title": "Principles of Modeling", "level": "Intermediate", "hours": 7, "blurb": "Abstraction, assumptions, dimensional analysis, validation and model limits."},
+        {"slug": "02-population-dynamics", "title": "Population Dynamics", "level": "Intermediate", "hours": 8, "blurb": "Exponential and logistic growth, harvesting, predator-prey systems."},
+        {"slug": "03-epidemic-models", "title": "Epidemic Models", "level": "Intermediate", "hours": 8, "blurb": "SIR and SEIR, R0, herd immunity and parameter estimation."},
+        {"slug": "04-optimization-models", "title": "Optimization Models", "level": "Advanced", "hours": 8, "blurb": "Formulating real problems as linear and integer programs."},
+        {"slug": "05-stochastic-models", "title": "Stochastic Models", "level": "Advanced", "hours": 8, "blurb": "Monte Carlo simulation, queueing, random walks and risk."}
+      ]
+    },
+    {
+      "id": "23-applied-mathematics",
+      "title": "Applied Mathematics",
+      "subtitle": "Mathematics in the physical and social world",
+      "blurb": "Mathematical physics, information theory, game theory, finance, control and signal processing: the payoff of everything above.",
+      "prerequisites": ["16-differential-equations", "10-probability"],
+      "related": ["22-mathematical-modeling", "18-optimization"],
+      "topics": [
+        {"slug": "01-mathematical-physics", "title": "Mathematical Physics", "level": "Advanced", "hours": 12, "blurb": "Classical mechanics in Lagrangian form, waves, and energy methods."},
+        {"slug": "02-information-theory", "title": "Information Theory", "level": "Advanced", "hours": 9, "blurb": "Entropy, mutual information, source coding and channel capacity."},
+        {"slug": "03-game-theory", "title": "Game Theory", "level": "Intermediate", "hours": 8, "blurb": "Nash equilibria, mixed strategies, cooperative games and mechanism design."},
+        {"slug": "04-financial-mathematics", "title": "Financial Mathematics", "level": "Advanced", "hours": 9, "blurb": "Interest, present value, portfolio theory, options and risk-neutral pricing."},
+        {"slug": "05-control-theory", "title": "Control Theory", "level": "Advanced", "hours": 9, "blurb": "State space models, stability, feedback, controllability and observability."},
+        {"slug": "06-signal-processing", "title": "Signal Processing", "level": "Advanced", "hours": 9, "blurb": "Fourier series and transforms, sampling, filters and convolution."}
+      ]
+    },
+    {
+      "id": "24-advanced-topics",
+      "title": "Advanced Topics",
+      "subtitle": "Research-level foundations",
+      "blurb": "Measure theory, functional analysis, category theory, differential and algebraic geometry, dynamical systems and more: the door from undergraduate mathematics into research.",
+      "prerequisites": ["14-real-analysis", "13-abstract-algebra", "08-linear-algebra"],
+      "related": ["17-topology", "15-complex-analysis"],
+      "topics": [
+        {"slug": "01-measure-theory", "title": "Measure Theory", "level": "Advanced", "hours": 14, "blurb": "Sigma-algebras, Lebesgue measure, measurable functions and integration."},
+        {"slug": "02-functional-analysis", "title": "Functional Analysis", "level": "Advanced", "hours": 14, "blurb": "Banach and Hilbert spaces, bounded operators, Hahn-Banach and spectral theory."},
+        {"slug": "03-category-theory", "title": "Category Theory", "level": "Advanced", "hours": 12, "blurb": "Categories, functors, natural transformations, limits and adjunctions."},
+        {"slug": "04-differential-geometry", "title": "Differential Geometry", "level": "Advanced", "hours": 14, "blurb": "Manifolds, tangent spaces, differential forms, connections and curvature."},
+        {"slug": "05-algebraic-topology", "title": "Algebraic Topology", "level": "Advanced", "hours": 14, "blurb": "Homology, cohomology, exact sequences and topological invariants."},
+        {"slug": "06-algebraic-geometry", "title": "Algebraic Geometry", "level": "Advanced", "hours": 14, "blurb": "Affine and projective varieties, ideals, schemes and Bézout's theorem."},
+        {"slug": "07-dynamical-systems", "title": "Dynamical Systems and Chaos", "level": "Advanced", "hours": 11, "blurb": "Flows, maps, fixed points, bifurcations, chaos and the logistic map."},
+        {"slug": "08-representation-theory", "title": "Representation Theory", "level": "Advanced", "hours": 12, "blurb": "Group actions on vector spaces, characters and the Peter-Weyl idea."},
+        {"slug": "09-commutative-algebra", "title": "Commutative Algebra", "level": "Advanced", "hours": 12, "blurb": "Localisation, Noetherian rings, primary decomposition and dimension theory."},
+        {"slug": "10-model-theory", "title": "Model Theory", "level": "Advanced", "hours": 11, "blurb": "Languages, structures, compactness, Löwenheim-Skolem and quantifier elimination."},
+        {"slug": "11-computability-and-decidability", "title": "Computability and Decidability", "level": "Advanced", "hours": 10, "blurb": "Turing machines, the halting problem, Gödel's incompleteness theorems."},
+        {"slug": "12-algebraic-number-theory", "title": "Algebraic Number Theory", "level": "Advanced", "hours": 12, "blurb": "Number fields, rings of integers, ideals, unique factorisation and units."},
+        {"slug": "13-homological-algebra", "title": "Homological Algebra", "level": "Advanced", "hours": 12, "blurb": "Chain complexes, exact sequences, derived functors and spectral sequences."}
+      ]
+    }
+  ]
+}

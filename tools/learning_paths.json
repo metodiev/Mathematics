@@ -1,0 +1,594 @@
+{
+  "$comment": "Curated study routes through the curriculum. tools/build_indexes.py turns this into LEARNING_PATHS.md, resolving each 'discipline/topic' reference against curriculum.json and the files on disk so that unwritten topics appear as plain text instead of broken links.",
+  "paths": [
+    {
+      "id": "path-1",
+      "title": "Path 1: The Complete Path from Zero to Research",
+      "audience": "No mathematical background at all, and the ambition to reach research-level mathematics.",
+      "intro": "This is the whole repository in reading order. It alternates between computation and proof on purpose: fluency with symbols makes abstraction possible, and abstraction explains why the symbols work. Budget several years at a few hours a week — the estimate below is for a committed full-time student.",
+      "stages": [
+        {
+          "name": "Stage 1 — Numbers and operations",
+          "note": "Do not rush this. Every later difficulty in algebra is usually an unfinished difficulty here.",
+          "topics": [
+            "00-foundations/01-mathematical-thinking",
+            "01-arithmetic/01-natural-numbers",
+            "01-arithmetic/02-integers",
+            "01-arithmetic/03-fractions",
+            "01-arithmetic/04-decimals",
+            "01-arithmetic/05-percentages",
+            "01-arithmetic/06-ratios-and-proportions",
+            "01-arithmetic/07-exponents-and-roots"
+          ]
+        },
+        {
+          "name": "Stage 2 — The language of algebra",
+          "note": "From here on, every new rule is justified, not memorised.",
+          "topics": [
+            "02-pre-algebra/01-order-of-operations",
+            "02-pre-algebra/02-variables-and-expressions",
+            "02-pre-algebra/03-factors-and-multiples",
+            "02-pre-algebra/04-introduction-to-equations",
+            "02-pre-algebra/05-the-coordinate-plane",
+            "00-foundations/02-logic"
+          ]
+        },
+        {
+          "name": "Stage 3 — Algebra in earnest",
+          "topics": [
+            "03-algebra/01-elementary-algebra",
+            "03-algebra/02-linear-equations",
+            "03-algebra/03-inequalities",
+            "03-algebra/05-systems-of-equations",
+            "03-algebra/06-polynomials",
+            "03-algebra/07-factoring",
+            "03-algebra/08-quadratic-equations",
+            "03-algebra/04-intermediate-algebra",
+            "03-algebra/09-rational-expressions",
+            "03-algebra/10-radicals-and-rational-exponents"
+          ]
+        },
+        {
+          "name": "Stage 4 — Functions",
+          "note": "The single most important idea for everything that follows: a function is a rule, a graph, and an object you can transform.",
+          "topics": [
+            "03-algebra/11-functions",
+            "03-algebra/12-exponential-and-logarithmic-functions",
+            "03-algebra/14-advanced-algebra",
+            "03-algebra/13-complex-numbers",
+            "06-precalculus/01-functions-and-graphs",
+            "06-precalculus/02-polynomial-and-rational-functions",
+            "06-precalculus/03-exponential-and-logarithmic-models"
+          ]
+        },
+        {
+          "name": "Stage 5 — Shape, space and angle",
+          "topics": [
+            "04-geometry/01-euclidean-geometry",
+            "04-geometry/02-triangles",
+            "04-geometry/03-circles",
+            "04-geometry/04-coordinate-geometry",
+            "04-geometry/05-solid-geometry",
+            "04-geometry/06-transformations",
+            "04-geometry/07-analytic-geometry",
+            "05-trigonometry/01-trigonometric-functions",
+            "05-trigonometry/02-unit-circle",
+            "05-trigonometry/05-triangle-trigonometry",
+            "05-trigonometry/03-trigonometric-identities",
+            "05-trigonometry/04-inverse-trigonometric-functions",
+            "05-trigonometry/06-trigonometric-equations"
+          ]
+        },
+        {
+          "name": "Stage 6 — Calculus",
+          "note": "The first subject where the two halves of mathematics — the computational and the deductive — meet.",
+          "topics": [
+            "06-precalculus/04-conic-sections",
+            "06-precalculus/05-sequences-and-series",
+            "06-precalculus/06-introduction-to-limits",
+            "07-calculus/01-limits",
+            "07-calculus/02-continuity",
+            "07-calculus/03-derivatives",
+            "07-calculus/04-differentiation-rules",
+            "07-calculus/05-applications-of-derivatives",
+            "07-calculus/06-integrals",
+            "07-calculus/07-fundamental-theorem-of-calculus",
+            "07-calculus/08-techniques-of-integration",
+            "07-calculus/09-applications-of-integration",
+            "07-calculus/10-improper-integrals",
+            "07-calculus/11-sequences-and-series-in-calculus"
+          ]
+        },
+        {
+          "name": "Stage 7 — Linear algebra and discrete mathematics",
+          "note": "Two independent branches. Linear algebra is the most reusable subject you will ever learn.",
+          "topics": [
+            "08-linear-algebra/01-vectors",
+            "08-linear-algebra/02-matrices",
+            "08-linear-algebra/03-systems-of-linear-equations",
+            "08-linear-algebra/04-vector-spaces",
+            "08-linear-algebra/05-linear-transformations",
+            "08-linear-algebra/06-determinants",
+            "08-linear-algebra/07-eigenvalues-and-eigenvectors",
+            "08-linear-algebra/08-inner-product-spaces",
+            "09-discrete-mathematics/01-mathematical-induction",
+            "09-discrete-mathematics/02-recurrence-relations",
+            "09-discrete-mathematics/04-boolean-algebra"
+          ]
+        },
+        {
+          "name": "Stage 8 — Calculus in several variables",
+          "topics": [
+            "07-calculus/12-multivariable-calculus",
+            "07-calculus/13-vector-calculus",
+            "16-differential-equations/01-first-order-odes",
+            "16-differential-equations/02-second-order-linear-odes",
+            "16-differential-equations/03-systems-of-odes"
+          ]
+        },
+        {
+          "name": "Stage 9 — Probability and statistics",
+          "topics": [
+            "10-probability/01-probability-foundations",
+            "10-probability/02-conditional-probability-and-independence",
+            "10-probability/03-random-variables",
+            "10-probability/04-probability-distributions",
+            "10-probability/05-expectation-and-variance",
+            "10-probability/06-law-of-large-numbers-and-central-limit-theorem",
+            "11-statistics/01-descriptive-statistics",
+            "11-statistics/02-sampling-and-estimation",
+            "11-statistics/03-hypothesis-testing",
+            "11-statistics/04-linear-regression"
+          ]
+        },
+        {
+          "name": "Stage 10 — Proof, rigour and abstract structure",
+          "note": "This is where mathematics changes character. Everything before was computation; here you learn why the computations are true.",
+          "topics": [
+            "00-foundations/03-set-theory",
+            "00-foundations/04-proof-techniques",
+            "00-foundations/05-relations-and-functions",
+            "12-number-theory/01-divisibility-and-primes",
+            "12-number-theory/02-congruences",
+            "13-abstract-algebra/01-groups",
+            "13-abstract-algebra/02-rings",
+            "13-abstract-algebra/03-fields"
+          ]
+        },
+        {
+          "name": "Stage 11 — Analysis",
+          "topics": [
+            "14-real-analysis/01-real-numbers-and-completeness",
+            "14-real-analysis/02-sequences-and-series",
+            "14-real-analysis/03-continuity-and-limits",
+            "14-real-analysis/04-differentiation",
+            "14-real-analysis/05-riemann-integration",
+            "14-real-analysis/06-metric-spaces",
+            "15-complex-analysis/01-complex-numbers-and-geometry",
+            "15-complex-analysis/02-analytic-functions",
+            "15-complex-analysis/03-complex-integration",
+            "15-complex-analysis/04-power-series-and-residues"
+          ]
+        },
+        {
+          "name": "Stage 12 — Research-level foundations",
+          "topics": [
+            "17-topology/01-topological-spaces",
+            "17-topology/02-continuity-and-homeomorphisms",
+            "17-topology/03-compactness",
+            "17-topology/04-connectedness",
+            "24-advanced-topics/01-measure-theory",
+            "24-advanced-topics/02-functional-analysis",
+            "24-advanced-topics/04-differential-geometry",
+            "24-advanced-topics/05-algebraic-topology",
+            "24-advanced-topics/03-category-theory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "path-2",
+      "title": "Path 2: The Algebra and Calculus Path",
+      "audience": "A student heading for university STEM, or an adult who wants calculus done properly.",
+      "intro": "The classical route. It assumes arithmetic is solid, moves quickly through pre-algebra, and spends its time where the difficulty actually is: functions, trigonometry and the limit idea.",
+      "stages": [
+        {
+          "name": "Repair and consolidate arithmetic",
+          "note": "Skip only if you can do all of this without a calculator and without hesitation.",
+          "topics": [
+            "01-arithmetic/03-fractions",
+            "01-arithmetic/04-decimals",
+            "01-arithmetic/05-percentages",
+            "01-arithmetic/07-exponents-and-roots",
+            "02-pre-algebra/01-order-of-operations",
+            "02-pre-algebra/02-variables-and-expressions"
+          ]
+        },
+        {
+          "name": "Algebra to fluency",
+          "topics": [
+            "03-algebra/01-elementary-algebra",
+            "03-algebra/02-linear-equations",
+            "03-algebra/03-inequalities",
+            "03-algebra/05-systems-of-equations",
+            "03-algebra/07-factoring",
+            "03-algebra/08-quadratic-equations",
+            "03-algebra/09-rational-expressions",
+            "03-algebra/10-radicals-and-rational-exponents",
+            "03-algebra/12-exponential-and-logarithmic-functions"
+          ]
+        },
+        {
+          "name": "Functions and graphs",
+          "topics": [
+            "02-pre-algebra/05-the-coordinate-plane",
+            "03-algebra/11-functions",
+            "06-precalculus/01-functions-and-graphs",
+            "06-precalculus/02-polynomial-and-rational-functions"
+          ]
+        },
+        {
+          "name": "Trigonometry",
+          "topics": [
+            "04-geometry/02-triangles",
+            "05-trigonometry/01-trigonometric-functions",
+            "05-trigonometry/02-unit-circle",
+            "05-trigonometry/03-trigonometric-identities",
+            "05-trigonometry/05-triangle-trigonometry",
+            "05-trigonometry/06-trigonometric-equations"
+          ]
+        },
+        {
+          "name": "Calculus I and II",
+          "topics": [
+            "06-precalculus/06-introduction-to-limits",
+            "07-calculus/01-limits",
+            "07-calculus/02-continuity",
+            "07-calculus/03-derivatives",
+            "07-calculus/04-differentiation-rules",
+            "07-calculus/05-applications-of-derivatives",
+            "07-calculus/06-integrals",
+            "07-calculus/07-fundamental-theorem-of-calculus",
+            "07-calculus/08-techniques-of-integration",
+            "07-calculus/09-applications-of-integration",
+            "07-calculus/11-sequences-and-series-in-calculus"
+          ]
+        },
+        {
+          "name": "The subjects that follow calculus",
+          "topics": [
+            "08-linear-algebra/01-vectors",
+            "08-linear-algebra/02-matrices",
+            "08-linear-algebra/03-systems-of-linear-equations",
+            "07-calculus/12-multivariable-calculus",
+            "16-differential-equations/01-first-order-odes",
+            "16-differential-equations/02-second-order-linear-odes"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "path-3",
+      "title": "Path 3: The Pure Mathematics Path",
+      "audience": "A reader who wants proofs, abstraction and the structure of mathematics itself.",
+      "intro": "Logic and sets first, then the two great proof laboratories — number theory and group theory — and finally analysis and topology, where intuition is trained to survive counterexamples.",
+      "stages": [
+        {
+          "name": "The language of proof",
+          "topics": [
+            "00-foundations/01-mathematical-thinking",
+            "00-foundations/02-logic",
+            "00-foundations/03-set-theory",
+            "00-foundations/04-proof-techniques",
+            "00-foundations/05-relations-and-functions"
+          ]
+        },
+        {
+          "name": "Proof in action: the integers",
+          "topics": [
+            "12-number-theory/01-divisibility-and-primes",
+            "12-number-theory/02-congruences",
+            "12-number-theory/03-arithmetic-functions",
+            "12-number-theory/04-diophantine-equations"
+          ]
+        },
+        {
+          "name": "Algebraic structure",
+          "topics": [
+            "08-linear-algebra/01-vectors",
+            "08-linear-algebra/02-matrices",
+            "08-linear-algebra/04-vector-spaces",
+            "08-linear-algebra/05-linear-transformations",
+            "08-linear-algebra/07-eigenvalues-and-eigenvectors",
+            "13-abstract-algebra/01-groups",
+            "13-abstract-algebra/02-rings",
+            "13-abstract-algebra/03-fields",
+            "13-abstract-algebra/04-galois-theory"
+          ]
+        },
+        {
+          "name": "Analysis and topology",
+          "topics": [
+            "06-precalculus/06-introduction-to-limits",
+            "07-calculus/01-limits",
+            "07-calculus/03-derivatives",
+            "07-calculus/06-integrals",
+            "07-calculus/07-fundamental-theorem-of-calculus",
+            "14-real-analysis/01-real-numbers-and-completeness",
+            "14-real-analysis/02-sequences-and-series",
+            "14-real-analysis/03-continuity-and-limits",
+            "14-real-analysis/04-differentiation",
+            "14-real-analysis/05-riemann-integration",
+            "14-real-analysis/06-metric-spaces",
+            "17-topology/01-topological-spaces",
+            "17-topology/02-continuity-and-homeomorphisms",
+            "17-topology/03-compactness",
+            "17-topology/04-connectedness"
+          ]
+        },
+        {
+          "name": "Research foundations",
+          "topics": [
+            "24-advanced-topics/01-measure-theory",
+            "24-advanced-topics/02-functional-analysis",
+            "24-advanced-topics/03-category-theory",
+            "24-advanced-topics/05-algebraic-topology",
+            "24-advanced-topics/06-algebraic-geometry",
+            "24-advanced-topics/10-model-theory",
+            "24-advanced-topics/11-computability-and-decidability"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "path-4",
+      "title": "Path 4: The Discrete Mathematics and Computer Science Path",
+      "audience": "Programmers and computer scientists: algorithms, complexity, cryptography, logic and networks.",
+      "intro": "Discrete mathematics is the mathematics that a computer can actually do. Counting, induction, graphs and logic are the working tools of algorithm analysis, databases, compilers, cryptography and machine learning.",
+      "stages": [
+        {
+          "name": "Logical and combinatorial foundations",
+          "topics": [
+            "00-foundations/02-logic",
+            "00-foundations/03-set-theory",
+            "00-foundations/04-proof-techniques",
+            "00-foundations/05-relations-and-functions",
+            "09-discrete-mathematics/01-mathematical-induction",
+            "09-discrete-mathematics/04-boolean-algebra"
+          ]
+        },
+        {
+          "name": "Counting and combinatorics",
+          "topics": [
+            "20-combinatorics/01-counting-principles",
+            "20-combinatorics/02-inclusion-exclusion",
+            "20-combinatorics/03-pigeonhole-principle",
+            "20-combinatorics/04-generating-functions",
+            "09-discrete-mathematics/02-recurrence-relations",
+            "09-discrete-mathematics/03-algorithms-and-complexity"
+          ]
+        },
+        {
+          "name": "Graphs and networks",
+          "topics": [
+            "21-graph-theory/01-graph-basics",
+            "21-graph-theory/02-trees",
+            "21-graph-theory/03-paths-and-connectivity",
+            "21-graph-theory/04-planarity-and-coloring",
+            "21-graph-theory/05-matching-and-flows"
+          ]
+        },
+        {
+          "name": "Number theory and cryptography",
+          "topics": [
+            "12-number-theory/01-divisibility-and-primes",
+            "12-number-theory/02-congruences",
+            "12-number-theory/03-arithmetic-functions"
+          ]
+        },
+        {
+          "name": "The linear algebra a computer scientist needs",
+          "topics": [
+            "08-linear-algebra/01-vectors",
+            "08-linear-algebra/02-matrices",
+            "08-linear-algebra/03-systems-of-linear-equations",
+            "08-linear-algebra/07-eigenvalues-and-eigenvectors",
+            "08-linear-algebra/08-inner-product-spaces"
+          ]
+        },
+        {
+          "name": "Probability, learning and limits of computation",
+          "topics": [
+            "10-probability/01-probability-foundations",
+            "10-probability/02-conditional-probability-and-independence",
+            "10-probability/03-random-variables",
+            "09-discrete-mathematics/05-discrete-probability",
+            "24-advanced-topics/11-computability-and-decidability",
+            "23-applied-mathematics/02-information-theory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "path-5",
+      "title": "Path 5: The Probability, Statistics and Data Path",
+      "audience": "Data analysts, scientists and machine-learning practitioners who want the mathematics rather than the libraries.",
+      "intro": "Probability is subtle in a way that calculus is not: the formulas are easy and the reasoning is hard. This path builds the calculus and linear algebra it needs, then goes slowly through conditioning, distributions and inference.",
+      "stages": [
+        {
+          "name": "The quantitive toolkit",
+          "topics": [
+            "01-arithmetic/05-percentages",
+            "03-algebra/11-functions",
+            "03-algebra/12-exponential-and-logarithmic-functions",
+            "06-precalculus/05-sequences-and-series"
+          ]
+        },
+        {
+          "name": "Calculus for continuous probability",
+          "topics": [
+            "07-calculus/01-limits",
+            "07-calculus/03-derivatives",
+            "07-calculus/06-integrals",
+            "07-calculus/07-fundamental-theorem-of-calculus",
+            "07-calculus/09-applications-of-integration",
+            "07-calculus/12-multivariable-calculus"
+          ]
+        },
+        {
+          "name": "Linear algebra for data",
+          "topics": [
+            "08-linear-algebra/01-vectors",
+            "08-linear-algebra/02-matrices",
+            "08-linear-algebra/03-systems-of-linear-equations",
+            "08-linear-algebra/07-eigenvalues-and-eigenvectors",
+            "08-linear-algebra/08-inner-product-spaces"
+          ]
+        },
+        {
+          "name": "Probability",
+          "topics": [
+            "20-combinatorics/01-counting-principles",
+            "10-probability/01-probability-foundations",
+            "10-probability/02-conditional-probability-and-independence",
+            "10-probability/03-random-variables",
+            "10-probability/04-probability-distributions",
+            "10-probability/05-expectation-and-variance",
+            "10-probability/06-law-of-large-numbers-and-central-limit-theorem"
+          ]
+        },
+        {
+          "name": "Statistics",
+          "topics": [
+            "11-statistics/01-descriptive-statistics",
+            "11-statistics/02-sampling-and-estimation",
+            "11-statistics/03-hypothesis-testing",
+            "11-statistics/04-linear-regression",
+            "11-statistics/06-experimental-design",
+            "11-statistics/05-bayesian-statistics"
+          ]
+        },
+        {
+          "name": "Beyond the basics",
+          "topics": [
+            "10-probability/07-stochastic-processes",
+            "18-optimization/04-gradient-methods",
+            "18-optimization/02-convex-optimization",
+            "23-applied-mathematics/02-information-theory",
+            "22-mathematical-modeling/05-stochastic-models"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "path-6",
+      "title": "Path 6: The Applied and Engineering Path",
+      "audience": "Engineers and applied scientists: modelling, differential equations, signals and control.",
+      "intro": "Applied mathematics is the art of choosing the right approximation and knowing how wrong it is. This path builds the differential-equation and numerical machinery, then applies it.",
+      "stages": [
+        {
+          "name": "Calculus and linear algebra",
+          "topics": [
+            "07-calculus/03-derivatives",
+            "07-calculus/05-applications-of-derivatives",
+            "07-calculus/06-integrals",
+            "07-calculus/08-techniques-of-integration",
+            "07-calculus/11-sequences-and-series-in-calculus",
+            "07-calculus/12-multivariable-calculus",
+            "07-calculus/13-vector-calculus",
+            "08-linear-algebra/02-matrices",
+            "08-linear-algebra/03-systems-of-linear-equations",
+            "08-linear-algebra/07-eigenvalues-and-eigenvectors"
+          ]
+        },
+        {
+          "name": "Differential equations",
+          "topics": [
+            "16-differential-equations/01-first-order-odes",
+            "16-differential-equations/02-second-order-linear-odes",
+            "16-differential-equations/03-systems-of-odes",
+            "16-differential-equations/04-laplace-transforms",
+            "16-differential-equations/05-introduction-to-pdes"
+          ]
+        },
+        {
+          "name": "Computation",
+          "topics": [
+            "19-numerical-analysis/01-floating-point-arithmetic",
+            "19-numerical-analysis/02-root-finding",
+            "19-numerical-analysis/04-numerical-integration",
+            "19-numerical-analysis/05-iterative-methods-for-linear-systems",
+            "16-differential-equations/06-numerical-solutions-of-odes"
+          ]
+        },
+        {
+          "name": "Modelling",
+          "topics": [
+            "22-mathematical-modeling/01-principles-of-modeling",
+            "22-mathematical-modeling/02-population-dynamics",
+            "22-mathematical-modeling/03-epidemic-models",
+            "18-optimization/01-linear-programming",
+            "18-optimization/03-lagrange-multipliers"
+          ]
+        },
+        {
+          "name": "Applied specialties",
+          "topics": [
+            "23-applied-mathematics/01-mathematical-physics",
+            "23-applied-mathematics/05-control-theory",
+            "23-applied-mathematics/06-signal-processing",
+            "23-applied-mathematics/03-game-theory",
+            "23-applied-mathematics/04-financial-mathematics"
+          ]
+        }
+      ]
+    }
+  ],
+  "shortRoutes": [
+    {
+      "title": "I only need calculus",
+      "note": "Six topics, in order. Do the exercise sets; they are where the subject is actually learned.",
+      "topics": [
+        "07-calculus/01-limits",
+        "07-calculus/03-derivatives",
+        "07-calculus/04-differentiation-rules",
+        "07-calculus/05-applications-of-derivatives",
+        "07-calculus/06-integrals",
+        "07-calculus/07-fundamental-theorem-of-calculus"
+      ]
+    },
+    {
+      "title": "I only need linear algebra",
+      "note": "The computational core first, then the structural view.",
+      "topics": [
+        "08-linear-algebra/01-vectors",
+        "08-linear-algebra/02-matrices",
+        "08-linear-algebra/03-systems-of-linear-equations",
+        "08-linear-algebra/04-vector-spaces",
+        "08-linear-algebra/07-eigenvalues-and-eigenvectors"
+      ]
+    },
+    {
+      "title": "I need to read proofs",
+      "note": "The indispensable minimum for reading a mathematics paper.",
+      "topics": [
+        "00-foundations/02-logic",
+        "00-foundations/03-set-theory",
+        "00-foundations/04-proof-techniques",
+        "00-foundations/05-relations-and-functions"
+      ]
+    },
+    {
+      "title": "I need probability for machine learning",
+      "note": "Conditioning and distributions carry more weight than combinatorics here.",
+      "topics": [
+        "10-probability/01-probability-foundations",
+        "10-probability/02-conditional-probability-and-independence",
+        "10-probability/03-random-variables",
+        "10-probability/04-probability-distributions",
+        "10-probability/05-expectation-and-variance",
+        "18-optimization/04-gradient-methods"
+      ]
+    }
+  ]
+}
